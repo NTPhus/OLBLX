@@ -1,0 +1,540 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/*-------------------------------------------------------------BACKGROUND-------------------------------------------------------------*/
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #162938;
+    background-image: url('./../img/img-demo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+}
+
+
+
+/*-------------------------------------------------------------TẠO THANH ĐIỀU HƯỚNG-------------------------------------------------------------*/
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    background: #162938;
+    max-height: 100px;
+}
+
+/*-------------------------------------------------------------LOGO *-------------------------------------------------------------*/
+.logo a{
+    font-size: 2em;
+    color: #fff;
+    user-select: none;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+/*-------------------------------------------------------------DESIGN THANH ĐIỀU HƯỚNG-------------------------------------------------------------*/
+
+/*-------------------START - NAVIGATION----------------*/
+
+/* để các thành phàn từ hàng dọc thành hàng ngang */
+.navigation ul li{
+    display: inline-block;
+}
+
+/* design các thành phần trong thanh điều hướng */
+.navigation li a{
+    position: relative;
+    font-size: 1.1rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+/* Tạo hiệu ứng dấu gạch chân cho các thành phần */
+.navigation a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    /* 1 */
+    transform: scaleX(0);
+    /* tạo ra hiệu ứng xuất hiện từ trong ra ngoài với 0.5s */
+    transition: transform .5s;
+}
+
+/* 2 */
+.navigation a:hover::after
+{
+    transform: scaleY(1);
+}
+
+/* design cho nút đăng nhập */
+.navigation .btnLogin-popup{
+    width: 120px;
+    height: 50px;
+    /* làm cho button tệp vào trong */
+    background: transparent; 
+    border: 2px solid #fff;
+    outline: none;
+    /* bo góc button */
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+/* tạo hiệu ứng cho nút đăng nhập */
+.navigation .btnLogin-popup:hover{
+    background: #fff;
+    color: #162938;
+} 
+
+/* NÚT ĐĂNG XUẤT */
+/* START */
+.user{
+    position: relative;
+    font-size: 1.5em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.form{
+    position: relative;
+    height: 50px;
+}
+.dangxuat{
+    position: absolute;
+    background: transparent;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    right: 0;
+    text-decoration: none;
+    padding: 6px;
+    
+}
+
+.dangxuat:hover{
+    background: #fff;
+    color: #000;
+    box-shadow: 0 0 10px #03e9f4 ;
+
+}
+
+/* END */
+
+
+/*--------------------------END - NAVIGATION ----------------------*/
+
+
+/*-------------------------------------------------------------FORM ĐĂNG KÝ + ĐĂNG NHẬP - WRAPPER------------------------------------------------------------- */
+
+/*-------------------------START - WRAPPER---------------------------*/
+
+/* design form */
+.wrapper{
+    position: relative;
+    width: 400px;
+    height: 440px;
+    /* loại bỏ màu nền mặc định của phần tử */
+    background: transparent;
+    border: 2px solid rgba(225,  255, 255, 0.5);
+    border-radius: 20px;
+    /* tạo đồ mờ cho form so với background */
+    backdrop-filter: blur(20px);
+    /* tạo bóng đen xung quanh form */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* ẩn form còn lại đi */
+    overflow: hidden;
+    /* 1 */
+    transform: scale(0);
+    /* tạo hiệu ứng xuất hiện + mất */
+    transition: transform .5s ease, height 0.2s ease;
+    z-index: 1;
+}
+
+/* 2 */
+.wrapper.active-popup{
+    transform: scale(1);
+}
+
+/* set size cho form đăng ký - độ cao thay đổi sao cho phù hợp*/
+.wrapper.active
+{
+    height: 520px;
+}
+
+/* design + xử lý nút close */
+.wrapper .icon_close
+{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    font-size: 2em;
+    color: #fff;
+    background: #162938;
+    /* * */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* * */
+    /* bo góc dưới bên trái của nút close */
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    /* nổi nút close lên trên form để bấm */
+    z-index: 1;
+}
+
+/* design cho form  */
+.wrapper .form-box{
+    width: 100%;
+    padding: 40px;
+}
+
+/* design tiêu đề form  */
+.form-box h2{
+    font-size: 2em;
+    color: #162938;
+    text-align: center;
+}
+
+/* Làm cho form login ẩn đi khi có form đăng ký */
+.wrapper.active .form-box.login{
+    transform: none;
+    transform: translateX(-400px);
+}
+
+/* làm cho form này mất và form kia xuất hiện  */
+.wrapper .form-box.login, 
+.wrapper.active .form-box.register{
+    transition: transform .18s ease ;
+    transform: translateX(0);
+}
+
+/* Làm cho form đăng ký hiện lên sau khi form đăng nhập nhập mất */
+.wrapper .form-box.register
+{
+    position: absolute;
+    transition: none;
+    transform: translateX(400px);
+}
+/*-----------------------------------END - WRAPPER------------------------*/
+
+
+/*-------------------------------------------------------------INPUT------------------------------------------------------------- */
+
+/* --------------START - INPUT----------------- */
+
+/* design thanh ngang bên dưới input */
+.input_box{
+    position: relative;
+    width: 100%;
+    height: 30px;
+    /* tạo viền bên dưới */
+    border-bottom: 2px solid #162938;
+    margin: 30px 0;
+
+}
+
+/* design ô input */
+.input_box input{
+    /* loại bỏ màu nền mặc định của phần tử đó */
+    background: transparent;
+    /* làm mất viền của input */
+    border: none;
+    /* loại bỏ khung bao quanh mỗi input text mỗi ghi ấn vào ô để gõ*/
+    outline: none;
+    font-size: 1em;
+    padding-left: 20px;
+}
+
+/* tạo màu chữ cho nội dung hiển thị trong ôn input text */
+::placeholder {
+    color: #162938
+}
+/* -------------- END - INPUT----------------- */
+
+/*-------------------------------------------------------------XỬ LÝ MẬT KHẨU - FORM ĐĂNG NHẬP------------------------------------------------------------- */
+/* design Lưu mật khẩu + Quên mật khẩu */
+.Mat_khau{
+    font-size: .9em;
+    color: #162938;
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    /* ngăn cách khoảng không ở giữa 2 content */
+    justify-content: space-between;
+
+}
+
+/* design cho quên mật khẩu */
+.Mat_khau a{
+    color: #162938;
+    text-decoration: none;
+}
+
+/* tạo hiệu ứng gạch chân khi di chuột vào Quên mật khẩu*/
+.Mat_khau a:hover{
+    text-decoration: underline;
+}
+
+/*-------------------------------------------------------------XỬ LÝ FORM ĐĂNG KÝ------------------------------------------------------------- */
+/* design nút Đăng nhập + Đăng ký */
+.btn{
+    width: 100%;
+    height: 45px;
+    background: #162938;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+    margin-top: 12px;
+}
+
+/* design cho dòng Bạn đã có tài khoản? Đăng nhập */
+.dk_tai_khoan{
+    font-size: .9em;
+    color: #162938;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0px 10px;
+}
+
+/* design cho chữ Đăng nhập - đường link*/
+.dk_tai_khoan p a{
+    color: #162938;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* tạo hiệu ứng gạch chân khi di chuột vào Đăng nhập  + Đăng ký*/
+.dk_tai_khoan p a:hover{
+    text-decoration: underline;
+}
+
+/*-----------------------------------------------NỘI DUNG HIỂN THỊ - TEXT BOX */
+/* START - TEXT BOX */
+.text-box{
+    font-size: 40px;
+    color: #162938;
+    position: absolute;
+    text-align: center;
+    left: 6%;
+    margin-top: 10%;
+}
+
+.text-box h2
+{
+    font-size: 50px;
+    line-height: 160px;
+    margin-left: -10px;
+    color: transparent;
+    -webkit-text-stroke: 1px #162938;
+    background: url('./../img/back.png');
+    -webkit-background-clip: text;
+    background-position: 0 0;
+    z-index: 0;
+   animation: slide 1s ease forwards,back 20s linear infinite;
+   opacity: 0;
+   
+}
+
+/* Tạo hiệu ứng chuyển động trong text */
+@keyframes back{
+    100%{
+        background-position: 2000px 0;
+    }
+}
+
+/* tạo hiệu ứng xuất hiện từ trong ra ngoài */
+@keyframes slide{
+    0%{
+        opacity: 0;
+        transform: scale(0);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/*  một kiểu css khác cho nút bắt đầu
+
+ .btn-batdau{
+    padding: 15px  30px;
+    font-size: 0.6em;
+    font-weight: 700;
+    color: rgb(26, 74, 117);
+    border: 5px solid rgb(26, 74, 117);
+    background-color: rgb(199, 223, 229);
+    border-radius: 5px;
+    transition: all 0.3s;
+} 
+ .btn-batdau:hover{
+    transform: translateY(-10px);
+    background-color: rgb(26, 74, 117);
+    color: #fff;
+} */
+
+/* css cho Chiến thắng kỳ thi lý thuyết! */
+.text-box .win{
+    font-weight: 600;
+    opacity: 0;
+    animation: slideBottom 4s ease forwards;
+}
+/* tạo hiệu ứng chạy từ trên xuống */
+@keyframes slideBottom{
+    0%{
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* desgin cho nút bắt đầu */
+.text-box a{
+    margin-top: 24px;
+    position: relative;
+    display: inline-block;
+    padding: 15px  30px;
+    font-size: 0.6em;
+    font-weight: bold;
+    color: #162938;
+    border-radius: 5px;
+    transition: .5s;
+    overflow: hidden;
+    text-decoration: none;
+    border: 2px solid rgb(217, 221, 232)
+}
+
+/* di chuột vào nút bắt đầu */
+.text-box a:hover{
+    background-color: #03e9f4;
+    color: #000;
+    border: 3px solid #03e9f4;
+    box-shadow: 0 0 5px #03e9f4,
+                0 0 25px #03e9f4,
+                0 0 50px #03e9f4,
+                0 0 200px #03e9f4;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+}
+
+
+/* .text-box a span{
+    position: absolute;
+    display: block;
+}
+.text-box a span:nth-child(1)
+{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #03e9f4);
+    animation: animate1 1s infinite;
+}
+
+@keyframes animate1{
+    0%{
+        left: -100%;
+
+    } 100%{
+        left: 100%;
+    }
+}
+.text-box a span:nth-child(2)
+{
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #03e9f4);
+    animation: animate2 1s infinite;
+    animation-delay: .25s;
+}
+@keyframes animate2{
+    0%{
+        top: -100%;
+
+    } 100%{
+        top: 100%;
+    }
+}
+.text-box a span:nth-child(3)
+{
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #03e9f4);
+    animation: animate3 1s infinite;
+    animation-delay: .5s;
+}
+@keyframes animate3{
+    0%{
+        right: -100%;
+
+    } 100%{
+        right: 100%;
+    }
+}
+.text-box a span:nth-child(4)
+{
+    bottom: -100px;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #0a5dc2);
+    animation: animate4 1s infinite;
+    animation-delay: .75s;
+}
+@keyframes animate4{
+    0%{
+        bottom: -100%;
+
+    } 100%{
+        bottom: 100%;
+    }
+}
+ */
+
+
+.h2-1{
+    margin-top: -100px;
+}

@@ -4,18 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bực VL</title>
-    <link rel="stylesheet" href="CSS/giaoDienTracNghiem.css">
+    <link rel="stylesheet" href="CSS/styleGDTN.css">
 </head>
 <body>
-<?php
-    if(isset($_SESSION["username"])) echo "Bực vl";
-    else echo "Bực vl vl";
+<form action="giaoDienTracNghiem.php" action="get">
+<div class="container">
+    <div class="item1">
+        <?php
+            for($i = 1; $i <= 100; $i++){
+                echo "<button name='cau' class="."btn"." value=".$i.">".$i."</button>";
+            }
+        ?>
+    </div>
+    <div class="item2">
+
+    <?php
     try{
         $conn = mysqli_connect("localhost", "root", "", "olblx");
     }catch(mysqli_sql_exception){
         echo "Could not connected";
     } 
-    
+
     if(isset($_GET["cau"])){
         $cau = $_GET["cau"];
     }else{
@@ -39,9 +48,9 @@
     }
 
     mysqli_close($conn);
-?>
+    ?>
+
     
-    <form action="giaoDienTracNghiem.php" action="get">
         <div>
             <span>
                 <p id="cauHoi"> <?php echo $cauhoifull."<br>"; ?></p>
@@ -63,9 +72,11 @@
         <div>
             <span id="da"></span>
         </div>
-    </form>
-   
-
+    
+    </div>
+</div>
+</form>
+    <!-- Script -->
     <script>
         function chkkq(kq, vtda){
             socau = <?php if($dapan4 != "") echo 5; else echo 4;?>;

@@ -19,24 +19,24 @@
         }
     }
     
-    $filename = "De_On_GPLX_Oto.docx";
-    $content = read_docx_file($filename);
+    // $filename = "De_On_GPLX_Oto.docx";
+    // $content = read_docx_file($filename);
     
-    $count = 0;
-    $soCau = 2;
-    $cau = "Câu ".$soCau;
-    $pos = strpos($content, $cau);
-    $ind = 0;
+    // $count = 0;
+    // $soCau = 2;
+    // $cau = "Câu ".$soCau;
+    // $pos = strpos($content, $cau);
+    // $ind = 0;
 
-    while($pos){
-        $cauHoi[$count] = substr($content, $ind, $pos-$ind);
-        $ind = $pos;
-        $count = $count + 1;
-        $soCau = $soCau + 1;
-        $cau = "Câu ".$soCau;
-        $pos = strpos($content, $cau);
-    }
-    $cauHoi[$count] = substr($content, $ind, 300);
+    // while($pos){
+    //     $cauHoi[$count] = substr($content, $ind, $pos-$ind);
+    //     $ind = $pos;
+    //     $count = $count + 1;
+    //     $soCau = $soCau + 1;
+    //     $cau = "Câu ".$soCau;
+    //     $pos = strpos($content, $cau);
+    // }
+    // $cauHoi[$count] = substr($content, $ind, 300);
 
     //create connection
     try{
@@ -45,51 +45,71 @@
         echo "Could not connected";
     }
 
-    $count = 1;
-    foreach($cauHoi as $sentence ){
-        echo $sentence."<br>";
-        $hoi = substr($sentence, strpos($sentence, "/")+1, strpos($sentence, "?")-strpos($sentence, "/"));
-        $ind = strpos($sentence, "?")+1;
-        $dapan1 = "";
-        $dapan2 = "";
-        $dapan3 = "";
-        $dapan4 = "";
-        if($ind < strlen($sentence)){
-            $dapan1 = substr($sentence, $ind, strpos($sentence, ".", $ind) - $ind + 1);
-            $ind = strpos($sentence, ".", $ind+1)+1;
-        }
-        if($ind < strlen($sentence)){
-            $dapan2 = substr($sentence, $ind, strpos($sentence, ".", $ind) - $ind + 1);
-            $ind = strpos($sentence, ".", $ind+1)+1;
-        }
-        if($ind < strlen($sentence)){
-            $dapan3 = substr($sentence, $ind, strpos($sentence, ".", $ind) - $ind + 1);
-            $ind = strpos($sentence, ".", $ind+1)+1;
-        }
-        if($ind < strlen($sentence)){
-            $dapan4 = substr($sentence, $ind, strpos($sentence, ".", $ind) - $ind + 1);
-            $ind = strpos($sentence, ".", $ind+1)+1;
-        }
-        $sql = "insert into 600_cau_hoi(cau, cauhoi, dapan1, dapan2, dapan3, dapan4) values ('".$count."','".$hoi."' , '".$dapan1."', '".$dapan2."', '".$dapan3."', '".$dapan4."')";
-        $count = $count + 1;
-        mysqli_query($conn, $sql);
-    }
+    // $count = 1;
+    // foreach($cauHoi as $sentence ){
+    //     echo $sentence."<br>";
+    //     $hoi = substr($sentence, strpos($sentence, "/")+1, strpos($sentence, "?")-strpos($sentence, "/"));
+    //     $ind = strpos($sentence, "?")+1;
+    //     $dapan1 = "";
+    //     $dapan2 = "";
+    //     $dapan3 = "";
+    //     $dapan4 = "";
+    //     if($ind < strlen($sentence)){
+    //         $dapan1 = substr($sentence, $ind, strpos($sentence, ".", $ind) - $ind + 1);
+    //         $ind = strpos($sentence, ".", $ind+1)+1;
+    //     }
+    //     if($ind < strlen($sentence)){
+    //         $dapan2 = substr($sentence, $ind, strpos($sentence, ".", $ind) - $ind + 1);
+    //         $ind = strpos($sentence, ".", $ind+1)+1;
+    //     }
+    //     if($ind < strlen($sentence)){
+    //         $dapan3 = substr($sentence, $ind, strpos($sentence, ".", $ind) - $ind + 1);
+    //         $ind = strpos($sentence, ".", $ind+1)+1;
+    //     }
+    //     if($ind < strlen($sentence)){
+    //         $dapan4 = substr($sentence, $ind, strpos($sentence, ".", $ind) - $ind + 1);
+    //         $ind = strpos($sentence, ".", $ind+1)+1;
+    //     }
+    //     $sql = "insert into 600_cau_hoi(cau, cauhoi, dapan1, dapan2, dapan3, dapan4) values ('".$count."','".$hoi."' , '".$dapan1."', '".$dapan2."', '".$dapan3."', '".$dapan4."')";
+    //     $count = $count + 1;
+    //     mysqli_query($conn, $sql);
+    // }
 
-    $filename = "DA-GPLX-Oto.docx";
+    // $filename = "DA-GPLX-Oto.docx";
+    // $content = read_docx_file($filename);
+
+    // $count = 0;
+    // $pos = strpos($content, ":");
+
+    // while($count < 600){
+    //     $da[$count] = substr($content, $pos + 1, 1);
+    //     $pos = strpos($content, ":", $pos + 1);
+    //     $count = $count + 1;
+    // }
+
+    // $cau = 1;
+    // foreach($da as $dapan){
+    //     $sql = "update 600_cau_hoi set dapandung = '".$dapan."' where cau = '".$cau."'";
+    //     $cau = $cau + 1;
+    //     echo $sql."<br>";
+    //     mysqli_query($conn, $sql);
+    // }
+
+    $filename = "Cau_co_anh_GPLX_Oto.docx";
     $content = read_docx_file($filename);
 
     $count = 0;
-    $pos = strpos($content, ":");
+    $pos = strpos($content, ": ");
 
     while($count < 600){
-        $da[$count] = substr($content, $pos + 1, 1);
+        $da[$count] = substr($content, $pos + 2, 1);
         $pos = strpos($content, ":", $pos + 1);
         $count = $count + 1;
     }
 
     $cau = 1;
     foreach($da as $dapan){
-        $sql = "update 600_cau_hoi set dapandung = '".$dapan."' where cau = '".$cau."'";
+        $sql = "update 600_cau_hoi set img = '".$dapan."' where cau = '".$cau."'";
         $cau = $cau + 1;
         echo $sql."<br>";
         mysqli_query($conn, $sql);

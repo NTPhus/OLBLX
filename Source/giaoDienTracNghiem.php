@@ -15,15 +15,26 @@
 <div class="container">
     <div class="item1">
         <?php
-            for($i = 1; $i <= 100; $i++){
-                echo "<button name='cau' class="."btn"." value=".$i." id="."btn".$i.">".$i."</button>";
-                if(isset($_SESSION['$i'])){
-                    if($_SESSION['$i'] = "1")
-                        echo "<script>document.getElementById('btn".$i."').style.backgroundColor = 'green'</script>";
-                    else
-                        echo "<script>document.getElementById('btn".$i."').style.backgroundColor = 'red'</script>";
+            if(!isset($_GET["key"]) && !isset($_GET["value"])){
+                for($i = 1; $i <= 100; $i++){
+                    $_SESSION["cau_".$i] = "";
                 }
             }
+            if(isset($_GET["key"]) && $_GET["value"]){
+                $_SESSION["cau_".$_GET["key"]] = $_GET["value"];
+            }
+            for($i = 1; $i <= 100; $i++){
+                echo "<button name='cau' class="."btn"." value=".$i." id="."btn".$i.">".$i."</button>";
+                if(isset($_SESSION["cau_".$i])){
+                    if($_SESSION["cau_".$i] == "true")
+                        echo "<script>document.getElementById('"."btn".$i."').style.backgroundColor = 'green';</script>";
+                    else if($_SESSION["cau_".$i] == "false")
+                        echo "<script>document.getElementById('"."btn".$i."').style.backgroundColor = 'red';</script>";
+                }
+            }
+
+           // echo '<pre>';print_r($_SESSION);echo '</pre>';
+            
         ?>
     </div>
     <div class="item2">
@@ -78,16 +89,16 @@
         <div>
             <span id="da"></span>
         </div>
-    
+
+        <input type="text" name="key" id="key" value="<?php echo $cau?>" hidden>
+        <input type="text" name="value" id="value" hidden>
+
     </div>
 </div>
 </form>
     <!-- Script -->
     <script>
-        var rs;
-        var question;
         function chkkq(kq, cau){
-            question = cau;
             socau = <?php if($dapan4 != "") echo 5; else echo 4;?>;
             if(kq == <?php echo $dapandung ?>){
                 document.getElementById("da" + kq).style.backgroundColor = "lightgreen";
@@ -99,7 +110,7 @@
                         document.getElementById("da" + i).style.border = "none";
                     }
                }
-               rs = 1;
+               
             }else{
                 document.getElementById("da" + kq).style.backgroundColor = "antiquewhite";
                 document.getElementById("da" + kq).style.border = "4px solid red";
@@ -110,21 +121,19 @@
                         document.getElementById("da" + i).style.border = "none";
                     }
                }
-               rs = 0;
             }
 
             if(kq == <?php echo $dapandung ?>){
                 document.getElementById("da").innerHTML = "Chính xác";
+                document.getElementById("value").setAttribute("value", "true");
                 return true;
             }
             else{
                 document.getElementById("da").innerHTML = "Đáp án chưa chính xác";
+                document.getElementById("value").setAttribute("value", "false");
                 return false;
             }
         }
     </script>
-    <?php
-        $_SESSION["<script>document.write(question);</script>"] = "<script>document.write(rs);</script>";
-    ?>
 </body>
 </html>

@@ -1,10 +1,14 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bực VL</title>
-    <link rel="stylesheet" href="CSS/styleGDTN.css">
+    <link rel="stylesheet" href="CSS/styleGDLT.css">
 </head>
 <body>
 <form action="giaoDienTracNghiem.php" action="get">
@@ -13,6 +17,12 @@
         <?php
             for($i = 1; $i <= 100; $i++){
                 echo "<button name='cau' class="."btn"." value=".$i." id="."btn".$i.">".$i."</button>";
+                if(isset($_SESSION['$i'])){
+                    if($_SESSION['$i'] = "1")
+                        echo "<script>document.getElementById('btn".$i."').style.backgroundColor = 'green'</script>";
+                    else
+                        echo "<script>document.getElementById('btn".$i."').style.backgroundColor = 'red'</script>";
+                }
             }
         ?>
     </div>
@@ -74,7 +84,10 @@
 </form>
     <!-- Script -->
     <script>
+        var rs;
+        var question;
         function chkkq(kq, cau){
+            question = cau;
             socau = <?php if($dapan4 != "") echo 5; else echo 4;?>;
             if(kq == <?php echo $dapandung ?>){
                 document.getElementById("da" + kq).style.backgroundColor = "lightgreen";
@@ -86,7 +99,7 @@
                         document.getElementById("da" + i).style.border = "none";
                     }
                }
-               
+               rs = 1;
             }else{
                 document.getElementById("da" + kq).style.backgroundColor = "antiquewhite";
                 document.getElementById("da" + kq).style.border = "4px solid red";
@@ -97,6 +110,7 @@
                         document.getElementById("da" + i).style.border = "none";
                     }
                }
+               rs = 0;
             }
 
             if(kq == <?php echo $dapandung ?>){
@@ -109,5 +123,8 @@
             }
         }
     </script>
+    <?php
+        $_SESSION["<script>document.write(question);</script>"] = "<script>document.write(rs);</script>";
+    ?>
 </body>
 </html>

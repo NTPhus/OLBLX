@@ -40,6 +40,11 @@
     border-radius: 15px;
 }
 
+.dapan:hover{
+    background-color: aqua;
+    cursor: pointer;
+}
+
 button{
     border-radius: 15px;
     padding: 10px;

@@ -15,36 +15,46 @@
 <div class="container">
     <div class="item1">
         <?php
+
+            try{
+                $conn = mysqli_connect("localhost", "root", "", "olblx");
+            }catch(mysqli_sql_exception){
+                echo "Could not connected";
+            } 
+
             if(!isset($_GET["key"]) && !isset($_GET["value"])){
-                for($i = 1; $i <= 100; $i++){
-                    $_SESSION["cau_".$i] = "";
-                }
+                $sqldelete = "DELETE FROM `dapan`";
+                mysqli_query($conn, $sqldelete);
             }
             if(isset($_GET["key"]) && $_GET["value"]){
-                $_SESSION["cau_".$_GET["key"]] = $_GET["value"];
+                $select = "SELECT * FROM `dapan` WHERE cau = '".$_GET["key"]."'";
+                $res = mysqli_query($conn, $select);
+                if($data = mysqli_fetch_array($res)){
+                    $update = "UPDATE `dapan` SET `da`='".$_GET["value"]."' WHERE `cau`='".$_GET["key"]."'";
+                    mysqli_query($conn, $update);
+                }else{
+                    $insert = "INSERT INTO `dapan`(`cau`, `da`) VALUES ('".$_GET["key"]."','".$_GET["value"]."')";
+                    mysqli_query($conn, $insert);
+                }
             }
             for($i = 1; $i <= 100; $i++){
                 echo "<button name='cau' class="."btn"." value=".$i." id="."btn".$i.">".$i."</button>";
-                if(isset($_SESSION["cau_".$i])){
-                    if($_SESSION["cau_".$i] == "true")
-                        echo "<script>document.getElementById('"."btn".$i."').style.backgroundColor = 'green';</script>";
-                    else if($_SESSION["cau_".$i] == "false")
-                        echo "<script>document.getElementById('"."btn".$i."').style.backgroundColor = 'red';</script>";
-                }
             }
-
-           // echo '<pre>';print_r($_SESSION);echo '</pre>';
             
+            $sqlgetAllAnswer = "SELECT * FROM `dapan`";
+            $res = mysqli_query($conn, $sqlgetAllAnswer);
+            while($data = mysqli_fetch_array($res)){
+                if($data["da"] == "true")
+                        echo "<script>document.getElementById('"."btn".$data["cau"]."').style.backgroundColor = 'green';</script>";
+                    else if($data["da"] == "false")
+                        echo "<script>document.getElementById('"."btn".$data["cau"]."').style.backgroundColor = 'red';</script>";
+            }
         ?>
     </div>
     <div class="item2">
 
     <?php
-    try{
-        $conn = mysqli_connect("localhost", "root", "", "olblx");
-    }catch(mysqli_sql_exception){
-        echo "Could not connected";
-    } 
+    
 
     if(isset($_GET["cau"])){
         $cau = $_GET["cau"];
@@ -53,9 +63,9 @@
     }
         
     echo $cau."<br>";
-    $sql = "select cauhoi, dapan1,dapan2,dapan3,dapan4,dapandung,img from 600_cau_hoi where cau = '".$cau."'";
+    $sqlcauhoi = "select cauhoi, dapan1,dapan2,dapan3,dapan4,dapandung,img from 600_cau_hoi where cau = '".$cau."'";
 
-    $res = mysqli_query($conn, $sql);
+    $res = mysqli_query($conn, $sqlcauhoi);
 
     $dapan = 1;
     while($data = mysqli_fetch_array($res, MYSQLI_ASSOC)){
@@ -100,35 +110,36 @@
     <script>
         function chkkq(kq, cau){
             socau = <?php if($dapan4 != "") echo 5; else echo 4;?>;
+            socau = <?php if($dapan3 != "") echo 4; else echo 3;?>;
             if(kq == <?php echo $dapandung ?>){
+                // đổi hiệu ứng câu được chọn là đúng
                 document.getElementById("da" + kq).style.backgroundColor = "lightgreen";
                 document.getElementById("da" + kq).style.border = "4px solid green";
                 document.getElementById("btn" + cau).style.backgroundColor = "green";
+                // các câu còn loại ngoài câu được chọn được trở lại trạng thái ban đầu
                for(var i = 1; i < socau; i++){
                     if(i != <?php echo $dapandung?>){
                         document.getElementById("da" + i).style.backgroundColor = "aquamarine";
                         document.getElementById("da" + i).style.border = "none";
                     }
                }
-               
+               //Hiện thị kết quả và thay đổi giá trị input
+                document.getElementById("da").innerHTML = "Chính xác";
+                document.getElementById("value").setAttribute("value", "true");
+                return true;
             }else{
+                // đổi hiệu ứng câu được chọn là sai
                 document.getElementById("da" + kq).style.backgroundColor = "antiquewhite";
                 document.getElementById("da" + kq).style.border = "4px solid red";
                 document.getElementById("btn" + cau).style.backgroundColor = "red";
+                // các câu còn loại ngoài câu được chọn được trở lại trạng thái ban đầu
                 for(var i = 1; i < socau; i++){
                     if(i != kq){
                         document.getElementById("da" + i).style.backgroundColor = "aquamarine";
                         document.getElementById("da" + i).style.border = "none";
                     }
                }
-            }
-
-            if(kq == <?php echo $dapandung ?>){
-                document.getElementById("da").innerHTML = "Chính xác";
-                document.getElementById("value").setAttribute("value", "true");
-                return true;
-            }
-            else{
+               //Hiện thị kết quả và thay đổi giá trị input
                 document.getElementById("da").innerHTML = "Đáp án chưa chính xác";
                 document.getElementById("value").setAttribute("value", "false");
                 return false;

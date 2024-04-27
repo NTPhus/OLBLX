@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luyện Thi</title>
-    <link rel="stylesheet" href="CSS/styleLT.css">
+    <link rel="stylesheet" href="CSS/styleGDT.css">
 <body>
     <?php
 
@@ -24,28 +24,33 @@
             array_push($data,$row['dapandung']);
         }
     ?>
-    <div class="container">
-        <div class="content">
-            <div class="cauhoi">
-                <p id="cauHoi">Phú có đẹp trai không?</p>
-                <img src="" alt="" hidden>
+    <form action="GiaoDienKetQua.php" method="POST">
+        <div class="container">
+            <div class="content">
+                <div class="cauhoi">
+                    <p id="cauHoi">Phú có đẹp trai không?</p>
+                    <img src="" alt="" hidden>
+                </div>
+                <div class="cacdapan">
+                    <div class="dapan" id="dapan1" onclick="check(1)">Đáp án 1</div>
+                    <div class="dapan" id="dapan2" onclick="check(2)">Đáp án 2</div>
+                    <div class="dapan" id="dapan3" onclick="check(3)">Đáp án 3</div>
+                    <div class="dapan" id="dapan4" onclick="check(4)">Đáp án 4</div>
+                </div>
             </div>
-            <div class="cacdapan">
-                <div class="dapan" id="dapan1">Đáp án 1</div>
-                <div class="dapan" id="dapan2">Đáp án 2</div>
-                <div class="dapan" id="dapan3">Đáp án 3</div>
-                <div class="dapan" id="dapan4">Đáp án 4</div>
+            <div class="bottom-bar">
+                <p id="countdown">30:00</p>
+                <?php 
+                    for($i = 1; $i <= 25; $i++){
+                    echo "<div class='btn' id='btn".$i."' onclick='ChuyenCau(".$i.")'>".$i."</div>";
+                    }
+                ?>
+                <input type="text" id="result" name="result" value="0" hidden>
+                <button type="submit" id="submit">Submit</button>
             </div>
         </div>
-        <div class="bottom-bar">
-            <p id="countdown">30:00</p>
-            <?php 
-                for($i = 1; $i <= 25; $i++){
-                   echo "<button class='btn' id='btn".$i."' onclick='ChuyenCau(".$i.")'>".$i."</button>";
-                }
-            ?>
-        </div>
-    </div>
+    </form>
+    
 
     <!-- Đồng hồ đếm ngược -->
     <script src="JS/index.js"></script>
@@ -78,11 +83,12 @@
             });
             document.getElementById("dapan4").hidden;
         //Thiết lập ban đầu
-        let currentIndex = 0;
+        let currentIndex = 1;
+        let rightAnswer = 0;
         function start(){
             let currentQuestion = questions[0];
             let answers = currentQuestion.answers;
-            document.getElementById("cauHoi").innerHTML = currentQuestion.question;
+            document.getElementById("cauHoi").innerHTML = currentIndex + ". " + currentQuestion.question;
             document.getElementById("dapan1").innerHTML = answers.dapan1;
             document.getElementById("dapan2").innerHTML = answers.dapan2;
             if(answers.dapan3 === "")
@@ -100,9 +106,10 @@
         }
 
         function ChuyenCau(cau){
-            let currentQuestion = questions[cau];
+            currentIndex = cau;
+            let currentQuestion = questions[currentIndex-1];
             let answers = currentQuestion.answers;
-            document.getElementById("cauHoi").innerHTML = currentQuestion.question;
+            document.getElementById("cauHoi").innerHTML = currentIndex + ". " + currentQuestion.question;
             document.getElementById("dapan1").innerHTML = answers.dapan1;
             document.getElementById("dapan2").innerHTML = answers.dapan2;
             if(answers.dapan3 === "")
@@ -117,6 +124,14 @@
                 document.getElementById("dapan4").innerHTML = answers.dapan4;
                 document.getElementById("dapan4").style.display = "block";
             }
+        }
+
+        function check(cau){
+            let currentQuestion = questions[currentIndex-1];
+            let correctAnswers = currentQuestion.correct;
+            if(cau == correctAnswers) rightAnswer++;
+            document.getElementById("result").setAttribute("value", rightAnswer);
+            document.getElementById("btn"+currentIndex).style.backgroundColor = "yellow";
         }
 
         start();

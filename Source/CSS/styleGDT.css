@@ -19,6 +19,7 @@
     height: 100px;
     background-color: chartreuse;
     border: 5px solid black;
+    display: flex;
 }
 
 .cauhoi{
@@ -43,7 +44,7 @@
 }
 
 #countdown{
-    margin-left: 700px;
+    justify-content: left;
     text-align: center;
     font-size: 40px;
     font-weight: bold;
@@ -54,8 +55,9 @@
     margin-top: -50px;
 }
 
-.btn{
-    width: 40px;
+.bottom-bar .btn{
+    justify-content: center;
+    width: 100px;
     height: 40px;
     border-radius: 10px;
     margin-top: 10px;
@@ -63,8 +65,21 @@
     font-weight: bold;
     font-size: 18px;
     background-color: aqua;
+    text-align: center;
 }
 
 .btn:hover{
     background-color: burlywood;
+}
+
+#submit{
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 10px;
+    margin-left: 30px;
+    height: 60px;
+}
+#submit:hover{
+    background-color: aqua;
+    cursor: pointer;
 }

@@ -52,9 +52,8 @@
         ?>
     </div>
     <div class="item2">
-
-    <?php
     
+    <?php
 
     if(isset($_GET["cau"])){
         $cau = $_GET["cau"];
@@ -102,7 +101,7 @@
 
         <input type="text" name="key" id="key" value="<?php echo $cau?>" hidden>
         <input type="text" name="value" id="value" hidden>
-
+        <input type="text" name="time" id="time" value="<?php echo "<script>document.writeln(res);</script>";?>" hidden>
     </div>
 </div>
 </form>

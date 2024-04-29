@@ -30,7 +30,8 @@
     background-color: antiquewhite;
     padding: 10px;
     border-radius: 15px;
-    
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .dapan{
@@ -51,8 +52,17 @@ button{
 }
 
 .btn{
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px;
     display: inline-block;
-    width: 40px;
-    height: 40px;
     justify-content: center;
+    background-color: aqua;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.btn:hover{
+    background-color: cadetblue;
 }

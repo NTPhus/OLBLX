@@ -8,142 +8,183 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bực VL</title>
-    <link rel="stylesheet" href="CSS/styleGDLT.css">
+    <link rel="stylesheet" href="CSS/styleGDTN.css">
 </head>
 <body>
-<form action="giaoDienTracNghiem.php" action="get">
+<?php
+    $conn = mysqli_connect("localhost", "root", "", "olblx");
+    $sql = "SELECT * FROM `600_cau_hoi`";
+    $res = mysqli_query($conn, $sql);
+
+    $data = [];
+
+    while($row = mysqli_fetch_array($res)){
+        array_push($data,$row['cauhoi']);
+        array_push($data,$row['img']);
+        array_push($data,$row['dapan1']);
+        array_push($data,$row['dapan2']);
+        array_push($data,$row['dapan3']);
+        array_push($data,$row['dapan4']);
+        array_push($data,$row['dapandung']);
+    }
+?>
+
 <div class="container">
     <div class="item1">
         <?php
-
-            try{
-                $conn = mysqli_connect("localhost", "root", "", "olblx");
-            }catch(mysqli_sql_exception){
-                echo "Could not connected";
-            } 
-
-            if(!isset($_GET["key"]) && !isset($_GET["value"])){
-                $sqldelete = "DELETE FROM `dapan`";
-                mysqli_query($conn, $sqldelete);
-            }
-            if(isset($_GET["key"]) && $_GET["value"]){
-                $select = "SELECT * FROM `dapan` WHERE cau = '".$_GET["key"]."'";
-                $res = mysqli_query($conn, $select);
-                if($data = mysqli_fetch_array($res)){
-                    $update = "UPDATE `dapan` SET `da`='".$_GET["value"]."' WHERE `cau`='".$_GET["key"]."'";
-                    mysqli_query($conn, $update);
-                }else{
-                    $insert = "INSERT INTO `dapan`(`cau`, `da`) VALUES ('".$_GET["key"]."','".$_GET["value"]."')";
-                    mysqli_query($conn, $insert);
-                }
-            }
-            for($i = 1; $i <= 100; $i++){
-                echo "<button name='cau' class="."btn"." value=".$i." id="."btn".$i.">".$i."</button>";
-            }
-            
-            $sqlgetAllAnswer = "SELECT * FROM `dapan`";
-            $res = mysqli_query($conn, $sqlgetAllAnswer);
-            while($data = mysqli_fetch_array($res)){
-                if($data["da"] == "true")
-                        echo "<script>document.getElementById('"."btn".$data["cau"]."').style.backgroundColor = 'green';</script>";
-                    else if($data["da"] == "false")
-                        echo "<script>document.getElementById('"."btn".$data["cau"]."').style.backgroundColor = 'red';</script>";
+            for($i = 1; $i <= 150; $i++){
+                echo "<div name='cau' class="."btn"." value=".$i." id="."btn".$i." onclick='ChuyenCau(".$i.")'>".$i."</div>";
             }
         ?>
     </div>
     <div class="item2">
-    
     <?php
-
-    if(isset($_GET["cau"])){
-        $cau = $_GET["cau"];
-    }else{
-        $cau = 1;
-    }
-        
-    echo $cau."<br>";
-    $sqlcauhoi = "select cauhoi, dapan1,dapan2,dapan3,dapan4,dapandung,img from 600_cau_hoi where cau = '".$cau."'";
-
-    $res = mysqli_query($conn, $sqlcauhoi);
-
-    $dapan = 1;
-    while($data = mysqli_fetch_array($res, MYSQLI_ASSOC)){
-        $cauhoifull = $data["cauhoi"];
-        $dapan1 = $data["dapan1"];
-        $dapan2 = $data["dapan2"];
-        $dapan3 = $data["dapan3"];
-        $dapan4 = $data["dapan4"];
-        $dapandung = $data["dapandung"];
-        $img = $data["img"];
-    }
-
     ?>
         <div>
             <span>
-                <p id="cauHoi"> <?php echo $cauhoifull."<br>"; ?></p>
+                <p id="cauHoi"> Phú đẹp trai không ?</p>
             </span>
         </div>
-        <?php
-        
-        if($img == 1) echo "<img src='"."Anh/Câu ".$cau.".png'".">"."<br>";
-        if($dapan1 != "") echo "<div class='dapan' id='da1' onclick='chkkq(1,".$cau.")'>".$dapan1."<br>"."</div>";
-        if($dapan2 != "") echo "<div class='dapan' id='da2' onclick='chkkq(2,".$cau.")'>".$dapan2."<br>"."</div>";
-        if($dapan3 != "") echo "<div class='dapan' id='da3' onclick='chkkq(3,".$cau.")'>".$dapan3."<br>"."</div>";
-        if($dapan4 != "") echo "<div class='dapan' id='da4' onclick='chkkq(4,".$cau.")'>".$dapan4."<br>"."</div>";
-        ?>
 
-        <button name="cau" value="<?php echo $cau-1?>" <?php if($cau == 1) echo "disabled"?> <?php ?>>previous</button>
-        <button name="cau" value="<?php echo $cau+1?>" <?php if($cau == 600) echo "disabled"?>>Next</button>
-        
-        <div>
-            <span id="da"></span>
-        </div>
+        <img src="img/2.png" alt="" id="img">
+        <div class="dapan" id="dapan1" onclick="check(1)">Đáp án 1</div>
+        <div class="dapan" id="dapan2" onclick="check(2)">Đáp án 2</div>
+        <div class="dapan" id="dapan3" onclick="check(3)">Đáp án 3</div>
+        <div class="dapan" id="dapan4" onclick="check(4)">Đáp án 4</div>
 
-        <input type="text" name="key" id="key" value="<?php echo $cau?>" hidden>
-        <input type="text" name="value" id="value" hidden>
-        <input type="text" name="time" id="time" value="<?php echo "<script>document.writeln(res);</script>";?>" hidden>
+        
+        <div class="btn" onclick="ChuyenCau('prev')">Previous</div>
+        <div class="btn" onclick="ChuyenCau('next')">Next</div>
+    
     </div>
 </div>
-</form>
+
     <!-- Script -->
     <script>
-        function chkkq(kq, cau){
-            socau = <?php if($dapan4 != "") echo 5; else echo 4;?>;
-            socau = <?php if($dapan3 != "") echo 4; else echo 3;?>;
-            if(kq == <?php echo $dapandung ?>){
-                // đổi hiệu ứng câu được chọn là đúng
-                document.getElementById("da" + kq).style.backgroundColor = "lightgreen";
-                document.getElementById("da" + kq).style.border = "4px solid green";
-                document.getElementById("btn" + cau).style.backgroundColor = "green";
-                // các câu còn loại ngoài câu được chọn được trở lại trạng thái ban đầu
-               for(var i = 1; i < socau; i++){
-                    if(i != <?php echo $dapandung?>){
-                        document.getElementById("da" + i).style.backgroundColor = "aquamarine";
-                        document.getElementById("da" + i).style.border = "none";
-                    }
-               }
-               //Hiện thị kết quả và thay đổi giá trị input
-                document.getElementById("da").innerHTML = "Chính xác";
-                document.getElementById("value").setAttribute("value", "true");
-                return true;
-            }else{
-                // đổi hiệu ứng câu được chọn là sai
-                document.getElementById("da" + kq).style.backgroundColor = "antiquewhite";
-                document.getElementById("da" + kq).style.border = "4px solid red";
-                document.getElementById("btn" + cau).style.backgroundColor = "red";
-                // các câu còn loại ngoài câu được chọn được trở lại trạng thái ban đầu
-                for(var i = 1; i < socau; i++){
-                    if(i != kq){
-                        document.getElementById("da" + i).style.backgroundColor = "aquamarine";
-                        document.getElementById("da" + i).style.border = "none";
-                    }
-               }
-               //Hiện thị kết quả và thay đổi giá trị input
-                document.getElementById("da").innerHTML = "Đáp án chưa chính xác";
-                document.getElementById("value").setAttribute("value", "false");
-                return false;
+        // Gán biến data = array từ php
+        let data = <?php echo json_encode($data)?>;
+        //Khai báo object question 
+        let questions = [{
+            question: data[0],
+            img: data[1],
+            answers:{
+                dapan1:data[2],
+                dapan2:data[3],
+                dapan3:data[4],
+                dapan4:data[5],
+            },
+            correct:data[6],
+        }, ];
+        // Gán array thành object
+        for(let i=7; i<data.length;i+=7)
+            questions.push({question:data[i],
+            img:data[i+1],
+            answers:{
+                dapan1:data[i+2],
+                dapan2:data[i+3],
+                dapan3:data[i+4],
+                dapan4:data[i+5],
+            },
+            correct: data[i+6],
+            });
+        //Thiết lập ban đầu
+        let currentIndex = 1;
+        let rightAnswer = 0;
+        function start(){
+            let currentQuestion = questions[0];
+            let answers = currentQuestion.answers;
+            document.getElementById("cauHoi").innerHTML = currentIndex + ". " + currentQuestion.question;
+            //check co hinh thi hien thi
+            if(currentQuestion.img == '0'){
+                document.getElementById("img").style.display = "none";
+            }
+            else if(currentQuestion.img == '1'){
+                document.getElementById("img").style.display = "block";
+                document.getElementById("img").setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
+            }
+            document.getElementById("dapan1").innerHTML = answers.dapan1;
+            document.getElementById("dapan2").innerHTML = answers.dapan2;
+            if(answers.dapan3 === "")
+                document.getElementById("dapan3").style.display = "none";
+            else{
+                document.getElementById("dapan3").innerHTML = answers.dapan3;
+                document.getElementById("dapan3").style.display = "block";
+            }       
+            if(answers.dapan4 === "")
+                document.getElementById("dapan4").style.display = "none";
+            else{
+                document.getElementById("dapan4").innerHTML = answers.dapan4;
+                document.getElementById("dapan4").style.display = "block";
             }
         }
+
+        function ChuyenCau(cau){
+            
+            if(cau == 'next') currentIndex = currentIndex < 600 ? currentIndex + 1 : 0;
+            else if(cau == 'prev') currentIndex = currentIndex > 1 ? currentIndex - 1 : 600;
+            else currentIndex = cau;
+            let currentQuestion = questions[currentIndex-1];
+            let answers = currentQuestion.answers;
+            // reset all answer
+            document.getElementById("dapan1").style.border = "none";
+            document.getElementById("dapan1").style.backgroundColor = "aqua";
+            document.getElementById("dapan2").style.border = "none";
+            document.getElementById("dapan2").style.backgroundColor = "aqua";
+            document.getElementById("dapan3").style.border = "none";
+            document.getElementById("dapan3").style.backgroundColor = "aqua";
+            document.getElementById("dapan4").style.border = "none";
+            document.getElementById("dapan4").style.backgroundColor = "aqua";
+            document.getElementById("cauHoi").innerHTML = currentIndex + ". " + currentQuestion.question;
+            //check co hinh thi hien thi
+            if(currentQuestion.img == '0'){
+                document.getElementById("img").style.display = "none";
+            }
+            else if(currentQuestion.img == '1'){
+                document.getElementById("img").style.display = "block";
+                document.getElementById("img").setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
+            }
+            document.getElementById("dapan1").innerHTML = answers.dapan1;
+            document.getElementById("dapan2").innerHTML = answers.dapan2;
+            if(answers.dapan3 === "")
+                document.getElementById("dapan3").style.display = "none";
+            else{
+                document.getElementById("dapan3").innerHTML = answers.dapan3;
+                document.getElementById("dapan3").style.display = "block";
+            }       
+            if(answers.dapan4 === "")
+                document.getElementById("dapan4").style.display = "none";
+            else{
+                document.getElementById("dapan4").innerHTML = answers.dapan4;
+                document.getElementById("dapan4").style.display = "block";
+            }
+        }
+
+        function check(cau){
+            let currentQuestion = questions[currentIndex-1];
+            let correctAnswers = currentQuestion.correct;
+            // reset all answer
+            document.getElementById("dapan1").style.border = "none";
+            document.getElementById("dapan1").style.backgroundColor = "aqua";
+            document.getElementById("dapan2").style.border = "none";
+            document.getElementById("dapan2").style.backgroundColor = "aqua";
+            document.getElementById("dapan3").style.border = "none";
+            document.getElementById("dapan3").style.backgroundColor = "aqua";
+            document.getElementById("dapan4").style.border = "none";
+            document.getElementById("dapan4").style.backgroundColor = "aqua";
+            if(cau == correctAnswers){
+                //Change answers client choose
+                document.getElementById("btn"+currentIndex).style.backgroundColor = "green";
+                document.getElementById("dapan"+cau).style = "border: 5px solid green;"
+                document.getElementById("dapan"+cau).style.backgroundColor = "greenyellow";
+            }else{
+                //Change answers client choose
+                document.getElementById("btn"+currentIndex).style.backgroundColor = "red";
+                document.getElementById("dapan"+cau).style = "border: 5px solid red;"
+                document.getElementById("dapan"+cau).style.backgroundColor = "orange";
+            }
+        }
+
+        start();
     </script>
 </body>
 </html>

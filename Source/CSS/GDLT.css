@@ -72,14 +72,16 @@
     background-color: burlywood;
 }
 
-#submit{
+.submit{
     font-weight: bold;
     font-size: 20px;
     border-radius: 10px;
     margin-left: 30px;
     height: 60px;
+    background-color: chocolate;
+    padding: 10px;
 }
-#submit:hover{
-    background-color: aqua;
+.submit:hover{
+    background-color: blueviolet;
     cursor: pointer;
 }

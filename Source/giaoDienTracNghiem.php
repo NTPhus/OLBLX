@@ -90,6 +90,7 @@
         //Thiết lập ban đầu
         let currentIndex = 1;
         let rightAnswer = 0;
+        let Choice = [];
         function start(){
             let currentQuestion = questions[0];
             let answers = currentQuestion.answers;
@@ -157,6 +158,8 @@
                 document.getElementById("dapan4").innerHTML = answers.dapan4;
                 document.getElementById("dapan4").style.display = "block";
             }
+
+            if(Choice[cau] != null) check(Choice[cau]);
         }
 
         function check(cau){
@@ -182,6 +185,7 @@
                 document.getElementById("dapan"+cau).style = "border: 5px solid red;"
                 document.getElementById("dapan"+cau).style.backgroundColor = "orange";
             }
+            Choice[currentIndex] = cau;
         }
 
         start();

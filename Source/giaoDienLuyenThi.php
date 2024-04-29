@@ -4,16 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luyện Thi</title>
-    <link rel="stylesheet" href="CSS/styleGDT.css">
-    <script type="text/javascript">
-        function preventBack() {
-            window.history.forward();
-        }
-        setTimeout("preventBack()", 0);
-        window.onunload = function () {
-            null
-        };
-    </script>
+    <link rel="stylesheet" href="CSS/GDLT.css">
 </head>
 <body>
     <?php
@@ -56,7 +47,8 @@
                     }
                 ?>
                 <input type="text" id="result" name="result" value="0" hidden>
-                <button type="submit" id="submit">Submit</button>
+                <div  class="submit" onclick="CanhBao()">Submit</div>
+                <input type="submit" id="submit" hidden>
             </div>
         </div>
     </form>
@@ -91,10 +83,11 @@
             },
             correct: data[i+6],
             });
-            document.getElementById("dapan4").hidden;
+
         //Thiết lập ban đầu
-        let currentIndex = 1;
-        let Answer = [];
+        let currentIndex = 1; // so cau hien tai
+        let Answer = []; // so cau dung sai
+        let Choice = []; // arr check da lam cau hoi do chua
         function start(){
             let currentQuestion = questions[0];
             let answers = currentQuestion.answers;
@@ -109,12 +102,14 @@
             }
             document.getElementById("dapan1").innerHTML = answers.dapan1;
             document.getElementById("dapan2").innerHTML = answers.dapan2;
+            //kiem tra cau hoi nay co dapan3 khong
             if(answers.dapan3 === "")
                 document.getElementById("dapan3").style.display = "none";
             else{
                 document.getElementById("dapan3").innerHTML = answers.dapan3;
                 document.getElementById("dapan3").style.display = "block";
-            }       
+            }     
+            //kiem tra cau hoi nay co dapan4 khong  
             if(answers.dapan4 === "")
                 document.getElementById("dapan4").style.display = "none";
             else{
@@ -128,6 +123,7 @@
             let currentQuestion = questions[currentIndex-1];
             let answers = currentQuestion.answers;
             document.getElementById("cauHoi").innerHTML = currentIndex + ". " + currentQuestion.question;
+            //reset cac lua chon truoc
             document.getElementById("dapan1").style.backgroundColor = "cadetblue";
             document.getElementById("dapan2").style.backgroundColor = "cadetblue";
             document.getElementById("dapan3").style.backgroundColor = "cadetblue";
@@ -140,37 +136,60 @@
                 document.getElementById("img").style.display = "block";
                 document.getElementById("img").setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
             }
+            //Hien thi dap an len man hinh
             document.getElementById("dapan1").innerHTML = answers.dapan1;
             document.getElementById("dapan2").innerHTML = answers.dapan2;
+            //kiem tra cau hoi nay co dapan3 khong
             if(answers.dapan3 === "")
                 document.getElementById("dapan3").style.display = "none";
             else{
                 document.getElementById("dapan3").innerHTML = answers.dapan3;
                 document.getElementById("dapan3").style.display = "block";
             }       
+            //kiem tra cau hoi nay co dapan4 khong
             if(answers.dapan4 === "")
                 document.getElementById("dapan4").style.display = "none";
             else{
                 document.getElementById("dapan4").innerHTML = answers.dapan4;
                 document.getElementById("dapan4").style.display = "block";
             }
+            //Neu cau nay da lam truoc do
+            if(Choice[cau] != null) check(Choice[cau]);
         }
-
+        //kiem tra cau dung sai va danh dau cau
         function check(cau){
             let currentQuestion = questions[currentIndex-1];
             let correctAnswers = currentQuestion.correct;
+            //reset cac lua chon truoc do
             document.getElementById("dapan1").style.backgroundColor = "cadetblue";
             document.getElementById("dapan2").style.backgroundColor = "cadetblue";
             document.getElementById("dapan3").style.backgroundColor = "cadetblue";
             document.getElementById("dapan4").style.backgroundColor = "cadetblue";
+            //doi mau btn va dap an
             document.getElementById("dapan"+cau).style.backgroundColor = "orange";
             document.getElementById("btn"+currentIndex).style.backgroundColor = "yellow";
-            Answer[currentIndex] = correctAnswers == cau ? 1 : 0;
+            Choice[currentIndex] = cau; // danh dau cau
+            //kiem tra ket qua dung sai
+            Answer[currentIndex] = correctAnswers == cau ? 1 : -1;
             let count = 0;
             for(let i = 1; i <= 25; i++){
                 if(Answer[i] == 1) count++;
             }
+            //dem ket qua va luu lai
             document.getElementById("result").setAttribute('value',count);
+        }
+        //Khong the quay ve trang truoc
+        function preventBack() {
+            window.history.forward();
+        }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () {
+            null
+        };
+        //canh bao nop bai
+        function CanhBao(){
+            if(confirm("Bạn có chắc chắn muốn nộp bài hay không ?"))
+               document.getElementById("submit").click();
         }
 
         start();

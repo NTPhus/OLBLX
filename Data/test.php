@@ -70,7 +70,20 @@
             $dapan4 = substr($sentence, $ind, strpos($sentence, ".", $ind) - $ind + 1);
             $ind = strpos($sentence, ".", $ind+1)+1;
         }
-        $sql = "insert into 600_cau_hoi(cau, cauhoi, dapan1, dapan2, dapan3, dapan4) values ('".$count."','".$hoi."' , '".$dapan1."', '".$dapan2."', '".$dapan3."', '".$dapan4."')";
+        if($count < 167)
+            $sql = "insert into chuong1(cau, cauhoi, dapan1, dapan2, dapan3, dapan4) values ('".$count."','".$hoi."' , '".$dapan1."', '".$dapan2."', '".$dapan3."', '".$dapan4."')";
+        else if($count < 193)
+            $sql = "insert into chuong2(cau, cauhoi, dapan1, dapan2, dapan3, dapan4) values ('".$count."','".$hoi."' , '".$dapan1."', '".$dapan2."', '".$dapan3."', '".$dapan4."')";
+        else if($count < 214)
+            $sql = "insert into chuong3(cau, cauhoi, dapan1, dapan2, dapan3, dapan4) values ('".$count."','".$hoi."' , '".$dapan1."', '".$dapan2."', '".$dapan3."', '".$dapan4."')";
+        else if($count < 270)
+            $sql = "insert into chuong4(cau, cauhoi, dapan1, dapan2, dapan3, dapan4) values ('".$count."','".$hoi."' , '".$dapan1."', '".$dapan2."', '".$dapan3."', '".$dapan4."')";
+        else if($count < 305)
+            $sql = "insert into chuong5(cau, cauhoi, dapan1, dapan2, dapan3, dapan4) values ('".$count."','".$hoi."' , '".$dapan1."', '".$dapan2."', '".$dapan3."', '".$dapan4."')";
+        else if($count < 487)
+            $sql = "insert into chuong6(cau, cauhoi, dapan1, dapan2, dapan3, dapan4) values ('".$count."','".$hoi."' , '".$dapan1."', '".$dapan2."', '".$dapan3."', '".$dapan4."')";
+        else
+            $sql = "insert into chuong7(cau, cauhoi, dapan1, dapan2, dapan3, dapan4) values ('".$count."','".$hoi."' , '".$dapan1."', '".$dapan2."', '".$dapan3."', '".$dapan4."')";
         $count = $count + 1;
         mysqli_query($conn, $sql);
     }
@@ -89,7 +102,20 @@
 
     $cau = 1;
     foreach($da as $dapan){
-        $sql = "update 600_cau_hoi set dapandung = '".$dapan."' where cau = '".$cau."'";
+        if($cau < 167)
+            $sql = "update chuong1 set dapandung = '".$dapan."' where cau = '".$cau."'";
+        else if($cau < 193)
+            $sql = "update chuong2 set dapandung = '".$dapan."' where cau = '".$cau."'";
+        else if($cau < 214)
+            $sql = "update chuong3 set dapandung = '".$dapan."' where cau = '".$cau."'";
+        else if($cau < 270)
+            $sql = "update chuong4 set dapandung = '".$dapan."' where cau = '".$cau."'";
+        else if($cau < 305)
+            $sql = "update chuong5 set dapandung = '".$dapan."' where cau = '".$cau."'";
+        else if($cau < 487)
+            $sql = "update chuong6 set dapandung = '".$dapan."' where cau = '".$cau."'";
+        else
+            $sql = "update chuong7 set dapandung = '".$dapan."' where cau = '".$cau."'";
         $cau = $cau + 1;
         echo $sql."<br>";
         mysqli_query($conn, $sql);
@@ -109,7 +135,20 @@
 
     $cau = 1;
     foreach($da as $dapan){
-        $sql = "update 600_cau_hoi set img = '".$dapan."' where cau = '".$cau."'";
+        if($cau < 167)
+            $sql = "update chuong1 set img = '".$dapan."' where cau = '".$cau."'";
+        else if($cau < 193)
+            $sql = "update chuong2 set img = '".$dapan."' where cau = '".$cau."'";  
+        else if($cau < 214)
+            $sql = "update chuong3 set img = '".$dapan."' where cau = '".$cau."'";
+        else if($cau < 270)
+            $sql = "update chuong4 set img = '".$dapan."' where cau = '".$cau."'";
+        else if($cau < 305)
+            $sql = "update chuong5 set img = '".$dapan."' where cau = '".$cau."'";
+        else if($cau < 487)
+            $sql = "update chuong6 set img = '".$dapan."' where cau = '".$cau."'";
+        else
+            $sql = "update chuong7 set img = '".$dapan."' where cau = '".$cau."'";
         $cau = $cau + 1;
         echo $sql."<br>";
         mysqli_query($conn, $sql);

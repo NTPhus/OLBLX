@@ -27,15 +27,83 @@
         array_push($data,$row['dapan4']);
         array_push($data,$row['dapandung']);
     }
+
+    $sql = "SELECT cau FROM `60_cau_diem_liet`";
+    $res = mysqli_query($conn, $sql);
+    $cdl = [];
+    while($row = mysqli_fetch_array($res)){
+        array_push($cdl,$row['cau']);
+    }
+
+    $sql = "SELECT cau FROM `chuong1`";
+    $res = mysqli_query($conn, $sql);
+    $chuong1 = [];
+    while($row = mysqli_fetch_array($res)){
+        array_push($chuong1,$row['cau']);
+    }
+
+    $sql = "SELECT cau FROM `chuong2`";
+    $res = mysqli_query($conn, $sql);
+    $chuong2 = [];
+    while($row = mysqli_fetch_array($res)){
+        array_push($chuong2,$row['cau']);
+    }
+
+    $sql = "SELECT cau FROM `chuong3`";
+    $res = mysqli_query($conn, $sql);
+    $chuong3 = [];
+    while($row = mysqli_fetch_array($res)){
+        array_push($chuong3,$row['cau']);
+    }
+
+    $sql = "SELECT cau FROM `chuong4`";
+    $res = mysqli_query($conn, $sql);
+    $chuong4 = [];
+    while($row = mysqli_fetch_array($res)){
+        array_push($chuong4,$row['cau']);
+    }
+
+    $sql = "SELECT cau FROM `chuong5`";
+    $res = mysqli_query($conn, $sql);
+    $chuong5 = [];
+    while($row = mysqli_fetch_array($res)){
+        array_push($chuong5,$row['cau']);
+    }
+
+    $sql = "SELECT cau FROM `chuong6`";
+    $res = mysqli_query($conn, $sql);
+    $chuong6 = [];
+    while($row = mysqli_fetch_array($res)){
+        array_push($chuong6,$row['cau']);
+    }
+
+    $sql = "SELECT cau FROM `chuong7`";
+    $res = mysqli_query($conn, $sql);
+    $chuong7 = [];
+    while($row = mysqli_fetch_array($res)){
+        array_push($chuong7,$row['cau']);
+    }
 ?>
 
 <div class="container">
     <div class="item1">
-        <?php
-            for($i = 1; $i <= 150; $i++){
-                echo "<div name='cau' class="."btn"." value=".$i." id="."btn".$i." onclick='ChuyenCau(".$i.")'>".$i."</div>";
-            }
-        ?>
+        <div class='upper'>
+            <div class="chuong" onclick="ChuyenChuong(1)">Chương 1</div>
+            <div class="chuong" onclick="ChuyenChuong(2)">Chương 2</div>
+            <div class="chuong" onclick="ChuyenChuong(3)">Chương 3</div>
+            <div class="chuong" onclick="ChuyenChuong(4)">Chương 4</div>
+            <div class="chuong" onclick="ChuyenChuong(5)">Chương 5</div>
+            <div class="chuong" onclick="ChuyenChuong(6)">Chương 6</div>
+            <div class="chuong" onclick="ChuyenChuong(7)">Chương 7</div>
+            <div class="chuong" onclick="ChuyenChuong(8)">60 câu điểm liệt</div>
+        </div>
+        <div class='lower' id='lower'>
+            <?php
+                for($i = 1; $i <= 600; $i++){
+                    echo "<div name='cau' class="."btn"." value=".$i." id="."btn".$i." onclick='ChuyenCau(".$i.")'>".$i."</div>";
+                }
+            ?>
+        </div>
     </div>
     <div class="item2">
     <?php
@@ -51,10 +119,6 @@
         <div class="dapan" id="dapan2" onclick="check(2)">Đáp án 2</div>
         <div class="dapan" id="dapan3" onclick="check(3)">Đáp án 3</div>
         <div class="dapan" id="dapan4" onclick="check(4)">Đáp án 4</div>
-
-        
-        <div class="btn" onclick="ChuyenCau('prev')">Previous</div>
-        <div class="btn" onclick="ChuyenCau('next')">Next</div>
     
     </div>
 </div>
@@ -90,6 +154,8 @@
         //Thiết lập ban đầu
         let currentIndex = 1;
         let rightAnswer = 0;
+        let cdl = 0;
+        let CauDL = [];
         let Choice = [];
         function start(){
             let currentQuestion = questions[0];
@@ -117,13 +183,82 @@
                 document.getElementById("dapan4").innerHTML = answers.dapan4;
                 document.getElementById("dapan4").style.display = "block";
             }
+
+            for(i = 167; i <= 600; i++){
+                document.getElementById("btn"+i).style.display = "none";
+            }
+        }
+
+        function ChuyenChuong(soChuong){
+            let chuong;
+            cdl = 0;
+            if(soChuong == 1){
+                chuong = <?php echo json_encode($chuong1)?>;
+            }else if(soChuong == 2){
+                chuong = <?php echo json_encode($chuong2)?>;
+            }else if(soChuong == 3){
+                chuong = <?php echo json_encode($chuong3)?>;
+            }else if(soChuong == 4){
+                chuong = <?php echo json_encode($chuong4)?>;
+            }else if(soChuong == 5){
+                chuong = <?php echo json_encode($chuong5)?>;
+            }else if(soChuong == 6){
+                chuong = <?php echo json_encode($chuong6)?>;
+            }else if(soChuong == 7){
+                chuong = <?php echo json_encode($chuong7)?>;
+            }else if(soChuong == 8){
+                chuong = <?php echo json_encode($cdl)?>;
+                cdl = 1;
+            }
+            //remove all btn
+            for(let i = 1; i <= 600; i++){
+                if(document.getElementById("btn"+i) != null)
+                    document.getElementById("btn"+i).remove();
+            }
+            //add btn co trong chuong
+            for (var i = 0; i < chuong.length; i++) {
+                let html = "<div name='cau' class='btn' value=" +chuong[i]+" id='btn"+chuong[i]+"' onclick='ChuyenCau("+chuong[i]+")'>"+chuong[i]+"</div>";
+                document.getElementById("lower").insertAdjacentHTML("beforeend", html);
+            }
+            //chuyen cau dau tien tai chuong
+            ChuyenCau(chuong[0]);
+        }
+
+        function markChoice(){
+            for(let i = 0; i < 600; i++){
+                if(CauDL[i] != null && document.getElementById("btn"+i) != null)
+                    document.getElementById("btn"+i).style.backgroundColor = "aqua";
+            }
+
+            for(let i = 0; i < 600; i++){
+                if(Choice[i] != null && document.getElementById("btn"+i) != null){
+                    if(Choice[i] == 1){
+                        document.getElementById("btn"+i).style.backgroundColor = "green";
+                    }else{
+                        document.getElementById("btn"+i).style.backgroundColor = "red";
+                    }
+                }
+            }
+        }
+
+        function markCauDL(){
+            for(let i = 0; i < 600; i++){
+                if(Choice[i] != null && document.getElementById("btn"+i) != null)
+                    document.getElementById("btn"+i).style.backgroundColor = "aqua";
+            }
+            for(let i = 0; i < 600; i++){
+                if(CauDL[i] != null && document.getElementById("btn"+i) != null){
+                    if(CauDL[i] == 1){
+                        document.getElementById("btn"+i).style.backgroundColor = "green";
+                    }else{
+                        document.getElementById("btn"+i).style.backgroundColor = "red";
+                    }
+                }
+            }
         }
 
         function ChuyenCau(cau){
-            
-            if(cau == 'next') currentIndex = currentIndex < 600 ? currentIndex + 1 : 0;
-            else if(cau == 'prev') currentIndex = currentIndex > 1 ? currentIndex - 1 : 600;
-            else currentIndex = cau;
+            currentIndex = cau;
             let currentQuestion = questions[currentIndex-1];
             let answers = currentQuestion.answers;
             // reset all answer
@@ -135,6 +270,7 @@
             document.getElementById("dapan3").style.backgroundColor = "aqua";
             document.getElementById("dapan4").style.border = "none";
             document.getElementById("dapan4").style.backgroundColor = "aqua";
+            // Hien thi cau hoi
             document.getElementById("cauHoi").innerHTML = currentIndex + ". " + currentQuestion.question;
             //check co hinh thi hien thi
             if(currentQuestion.img == '0'){
@@ -158,13 +294,16 @@
                 document.getElementById("dapan4").innerHTML = answers.dapan4;
                 document.getElementById("dapan4").style.display = "block";
             }
-
-            if(Choice[cau] != null) check(Choice[cau]);
+            if(cdl == 1)
+                markCauDL();
+            else
+                markChoice();
         }
 
         function check(cau){
             let currentQuestion = questions[currentIndex-1];
             let correctAnswers = currentQuestion.correct;
+            let trueAnswer;
             // reset all answer
             document.getElementById("dapan1").style.border = "none";
             document.getElementById("dapan1").style.backgroundColor = "aqua";
@@ -179,13 +318,19 @@
                 document.getElementById("btn"+currentIndex).style.backgroundColor = "green";
                 document.getElementById("dapan"+cau).style = "border: 5px solid green;"
                 document.getElementById("dapan"+cau).style.backgroundColor = "greenyellow";
+                trueAnswer = 1;
             }else{
                 //Change answers client choose
                 document.getElementById("btn"+currentIndex).style.backgroundColor = "red";
                 document.getElementById("dapan"+cau).style = "border: 5px solid red;"
                 document.getElementById("dapan"+cau).style.backgroundColor = "orange";
+                trueAnswer = 0;
             }
-            Choice[currentIndex] = cau;
+
+            if(cdl == 1)
+                CauDL[currentIndex] = trueAnswer;
+            else    
+                Choice[currentIndex] = trueAnswer;
         }
 
         start();

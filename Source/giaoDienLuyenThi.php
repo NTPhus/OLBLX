@@ -71,9 +71,18 @@
        return $data;
     }
     
-    $de = TaoDe(8, 0, 1, 1, 1, 9, 9, 1);
-    $data = [];
+    //$de = TaoDe(8, 0, 1, 1, 1, 9, 9, 1);
     $conn = mysqli_connect("localhost", "root", "", "olblx");
+    $de = [];
+    $sql = "SELECT * FROM `bodeonthiblx` where DeSo = 1";
+    $res = mysqli_query($conn, $sql);
+    if($row = mysqli_fetch_array($res)){
+        for($i = 1; $i <= 30; $i++){
+            array_push($de, $row["cau$i"]);
+        }
+    }
+    $data = [];
+    
     foreach($de as $cau){
         $sql = "SELECT * FROM `600_cau_hoi` where cau = '$cau'";
         $res = mysqli_query($conn, $sql);
@@ -111,6 +120,7 @@
                     }
                 ?>
                 <input type="text" id="result" name="result" value="0" hidden>
+                <input type="text" id="answer" name="answer" value="0" hidden>
                 <div  class="submit" onclick="CanhBao()">Submit</div>
                 <input type="submit" id="submit" hidden>
             </div>
@@ -160,7 +170,7 @@
             if(currentQuestion.img == '0'){
                 document.getElementById("img").style.display = "none";
             }
-            else if(currentQuestion.img == '1'){
+            else{
                 document.getElementById("img").style.display = "block";
                 document.getElementById("img").setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
             }
@@ -196,10 +206,11 @@
             if(currentQuestion.img == '0'){
                 document.getElementById("img").style.display = "none";
             }
-            else if(currentQuestion.img == '1'){
+            else{
                 document.getElementById("img").style.display = "block";
-                document.getElementById("img").setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
+                document.getElementById("img").setAttribute("src", "Anh/Câu "+currentQuestion.img+".png");
             }
+            console.log(currentQuestion.img);
             //Hien thi dap an len man hinh
             document.getElementById("dapan1").innerHTML = answers.dapan1;
             document.getElementById("dapan2").innerHTML = answers.dapan2;
@@ -252,8 +263,16 @@
         };
         //canh bao nop bai
         function CanhBao(){
-            if(confirm("Bạn có chắc chắn muốn nộp bài hay không ?"))
-               document.getElementById("submit").click();
+            let stringAns = "";
+            for(let i = 1; i <= 30; i++){
+                if(Choice[i] != null)
+                    stringAns += i + ":" + Choice[i] + "-";
+            }
+            console.log(stringAns);
+            if(confirm("Bạn có chắc chắn muốn nộp bài hay không ?")){
+                document.getElementById("answer").setAttribute('value', stringAns);
+                document.getElementById("submit").click();
+            }  
         }
 
         start();

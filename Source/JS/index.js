@@ -17,5 +17,6 @@ function updateCountdown(){
         
         clearInterval(myInterval);
         alert("Time out");
+        document.getElementById("submit").click();
     } 
 }

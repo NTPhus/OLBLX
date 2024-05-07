@@ -276,7 +276,7 @@
             if(currentQuestion.img == '0'){
                 document.getElementById("img").style.display = "none";
             }
-            else if(currentQuestion.img == '1'){
+            else{
                 document.getElementById("img").style.display = "block";
                 document.getElementById("img").setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
             }

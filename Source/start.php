@@ -158,7 +158,7 @@
                     <p class="win"> Chiến thắng kỳ thi lý thuyết!</p>
                     <!-- <Button class = "btn-batdau">BẮT ĐẦU <i class="ri-arrow-right-line"></i></Button> 
                     -->
-                    <a  href="trangchu.php">
+                    <a  href="#" onclick="AreLogin()" id="start">
                         BẮT ĐẦU!
                     </a>
                   </form>
@@ -166,7 +166,23 @@
     </div>
 
 </body>
+<script>
+    function AreLogin(){
+        <?php
+            if(isset($_SESSION["username"]))
+                echo "let login = true;";
+            else
+                echo "let login = false;";
+        ?>
+        
+        if(login){
+            document.getElementById("start").setAttribute("href", "trangchu.php");
+        }else{
+            alert("Bạn chưa đăng nhập");
+        }
+    }
+</script>
 <script src="JS/script.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </html>

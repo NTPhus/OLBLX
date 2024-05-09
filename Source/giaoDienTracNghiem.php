@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bực VL</title>
     <link rel="stylesheet" href="CSS/GDTN.css">
+    <script src="https://kit.fontawesome.com/5263b3717e.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <?php
@@ -119,7 +120,7 @@
         <div class="dapan" id="dapan2" onclick="check(2)">Đáp án 2</div>
         <div class="dapan" id="dapan3" onclick="check(3)">Đáp án 3</div>
         <div class="dapan" id="dapan4" onclick="check(4)">Đáp án 4</div>
-    
+        <span id="message"></span>
     </div>
 </div>
 
@@ -319,12 +320,19 @@
                 document.getElementById("dapan"+cau).style = "border: 5px solid green;"
                 document.getElementById("dapan"+cau).style.backgroundColor = "greenyellow";
                 trueAnswer = 1;
+                document.getElementById("message").innerHTML = "<i class='fa-solid fa-check'></i> Đúng";
             }else{
                 //Change answers client choose
                 document.getElementById("bton"+currentIndex).style.backgroundColor = "red";
                 document.getElementById("dapan"+cau).style = "border: 5px solid red;"
                 document.getElementById("dapan"+cau).style.backgroundColor = "orange";
+                //Show right answer
+                document.getElementById("dapan"+correctAnswers).style = "border: 5px solid green;"
+                document.getElementById("dapan"+correctAnswers).style.backgroundColor = "greenyellow";
+
                 trueAnswer = 0;
+                document.getElementById("message").innerHTML = "<i class='fa-solid fa-xmark'></i> Sai";
+                
             }
 
             if(cdl == 1)

@@ -121,6 +121,7 @@
                         echo "<div class='btn' id='btn".$i."' onclick='ChuyenCau(".$i.")'>".$i."</div>";
                     }
                 ?>
+                
                 <input type="text" id="result" name="result" value="0" hidden>
                 <input type="text" id="answer" name="answer" value="0" hidden>
                 <div  class="submit" onclick="CanhBao()">Submit</div>

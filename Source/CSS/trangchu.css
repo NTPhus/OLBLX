@@ -1,0 +1,380 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.white{
+  font-size: 15px;
+  color: #fff;
+  font-weight: 500;
+  margin-top: 12px;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    background: #162938;
+    max-height: 100px;
+}
+.container{
+  height: auto;
+  width: 100%;
+}
+
+/*-------------------------------------------------------------LOGO *-------------------------------------------------------------*/
+.logo a{
+    font-size: 2em;
+    color: #fff;
+    user-select: none;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+/*-------------------------------------------------------------DESIGN THANH ĐIỀU HƯỚNG-------------------------------------------------------------*/
+
+/*-------------------START - NAVIGATION----------------*/
+
+/* để các thành phàn từ hàng dọc thành hàng ngang */
+.navigation ul li{
+    display: inline-block;
+}
+
+/* design các thành phần trong thanh điều hướng */
+.navigation li a{
+    position: relative;
+    font-size: 1.1rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+/* Tạo hiệu ứng dấu gạch chân cho các thành phần */
+.navigation a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    /* 1 */
+    transform: scaleX(0);
+    /* tạo ra hiệu ứng xuất hiện từ trong ra ngoài với 0.5s */
+    transition: transform .5s;
+}
+
+/* 2 */
+.navigation a:hover::after
+{
+    transform: scaleY(1);
+}
+
+/* design cho nút đăng nhập */
+.navigation .btnLogin-popup{
+    width: 120px;
+    height: 50px;
+    /* làm cho button tệp vào trong */
+    background: transparent; 
+    border: 2px solid #fff;
+    outline: none;
+    /* bo góc button */
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+/* tạo hiệu ứng cho nút đăng nhập */
+.navigation .btnLogin-popup:hover{
+    background: #fff;
+    color: #162938;
+} 
+
+ .slider
+{
+    transform: translateY(100px);
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+/*  */
+  .swiper {
+    width: 100%;
+    height: 550px;
+  }
+
+  .swiper-slide {
+    font-size: 18px;
+    display: flex;
+
+  } 
+
+  .swiper-slide img {
+    display: block;
+    object-fit: cover;
+  }
+
+  .autoplay-progress {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--swiper-theme-color);
+  }
+
+.autoplay-progress svg {
+    display: none;
+    --progress: 0;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    stroke-width: 4px;
+    stroke: var(--swiper-theme-color);
+    fill: none;
+    stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+    stroke-dasharray: 125.6;
+    transform: rotate(-90deg);
+  }
+
+  
+  .testimonials{
+    margin-top: 150px;
+    padding: 100px 0;
+    background: url('./../img/bg-review.png') no-repeat;
+    background-color: #00a7cc;
+    height: 600px;
+    transform: translateY(180px);
+  }
+
+  .content{
+    margin: 0px 10%;
+    align-items: center;
+    
+  }
+
+  .section-header{
+    text-align: center;
+    margin: 42px 0px;
+  }
+
+  .section-header .title{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-transform: uppercase;
+    font-size: 35px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 2px;
+  }
+
+  .testimonials-item {
+    position: relative;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 30px;
+    width: 240px;
+    max-height: 290px;
+    box-shadow:  30px 25px 15px 0px #1d313f;
+  }
+
+  .testimonials-item img{
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+    vertical-align: middle;
+  }
+  .testimonials-item .info{
+    display: flex;
+  }
+
+  .testimonials-item .name{
+    font-size: 24px;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: #162938;
+  }
+
+  .testimonials-item .job{
+    color: #999999;
+    margin-top: 10px;
+    
+  }
+
+
+  .testimonials-item p{
+    margin: 20px 0px;
+    color: #162938;
+    position: relative;
+  }
+
+  .testimonials-item .rating{
+    position: absolute;
+    margin-top: 15px;
+    font-size:  14px;
+    color: yellow;
+    bottom: 30px;
+  }
+
+  .testimonials .swiper-pagination{
+    margin-bottom: 10px;
+  }
+
+  .testimonials .swiper-pagination-bullet{
+    height: 12px;
+    width: 12px;
+    background-color: #fff;
+
+  }
+
+  .swiper-wrapper{
+    height: 350px;
+  }
+
+  /* ------------------------ */
+  .danh_gia{
+    /* position: absolute; */
+    margin-top: 150px;
+    padding: 100px 0;
+    background: url('./../img/pattern-blue.jpg') repeat;
+    width: 100%;
+    height: 265px;
+    transform: translateY(100px);
+    position: relative;
+  }
+
+  .list-items {
+    position: relative;
+    text-align: center;
+    height: 100px;
+    
+  }
+  
+  .list-items:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0; /* Positions the border on the right side */
+    width: 0; /* Ensures the border doesn't affect the element's width */
+    height: 100px; /* Matches the height of the .list-items element */
+    border-style: dashed;
+    border-width: 1px; /* Adjust border thickness as needed */
+    border-color: #ccc; /* Inherits the border color from the .list-items element (red in this case) */
+  }
+  .numbers__desc
+  {
+    position: relative;
+  }
+  .gach_chan {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 30px;
+    height: 2px;
+    margin-left: -15px;
+    content: "";
+    background-color: #ffea00;
+}
+
+.numbers_list-values{
+  font-size: 30px;
+  color: #ffea00;
+}
+
+/* FQA */
+
+.faq{
+  margin: 100px 0px;
+  height: 500px;
+  width: 100%;
+  
+  background: #f9fafb  url('../../assets/img/bg-faq.jpg') no-repeat right;
+
+}
+
+
+.faq_heading{
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 35px;
+  letter-spacing: 1.5px;
+  padding: 40px 0px 20px;
+}
+.accordion{
+  width: 700px;
+  margin-left: 50px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.accordion .accordion-content{
+  border-radius: 4px;
+  margin: 10px 0;
+  overflow: hidden;
+  
+}
+
+.accordion-content.open{
+  padding-bottom: 10px;
+}
+.accordion-content .accordion-item{
+  display: flex;
+  min-height: 50px;
+  align-items: center;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.accordion-content.open .accordion-item{
+  min-height: 35px;
+} 
+
+
+
+.accordion-content .accordion-item .title{
+  font-size: 20px;
+  font-weight: 500;
+  color: #1d313f;
+
+}
+
+.accordion-content .accordion-item i{
+  font-size: 25px;
+  color: #4c8cca;
+  padding: 0 10px;
+}
+
+.accordion-content  .answer{
+  height: 0;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 0 15px;
+  transition:  all 0.2s linear;
+  margin-left: 80px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+

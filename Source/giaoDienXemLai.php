@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xem lại bài</title>
-    <link rel="stylesheet" href="CSS/GDLT.css">
+    <link rel="stylesheet" href="CSS/styleGDLT.css">
 </head>
 <body>
     <?php
@@ -49,10 +49,11 @@
                     <img src="" alt="" id="img">
                 </div>
                 <div class="cacdapan">
-                    <div class="dapan" id="dapan1" onclick="check(1)">Đáp án 1</div>
-                    <div class="dapan" id="dapan2" onclick="check(2)">Đáp án 2</div>
-                    <div class="dapan" id="dapan3" onclick="check(3)">Đáp án 3</div>
-                    <div class="dapan" id="dapan4" onclick="check(4)">Đáp án 4</div>
+                    <div class="dapan" id="dapan1" >Đáp án 1</div>
+                    <div class="dapan" id="dapan2" >Đáp án 2</div>
+                    <div class="dapan" id="dapan3" >Đáp án 3</div>
+                    <div class="dapan" id="dapan4" >Đáp án 4</div>
+                    <span id="trueAnswer"></span>
                 </div>
             </div>
             <div class="bottom-bar">
@@ -110,6 +111,7 @@
                 blc = blc.substr(index+1);
             }
             currentIndex = 1;
+            check(Choice[1]);
         }
         
         function start(){
@@ -201,12 +203,14 @@
                 document.getElementById("dapan"+cau).style = "border: 5px solid green;"
                 document.getElementById("dapan"+cau).style.backgroundColor = "greenyellow";
                 trueAnswer = 1;
+                document.getElementById("trueAnswer").innerHTML = "";
             }else{
                 //Change answers client choose
                 document.getElementById("btn"+currentIndex).style.backgroundColor = "red";
                 document.getElementById("dapan"+cau).style = "border: 5px solid red;"
                 document.getElementById("dapan"+cau).style.backgroundColor = "orange";
                 trueAnswer = 0;
+                document.getElementById("trueAnswer").innerHTML = "Đáp án đúng là câu "+ correctAnswers;
             }
 
 

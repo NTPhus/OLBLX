@@ -4,33 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="CSS/trangchu.css">
 </head>
 <body>
-    
-    <header>
+<header>
         <!-- LOGO -->
         <div class="logo">
-        <a href="" ><img src="img/logo (2).png" alt="">THILAIXE.VN</a>
+        <a href="" ><img src="assets/img/logo (2).png" alt="">THILAIXE.VN</a>
         </div>
         
         <nav class="navigation">
-            
              <!-- THANH ĐIỀU HƯỚNG -->
              <ul>
-                <!-- <li><a href="#">TRANG CHỦ</a></li>
-                <li><a href="#">LUYỆN THI</a></li>
-                <li><a href="#">LÝ THUYẾT</a></li>
-                <li><a href="#">ĐỊA ĐIỂM</a></li> -->
+                <li><a href="trangchu.php">TRANG CHỦ</a></li>
+                <li><a href="giaoDienTracNghiem.php">LÝ THUYẾT</a></li>
+                <li><a href="giaoDienLuyenThi.php">LUYỆN THI</a></li>
+                <li><a href="giaoDienMoPhong.php">LUYỆN THI MÔ PHỎNG</a></li>
+                <li><a href="#">ĐỊA ĐIỂM</a></li>
+                
                 <?php
                     if(!isset($_SESSION["username"])){
                         echo "<li><button class='btnLogin-popup'>ĐĂNG NHẬP</button></li>";
                     } else{
                         // NÚT ĐĂNG XUẤT
                         echo "
-                        <div class='form'>
-                        "."<p class='user'>Xin chào, ".$_SESSION["username"]."</p>"."
-                        <a class='dangxuat' href='xulydangxuat.php'>Đăng xuất</a>
-                         </div>
+                        <li>
+                        "."<a href='#'>Xin chào, ".$_SESSION["username"]."</a>"."
+                         </li>
                         ";
                     }                 
                 ?>

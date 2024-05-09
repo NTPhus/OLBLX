@@ -15,7 +15,33 @@
 </head>
 <body>
     <!----------------------------- HEADER------------------------>
-    <?php include 'header.php'?>
+    <header>
+        <!-- LOGO -->
+        <div class="logo">
+        <a href="" ><img src="img/logo (2).png" alt="">THILAIXE.VN</a>
+        </div>
+        
+        <nav class="navigation">
+            
+             <!-- THANH ĐIỀU HƯỚNG -->
+             <ul>
+                <?php
+                    if(!isset($_SESSION["username"])){
+                        echo "<li><button class='btnLogin-popup'>ĐĂNG NHẬP</button></li>";
+                    } else{
+                        // NÚT ĐĂNG XUẤT
+                        echo "
+                        <div class='form'>
+                        "."<p class='user'>Xin chào, ".$_SESSION["username"]."</p>"."
+                        <a class='dangxuat' href='xulydangxuat.php'>Đăng xuất</a>
+                         </div>
+                        ";
+                    }                 
+                ?>
+            </ul> 
+        </nav>  
+
+    </header>
     <!-------------------------- CONTAINER---------------->
     <div class="container">
         <!-- FORM ĐĂNG NHẬP + ĐĂNG KÝ -->
@@ -132,11 +158,7 @@
                     <p class="win"> Chiến thắng kỳ thi lý thuyết!</p>
                     <!-- <Button class = "btn-batdau">BẮT ĐẦU <i class="ri-arrow-right-line"></i></Button> 
                     -->
-                    <a  href="#">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                    <a  href="trangchu.php">
                         BẮT ĐẦU!
                     </a>
                   </form>

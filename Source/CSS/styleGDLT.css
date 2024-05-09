@@ -85,3 +85,7 @@
     background-color: blueviolet;
     cursor: pointer;
 }
+
+.container{
+    padding-top: 110px;
+}

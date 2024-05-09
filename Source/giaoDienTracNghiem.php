@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bực VL</title>
-    <link rel="stylesheet" href="CSS/styleGDTN.css">
+    <link rel="stylesheet" href="CSS/GDTN.css">
 </head>
 <body>
 <?php
@@ -84,7 +84,7 @@
         array_push($chuong7,$row['cau']);
     }
 ?>
-
+<?php include 'header.php'?>
 <div class="container">
     <div class="item1">
         <div class='upper'>
@@ -100,7 +100,7 @@
         <div class='lower' id='lower'>
             <?php
                 for($i = 1; $i <= 600; $i++){
-                    echo "<div name='cau' class="."btn"." value=".$i." id="."btn".$i." onclick='ChuyenCau(".$i.")'>".$i."</div>";
+                    echo "<div name='cau' class='bton' value=".$i." id="."bton".$i." onclick='ChuyenCau(".$i.")'>".$i."</div>";
                 }
             ?>
         </div>
@@ -165,9 +165,9 @@
             if(currentQuestion.img == '0'){
                 document.getElementById("img").style.display = "none";
             }
-            else if(currentQuestion.img == '1'){
+            else{
                 document.getElementById("img").style.display = "block";
-                document.getElementById("img").setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
+                document.getElementById("img").setAttribute("src", "Anh/Câu "+currentQuestion.img+".png");
             }
             document.getElementById("dapan1").innerHTML = answers.dapan1;
             document.getElementById("dapan2").innerHTML = answers.dapan2;
@@ -185,7 +185,7 @@
             }
 
             for(i = 167; i <= 600; i++){
-                document.getElementById("btn"+i).style.display = "none";
+                document.getElementById("bton"+i).style.display = "none";
             }
         }
 
@@ -212,12 +212,12 @@
             }
             //remove all btn
             for(let i = 1; i <= 600; i++){
-                if(document.getElementById("btn"+i) != null)
-                    document.getElementById("btn"+i).remove();
+                if(document.getElementById("bton"+i) != null)
+                    document.getElementById("bton"+i).remove();
             }
             //add btn co trong chuong
             for (var i = 0; i < chuong.length; i++) {
-                let html = "<div name='cau' class='btn' value=" +chuong[i]+" id='btn"+chuong[i]+"' onclick='ChuyenCau("+chuong[i]+")'>"+chuong[i]+"</div>";
+                let html = "<div name='cau' class='bton' value=" +chuong[i]+" id='bton"+chuong[i]+"' onclick='ChuyenCau("+chuong[i]+")'>"+chuong[i]+"</div>";
                 document.getElementById("lower").insertAdjacentHTML("beforeend", html);
             }
             //chuyen cau dau tien tai chuong
@@ -226,16 +226,16 @@
 
         function markChoice(){
             for(let i = 0; i < 600; i++){
-                if(CauDL[i] != null && document.getElementById("btn"+i) != null)
-                    document.getElementById("btn"+i).style.backgroundColor = "aqua";
+                if(CauDL[i] != null && document.getElementById("bton"+i) != null)
+                    document.getElementById("bton"+i).style.backgroundColor = "aqua";
             }
 
             for(let i = 0; i < 600; i++){
-                if(Choice[i] != null && document.getElementById("btn"+i) != null){
+                if(Choice[i] != null && document.getElementById("bton"+i) != null){
                     if(Choice[i] == 1){
-                        document.getElementById("btn"+i).style.backgroundColor = "green";
+                        document.getElementById("bton"+i).style.backgroundColor = "green";
                     }else{
-                        document.getElementById("btn"+i).style.backgroundColor = "red";
+                        document.getElementById("bton"+i).style.backgroundColor = "red";
                     }
                 }
             }
@@ -243,15 +243,15 @@
 
         function markCauDL(){
             for(let i = 0; i < 600; i++){
-                if(Choice[i] != null && document.getElementById("btn"+i) != null)
-                    document.getElementById("btn"+i).style.backgroundColor = "aqua";
+                if(Choice[i] != null && document.getElementById("bton"+i) != null)
+                    document.getElementById("bton"+i).style.backgroundColor = "aqua";
             }
             for(let i = 0; i < 600; i++){
-                if(CauDL[i] != null && document.getElementById("btn"+i) != null){
+                if(CauDL[i] != null && document.getElementById("bton"+i) != null){
                     if(CauDL[i] == 1){
-                        document.getElementById("btn"+i).style.backgroundColor = "green";
+                        document.getElementById("bton"+i).style.backgroundColor = "green";
                     }else{
-                        document.getElementById("btn"+i).style.backgroundColor = "red";
+                        document.getElementById("bton"+i).style.backgroundColor = "red";
                     }
                 }
             }
@@ -315,13 +315,13 @@
             document.getElementById("dapan4").style.backgroundColor = "aqua";
             if(cau == correctAnswers){
                 //Change answers client choose
-                document.getElementById("btn"+currentIndex).style.backgroundColor = "green";
+                document.getElementById("bton"+currentIndex).style.backgroundColor = "green";
                 document.getElementById("dapan"+cau).style = "border: 5px solid green;"
                 document.getElementById("dapan"+cau).style.backgroundColor = "greenyellow";
                 trueAnswer = 1;
             }else{
                 //Change answers client choose
-                document.getElementById("btn"+currentIndex).style.backgroundColor = "red";
+                document.getElementById("bton"+currentIndex).style.backgroundColor = "red";
                 document.getElementById("dapan"+cau).style = "border: 5px solid red;"
                 document.getElementById("dapan"+cau).style.backgroundColor = "orange";
                 trueAnswer = 0;

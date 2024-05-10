@@ -158,6 +158,8 @@
         let cdl = 0;
         let CauDL = [];
         let Choice = [];
+        let preChoice = [];
+        let preCauDL = [];
         function start(){
             let currentQuestion = questions[0];
             let answers = currentQuestion.answers;
@@ -295,10 +297,15 @@
                 document.getElementById("dapan4").innerHTML = answers.dapan4;
                 document.getElementById("dapan4").style.display = "block";
             }
-            if(cdl == 1)
+            document.getElementById("message").innerHTML = "";
+            if(cdl == 1){
                 markCauDL();
-            else
+                if(preCauDL[cau] != null) check(preCauDL[cau]);
+            }
+            else{
                 markChoice();
+                if(preChoice[cau] != null) check(preChoice[cau]);
+            }            
         }
 
         function check(cau){
@@ -335,10 +342,15 @@
                 
             }
 
-            if(cdl == 1)
+            if(cdl == 1){
                 CauDL[currentIndex] = trueAnswer;
-            else    
+                preCauDL[currentIndex] = cau;
+            }
+            else{
                 Choice[currentIndex] = trueAnswer;
+                preChoice[currentIndex] = cau;
+            }
+                
         }
 
         start();

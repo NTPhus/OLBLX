@@ -4,18 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/5263b3717e.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>Ôn thi mô phỏng</title>
     <style>
         *{
             padding: 0;
             margin: 0;
             box-sizing: border-box;
         }
+
+        .video{
+            position: relative;
+        }
+
         #myVideo{
             margin-top: 50px;
             display: block;
             height: 500px;
             width: 1000px;
+            z-index: -1;
         }
         .container{
             display: flex;
@@ -58,16 +64,61 @@
         }
 
         #myProgress {
-            margin-top: 10px;
-            margin-left: 10px;
-            width: 975px;
+            width: 1000px;
             background-color: grey;
+            margin-bottom: 20px;
         }
 
         #myBar {
             width: 1%;
-            height: 10px;
+            height: 30px;
             background-color: green;
+        }
+
+        .bar-block{
+            max-width: 1000px;
+        }
+
+        #time{
+            margin-top: -20px;
+            z-index: 10;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #bar{
+            background-color: gray;
+            height: 5px;
+            width: 1000px;
+            display: flex;
+        }
+
+        #p1, #p2, #p3, #p4, #p5{
+            height: 8px;
+            width: 20px;
+            z-index: 10;
+            opacity: 0;
+        }
+
+        #p1{
+            background-color: lightgreen;
+        }
+
+        #p2{
+            background-color: limegreen;
+        }
+
+        #p3{
+            background-color: yellow;
+        }
+
+        #p4{
+            background-color: orange;
+        }
+
+        #p5{
+            background-color: red;
         }
     </style>
 </head>
@@ -76,13 +127,25 @@
         <div class="item1">
             <div class="video">
                 <video id = "myVideo" width="800" height="740" controls muted onclick="move()">
-                    <source src="video/MoPhong/De2/1.mp4" type="video/mp4" id="source">
+                    <source src="video/1.mp4" type="video/mp4" id="source">
                 </video>
                 <div id="myProgress">
                     <div id="myBar"></div>
+                    <div id="time">Thời gian: 00:00/00:27</div>
                 </div>
 
-                <button onclick="move()">Run</button>
+                <div class="bar-block">
+                    <span id="flag"></i></span>
+                    <div id="bar">
+                        <div id="p1"></div>
+                        <div id="p2"></div>
+                        <div id="p3"></div>
+                        <div id="p4"></div>
+                        <div id="p5"></div>
+                    </div>
+                </div>
+                
+
             </div>
             <div class="button">
                 <button onclick="getPoint()">Đặt cờ <i class="fa-regular fa-flag"></i> </button>
@@ -170,6 +233,7 @@
             diem = "0/5";
         }
         document.getElementById("td1").innerHTML = diem;
+        CamCo();
     }
     //chuyen video
     function chuyenVideo(){
@@ -178,26 +242,41 @@
         vid.load();
         vid.played();
     }
-
+    var width;
     var i = 0;
     function move() {
         if (i == 0) {
             i = 1;
             var elem = document.getElementById("myBar");
-            var width = 1;
-            var id = setInterval(frame, 320);
+            width = 1;
+            var id = setInterval(frame, 10);
             function frame() {
-            if (width >= 100) {
-                clearInterval(id);
-                i = 0;
-            } else {
-                width++;
-                elem.style.width = width + "%";
-            }
+                if(width == 27){
+                    clearInterval(id);
+                    i = 0;
+                }else{
+                    let t = parseInt(x.currentTime);
+                    let second;
+                    if(t < 10) second = '0' + t;
+                    else second = t;
+                    document.getElementById("time").innerHTML = "Thời gian: 00:" + second + "/00:27";
+                    width = x.currentTime/27*100;
+                    elem.style.width = width + "%";
+                }
             }
         }
     }
 
+    function CamCo(){
+        document.getElementById("flag").style.marginLeft = width + "%";
+        document.getElementById("flag").innerHTML = "<i class='fa-solid fa-flag'> " + parseInt(x.currentTime) + "s";
+        document.getElementById("p1").style.marginLeft = (17/27*100) + "%";
+        document.getElementById("p1").style.opacity = "1";
+        document.getElementById("p2").style.opacity = "1";
+        document.getElementById("p3").style.opacity = "1";
+        document.getElementById("p4").style.opacity = "1";
+        document.getElementById("p5").style.opacity = "1";
+    }
 </script>
 </body>
 </html>

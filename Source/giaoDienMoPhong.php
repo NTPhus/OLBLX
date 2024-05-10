@@ -5,129 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/5263b3717e.js" crossorigin="anonymous"></script>
     <title>Ôn thi mô phỏng</title>
-    <style>
-        *{
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
-        .video{
-            position: relative;
-        }
-
-        #myVideo{
-            margin-top: 50px;
-            display: block;
-            height: 500px;
-            width: 1000px;
-            z-index: -1;
-        }
-        .container{
-            display: flex;
-        }
-        .item1{
-            width: 70%;
-            float: left;
-        }
-        .item2{
-            width: 30%;
-            float: right;
-        }
-
-        button{
-            margin-top: 20px;
-            height: 50px;
-            width: 100px;
-            border-radius: 10px;
-            font-size: 20px;
-        }
-
-        .button{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        button:hover{
-            background-color: burlywood;
-        }
-
-        table{
-            margin-top: 50px;
-            width: 300px;
-            height: 500px;
-        }
-
-        tr{
-            text-align: center;
-        }
-
-        #myProgress {
-            width: 1000px;
-            background-color: grey;
-            margin-bottom: 20px;
-        }
-
-        #myBar {
-            width: 1%;
-            height: 30px;
-            background-color: green;
-        }
-
-        .bar-block{
-            max-width: 1000px;
-        }
-
-        #time{
-            margin-top: -20px;
-            z-index: 10;
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        #bar{
-            background-color: gray;
-            height: 5px;
-            width: 1000px;
-            display: flex;
-        }
-
-        #p1, #p2, #p3, #p4, #p5{
-            height: 8px;
-            width: 20px;
-            z-index: 10;
-            opacity: 0;
-        }
-
-        #p1{
-            background-color: lightgreen;
-        }
-
-        #p2{
-            background-color: limegreen;
-        }
-
-        #p3{
-            background-color: yellow;
-        }
-
-        #p4{
-            background-color: orange;
-        }
-
-        #p5{
-            background-color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="CSS/MoPhong.css">
 </head>
 <body>
     <div class="containter" id="container">
         <div class="item1">
             <div class="video">
                 <video id = "myVideo" width="800" height="740" controls muted onclick="move()">
-                    <source src="video/1.mp4" type="video/mp4" id="source">
+                    <source src="video/MoPhong/1.mp4" type="video/mp4" id="source">
                 </video>
                 <div id="myProgress">
                     <div id="myBar"></div>
@@ -200,7 +85,6 @@
             </table>
         </div>
     </div>
-
 
 <script>
     var x = document.getElementById("myVideo");
@@ -278,5 +162,6 @@
         document.getElementById("p5").style.opacity = "1";
     }
 </script>
+
 </body>
 </html>

@@ -81,7 +81,7 @@ while($row = mysqli_fetch_array($res)){
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
     <link rel="stylesheet" href="CSS/grid.css">
     <link rel="stylesheet" href="/OLBLX/Source/font/remixicon.css">
-    <link rel="stylesheet" href="CSS/tracNghiem.css">
+    <link rel="stylesheet" href="CSS/styleTracNghiem.css">
     <link rel="stylesheet" href="CSS/GDTNghiem.css">
     <script src="https://kit.fontawesome.com/5263b3717e.js" crossorigin="anonymous"></script>
 </head>
@@ -121,7 +121,7 @@ while($row = mysqli_fetch_array($res)){
                         <div>
                             <span>
                                 <div class="image">
-                                  <img id ="img" src="" alt="Ảnh">
+                                  <img id ="img" src="img/logo (2).png" alt="Ảnh">
                                 </div>
                                 <p id="cauHoi"> Phú đẹp trai không ?</p>
                             </span>

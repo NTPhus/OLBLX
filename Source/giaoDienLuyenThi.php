@@ -71,17 +71,17 @@
        return $data;
     }
     
-    //$de = TaoDe(8, 0, 1, 1, 1, 9, 9, 1);
+    $de = TaoDe(8, 0, 1, 1, 1, 9, 9, 1);
     $conn = mysqli_connect("localhost", "root", "", "olblx");
-    $de = [];
-    $sql = "SELECT * FROM `bodeonthiblx` where DeSo = 1";
-    $res = mysqli_query($conn, $sql);
-    if($row = mysqli_fetch_array($res)){
-        for($i = 1; $i <= 30; $i++){
-            array_push($de, $row["cau$i"]);
-        }
-    }
-    $data = [];
+    // $de = [];
+    // $sql = "SELECT * FROM `bodeonthiblx` where DeSo = 1";
+    // $res = mysqli_query($conn, $sql);
+    // if($row = mysqli_fetch_array($res)){
+    //     for($i = 1; $i <= 30; $i++){
+    //         array_push($de, $row["cau$i"]);
+    //     }
+    // }
+     $data = [];
     
     foreach($de as $cau){
         $sql = "SELECT * FROM `600_cau_hoi` where cau = '$cau'";

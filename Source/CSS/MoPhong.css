@@ -88,7 +88,6 @@ tr{
 
 #p1, #p2, #p3, #p4, #p5{
     height: 8px;
-    width: 20px;
     z-index: 10;
     opacity: 0;
 }

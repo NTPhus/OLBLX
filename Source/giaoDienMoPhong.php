@@ -1,10 +1,23 @@
+<?php
+    $conn = mysqli_connect("localhost", "root", "", "olblx");
+    $sql = "SELECT * FROM video_mo_phong";
+    $res = mysqli_query($conn, $sql);
+    $data = [];
+    while($row = mysqli_fetch_array($res)){
+        array_push($data, $row["cau"]);
+        array_push($data, $row["start"]);
+        array_push($data, $row["end"]);
+        array_push($data, $row["dodaivideo"]);
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/5263b3717e.js" crossorigin="anonymous"></script>
-    <title>Ôn thi mô phỏng</title>
+    <title>ôn thi mô phỏng</title>
     <link rel="stylesheet" href="CSS/MoPhong.css">
 </head>
 <body>
@@ -48,48 +61,70 @@
                 </tr>
                 <tr>
                     <td>Câu 2</td>
-                    <td></td>
+                    <td id = "td2"></td>
                 </tr>
                 <tr>
                     <td>Câu 3</td>
-                    <td></td>
+                    <td id = "td3"></td>
                 </tr>
                 <tr>
                     <td>Câu 4</td>
-                    <td></td>
+                    <td id = "td4"></td>
                 </tr>
                 <tr>
                     <td>Câu 5</td>
-                    <td></td>
+                    <td id = "td5"></td>
                 </tr>
                 <tr>
                     <td>Câu 6</td>
-                    <td></td>
+                    <td id = "td6"></td>
                 </tr>
                 <tr>
                     <td>Câu 7</td>
-                    <td></td>
+                    <td id = "td7"></td>
                 </tr>
                 <tr>
                     <td>Câu 8</td>
-                    <td></td>
+                    <td id = "td8"></td>
                 </tr>
                 <tr>
                     <td>Câu 9</td>
-                    <td></td>
+                    <td id = "td9"></td>
                 </tr>
                 <tr>
                     <td>Câu 10</td>
-                    <td></td>
+                    <td id = "td10"></td>
                 </tr>
             </table>
         </div>
     </div>
 
 <script>
+
+    let data = <?php echo json_encode($data) ?>;
+
+    let videos = [{
+        cau: parseInt(data[0]),
+        start: parseInt(data[1]),
+        end: parseInt(data[2]),
+        length: parseInt(data[3]),
+    }, ];
+
+    for(let i=4; i<data.length;i+=4)
+        videos.push({
+            cau:parseInt(data[i]),
+            start:parseInt(data[i+1]),
+            end:parseInt(data[i+2]),
+            length:parseInt(data[i+3]),
+        });
+
     var x = document.getElementById("myVideo");
 
     var video = document.getElementsByTagName('video')[0];
+
+    var currentIndex = 0;
+
+    var trangThai = false;
 
     video.onended = function(e) {
         chuyenVideo();
@@ -100,8 +135,8 @@
     });
     //tinh diem
     function getPoint() {
-        let p = 3/5;
-        let getP = 17;
+        let p = (videos[currentIndex].end - videos[currentIndex].start)/5;
+        let getP = videos[currentIndex].start;
         let diem;
         if(x.currentTime >= getP && x.currentTime <= getP+p){
             diem = "5/5";
@@ -116,16 +151,24 @@
         }else{
             diem = "0/5";
         }
-        document.getElementById("td1").innerHTML = diem;
+        document.getElementById("td" + (currentIndex+1)).innerHTML = diem;
         CamCo();
     }
     //chuyen video
     function chuyenVideo(){
         let vid = document.getElementById("myVideo");
-        vid.src = "video/MoPhong/De1/2.mp4";
+        vid.src = "video/MoPhong/"+ (currentIndex+2) +".mp4";
         vid.load();
-        vid.played();
+        currentIndex++;
+        document.getElementById("td" + (currentIndex+1)).innerHTML = "<i class='fa-solid fa-spinner fa-pulse'></i>";
+        document.getElementById("p1").style.opacity = "0";
+        document.getElementById("p2").style.opacity = "0";
+        document.getElementById("p3").style.opacity = "0";
+        document.getElementById("p4").style.opacity = "0";
+        document.getElementById("p5").style.opacity = "0";
+        document.getElementById("flag").innerHTML = "";
     }
+
     var width;
     var i = 0;
     function move() {
@@ -135,7 +178,7 @@
             width = 1;
             var id = setInterval(frame, 10);
             function frame() {
-                if(width == 27){
+                if(width == videos[currentIndex].length){
                     clearInterval(id);
                     i = 0;
                 }else{
@@ -143,8 +186,8 @@
                     let second;
                     if(t < 10) second = '0' + t;
                     else second = t;
-                    document.getElementById("time").innerHTML = "Thời gian: 00:" + second + "/00:27";
-                    width = x.currentTime/27*100;
+                    document.getElementById("time").innerHTML = "Thời gian: 00:" + second + "/00:" + videos[currentIndex].length;
+                    width = x.currentTime/videos[currentIndex].length *100;
                     elem.style.width = width + "%";
                 }
             }
@@ -152,9 +195,20 @@
     }
 
     function CamCo(){
+        let size = ((videos[currentIndex].end -videos[currentIndex].start)/videos[currentIndex].length * 100)/5;
         document.getElementById("flag").style.marginLeft = width + "%";
-        document.getElementById("flag").innerHTML = "<i class='fa-solid fa-flag'> " + parseInt(x.currentTime) + "s";
-        document.getElementById("p1").style.marginLeft = (17/27*100) + "%";
+        let currentTime = parseInt(x.currentTime);
+        document.getElementById("flag").innerHTML = "<i class='fa-solid fa-flag'> " + currentTime + "s";
+        
+        //chỉnh sửa kích thước của từng check point
+        document.getElementById("p1").style.marginLeft = (videos[currentIndex].start/videos[currentIndex].length*100) + "%";
+        document.getElementById("p1").style.width = size + "%";
+        document.getElementById("p2").style.width = size + "%";
+        document.getElementById("p3").style.width = size + "%";
+        document.getElementById("p4").style.width = size + "%";
+        document.getElementById("p5").style.width = size + "%";
+
+        //hien thi dap an
         document.getElementById("p1").style.opacity = "1";
         document.getElementById("p2").style.opacity = "1";
         document.getElementById("p3").style.opacity = "1";

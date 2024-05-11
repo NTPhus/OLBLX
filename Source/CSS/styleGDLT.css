@@ -1,91 +1,98 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
 
 .container{
-    display: block;
-}
-
-.content{
-    height: 600px;
-    background-color: aquamarine;
-    border: 5px solid black;
-    
-}
-
-.bottom-bar{
-    height: 100px;
-    background-color: chartreuse;
-    border: 5px solid black;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.cauhoi{
-    font-size: 25px;
-    font-weight: bold
+.item1{
+    height: 600px;
+    border: 1px solid;
+    overflow: scroll;
+    background-color: white;
+}
+
+.item2{
+    height: 600px;
+    padding-left: 20px;
+    border: 1px solid;
+    overflow: scroll;
+    background-color: white;
+
+}
+
+#cauHoi, .dapan{
+    width: 450px;
+}
+
+#cauHoi{
+    background-color: antiquewhite;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .dapan{
-    min-height: 50px;
-    width: 400px;
-    background-color: cadetblue;
-    border-radius: 20px;
-    font-size: 18px;
-    margin: 20px 0;
-    padding-left: 20px;
-    padding-top: 10px;
+    margin:10px 0;
+    padding: 10px;
+    background-color: aquamarine;
+    border-radius: 15px;
 }
 
 .dapan:hover{
-    background-color: chocolate;
+    background-color: aqua;
     cursor: pointer;
 }
-
-#countdown{
-    justify-content: left;
-    text-align: center;
-    font-size: 40px;
-    font-weight: bold;
-    height: 50px;
-    width: 150px;
-    background-color: rgb(244, 246, 247);
-    border: 4px solid black;
-    margin-top: -50px;
+button{
+    border-radius: 15px;
+    padding: 10px;
 }
 
-.bottom-bar .btn{
-    justify-content: center;
-    width: 100px;
-    height: 40px;
+.btn{
     border-radius: 10px;
-    margin-top: 10px;
-    margin-left: 10px;
+    width: 40px;
+    height: 30px;
+    border: 1px solid;
+    cursor: pointer;
+    margin: 9px 9px;
+    display: inline-table;
     font-weight: bold;
-    font-size: 18px;
-    background-color: aqua;
     text-align: center;
+    background-color: white;
+    font-size: 20px;
 }
 
 .btn:hover{
-    background-color: burlywood;
+    background-color: aqua;
 }
 
-.submit{
-    font-weight: bold;
-    font-size: 20px;
-    border-radius: 10px;
-    margin-left: 30px;
-    height: 60px;
-    background-color: chocolate;
-    padding: 10px;
-}
-.submit:hover{
-    background-color: blueviolet;
+.chuong{
     cursor: pointer;
+    border-radius: 10px;
+    padding: 10px;
+    display: inline-flex;
+    justify-content: center;
+    background-color: yellow;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
 }
 
-.container{
-    padding-top: 110px;
+.chuong:hover{
+    background-color: chartreuse;
+}
+
+.upper{
+    margin-top: 20px;
+    border-bottom: 1px solid;
+}
+
+.lower{
+    margin-top: 20px;
 }

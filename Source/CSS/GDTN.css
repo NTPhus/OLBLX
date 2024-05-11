@@ -54,7 +54,7 @@ button{
     padding: 10px;
 }
 
-.bton{
+.btn{
     border-radius: 10px;
     width: 35px;
     height: 20px;
@@ -67,7 +67,7 @@ button{
     background-color: white;
 }
 
-.bton:hover{
+.btn:hover{
     background-color: aqua;
 }
 

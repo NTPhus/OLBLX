@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luyện Thi</title>
-    <link rel="stylesheet" href="CSS/styleGDLT.css">
+    <link rel="stylesheet" href="CSS/vaothi.css">
 </head>
 <body>
     <?php
@@ -71,17 +71,17 @@
        return $data;
     }
     
-    $de = TaoDe(8, 0, 1, 1, 1, 9, 9, 1);
+    //$de = TaoDe(8, 0, 1, 1, 1, 9, 9, 1);
     $conn = mysqli_connect("localhost", "root", "", "olblx");
-    // $de = [];
-    // $sql = "SELECT * FROM `bodeonthiblx` where DeSo = 1";
-    // $res = mysqli_query($conn, $sql);
-    // if($row = mysqli_fetch_array($res)){
-    //     for($i = 1; $i <= 30; $i++){
-    //         array_push($de, $row["cau$i"]);
-    //     }
-    // }
-     $data = [];
+    $de = [];
+    $sql = "SELECT * FROM `bodeonthiblx` where DeSo = 1";
+    $res = mysqli_query($conn, $sql);
+    if($row = mysqli_fetch_array($res)){
+        for($i = 1; $i <= 30; $i++){
+            array_push($de, $row["cau$i"]);
+        }
+    }
+    $data = [];
     
     foreach($de as $cau){
         $sql = "SELECT * FROM `600_cau_hoi` where cau = '$cau'";
@@ -100,12 +100,16 @@
     ?>
 
     <?php include 'header.php'?>
-    <form action="GiaoDienKetQua.php" method="POST">
+    <div class="form-thi">
+        <h1 class ="form-heading">PHẦN MỀM THI THỬ LÝ THUYẾT LÁI XE MỚI NHẤT 2024</h1>
+    <form  action="GiaoDienKetQua.php" method="POST">
         <div class="container">
             <div class="content">
                 <div class="cauhoi">
-                    <p id="cauHoi">Phú có đẹp trai không?</p>
-                    <img src="" alt="" id="img">
+                    <p id="cauHoi">Bạn đã sẵn sàng chưa?</p>
+                </div>
+                <div class="hinhanh">
+                    <img src="https://thibanglaixe.com.vn/wp-content/uploads/2020/07/600-cau-hoi487.jpg" alt="" id="img-cauhoi">
                 </div>
                 <div class="cacdapan">
                     <div class="dapan" id="dapan1" onclick="check(1)">Đáp án 1</div>
@@ -115,20 +119,21 @@
                 </div>
             </div>
             <div class="bottom-bar">
-                <p id="countdown">30:00</p>
-                <?php 
+                <div class="time"><p>Thời gian còn lại</p><p id="countdown"> 30:00</p></div>
+               <?php 
                     for($i = 1; $i <= 30; $i++){
                         echo "<div class='btn' id='btn".$i."' onclick='ChuyenCau(".$i.")'>".$i."</div>";
                     }
-                ?>
+                ?> 
                 
                 <input type="text" id="result" name="result" value="0" hidden>
                 <input type="text" id="answer" name="answer" value="0" hidden>
-                <div  class="submit" onclick="CanhBao()">Submit</div>
+                <div  class="submit" onclick="CanhBao()">Nộp bài</div>
                 <input type="submit" id="submit" hidden>
             </div>
         </div>
     </form>
+    </div>
     
 
     <!-- Đồng hồ đếm ngược -->
@@ -168,14 +173,14 @@
         function start(){
             let currentQuestion = questions[0];
             let answers = currentQuestion.answers;
-            document.getElementById("cauHoi").innerHTML = currentIndex + ". " + currentQuestion.question;
+            document.getElementById("cauHoi").innerHTML = "Câu " + currentIndex + ". " + currentQuestion.question;
             //check co hinh thi hien thi
             if(currentQuestion.img == '0'){
-                document.getElementById("img").style.display = "none";
+                document.getElementById("img-cauhoi").style.display = "none";
             }
             else{
-                document.getElementById("img").style.display = "block";
-                document.getElementById("img").setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
+                document.getElementById("img-cauhoi").style.display = "block";
+                document.getElementById("img-cauhoi").setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
             }
             document.getElementById("dapan1").innerHTML = answers.dapan1;
             document.getElementById("dapan2").innerHTML = answers.dapan2;
@@ -199,19 +204,19 @@
             currentIndex = cau;
             let currentQuestion = questions[currentIndex-1];
             let answers = currentQuestion.answers;
-            document.getElementById("cauHoi").innerHTML = currentIndex + ". " + currentQuestion.question;
+            document.getElementById("cauHoi").innerHTML = "Câu " +  currentIndex + ". " + currentQuestion.question;
             //reset cac lua chon truoc
-            document.getElementById("dapan1").style.backgroundColor = "cadetblue";
-            document.getElementById("dapan2").style.backgroundColor = "cadetblue";
-            document.getElementById("dapan3").style.backgroundColor = "cadetblue";
-            document.getElementById("dapan4").style.backgroundColor = "cadetblue";
+            document.getElementById("dapan1").style.backgroundColor = "#f4f4f4dd";
+            document.getElementById("dapan2").style.backgroundColor = "#f4f4f4dd";
+            document.getElementById("dapan3").style.backgroundColor = "#f4f4f4dd";
+            document.getElementById("dapan4").style.backgroundColor = "#f4f4f4dd";
             //check co hinh thi hien thi
             if(currentQuestion.img == '0'){
-                document.getElementById("img").style.display = "none";
+                document.getElementById("img-cauhoi").style.display = "none";
             }
             else{
-                document.getElementById("img").style.display = "block";
-                document.getElementById("img").setAttribute("src", "Anh/Câu "+currentQuestion.img+".png");
+                document.getElementById("img-cauhoi").style.display = "block";
+                document.getElementById("img-cauhoi").setAttribute("src", "Anh/Câu "+currentQuestion.img+".png");
             }
             console.log(currentQuestion.img);
             //Hien thi dap an len man hinh
@@ -233,16 +238,17 @@
             }
             //Neu cau nay da lam truoc do
             if(Choice[cau] != null) check(Choice[cau]);
+            console.log(Choice);
         }
         //kiem tra cau dung sai va danh dau cau
         function check(cau){
             let currentQuestion = questions[currentIndex-1];
             let correctAnswers = currentQuestion.correct;
             //reset cac lua chon truoc do
-            document.getElementById("dapan1").style.backgroundColor = "cadetblue";
-            document.getElementById("dapan2").style.backgroundColor = "cadetblue";
-            document.getElementById("dapan3").style.backgroundColor = "cadetblue";
-            document.getElementById("dapan4").style.backgroundColor = "cadetblue";
+            document.getElementById("dapan1").style.backgroundColor = "#f4f4f4dd";
+            document.getElementById("dapan2").style.backgroundColor = "#f4f4f4dd";
+            document.getElementById("dapan3").style.backgroundColor = "#f4f4f4dd";
+            document.getElementById("dapan4").style.backgroundColor = "#f4f4f4dd";
             //doi mau btn va dap an
             document.getElementById("dapan"+cau).style.backgroundColor = "orange";
             document.getElementById("btn"+currentIndex).style.backgroundColor = "yellow";
@@ -281,5 +287,6 @@
         start();
 
     </script>
+    <?php include 'footer.php'?>
 </body>
 </html>

@@ -111,3 +111,7 @@ tr{
 #p5{
     background-color: red;
 }
+
+.result-bar{
+    border: 1px solid;
+}

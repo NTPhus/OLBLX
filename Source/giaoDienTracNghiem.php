@@ -80,7 +80,7 @@ while($row = mysqli_fetch_array($res)){
     <link rel="stylesheet" href="img/back.png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
     <link rel="stylesheet" href="CSS/grid.css">
-    <link rel="stylesheet" href="/OLBLX/Source/font/remixicon.css">
+    <link rel="stylesheet" href="font/remixicon.css">
     <link rel="stylesheet" href="CSS/styleTracNghiem.css">
     <link rel="stylesheet" href="CSS/GDTNghiem.css">
     <script src="https://kit.fontawesome.com/5263b3717e.js" crossorigin="anonymous"></script>
@@ -255,7 +255,7 @@ while($row = mysqli_fetch_array($res)){
         function markChoice(){
             for(let i = 0; i < 600; i++){
                 if(CauDL[i] != null && document.getElementById("btn"+i) != null)
-                    document.getElementById("btn"+i).style.backgroundColor = "aqua";
+                    document.getElementById("btn"+i).style.backgroundColor = "white";
             }
 
             for(let i = 0; i < 600; i++){
@@ -272,7 +272,7 @@ while($row = mysqli_fetch_array($res)){
         function markCauDL(){
             for(let i = 0; i < 600; i++){
                 if(Choice[i] != null && document.getElementById("btn"+i) != null)
-                    document.getElementById("btn"+i).style.backgroundColor = "aqua";
+                    document.getElementById("btn"+i).style.backgroundColor = "white";
             }
             for(let i = 0; i < 600; i++){
                 if(CauDL[i] != null && document.getElementById("btn"+i) != null){
@@ -322,6 +322,7 @@ while($row = mysqli_fetch_array($res)){
                 document.getElementById("dapan4").innerHTML = answers.dapan4;
                 document.getElementById("dapan4").style.display = "block";
             }
+            document.getElementById("message").innerHTML = "";
             if(cdl == 1){
                 markCauDL();
                 if(preCauDL[cau] != null) check(preCauDL[cau]);
@@ -365,7 +366,7 @@ while($row = mysqli_fetch_array($res)){
                 document.getElementById("message").innerHTML = "<i class='fa-solid fa-xmark'></i> Đáp án sai"
                 
             }
-
+            
             if(cdl == 1){
                 CauDL[currentIndex] = trueAnswer;
                 preCauDL[currentIndex] = cau;

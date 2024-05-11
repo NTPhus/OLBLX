@@ -1,0 +1,132 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.form-thi{
+    margin-top: 100px;
+    background: url('./../img/bg-video.jpg');
+    text-align: center;
+    height: 1050px;
+}
+
+.form-thi .form-heading{
+    text-align: center;
+    padding: 20px 0px;
+    color: #fff;
+}
+
+.form-thi .container{
+    width: 75%;
+    height: 900px;
+    display: block;
+    margin: auto;
+    display: flex;
+    box-shadow: 0px 0px 5px 5px #999999;
+
+}
+/* CONTENT - Chứa câu hỏi + hình ảnh + đáp án */
+/* Start*/
+.content{
+    width: 1000px;
+    background-color: #fff;
+    border: 1px solid black;
+}
+.cauhoi{
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 20px;
+}
+
+#img-cauhoi{
+    max-height: 300px;
+    width: auto;
+    max-width: 1000px;
+    position: relative;
+    margin: 10px 0px;
+}
+.dapan{
+    min-height: 50px;
+    width: auto;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #f4f4f4dd;
+    font-size: 18px;
+    margin: 20px 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+    text-align: left;
+}
+
+.dapan:hover{
+    background-color: #33FFFF;
+    cursor: pointer;
+}
+
+/* END */
+
+/* BOTTOM BAR - Chứa đếm thời gian + 30 câu hỏi */
+/* START */
+.bottom-bar{
+    width: 300px;
+    height: auto;
+    background: #fff;
+    border: 1px solid black;
+    
+}
+
+/* countdown */
+.time{
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    height: 50px;
+    line-height: 50px;
+    background-color:#09345b;
+    font-size: 20px;
+    color: yellow;
+    padding: 0px 15px;
+}
+
+/* Nút hiện thị số câu */
+ .btn{
+    margin: 10px 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: aqua;
+    display: inline-block;
+    line-height: 40px;
+    box-shadow: 0px 0px 5px #6633FF;
+}
+.btn:hover{
+    background-color: #FFFF33;
+}
+
+/* Nút nộp bài */
+.submit{
+
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 10px;
+    height: 60px;
+    width: 120px;
+    line-height: 60px;
+    background-color: #FFFF00;
+    color: #EE0000;
+    justify-items: center;
+    margin-left: 30%;
+    margin-top: 50px;
+}
+.submit:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+/* END */

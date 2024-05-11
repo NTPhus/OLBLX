@@ -18,7 +18,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/5263b3717e.js" crossorigin="anonymous"></script>
     <title>ôn thi mô phỏng</title>
-    <link rel="stylesheet" href="CSS/MoPhong.css">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .video{
+            position: relative;
+        }
+
+        #myVideo{
+            margin-top: 50px;
+            display: block;
+            height: 500px;
+            width: 1000px;
+            z-index: -1;
+        }
+        .container{
+            display: flex;
+        }
+        .item1{
+            width: 70%;
+            float: left;
+        }
+        .item2{
+            width: 30%;
+            float: right;
+        }
+
+        .btnDatCo{
+            margin: 20px;
+            height: 50px;
+            width: 100px;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+
+        button{
+            height: 30px;
+            width: 30px;
+            margin: 10px;
+        }
+
+        .button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btnDatCo:hover{
+            background-color: burlywood;
+        }
+
+        table{
+            margin-top: 50px;
+            width: 300px;
+            height: 500px;
+        }
+
+        tr{
+            text-align: center;
+        }
+
+        #myProgress {
+            width: 1000px;
+            background-color: grey;
+            margin-bottom: 20px;
+        }
+
+        #myBar {
+            width: 1%;
+            height: 30px;
+            background-color: green;
+        }
+
+        .bar-block{
+            max-width: 1000px;
+        }
+
+        #time{
+            margin-top: -20px;
+            z-index: 10;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #bar{
+            background-color: gray;
+            height: 5px;
+            width: 1000px;
+            display: flex;
+        }
+
+        #p1, #p2, #p3, #p4, #p5{
+            height: 5px;
+            z-index: 10;
+            opacity: 0;
+        }
+
+        #p1{
+            background-color: lightgreen;
+        }
+
+        #p2{
+            background-color: limegreen;
+        }
+
+        #p3{
+            background-color: yellow;
+        }
+
+        #p4{
+            background-color: orange;
+        }
+
+        #p5{
+            background-color: red;
+        }
+
+        .result-bar{
+            padding-top: 20px;
+            height: 50px;
+            border: 1px solid;
+            margin-bottom: 20px;
+        }
+
+        #diem{
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <div class="containter" id="container">
@@ -46,56 +177,19 @@
 
             </div>
             <div class="button">
-                <button onclick="getPoint()">Đặt cờ <i class="fa-regular fa-flag"></i> </button>
+                <button class="btnDatCo" onclick="getPoint()">Đặt cờ <i class="fa-regular fa-flag"></i> </button>
+            </div>
+
+            <div class="result-bar">
+                <p><u>Tình huống <span id="cauSo">1</span></u>: <span id="rs">Nhấn phím cách hoặc ấn nút đặt cờ khi phát hiện tình huống</span></p>
             </div>
         </div>
         <div class="item2">
-            <table border="1">
-                <thead>
-                    <td>Câu hỏi</td>
-                    <td>Điểm</td>
-                </thead>
-                <tr>
-                    <td>Câu 1</td>
-                    <td id = "td1"><i class="fa-solid fa-spinner fa-pulse"></i></td>
-                </tr>
-                <tr>
-                    <td>Câu 2</td>
-                    <td id = "td2"></td>
-                </tr>
-                <tr>
-                    <td>Câu 3</td>
-                    <td id = "td3"></td>
-                </tr>
-                <tr>
-                    <td>Câu 4</td>
-                    <td id = "td4"></td>
-                </tr>
-                <tr>
-                    <td>Câu 5</td>
-                    <td id = "td5"></td>
-                </tr>
-                <tr>
-                    <td>Câu 6</td>
-                    <td id = "td6"></td>
-                </tr>
-                <tr>
-                    <td>Câu 7</td>
-                    <td id = "td7"></td>
-                </tr>
-                <tr>
-                    <td>Câu 8</td>
-                    <td id = "td8"></td>
-                </tr>
-                <tr>
-                    <td>Câu 9</td>
-                    <td id = "td9"></td>
-                </tr>
-                <tr>
-                    <td>Câu 10</td>
-                    <td id = "td10"></td>
-                </tr>
-            </table>
+            <?php 
+                for($i = 1; $i <= 120; $i++){
+                    echo "<button class='btn' id='btn$i' onclick='chuyenCau($i)'>$i</button>";
+                }
+            ?>
         </div>
     </div>
 
@@ -110,7 +204,7 @@
         length: parseInt(data[3]),
     }, ];
 
-    for(let i=4; i<data.length;i+=4)
+    for(let i=0; i<data.length;i+=4)
         videos.push({
             cau:parseInt(data[i]),
             start:parseInt(data[i+1]),
@@ -122,11 +216,12 @@
 
     var video = document.getElementsByTagName('video')[0];
 
-    var currentIndex = 0;
+    var currentIndex = 1;
 
     var trangThai = false;
 
     video.onended = function(e) {
+        chuyenCau(currentIndex+1);
         chuyenVideo();
     };
     //Nhan phim cach de dat co
@@ -140,33 +235,38 @@
         let diem;
         if(x.currentTime >= getP && x.currentTime <= getP+p){
             diem = "5/5";
+            document.getElementById("rs").innerHTML = "<span id='diem'>"+diem+"</span> bạn đang làm rất tốt!";
         }else if(x.currentTime >= getP+p && x.currentTime <= getP+2*p){
             diem = "4/5";
+            document.getElementById("rs").innerHTML = "<span id='diem'>"+diem+"</span> bạn đang làm rất tốt!";
         }else if(x.currentTime >= getP+2*p && x.currentTime <= getP+3*p){
             diem = "3/5";
+            document.getElementById("rs").innerHTML = "<span id='diem'>"+diem+"</span> bạn đang làm rất tốt!";
         }else if(x.currentTime >= getP+3*p && x.currentTime <= getP+4*p){
             diem = "2/5";
+            document.getElementById("rs").innerHTML = "<span id='diem'>"+diem+"</span> bạn đang làm rất tốt!";
         }else if(x.currentTime >= getP+4*p && x.currentTime <= getP+5*p){
             diem = "1/5";
+            document.getElementById("rs").innerHTML = "<span id='diem'>"+diem+"</span> bạn cần làm tốt hơn để đạt điểm cao hơn!";
         }else{
             diem = "0/5";
+            document.getElementById("rs").innerHTML = "<span id='diem'>"+diem+"</span> bạn chưa chọn đúng thời điểm!";
         }
-        document.getElementById("td" + (currentIndex+1)).innerHTML = diem;
         CamCo();
     }
     //chuyen video
     function chuyenVideo(){
         let vid = document.getElementById("myVideo");
-        vid.src = "video/MoPhong/"+ (currentIndex+2) +".mp4";
-        vid.load();
-        currentIndex++;
-        document.getElementById("td" + (currentIndex+1)).innerHTML = "<i class='fa-solid fa-spinner fa-pulse'></i>";
+        vid.src = "video/MoPhong/"+ (currentIndex) +".mp4";
+        vid.load(); 
         document.getElementById("p1").style.opacity = "0";
         document.getElementById("p2").style.opacity = "0";
         document.getElementById("p3").style.opacity = "0";
         document.getElementById("p4").style.opacity = "0";
         document.getElementById("p5").style.opacity = "0";
         document.getElementById("flag").innerHTML = "";
+        document.getElementById("cauSo").innerHTML = (currentIndex);
+        document.getElementById("rs").innerHTML = "Nhấn phím cách hoặc ấn nút đặt cờ khi phát hiện tình huống";
     }
 
     var width;
@@ -215,6 +315,18 @@
         document.getElementById("p4").style.opacity = "1";
         document.getElementById("p5").style.opacity = "1";
     }
+
+    function chuyenCau(cau){
+        document.getElementById("btn"+(currentIndex)).style.backgroundColor = "green";
+        currentIndex = cau;
+        markCurrentIndex();
+        chuyenVideo();
+    }
+
+    function markCurrentIndex(){
+        document.getElementById("btn"+(currentIndex)).style.backgroundColor = "red";
+    }
+    markCurrentIndex();
 </script>
 
 </body>

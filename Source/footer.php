@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="assets/css/grid.css">
+    <link rel="stylesheet" href="CSS/grid.css">
     <style>
         *{
         margin: 0;
@@ -157,7 +157,7 @@
                    <i class="ri-phone-fill"> +84 888888888</i>
                </div>
                <div class="contact">
-                   <i class="ri-facebook-circle-fill"></i>
+                   <!-- <i class="ri-facebook-circle-fill"></i> -->
                    <a class="transfer" href="">Thi lái xe</a>
                </div>
                <div class="contact">

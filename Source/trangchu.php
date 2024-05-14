@@ -15,7 +15,7 @@
 
 </head>
 <body>
-    <?php include 'header.php'?>
+<?php include 'header.php'?>
 
 <div class="container">
     <div class="slider">

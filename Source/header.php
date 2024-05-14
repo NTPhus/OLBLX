@@ -92,9 +92,10 @@ ul.dropdown li:nth-child(1)
   border-bottom: 1px solid #ccc;
 
 }
-ul.dropdown li:nth-child(2)
+ul.dropdown li:nth-child(2), ul.dropdown li:nth-child(3)
 {
   padding: 20px 0;
+  border-bottom: 1px solid #ccc;
 }
 
 ul li:hover ul.dropdown{
@@ -143,7 +144,7 @@ ul li:hover ul.dropdown{
                         <ul class='dropdown'>
                             <li><a href='giaoDienHienThiLichSu.php'>LỊCH SỬ LÀM BÀI</a></li>
                             <li><a href='#'>ĐỔI MẬT KHẨU</a></li>
-                            <li><a href='xulydangxuat.php'>ĐĂNG XUẤT</a></li>
+                            <li><a href='XuLyPHP/XuLy.php?action=logout'>ĐĂNG XUẤT</a></li>
                         </ul>
                         </li>
                         ";

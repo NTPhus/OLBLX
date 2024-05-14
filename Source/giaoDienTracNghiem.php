@@ -15,56 +15,56 @@ while($row = mysqli_fetch_array($res)){
     array_push($data,$row['dapandung']);
 }
 
-$sql = "SELECT cau FROM `60_cau_diem_liet`";
+$sql = "SELECT cau FROM `600_cau_hoi` WHERE cau_diem_liet = '1'";
 $res = mysqli_query($conn, $sql);
 $cdl = [];
 while($row = mysqli_fetch_array($res)){
     array_push($cdl,$row['cau']);
 }
 
-$sql = "SELECT cau FROM `chuong1`";
+$sql = "SELECT cau FROM `600_cau_hoi` WHERE chuong = '1'";
 $res = mysqli_query($conn, $sql);
 $chuong1 = [];
 while($row = mysqli_fetch_array($res)){
     array_push($chuong1,$row['cau']);
 }
 
-$sql = "SELECT cau FROM `chuong2`";
+$sql = "SELECT cau FROM `600_cau_hoi` WHERE chuong = '2'";
 $res = mysqli_query($conn, $sql);
 $chuong2 = [];
 while($row = mysqli_fetch_array($res)){
     array_push($chuong2,$row['cau']);
 }
 
-$sql = "SELECT cau FROM `chuong3`";
+$sql = "SELECT cau FROM `600_cau_hoi` WHERE chuong = '3'";
 $res = mysqli_query($conn, $sql);
 $chuong3 = [];
 while($row = mysqli_fetch_array($res)){
     array_push($chuong3,$row['cau']);
 }
 
-$sql = "SELECT cau FROM `chuong4`";
+$sql = "SELECT cau FROM `600_cau_hoi` WHERE chuong = '4'";
 $res = mysqli_query($conn, $sql);
 $chuong4 = [];
 while($row = mysqli_fetch_array($res)){
     array_push($chuong4,$row['cau']);
 }
 
-$sql = "SELECT cau FROM `chuong5`";
+$sql = "SELECT cau FROM `600_cau_hoi` WHERE chuong = '5'";
 $res = mysqli_query($conn, $sql);
 $chuong5 = [];
 while($row = mysqli_fetch_array($res)){
     array_push($chuong5,$row['cau']);
 }
 
-$sql = "SELECT cau FROM `chuong6`";
+$sql = "SELECT cau FROM `600_cau_hoi` WHERE chuong = '6'";
 $res = mysqli_query($conn, $sql);
 $chuong6 = [];
 while($row = mysqli_fetch_array($res)){
     array_push($chuong6,$row['cau']);
 }
 
-$sql = "SELECT cau FROM `chuong7`";
+$sql = "SELECT cau FROM `600_cau_hoi` WHERE chuong = '7'";
 $res = mysqli_query($conn, $sql);
 $chuong7 = [];
 while($row = mysqli_fetch_array($res)){

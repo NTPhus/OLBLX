@@ -12,6 +12,83 @@
     <link rel="stylesheet" href="img/back.png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
     <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            box-sizing: border-box;
+        }
+        .alert{
+            background: #ffdb9b;
+            padding: 20px 40px;
+            min-width: 420px;
+            position: absolute;
+            right: 0;
+            top: 10px;
+            border-radius: 4px;
+            border-left: 8px solid #ffa502;
+            overflow: hidden;
+            z-index: 100;
+        }
+        .alert.showAlert{
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .alert.show{
+            animation: show_slide 1s ease forwards;
+        }
+        @keyframes show_slide {
+        0%{
+            transform: translateX(100%);
+        }
+        40%{
+            transform: translateX(-10%);
+        }
+        80%{
+            transform: translateX(0%);
+        }
+        100%{
+            transform: translateX(-10px);
+        }
+        }
+        .alert.hide{
+            display: none;
+        }
+        
+        .alert .fa-exclamation-circle{
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ce8500;
+            font-size: 30px;
+        }
+        .alert .msg{
+            padding: 0 20px;
+            font-size: 18px;
+            color: #ce8500;
+        }
+        .alert .close-btn{
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #ffd080;
+            padding: 20px 18px;
+            cursor: pointer;
+        }
+        .alert .close-btn:hover{
+            background: #ffc766;
+        }
+        .alert .close-btn .fas{
+            color: #ce8500;
+            font-size: 22px;
+            line-height: 40px;
+        }
+    </style>
 </head>
 <body>
     <!----------------------------- HEADER------------------------>
@@ -25,7 +102,7 @@
             
              <!-- THANH ĐIỀU HƯỚNG -->
              <ul>
-                <?php
+             <?php
                     if(!isset($_SESSION["username"])){
                         echo "<li><button class='btnLogin-popup'>ĐĂNG NHẬP</button></li>";
                     } else{
@@ -33,11 +110,12 @@
                         echo "
                         <div class='form'>
                         "."<p class='user'>Xin chào, ".$_SESSION["username"]."</p>"."
-                        <a class='dangxuat' href='xulydangxuat.php'>Đăng xuất</a>
+                        <a href='XuLyPHP/XuLy.php?action=logout'>ĐĂNG XUẤT</a>
                          </div>
                         ";
                     }                 
                 ?>
+                
             </ul> 
         </nav>  
 
@@ -51,7 +129,7 @@
                 <div class="form-box login">
                              <!-- TIÊU ĐỀ -->
                              <h2>Đăng nhập</h2>
-                        <form action="xulydangnhap.php" method="get">
+                        <form action="XuLyPHP/XuLy.php" method="post">
                             <!-- NHẬP TÀI KHOẢN -->
                                 <div class="input_box">
                                     <span class="icon"> <i class="ri-user-3-fill"></i></span>
@@ -69,7 +147,7 @@
                                         <label><input type="checkbox" name="" id=""> Lưu mật khẩu</label>
                                         <a href="#">Quên mật khẩu</a>
                                 </div>
-                        
+                                <input type="text" name="action" value="login" hidden>
                              <!-- NÚT ĐĂNG NHẬP -->
                                 <button type="submit" class="btn">Đăng nhập</button>
                         
@@ -79,16 +157,7 @@
                                         <a href="#" class = "link_dang_ky">Đăng ký</a>
                                     </p>
                                 </div>
-                                 <!-- BÁO LỖI-->
-                                 <?php
-                                if(isset($_SESSION["errorlg"])){
-                                    echo '<script type="text/JavaScript">  
-                                        alert("Mật khẩu hoặc tài khoản chưa chính xác!"); 
-                                        </script>' 
-                                    ;
-                                    session_destroy();
-                                }
-                                ?>
+                                
                         </form>
                 </div>
 
@@ -97,7 +166,7 @@
                 <div class="form-box register">
                                 <!-- TIÊU ĐỀ -->
                                 <h2>Đăng ký</h2>
-                        <form action="xulydangki.php" method="get">
+                        <form action="XuLyPHP/XuLy.php" method="post">
                                 <?php ?>
                                 <!-- NHẬP TÊN TÀI KHOẢN -->
                                 <div class="input_box">
@@ -130,6 +199,8 @@
 
                                 <!-- NÚT ĐĂNG KÝ -->
                                 <button type="submit" class="btn" id="rgt-btn" style="cursor: not-allowed;" disabled>Đăng ký</button>
+                                
+                                <input type="text" name="action" value="register" hidden>
 
                                 <!-- ĐƯỜNG LINK FORM ĐĂNG NHẬP -->
                                 <div class="dk_tai_khoan">
@@ -150,20 +221,29 @@
                         </form>
                 </div>
             </div>
-
             <div class="text-box">
                 <form action="#"></form>
                     <h2 class = "h2-1 animated" >ÔN THI </h2> 
                         <h2 class = "h2-1 animated">LÁI XE  TRỰC TUYẾN</h2>
                     <p class="win"> Chiến thắng kỳ thi lý thuyết!</p>
-                    <!-- <Button class = "btn-batdau">BẮT ĐẦU <i class="ri-arrow-right-line"></i></Button> 
-                    -->
                     <a  href="#" onclick="AreLogin()" id="start">
                         BẮT ĐẦU!
                     </a>
                   </form>
             </div>
     </div>
+
+   
+
+     <!-- BÁO LỖI-->
+    <div class="alert <?php if(isset($_SESSION["errorlg"])) echo 'showAlert'; else echo 'hide'?>">
+        <span class="fas fa-exclamation-circle"></span>
+        <span class="msg"><?php echo $_SESSION["errorlg"]?></span>
+        <div class="close-btn">
+        <span class="fas fa-times"></span>
+        </div>
+    </div>
+
 
 </body>
 <script>
@@ -178,9 +258,16 @@
         if(login){
             document.getElementById("start").setAttribute("href", "trangchu.php");
         }else{
-            alert("Bạn chưa đăng nhập");
+            $('.alert').addClass("show");
+            $('.alert').removeClass("hide");
+            $('.alert').addClass("showAlert");
         }
     }
+
+        $('.close-btn').click(function(){
+            $('.alert').removeClass("show");
+            $('.alert').addClass("hide");
+        });
 </script>
 <script src="JS/script.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

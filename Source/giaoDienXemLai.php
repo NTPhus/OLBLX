@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xem lại bài</title>
-    <link rel="stylesheet" href="CSS/vaothi.css">
+    <link rel="stylesheet" href="CSS/GDLuyenThi.css">
 </head>
 <body>
     <?php

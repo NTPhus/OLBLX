@@ -4,315 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luyện Thi</title>
-    <link rel="stylesheet" href="CSS/vaothi.css">
-    <style>
-        
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-.form-thi{
-    margin-top: 100px;
-    background: url('img/bg-video.jpg');
-    text-align: center;
-    height: 1050px;
-}
-
-.form-thi .form-heading{
-    text-align: center;
-    padding: 20px 0px;
-    color: #fff;
-}
-
-.form-thi .container{
-    width: 75%;
-    height: 900px;
-    display: block;
-    margin: auto;
-    display: flex;
-    box-shadow: 0px 0px 5px 5px #999999;
-
-}
-/* CONTENT - Chứa câu hỏi + hình ảnh + đáp án */
-/* Start*/
-.content{
-    width: 1000px;
-    background-color: #fff;
-    border: 1px solid black;
-}
-.cauhoi{
-    text-align: left;
-    font-size: 20px;
-    font-weight: bold;
-    margin: 20px 20px;
-}
-
-#img-cauhoi{
-    height: 300px; 
-    max-width: 800px;
-    position: relative;
-    margin: 10px 0px;
-}
-.dapan{
-    min-height: 50px;
-    width: auto;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    background-color: #f4f4f4dd;
-    font-size: 18px;
-    margin: 20px 20px;
-    padding-left: 20px;
-    padding-top: 10px;
-    text-align: left;
-}
-
-.dapan:hover{
-    background-color: #33FFFF;
-    cursor: pointer;
-}
-
-/* END */
-
-/* BOTTOM BAR - Chứa đếm thời gian + 30 câu hỏi */
-/* START */
-.bottom-bar{
-    width: 300px;
-    height: auto;
-    background: #fff;
-    border: 1px solid black;
-    
-}
-
-/* countdown */
-.time{
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-    height: 50px;
-    line-height: 50px;
-    background-color:#09345b;
-    font-size: 20px;
-    color: yellow;
-    padding: 0px 15px;
-}
-
-/* Nút hiện thị số câu */
- .btn{
-    margin: 10px 5px;
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 18px;
-    background-color: aqua;
-    display: inline-block;
-    line-height: 40px;
-    box-shadow: 0px 0px 5px #6633FF;
-}
-.btn:hover{
-    background-color: #FFFF33;
-}
-
-/* Nút nộp bài */
-.submit_btn{
-
-    font-weight: bold;
-    font-size: 20px;
-    border-radius: 10px;
-    height: 60px;
-    width: 120px;
-    line-height: 60px;
-    background-color: #FFFF00;
-    color: #EE0000;
-    justify-items: center;
-    margin-left: 30%;
-    cursor: pointer;
-    margin-top: 50px;
-}
-.submit:hover{
-    opacity: 0.6;
-    cursor: pointer;
-}
-
-/* END */
-
-
-
-/* Form xác thực */
-.xacthuc, .result {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-            z-index: 1;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: rgba(0, 26, 51, .95);
-            /* transform: scale(0); */
-            display: none;
-
-		}
-
-        .xacthuc_open, .result_open{
-			display: flex;
-        }
-        .xacthuc_close{
-            display: none;
-        }
-
-        .xacthuc_container{
-            width: 400px;
-            height: 200px;
-            background: #fff;
-            box-shadow: 0px 0px 10px #ccc;
-        }
-        .xacthuc_heading{
-            background: #ddd;
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 15px;
-        }
-        .xacthuc_heading h3, .xacthuc_content p{
-            font-family: Arial, Helvetica, sans-serif;
-            color: #09345b
-        }
-        .xacthuc_content{
-            font-weight: 550;
-            padding: 20px;
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            
-        }
-        .xacthuc_buttons{
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            margin-top: 20px;
-            padding: 20px;
-        }
-        .xacthuc_cancel, .xacthuc_confirm{
-            padding: 10px 20px;
-            width: 100px;
-            cursor: pointer;
-            font-weight: 800;
-        }
-        .xacthuc_cancel{
-            background: yellow;
-            border: 1px solid #FFCC00;
-            color: red;
-        }
-        .xacthuc_confirm{
-            color: #fff;
-            background: #0066CC;
-            border: 1px solid #006699;
-
-        }
-        .ri-close-large-line{
-            font-size: 20px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-/* -------------------FORM KET QUA---------------------- */
-        .result_container{
-            box-shadow: 0px 0px 20px #DDDDDD;
-            color: #333333;
-        }
-        .result-heading
-        {
-            font-family: Arial, Helvetica, sans-serif;
-            width: 100%;
-            color: #fff;
-            height: 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #0099FF;
-            padding: 10px 20px;
-        }
-
-        .result-heading h4{
-            letter-spacing: 0.5px;
-        }
-
-
-        .result_content_item{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        } 
-
-        .emoji
-        {
-            color: #FFCC00;
-            font-size: 30px;
-
-        }
-        .cauhoii, .sodiem, .danhgia{
-            display: flex;
-            padding: 10px 0px;
-        }
-
-        .result_content{
-            background: #fff;
-            padding: 20px 20px;
-        }
-        .result_content h1{
-            font-family: Arial, Helvetica, sans-serif;
-
-            text-align: center;
-        }
-        .result_content .loidanhgia{
-            font-family: Arial, Helvetica, sans-serif;
-            color: red;
-            text-transform: uppercase;
-            font-size: 20px;
-            font-weight: 900;
-            font-weight: bolder;
-            
-        }
-
-        .result_container_heading{
-            padding: 20px 0px;
-            text-align: center;
-            line-height: 30px;
-        }
-        .exit_btn
-        {
-            text-transform: uppercase;
-            margin-top: 30px;
-            font-size: 20px;
-            font-weight: 600;
-            background: #0099FF;
-            color: #fff;
-            text-align: center;
-            padding: 20px 40px;
-            margin-left: 40%;
-            border-radius: 10px;
-            cursor: pointer;
-            border: 1px solid #FFCC00;
-
-        }
-        .exit_btn:hover {
-            opacity: 0.5;
-        }
-        .ketqua{
-            font-size: 20px;
-            line-height: 25px;
-        }
-         .ketqua p{
-            margin-left: 40px;
-         }
-    </style>
+    <link rel="stylesheet" href="CSS/GDLuyenThi.css">
 </head>
 <body>
     <?php
@@ -421,11 +113,7 @@
                         echo "<div class='btn' id='btn".$i."' onclick='ChuyenCau(".$i.")'>".$i."</div>";
                     }
                 ?> 
-                
-                <input type="text" id="result" name="result" value="0" hidden>
-                <input type="text" id="answer" name="answer" value="0" hidden>
                 <div  class="submit_btn" onclick="CanhBao()">Nộp bài</div>
-                <input type="submit" id="submit" hidden>
             </div>
         </div>
     </form>
@@ -462,10 +150,9 @@
             <div class="result_content_item">
 
                 <div class="result_container_heading">
-                    <!-- <span><i class="emoji ri-emotion-happy-fill"></i></span> -->
-                    <span> <i class="emoji ri-emotion-unhappy-fill"></i> </span>
+                    <span id="icon">  </span>
 
-                    <p class = "loidanhgia">rất tiếc, bạn chưa đạt, cố gắng luyện tập thêm nhé!</p>
+                    <p class = "loidanhgia" id="comment"></p>
                 </div>
            </div>
 
@@ -478,12 +165,12 @@
                 <div class="sodiem">
                     <h4>Tổng điểm: </h4>
 
-                    <p>0/35</p>
+                    <p id="rs">0/35</p>
                 </div>
 
                 <div class="danhgia">
                     <h4>Đánh giá: </h4>
-                    <p>Chưa đạt</p>
+                    <p id="DanhGia">Chưa đạt</p>
                 </div>
             <button class ="exit_btn">Thoát</button>
 
@@ -527,33 +214,38 @@
         let currentIndex = 1; // so cau hien tai
         let Answer = []; // so cau dung sai
         let Choice = []; // arr check da lam cau hoi do chua
+        let img_cauHoi = document.getElementById("img-cauhoi");
+        let dapan1 = document.getElementById("dapan1");
+        let dapan2 = document.getElementById("dapan2");
+        let dapan3 = document.getElementById("dapan3");
+        let dapan4 = document.getElementById("dapan4");
         function start(){
             let currentQuestion = questions[0];
             let answers = currentQuestion.answers;
             document.getElementById("cauHoi").innerHTML = "Câu " + currentIndex + ". " + currentQuestion.question;
             //check co hinh thi hien thi
             if(currentQuestion.img == '0'){
-                document.getElementById("img-cauhoi").style.display = "none";
+                img_cauHoi.style.display = "none";
             }
             else{
-                document.getElementById("img-cauhoi").style.display = "block";
-                document.getElementById("img-cauhoi").setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
+                img_cauHoi.style.display = "block";
+                img_cauHoi.setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
             }
-            document.getElementById("dapan1").innerHTML = answers.dapan1;
-            document.getElementById("dapan2").innerHTML = answers.dapan2;
+            dapan1.innerHTML = answers.dapan1;
+            dapan2.innerHTML = answers.dapan2;
             //kiem tra cau hoi nay co dapan3 khong
             if(answers.dapan3 === "")
-                document.getElementById("dapan3").style.display = "none";
+                dapan3.style.display = "none";
             else{
-                document.getElementById("dapan3").innerHTML = answers.dapan3;
-                document.getElementById("dapan3").style.display = "block";
+                dapan3.innerHTML = answers.dapan3;
+                dapan3.style.display = "block";
             }     
             //kiem tra cau hoi nay co dapan4 khong  
             if(answers.dapan4 === "")
-                document.getElementById("dapan4").style.display = "none";
+                dapan4.style.display = "none";
             else{
-                document.getElementById("dapan4").innerHTML = answers.dapan4;
-                document.getElementById("dapan4").style.display = "block";
+                dapan4.innerHTML = answers.dapan4;
+                dapan4.style.display = "block";
             }
         }
 
@@ -561,36 +253,36 @@
             currentIndex = cau;
             let currentQuestion = questions[currentIndex-1];
             let answers = currentQuestion.answers;
-            document.getElementById("cauHoi").innerHTML = "Câu " +  currentIndex + ". " + currentQuestion.question;
+            img_cauHoi.innerHTML = "Câu " +  currentIndex + ". " + currentQuestion.question;
             //reset cac lua chon truoc
-            document.getElementById("dapan1").style.backgroundColor = "#f4f4f4dd";
-            document.getElementById("dapan2").style.backgroundColor = "#f4f4f4dd";
-            document.getElementById("dapan3").style.backgroundColor = "#f4f4f4dd";
+            dapan1.style.backgroundColor = "#f4f4f4dd";
+            dapan2.style.backgroundColor = "#f4f4f4dd";
+            dapan3.style.backgroundColor = "#f4f4f4dd";
             document.getElementById("dapan4").style.backgroundColor = "#f4f4f4dd";
             //check co hinh thi hien thi
             if(currentQuestion.img == '0'){
-                document.getElementById("img-cauhoi").style.display = "none";
+                img_cauHoi.style.display = "none";
             }
             else{
-                document.getElementById("img-cauhoi").style.display = "block";
-                document.getElementById("img-cauhoi").setAttribute("src", "Anh/Câu "+currentQuestion.img+".png");
+                img_cauHoi.style.display = "block";
+                img_cauHoi.setAttribute("src", "Anh/Câu "+currentQuestion.img+".png");
             }
             //Hien thi dap an len man hinh
-            document.getElementById("dapan1").innerHTML = answers.dapan1;
-            document.getElementById("dapan2").innerHTML = answers.dapan2;
+            dapan1.innerHTML = answers.dapan1;
+            dapan2.innerHTML = answers.dapan2;
             //kiem tra cau hoi nay co dapan3 khong
             if(answers.dapan3 === "")
-                document.getElementById("dapan3").style.display = "none";
+                dapan3.style.display = "none";
             else{
-                document.getElementById("dapan3").innerHTML = answers.dapan3;
-                document.getElementById("dapan3").style.display = "block";
+                dapan3.innerHTML = answers.dapan3;
+                dapan3.style.display = "block";
             }       
             //kiem tra cau hoi nay co dapan4 khong
             if(answers.dapan4 === "")
-                document.getElementById("dapan4").style.display = "none";
+                dapan4.style.display = "none";
             else{
-                document.getElementById("dapan4").innerHTML = answers.dapan4;
-                document.getElementById("dapan4").style.display = "block";
+                dapan4.innerHTML = answers.dapan4;
+                dapan4.style.display = "block";
             }
             //Neu cau nay da lam truoc do
             if(Choice[cau] != null) check(Choice[cau]);
@@ -600,22 +292,16 @@
             let currentQuestion = questions[currentIndex-1];
             let correctAnswers = currentQuestion.correct;
             //reset cac lua chon truoc do
-            document.getElementById("dapan1").style.backgroundColor = "#f4f4f4dd";
-            document.getElementById("dapan2").style.backgroundColor = "#f4f4f4dd";
-            document.getElementById("dapan3").style.backgroundColor = "#f4f4f4dd";
-            document.getElementById("dapan4").style.backgroundColor = "#f4f4f4dd";
+            dapan1.style.backgroundColor = "#f4f4f4dd";
+            dapan2.style.backgroundColor = "#f4f4f4dd";
+            dapan3.style.backgroundColor = "#f4f4f4dd";
+            dapan4.style.backgroundColor = "#f4f4f4dd";
             //doi mau btn va dap an
             document.getElementById("dapan"+cau).style.backgroundColor = "#98F5FF";
             document.getElementById("btn"+currentIndex).style.backgroundColor = "yellow";
             Choice[currentIndex] = cau; // danh dau cau
             //kiem tra ket qua dung sai
             Answer[currentIndex] = correctAnswers == cau ? 1 : -1;
-            let count = 0;
-            for(let i = 1; i <= 25; i++){
-                if(Answer[i] == 1) count++;
-            }
-            //dem ket qua va luu lai
-            document.getElementById("result").setAttribute('value',count);
         }
         //Khong the quay ve trang truoc
         function preventBack() {
@@ -669,11 +355,21 @@
         
 
         OK.addEventListener("click", () => {
-            // ketqua.classList.remove('xacthuc_open');
+            let diem = 0;
+            for(let i = 1; i <= 35; i++){
+                if(Answer[i] == 1) diem++;
+            }
             ketqua.classList.add('result_open');
-
+            document.getElementById("rs").innerHTML = diem + "/35";
+            if(diem < 27){
+                document.getElementById("comment").innerHTML = "rất tiếc, bạn chưa đạt, cố gắng luyện tập thêm nhé!";
+                document.getElementById("icon").innerHTML = "<i class='emoji ri-emotion-unhappy-fill'></i>";
+            }else{
+                document.getElementById("comment").innerHTML = "Bạn đã hoàn thành xuất sắc bài thi, chúc mừng bạn nhé!";
+                document.getElementById("icon").innerHTML = "<i class='emoji ri-emotion-happy-fill'>";
+            }
         });
-            exit2.addEventListener("click", () => {
+        exit2.addEventListener("click", () => {
             xacThuc.classList.add('xacthuc_close');
             ketqua.classList.remove("result_open");
          });

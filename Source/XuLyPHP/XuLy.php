@@ -4,7 +4,7 @@
 
 <?php
     $conn = mysqli_connect("localhost","root","","olblx");
-    if(isset($_POST['action']) || isset($_GET['action'])){
+    if(isset($_POST['action'])){
         if($_POST['action'] == "login"){ // dang nhap
             $username = $_POST["username"];
             $password = $_POST["password"];
@@ -37,9 +37,29 @@
                 mysqli_query($conn, $sqlinsert);
                 header("location:../start.php");
             }
-        }else if($_GET['action'] == "logout"){
-            session_destroy();
-            header("location:../start.php");
+        }
+
+        if(isset($_GET['action'])){
+            if($_GET['action'] == "logout"){
+                session_destroy();
+                header("location:../start.php");
+            }else if($_GET['action'] == "timkiem"){
+                // Lấy dữ liệu từ yêu cầu AJAX
+                $input = trim($_GET['q']);
+
+                // Truy vấn SQL để lấy gợi ý từ cơ sở dữ liệu
+                $sql = "SELECT * FROM dstinh WHERE Tinh LIKE '%$input%'";
+                $result = mysqli_query($conn,$sql);
+
+                if (mysqli_num_rows($result) > 0) {
+                    // Hiển thị các gợi ý
+                    while($row = mysqli_fetch_assoc($result)) {
+                        echo "<div class='suggestion'> " .$row['Tinh'] . " </div>";
+                    }
+                } else {
+                    echo "Không tìm thấy kết quả.";
+                }
+            } 
         }
     }
 

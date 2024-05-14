@@ -185,31 +185,36 @@ while($row = mysqli_fetch_array($res)){
         let Choice = [];
         let preChoice = [];
         let preCauDL = [];
+        let img = document.getElementById("img");
+        let dapan1 = document.getElementById("dapan1");
+        let dapan2 = document.getElementById("dapan2");
+        let dapan3 = document.getElementById("dapan3");
+        let dapan4 = document.getElementById("dapan4");
         function start(){
             let currentQuestion = questions[0];
             let answers = currentQuestion.answers;
             document.getElementById("cauHoi").innerHTML = currentIndex + ". " + currentQuestion.question;
             //check co hinh thi hien thi
             if(currentQuestion.img == '0'){
-                document.getElementById("img").style.display = "none";
+                img.style.display = "none";
             }
             else {
-                document.getElementById("img").style.display = "block";
-                document.getElementById("img").setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
+                img.style.display = "block";
+                img.setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
             }
-            document.getElementById("dapan1").innerHTML = answers.dapan1;
-            document.getElementById("dapan2").innerHTML = answers.dapan2;
+            document.dapan1.innerHTML = answers.dapan1;
+            document.dapan2.innerHTML = answers.dapan2;
             if(answers.dapan3 === "")
-                document.getElementById("dapan3").style.display = "none";
+                document.dapan3.style.display = "none";
             else{
-                document.getElementById("dapan3").innerHTML = answers.dapan3;
-                document.getElementById("dapan3").style.display = "block";
+                document.dapan3.innerHTML = answers.dapan3;
+                document.dapan3.style.display = "block";
             }       
             if(answers.dapan4 === "")
-                document.getElementById("dapan4").style.display = "none";
+                document.dapan4.style.display = "none";
             else{
-                document.getElementById("dapan4").innerHTML = answers.dapan4;
-                document.getElementById("dapan4").style.display = "block";
+                document.dapan4.innerHTML = answers.dapan4;
+                document.dapan4.style.display = "block";
             }
 
             for(i = 167; i <= 600; i++){
@@ -290,37 +295,37 @@ while($row = mysqli_fetch_array($res)){
             let currentQuestion = questions[currentIndex-1];
             let answers = currentQuestion.answers;
             // reset all answer
-            document.getElementById("dapan1").style.border = "none";
-            document.getElementById("dapan1").style.backgroundColor = "aqua";
-            document.getElementById("dapan2").style.border = "none";
-            document.getElementById("dapan2").style.backgroundColor = "aqua";
-            document.getElementById("dapan3").style.border = "none";
-            document.getElementById("dapan3").style.backgroundColor = "aqua";
-            document.getElementById("dapan4").style.border = "none";
-            document.getElementById("dapan4").style.backgroundColor = "aqua";
+            document.dapan1.style.border = "none";
+            document.dapan1.style.backgroundColor = "aqua";
+            document.dapan2.style.border = "none";
+            document.dapan2.style.backgroundColor = "aqua";
+            document.dapan3.style.border = "none";
+            document.dapan3.style.backgroundColor = "aqua";
+            document.dapan4.style.border = "none";
+            document.dapan4.style.backgroundColor = "aqua";
             // Hien thi cau hoi
             document.getElementById("cauHoi").innerHTML = currentIndex + ". " + currentQuestion.question;
             //check co hinh thi hien thi
             if(currentQuestion.img == '0'){
-                document.getElementById("img").style.display = "none";
+                img.style.display = "none";
             }
             else if(currentQuestion.img == '1'){
-                document.getElementById("img").style.display = "block";
-                document.getElementById("img").setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
+                img.style.display = "block";
+                img.setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
             }
-            document.getElementById("dapan1").innerHTML = answers.dapan1;
-            document.getElementById("dapan2").innerHTML = answers.dapan2;
+            document.dapan1.innerHTML = answers.dapan1;
+            document.dapan2.innerHTML = answers.dapan2;
             if(answers.dapan3 === "")
-                document.getElementById("dapan3").style.display = "none";
+                document.dapan3.style.display = "none";
             else{
-                document.getElementById("dapan3").innerHTML = answers.dapan3;
-                document.getElementById("dapan3").style.display = "block";
+                document.dapan3.innerHTML = answers.dapan3;
+                document.dapan3.style.display = "block";
             }       
             if(answers.dapan4 === "")
-                document.getElementById("dapan4").style.display = "none";
+                document.dapan4.style.display = "none";
             else{
-                document.getElementById("dapan4").innerHTML = answers.dapan4;
-                document.getElementById("dapan4").style.display = "block";
+                document.dapan4.innerHTML = answers.dapan4;
+                document.dapan4.style.display = "block";
             }
             document.getElementById("message").innerHTML = "";
             if(cdl == 1){
@@ -338,14 +343,14 @@ while($row = mysqli_fetch_array($res)){
             let correctAnswers = currentQuestion.correct;
             let trueAnswer;
             // reset all answer
-            document.getElementById("dapan1").style.border = "none";
-            document.getElementById("dapan1").style.backgroundColor = "aqua";
-            document.getElementById("dapan2").style.border = "none";
-            document.getElementById("dapan2").style.backgroundColor = "aqua";
-            document.getElementById("dapan3").style.border = "none";
-            document.getElementById("dapan3").style.backgroundColor = "aqua";
-            document.getElementById("dapan4").style.border = "none";
-            document.getElementById("dapan4").style.backgroundColor = "aqua";
+            document.dapan1.style.border = "none";
+            document.dapan1.style.backgroundColor = "aqua";
+            document.dapan2.style.border = "none";
+            document.dapan2.style.backgroundColor = "aqua";
+            document.dapan3.style.border = "none";
+            document.dapan3.style.backgroundColor = "aqua";
+            document.dapan4.style.border = "none";
+            document.dapan4.style.backgroundColor = "aqua";
             if(cau == correctAnswers){
                 //Change answers client choose
                 document.getElementById("btn"+currentIndex).style.backgroundColor = "green";

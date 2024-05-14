@@ -8,87 +8,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trắc nghiệm ô tô</title>
-    <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="img/back.png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-            user-select: none;
-            box-sizing: border-box;
-        }
-        .alert{
-            background: #ffdb9b;
-            padding: 20px 40px;
-            min-width: 420px;
-            position: absolute;
-            right: 0;
-            top: 10px;
-            border-radius: 4px;
-            border-left: 8px solid #ffa502;
-            overflow: hidden;
-            z-index: 100;
-        }
-        .alert.showAlert{
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .alert.show{
-            animation: show_slide 1s ease forwards;
-        }
-        @keyframes show_slide {
-        0%{
-            transform: translateX(100%);
-        }
-        40%{
-            transform: translateX(-10%);
-        }
-        80%{
-            transform: translateX(0%);
-        }
-        100%{
-            transform: translateX(-10px);
-        }
-        }
-        .alert.hide{
-            display: none;
-        }
-        
-        .alert .fa-exclamation-circle{
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #ce8500;
-            font-size: 30px;
-        }
-        .alert .msg{
-            padding: 0 20px;
-            font-size: 18px;
-            color: #ce8500;
-        }
-        .alert .close-btn{
-            position: absolute;
-            right: 0px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #ffd080;
-            padding: 20px 18px;
-            cursor: pointer;
-        }
-        .alert .close-btn:hover{
-            background: #ffc766;
-        }
-        .alert .close-btn .fas{
-            color: #ce8500;
-            font-size: 22px;
-            line-height: 40px;
-        }
-    </style>
+    <link rel="stylesheet" href="CSS/start.css">
 </head>
 <body>
     <!----------------------------- HEADER------------------------>
@@ -108,10 +33,11 @@
                     } else{
                         // NÚT ĐĂNG XUẤT
                         echo "
-                        <div class='form'>
-                        "."<p class='user'>Xin chào, ".$_SESSION["username"]."</p>"."
-                        <a href='XuLyPHP/XuLy.php?action=logout'>ĐĂNG XUẤT</a>
-                         </div>
+                        
+                        "." <p class='user'>Xin chào, ".$_SESSION["username"]."</p> "."
+
+                        <li><a href='XuLyPHP/XuLy.php?action=logout' class='dangxuat'>ĐĂNG XUẤT</a></li>
+                        
                         ";
                     }                 
                 ?>

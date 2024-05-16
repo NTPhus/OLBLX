@@ -4,12 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tìm kiếm</title>
+    <link rel="stylesheet" href="CSS/giaoDienTimKiem.css">
+    <link rel="stylesheet" href="CSS/grid.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
 </head>
 <body>
-    <div>
+    <?php include 'header.php' ?>
+    <div class="app">
+        <div class="app_Text">
+            <div class="grid wide">
+                <div class="row">
+                    <div class="col l-2 text_item"></div>
+                    <a href="#" id="a_item"><i class="ri-arrow-left-double-fill" id="item1"></i></a>
+                    <h3 id="textPage">Trang tìm kiếm địa điểm thi</h3>
+                </div>
+            </div>
+        </div>
+        <div class="app_content">
         <form action="giaoDienTimKiem.php" method="POST">
-            <input type="text" id="search" onkeyup="showSuggestions()" name="search">
-            <select name="tinh" id="">
+            <input type="text" id="search" onkeyup="showSuggestions()" name="search" class="input_Tinh" placeholder="Vui lòng nhập tên tỉnh thành muốn tìm! ..."><br>
+            <select name="tinh" id="" class="Tinh_item">
                 <option value="" selected>-- Chọn tỉnh/thành phố --</option>
                 <option value="An Giang">An Giang</option>
                 <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
@@ -75,11 +89,11 @@
                 <option value="Vĩnh Phúc">Vĩnh Phúc</option>
                 <option value="Yên Bái">Yên Bái</option>
             </select>
-            <div><input type="submit" value="Tìm kiếm"></div>
+            <div><input type="submit" value="Tìm kiếm" class="submit"></div>
             <div id="suggestion"></div>
-        </form>
+        </form>             
     </div>
-
+    <section class="app_result">
     <?php
         if(isset($_POST['search']) || isset($_POST['tinh'])){
         $search_tinh = isset($_POST['search']) ? trim($_POST['search']) : '';
@@ -102,9 +116,9 @@
             if($dong = mysqli_fetch_array($kq)){
                 $dia_chi = $dong['Dia_Chi'];
                 $url_maps = "https://www.google.com/maps/search/?api=1&query=" . urlencode($dia_chi); // urlencode mã hóa địa chỉ
-                echo "<table border='1' align='center'>";
-                    echo "<tr><td align = 'center'><b>Nơi thi</b></td><td align = 'center'><b>Địa chỉ</b></td><td align = 'center'><b>Số điện thoại</b></td><td align = 'center'><b>Xem thêm</b></td></tr>";
-                    echo "<tr><td>".$dong['Noi_Thi']."</td><td>".$dia_chi."</td><td>".$dong['SDT']."</td><td><a href='".$url_maps."' target='_blank'>"."Xem địa chỉ"."</a></td></tr>";
+                echo "<table border= '1' align='center' class='table_ketqua'>";
+                    echo "<tr class='dong'><td align = 'center'><b>Nơi thi</b></td><td align = 'center'><b>Địa chỉ</b></td><td align = 'center'><b>Số điện thoại</b></td><td align = 'center'><b>Xem địa chỉ trên GG Map</b></td></tr>";
+                    echo "<tr class='dong'><td>".$dong['Noi_Thi']."</td><td>".$dia_chi."</td><td>".$dong['SDT']."</td><td><a href='".$url_maps."' target='_blank' id='xemdiachi'>"."Xem địa chỉ"."</a></td></tr>";
                 echo "</table>";
             }else{
                 echo "Không tìm thấy ";
@@ -114,9 +128,12 @@
         }
         }
 ?>
-
+</section>
+    <?php include 'footer.php' ?>
+    </div>
+    
     <script>
-function showSuggestions() {
+    function showSuggestions() {
     var input = document.getElementById('search').value;
     if (input === '') {
         document.getElementById('suggestion').style.display = 'none';
@@ -127,6 +144,7 @@ function showSuggestions() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById('suggestion').innerHTML = this.responseText;
             document.getElementById('suggestion').style.display = 'block';
+          
 
             // Add click event listener to suggestions
             var suggestions = document.getElementsByClassName('suggestion');
@@ -139,9 +157,10 @@ function showSuggestions() {
             }
         }
     };
-    xmlhttp.open('GET', 'XuLyPHP/XuLy.php?action=timkiem?q=' + input, true);
+    xmlhttp.open('GET', 'xulytimkiem.php?q=' + input, true);
     xmlhttp.send();
 }
+
 </script>
 </body>
 </html>

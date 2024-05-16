@@ -6,8 +6,8 @@
 
 
 .form-thi{
-    margin-top: 100px;
-    background: url('../img/bg-video.jpg');
+    margin-top: 80px;
+    background: url('img/bg-video.jpg');
     text-align: center;
     height: 1050px;
 }
@@ -302,4 +302,8 @@
         }
          .ketqua p{
             margin-left: 40px;
+         }
+
+         #cdl{
+            color: red;
          }

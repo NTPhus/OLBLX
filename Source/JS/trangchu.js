@@ -68,3 +68,15 @@ function removeOpen(index1) {
         }
     });
 }
+
+function chuyenTrang(trang){
+    if(trang == "OnTapMoPhong"){
+        window.location.href = "giaoDienMoPhong.php";
+    }else if(trang == "ThiMoPhong"){
+        window.location.href = "giaoDienThiMP.php";
+    }else if(trang == "OnLyThuyet"){
+        window.location.href = "giaoDienTracNghiem.php";
+    }else if(trang == "ThiLyThuyet"){
+        window.location.href = "chonDeLyThuyet.php";
+    }
+}

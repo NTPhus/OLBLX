@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="CSS/trangchu.css">
+    <link rel="stylesheet" href="CSS/styletrangchu.css">
     <link rel="stylesheet" href="CSS/grid.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
 
@@ -18,25 +18,120 @@
 <?php include 'header.php'?>
 
 <div class="container">
-    <div class="slider">
-    <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-            <img class="swiper-slide" src="https://i.ytimg.com/vi/mtFC-KuAXz8/maxresdefault.jpg" alt="">
-            <img class="swiper-slide" src="https://i.ytimg.com/vi/pV5dn9MZo5w/maxresdefault.jpg" alt="">
-            <img class="swiper-slide" src="https://game8.vn/media/202204/images/sieu-nhan-gao-18-2769.jpg" alt="">
-            <img class="swiper-slide" src="https://i.ytimg.com/vi/QdtPQ0wV53M/maxresdefault.jpg" alt="">
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-        <div class="autoplay-progress">
-            <svg viewBox="0 0 48 48">
-                <circle cx="24" cy="24" r="20"></circle>
-            </svg>
-            <span></span>
+       <!-- START - LUA CHON  -->
+       <div class="topic">
+        <div class="topic_content">
+            <h2>BÀI ÔN TẬP & LUYỆN THI</h2>
+                <div class="topic_content_item">
+                    <div class="row">
+                        <!-- 1 -->
+                        <div class="col l-4  topic_content_item">
+                            <div class="topic_content_heading">
+                                <span><i class="ri-steering-2-line"></i></span>
+                                <p>ÔN TẬP 120 TÌNH HUỐNG MÔ PHỎNG</p>
+                            </div>
+                            <div class="topic_content_items">
+                                <label for="">
+                                    <p>Số câu hỏi</p>
+                                    <p>120</p>
+                                </label>
+
+                                <label for="">
+                                    <p>Phiên bản</p>
+                                    <p>v2.0.0</p>
+                                </label>
+                                <div class="content_body">
+                                    <p>ÔN TẬP TRONG 2 GIỜ</p>
+                                    <button onclick="ChuyenTrang('OnTapMoPhong')">ÔN TẬP</button>
+                              </div>
+                            </div>
+                        </div>
+                        <!-- 2 -->
+                        <div class="col l-4  topic_content_item">
+                            <div class="topic_content_heading">
+                                <span><i class="ri-car-fill"></i></span>
+                                <p>THI THỬ TÌNH HUỐNG MÔ PHỎNG</p>
+                            </div>
+                            <div class="topic_content_items">
+                                <label for="">
+                                    <p>Số câu / đề</p>
+                                    <p>120</p>
+                                </label>
+
+                                <label for="">
+                                    <p>Điểm cần đạt</p>
+                                    <p>35 đ</p>
+                                </label>
+
+                                <div class="content_body">
+                                    <p>LÀM BÀI KHOẢNG 5 PHÚT</p>
+                                    <button onclick="ChuyenTrang('ThiMoPhong')">THI THỬ</button>
+                              </div>
+                            </div>
+                        </div>
+                        <!-- 3 -->
+                        <div class="col l-4  topic_content_item">
+                            <div class="topic_content_heading">
+                                <span><i class="ri-todo-line"></i></span>
+                                <p>ÔN TẬP 600 CÂU HỎI LÝ THUYẾT</p>
+                            </div>
+                            <div class="topic_content_items">
+                                <label for="">
+                                    <p>Số câu hỏi</p>
+                                    <p>600</p>
+                                </label>
+
+                                <label for="">
+                                    <p>Hạng</p>
+                                    <p>B, C, D, E</p>
+                                </label>
+                                <div class="content_body">
+                                    <p>ÔN TẬP TRONG 5 GIỜ</p>
+                                    <button onclick="ChuyenTrang('OnLyThuyet')">ÔN TẬP</button>
+                              </div>
+                            </div>
+                        </div>
+                        <!-- 4 -->
+                        <div class="col l-4  topic_content_item">
+                            <div class="topic_content_heading">
+                                <span><i class="ri-route-line"></i></span>
+                                <p>THI THỬ LÝ THUYẾT LÁI XE B1, B2</p>
+                            </div>
+                            <div class="topic_content_items">
+                                <label for="">
+                                    <p>Số câu / đề</p>
+                                    <p>20, 35</p>
+                                </label>
+
+                                <label for="">
+                                    <p>Số điểm cần đạt</p>
+                                    <p>27/30, 32/35 đ</p>
+                                </label>
+                                <div class="content_body">
+                                    <p>THI THỬ TRONG 22 - 24 PHÚT</p>
+                                    <button onclick="ChuyenTrang('ThiLyThuyet')">ÔN TẬP</button>
+                              </div>
+                            </div>
+                        </div>
+
+                        <!-- 5 -->
+                        <div class="col l-4  topic_content_item">
+                            <div class="topic_content_heading">
+                                <span><i class="ri-file-add-line"></i></span>
+                                <p>NHIỀU BỘ ĐỀ KHÁC SẮP RA MẮT</p>
+                            </div>
+                            <div class="topic_content_items">
+                                <label for="">  </label>
+                                <label for=""></label>
+
+                            </div>
+                        </div>
+                            
+                    </div>
+                </div>
         </div>
     </div>
-    </div>
+    <!-- END - LUA CHON -->
 
     <section class="testimonials">
         <div class="content">

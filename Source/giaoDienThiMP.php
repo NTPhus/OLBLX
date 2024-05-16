@@ -363,8 +363,11 @@
             document.getElementById("flag"+currentIndex).style.marginLeft = width + "%";
             let currentTime = parseInt(x.currentTime);
             document.getElementById("flag"+currentIndex).innerHTML = "<i class='fa-solid fa-flag'> " ;
-            document.getElementById("rs").innerHTML = "<i class='fa-solid fa-flag'> Bạn đã cắm cờ lúc: 00:" + currentTime;
+            if(currentTime < 10) document.getElementById("rs").innerHTML = "<i class='fa-solid fa-flag'> Bạn đã cắm cờ lúc: 00:0" + currentTime;
+            else document.getElementById("rs").innerHTML = "<i class='fa-solid fa-flag'> Bạn đã cắm cờ lúc: 00:" + currentTime;
             status = true;
+        }else{
+            document.getElementById("rs").innerHTML = "<i class='fa-solid fa-flag'> Bạn chỉ được cắm cờ 1 lần trên 1 tình huống";
         }
     }
 

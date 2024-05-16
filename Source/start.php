@@ -71,7 +71,7 @@
                              <!-- LƯU MẬT KHẨU + QUÊN MẬT KHẨU -->
                                 <div class="Mat_khau">
                                         <label><input type="checkbox" name="" id=""> Lưu mật khẩu</label>
-                                        <a href="#">Quên mật khẩu</a>
+                                        <a href="XuLyPHP/giaoDienLayLaiMK.php">Quên mật khẩu</a>
                                 </div>
                                 <input type="text" name="action" value="login" hidden>
                              <!-- NÚT ĐĂNG NHẬP -->
@@ -164,7 +164,7 @@
      <!-- BÁO LỖI-->
     <div class="alert <?php if(isset($_SESSION["errorlg"])) echo 'showAlert'; else echo 'hide'?>">
         <span class="fas fa-exclamation-circle"></span>
-        <span class="msg"><?php echo $_SESSION["errorlg"]?></span>
+        <span class="msg" id="msg"><?php if(isset($_SESSION["errorlg"])) echo $_SESSION["errorlg"]?></span>
         <div class="close-btn">
         <span class="fas fa-times"></span>
         </div>
@@ -184,6 +184,7 @@
         if(login){
             document.getElementById("start").setAttribute("href", "trangchu.php");
         }else{
+            document.getElementById("msg").innerHTML = "Bạn phải đăng nhập trước khi bắt đầu!";
             $('.alert').addClass("show");
             $('.alert').removeClass("hide");
             $('.alert').addClass("showAlert");

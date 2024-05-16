@@ -14,6 +14,7 @@
             $data = mysqli_fetch_assoc($res);
 
             if($data["username"] == $username && $data["password"] == $password){
+                unset($_SESSION['errorlg']);
                 $_SESSION["username"] = $username;
                 header("location:../start.php");
             }
@@ -38,34 +39,34 @@
                 header("location:../start.php");
             }
         }
+    }   
 
-        if(isset($_GET['action'])){
-            if($_GET['action'] == "logout"){
-                session_destroy();
-                header("location:../start.php");
-            }else if($_GET['action'] == "timkiem"){
-                // Lấy dữ liệu từ yêu cầu AJAX
-                $input = trim($_GET['q']);
+    if(isset($_GET['action'])){
+        if($_GET['action'] == "logout"){
+            session_destroy();
+            header("location:../start.php");
+        }else if($_GET['action'] == "timkiem"){
+            // Lấy dữ liệu từ yêu cầu AJAX
+            $input = trim($_GET['q']);
 
-                // Truy vấn SQL để lấy gợi ý từ cơ sở dữ liệu
-                $sql = "SELECT * FROM dstinh WHERE Tinh LIKE '%$input%'";
-                $result = mysqli_query($conn,$sql);
+            // Truy vấn SQL để lấy gợi ý từ cơ sở dữ liệu
+            $sql = "SELECT * FROM dstinh WHERE Tinh LIKE '%$input%'";
+            $result = mysqli_query($conn,$sql);
 
-                if (mysqli_num_rows($result) > 0) {
-                    // Hiển thị các gợi ý
-                    while($row = mysqli_fetch_assoc($result)) {
-                        echo "<div class='suggestion'> " .$row['Tinh'] . " </div>";
-                    }
-                } else {
-                    echo "Không tìm thấy kết quả.";
+            if (mysqli_num_rows($result) > 0) {
+                // Hiển thị các gợi ý
+                while($row = mysqli_fetch_assoc($result)) {
+                    echo "<div class='suggestion'> " .$row['Tinh'] . " </div>";
                 }
-            } 
+            } else {
+                echo "Không tìm thấy kết quả.";
+            }
+        }else if($_GET['action'] == "luuXemLai"){
+            echo "Bực vl";
+            $sql = "INSERT INTO `lich_su_lam_bai`(`ngaylambai`, `MaLamBai`, `username`, `de`, `ketqua`, `dapan`) VALUES ('".$_GET['NgayLamBai']."','".$_GET['MaLamBai']."','".$_SESSION['username']."','".$_GET['De']."','".$_GET['KetQua']."','".$_GET['DapAn']."')";
+            mysqli_query($conn,$sql);
+            header("location:../trangchu.php");
         }
     }
-
-
-
-
-
-
+    mysqli_close($conn);
 ?>

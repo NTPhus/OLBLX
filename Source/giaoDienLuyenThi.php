@@ -8,67 +8,38 @@
 </head>
 <body>
     <?php
-       function TaoRandomTheoChuong($arr, $scau){
-        if($scau <= 0) return [];
-        $kq = array_rand($arr, $scau);
-        return $kq;
-    }
-    
-    function LayChuong($chuong){
-        $data = [];
-        $conn = mysqli_connect("localhost", "root", "", "olblx");
-        if($chuong == 8)
-            $sql = "SELECT cau FROM `600_cau_hoi` WHERE cau_diem_liet = '1'";
-        else
-            $sql = "SELECT cau FROM `600_cau_hoi` WHERE chuong = '$chuong'";
-        $res = mysqli_query($conn, $sql);
-        while($row = mysqli_fetch_array($res)){
-            $data[$row['cau']] = $row['cau'];
-        }
-        return $data;
-    }
-    
-    function CombineChuong($arr, $chuong, $scau){
-        $c1 = LayChuong($chuong);
-        $array = TaoRandomTheoChuong($c1, $scau);
-        if(is_array($array) || is_object($array))
-        foreach($array as $a){
-            array_push($arr, $a);
-        }else{
-            array_push($arr, $array);
-        }
-        return $arr;
-    }
-    
-    function TaoDe($sc1, $sc2, $sc3, $sc4, $sc5, $sc6, $sc7, $sc8){
-       $sum = $sc1 + $sc2 + $sc3 + $sc4 + $sc5 + $sc6 + $sc7 + $sc8;
-       $data = [];
-       $data = CombineChuong($data, 1, $sc1);
-       $data = CombineChuong($data, 2, $sc2);
-       $data = CombineChuong($data, 3, $sc3);
-       $data = CombineChuong($data, 4, $sc4);
-       $data = CombineChuong($data, 5, $sc5);
-       $data = CombineChuong($data, 6, $sc6);
-       $data = CombineChuong($data, 7, $sc7);
-       $data = CombineChuong($data, 8, $sc8);
-    
-       array_unique($data);
-       while(sizeof($data) != $sum){
-            TaoDe($sc1, $sc2, $sc3, $sc4, $sc5, $sc6, $sc7, $sc8);
-       }
-       return $data;
-    }
-    
-    $de = TaoDe(8, 0, 1, 1, 1, 9, 9, 1);
     $conn = mysqli_connect("localhost", "root", "", "olblx");
-    // $de = [];
-    // $sql = "SELECT * FROM `bodeonthiblx` where DeSo = 1";
-    // $res = mysqli_query($conn, $sql);
-    // if($row = mysqli_fetch_array($res)){
-    //     for($i = 1; $i <= 30; $i++){
-    //         array_push($de, $row["cau$i"]);
-    //     }
-    // }
+
+    //lấy câu diểm liệt
+    $cdl = [];
+    $sql = "SELECT * FROM `600_cau_hoi` WHERE cau_diem_liet = '1'";
+    $res = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_array($res)){
+        array_push($cdl,$row['cau']);
+    }
+
+    //lấy đề
+    if(isset($_GET['de'])){
+        if($_GET['de'] == 'ngauNhien')
+            $DeSo = rand(1,5);
+        else{
+            $DeSo = $_GET['de'];
+        }    
+    }
+
+    $de = [];
+    $cauDiemLiet = [];
+    $sql = "SELECT * FROM `bodeonthiblx` where DeSo = $DeSo";
+    $res = mysqli_query($conn, $sql);
+    if($row = mysqli_fetch_array($res)){
+        for($i = 1; $i <= 30; $i++){
+            array_push($de, $row["cau$i"]);
+            if(array_search($row["cau$i"], $cdl)){
+                array_push($cauDiemLiet, $i);
+            }
+        }
+    }
+
     $data = [];
     
     foreach($de as $cau){
@@ -84,7 +55,17 @@
             array_push($data,$row['dapandung']);
         }
     }
-    
+
+    //tao ma luyen thi
+    $malt = rand(1, 10000);
+    $sql = "SELECT `MaLamBai` FROM `lich_su_lam_bai` WHERE MaLamBai = $malt";
+    $res = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_array($res)){
+        $malt = rand(1, 10000);
+        $sql = "SELECT `MaLamBai` FROM `lich_su_lam_bai` WHERE MaLamBai = $malt";
+        $res = mysqli_query($conn, $sql);
+    }
+
     ?>
 
     <?php include 'header.php'?>
@@ -113,7 +94,7 @@
                         echo "<div class='btn' id='btn".$i."' onclick='ChuyenCau(".$i.")'>".$i."</div>";
                     }
                 ?> 
-                <div  class="submit_btn" onclick="CanhBao()">Nộp bài</div>
+                <div  class="submit_btn">Nộp bài</div>
             </div>
         </div>
     </form>
@@ -185,6 +166,7 @@
     <script type="text/javascript">
         // Gán biến data = array từ php
         let data = <?php echo json_encode($data)?>;
+        let cau_diem_liet = <?php echo json_encode($cauDiemLiet)?>;
         //Khai báo object question 
         let questions = [{
             question: data[0] ,
@@ -211,6 +193,7 @@
             });
 
         //Thiết lập ban đầu
+        let status = true;
         let currentIndex = 1; // so cau hien tai
         let Answer = []; // so cau dung sai
         let Choice = []; // arr check da lam cau hoi do chua
@@ -250,10 +233,15 @@
         }
 
         function ChuyenCau(cau){
+            console.log(cau_diem_liet);
             currentIndex = cau;
             let currentQuestion = questions[currentIndex-1];
             let answers = currentQuestion.answers;
-            img_cauHoi.innerHTML = "Câu " +  currentIndex + ". " + currentQuestion.question;
+            console.log(cau_diem_liet);
+            document.getElementById("cauHoi").innerHTML = "Câu " +  currentIndex + ". " + currentQuestion.question;
+            if(cau_diem_liet.indexOf(currentIndex) >= 0){
+                document.getElementById("cauHoi").innerHTML += "<span id='cdl'>(*)</span>";
+            }
             //reset cac lua chon truoc
             dapan1.style.backgroundColor = "#f4f4f4dd";
             dapan2.style.backgroundColor = "#f4f4f4dd";
@@ -302,6 +290,10 @@
             Choice[currentIndex] = cau; // danh dau cau
             //kiem tra ket qua dung sai
             Answer[currentIndex] = correctAnswers == cau ? 1 : -1;
+            //Kiểm tra có sai câu điểm liệt
+            if(correctAnswers != cau && cau_diem_liet.indexOf(cau) >= 0){
+                status = false;
+            }
         }
         //Khong the quay ve trang truoc
         function preventBack() {
@@ -317,6 +309,8 @@
     </script>
     <?php include 'footer.php'?>
     <script>
+        let diem = 0;
+
         const nopBai = document.querySelector(".submit_btn");
         const xacThuc = document.querySelector(".xacthuc")
         const cancel =  document.querySelector(".xacthuc_cancel");
@@ -355,13 +349,13 @@
         
 
         OK.addEventListener("click", () => {
-            let diem = 0;
+            
             for(let i = 1; i <= 35; i++){
                 if(Answer[i] == 1) diem++;
             }
             ketqua.classList.add('result_open');
             document.getElementById("rs").innerHTML = diem + "/35";
-            if(diem < 27){
+            if(diem < 27 && status){
                 document.getElementById("comment").innerHTML = "rất tiếc, bạn chưa đạt, cố gắng luyện tập thêm nhé!";
                 document.getElementById("icon").innerHTML = "<i class='emoji ri-emotion-unhappy-fill'></i>";
             }else{
@@ -375,8 +369,22 @@
          });
 
         thoat.addEventListener("click", () => {
+
+            var timeNow = new Date();
+            var day = timeNow.getDate();
+            var month = timeNow.getMonth() + 1; // Tháng bắt đầu từ 0, nên cần cộng 1
+            var year = timeNow.getFullYear();
+            var formattedDate = day + "/" + month + "/" + year;
+
+            let stringAns = "";
+            for(let i = 1; i <= 30; i++){
+                if(Choice[i] != null)
+                    stringAns += i + ":" + Choice[i] + "-";
+            }
+
             xacThuc.classList.add('xacthuc_close');
             ketqua.classList.remove('result_open');
+            window.location.href = "XuLyPHP/XuLy.php?action=luuXemLai&MaLamBai=<?php echo $malt;?>&De=<?php echo $DeSo;?>&KetQua="+diem+"&NgayLamBai="+formattedDate+"&DapAn="+stringAns+"";
         });
 
         // ấn ra ngoài thì vẫn đóng form

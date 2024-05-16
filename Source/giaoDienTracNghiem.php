@@ -90,7 +90,7 @@ while($row = mysqli_fetch_array($res)){
     <section class="text_page">
     <div class="grid wide">
             <div class="row"> 
-                <a href="#"><i class="ri-arrow-left-line"></i></a>
+                <a href="trangchu.php"><i class="ri-arrow-left-line"></i></a>
                 <h2 class="text">Ôn luyện trắc nghiệm</h2>
             </div>
     </div>

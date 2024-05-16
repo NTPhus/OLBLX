@@ -128,23 +128,23 @@ ul li:hover ul.dropdown{
                     <a href="#">LUYỆN THI</a>
 
                     <ul class="dropdown">
-                        <li><a href="giaoDienLuyenThi.php">LÝ THUYẾT</a></li>
-                        <li><a href="#">MÔ PHỎNG</a></li>
+                        <li><a href="chonDeLyThuyet.php">LÝ THUYẾT</a></li>
+                        <li><a href="giaoDienThiMP.php">MÔ PHỎNG</a></li>
                     </ul>
                 </li>
-                <li><a href="#">ĐỊA ĐIỂM</a></li>
+                <li><a href="giaoDienTimKiem.php">ĐỊA ĐIỂM</a></li>
                 <?php
                     if(!isset($_SESSION["username"])){
-                        echo "<li><button class='btnLogin-popup'>ĐĂNG NHẬP</button></li>";
+                        echo "<li><button class='btnLogin-popup' onclick='dangnhap()'>ĐĂNG NHẬP</button></li>";
                     } else{
                         // NÚT ĐĂNG XUẤT
                         echo "
                         <li>
                         <a href='#'> TÀI KHOẢN </a>
                         <ul class='dropdown'>
-                            <li><a href='giaoDienHienThiLichSu.php'>LỊCH SỬ LÀM BÀI</a></li>
+                            <li><a href='giaoDienLichSuXemLai.php'>LỊCH SỬ LÀM BÀI</a></li>
                             <li><a href='#'>ĐỔI MẬT KHẨU</a></li>
-                            <li><a href='XuLyPHP/XuLy.php?action=logout'>ĐĂNG XUẤT</a></li>
+                            <li><a href='XuLyPHP/XuLy.php?action=logout' class='dangxuat'>ĐĂNG XUẤT</a></li>
                         </ul>
                         </li>
                         ";
@@ -156,5 +156,10 @@ ul li:hover ul.dropdown{
         </nav>  
 
     </header>
+    <script>
+        function dangnhap(){
+            window.location.href = "start.php";
+        }
+    </script>
 </body>
 </html>

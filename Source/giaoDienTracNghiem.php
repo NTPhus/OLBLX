@@ -81,72 +81,281 @@ while($row = mysqli_fetch_array($res)){
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
     <link rel="stylesheet" href="CSS/grid.css">
     <link rel="stylesheet" href="font/remixicon.css">
-    <link rel="stylesheet" href="CSS/styleTracNghiem.css">
-    <link rel="stylesheet" href="CSS/GDTNghiem.css">
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .red{
+            color: #FF4040 !important;
+        }
+
+        .green{
+            color: #54FF9F !important;
+        }
+
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .item1{
+            height: 500px;
+            border: 1px solid;
+            overflow: scroll;
+            background-color: white;
+        }
+
+        .item2{
+            height: 500px;
+            padding-left: 20px;
+            border: 1px solid;
+            overflow: scroll;
+            background-color: white;
+
+        }
+
+        #cauHoi, .dapan{
+            width: 450px;
+        }
+
+        #cauHoi{
+            padding: 10px;
+            margin: 20px 0;
+            border-radius: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .dapan{
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 15px;
+            width: 100%;
+            background: #EEEEEE;
+
+        }
+
+        .dapan:hover{
+            background-color: #99FFFF;
+            cursor: pointer;
+        }
+
+        .btn{
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            border: 1px solid;
+            cursor: pointer;
+            margin: 10px 8px;
+            display: inline-table;
+            text-align: center;
+            font-size: 20px;
+            line-height: 40px;
+            background: #EEEEEE;
+            border: 2px solid #DDDDDD;
+        }
+
+        .btn:hover{
+            background-color: #99FFFF;
+            border: 2px solid #33CCFF;
+        }
+
+
+
+        /* end */
+        .app{
+            /* background-color: #162938 ; */
+            margin-top: 80px;
+            z-index: 99;
+            background: url('./img/bg-video.jpg');
+        }
+
+        a{
+            text-decoration: none;
+            font-size: 30px;
+        }
+        .text{
+            margin-left: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .text_page{
+            width: 100%;
+            height: 50px;
+            color: #fff;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+
+        .text_page h2{
+            text-transform: uppercase;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .content_app{
+            padding-top: 50px;
+            padding-bottom: 100px;
+        }
+
+        .app_share{
+            padding:20px 0;
+            background-color: antiquewhite;
+        }
+
+        .app_share_text{
+            display: block;
+            font-size: 30px;
+        }
+        .app_share_item1{
+            display: flex;
+            font-size: 30px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .upper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chuong{
+            cursor: pointer;
+            border-radius: 15px;
+            text-align: center;
+            justify-content: center;
+            background-color: #EEEEEE;
+            margin-top: 40px;
+            margin-right: 10px;
+            font-weight: bold;
+            color: #111111;
+            width: 130px;
+            height: 40px;
+            padding-top: 10px;
+            border: 1px solid #DDDD;
+        }
+
+        .chuong:hover{
+            background-color: #FFFF00;
+            border: 2px solid #FFCC00;
+        }
+
+        .item1, .item2{
+            margin-top: 60px;
+            height: 600px;
+        }
+
+        .item2{
+            padding: 0 50px;
+        }
+
+        .app_heading{
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            font-weight: 700;
+            font-size: 16px;
+            font-style: italic;
+
+        }
+        .app_heading p{
+           
+        }
+        .app_heading h4{
+            margin: 0px 8px;
+        }
+
+        .lower{
+            margin: 20px 0;
+        }
+
+    </style>
     <script src="https://kit.fontawesome.com/5263b3717e.js" crossorigin="anonymous"></script>
 </head>
 <body>
+ <?php include 'header.php' ?>
     <div class="app">
-    <section class="text_page">
-    <div class="grid wide">
-            <div class="row"> 
-                <a href="trangchu.php"><i class="ri-arrow-left-line"></i></a>
-                <h2 class="text">Ôn luyện trắc nghiệm</h2>
-            </div>
-    </div>
-    </section>
-    <section class="content_app">
-    <div class="grid wide">
-            <div class="row"> 
-                    <div class="col l-7 item1">
-                        <div class='upper'>
-                            <div class="chuong" onclick="ChuyenChuong(1)">Chương 1</div>
-                            <div class="chuong" onclick="ChuyenChuong(2)">Chương 2</div>
-                            <div class="chuong" onclick="ChuyenChuong(3)">Chương 3</div>
-                            <div class="chuong" onclick="ChuyenChuong(4)">Chương 4</div>
-                            <div class="chuong" onclick="ChuyenChuong(5)">Chương 5</div>
-                            <div class="chuong" onclick="ChuyenChuong(6)">Chương 6</div>
-                            <div class="chuong" onclick="ChuyenChuong(7)">Chương 7</div>
-                            <div class="chuong" onclick="ChuyenChuong(8)">60 câu điểm liệt</div>
-                        </div>
-                        <div class='lower' id='lower'>
-                            <?php
-                                for($i = 1; $i <= 600; $i++){
-                                    echo "<div name='cau' class="."btn"." value=".$i." id="."btn".$i." onclick='ChuyenCau(".$i.")'>".$i."</div>";
-                                }
-                            ?>
-                        </div>
+        <section class="text_page">
+            <div class="grid wide">
+                    <div class="row"> 
+                        <a href="#"><i class="ri-arrow-left-line"></i></a>
+                        <h2 class="text">Ôn luyện trắc nghiệm</h2>
                     </div>
-                <div class="col l-5 item2">
-                        <div>
-                            <span>
-                                <div class="image">
-                                  <img id ="img" src="img/logo (2).png" alt="Ảnh">
-                                </div>
-                                <p id="cauHoi"> Phú đẹp trai không ?</p>
-                            </span>
+            </div>
+                        <div class='upper'>
+                                <div class="chuong" onclick="ChuyenChuong(1)">Chương 1</div>
+                                <div class="chuong" onclick="ChuyenChuong(2)">Chương 2</div>
+                                <div class="chuong" onclick="ChuyenChuong(3)">Chương 3</div>
+                                <div class="chuong" onclick="ChuyenChuong(4)">Chương 4</div>
+                                <div class="chuong" onclick="ChuyenChuong(5)">Chương 5</div>
+                                <div class="chuong" onclick="ChuyenChuong(6)">Chương 6</div>
+                                <div class="chuong" onclick="ChuyenChuong(7)">Chương 7</div>
+                                <div class="chuong" onclick="ChuyenChuong(8)">60 câu điểm liệt</div>
+                            </div>
+            <div class="app_heading">
+                <p>Lưu ý: Phương án 
+                    <h4 class ="green"> ĐÚNG </h4>
+                    khi chọn sẽ có màu
+                    <h4 class ="green">XANH</h4>
+                    , còn phương án 
+                    <h4 class ="red"> SAI </h4>
+                    sẽ có màu
+                    <h4 class ="red">ĐỎ</h4>
+
+                </p>
+            </div>
+            <div class="app_heading">
+            <p>
+                    Ô  
+                    <span><i class=" green ri-square-fill"></i></span>
+                    là câu bạn trả lời đúng. Ô 
+                    <span><i class=" red ri-square-fill"></i></span>
+                    là câu bạn trả lời sai.
+                </p>
+            </div>
+        </section>
+        <section class="content_app">
+            <div class="grid wide">
+                <div class="row answer"> 
+                    
+                        <div class="col l-5 item1">
+                            <div class='lower' id='lower'>
+                                
+                                <?php
+                                    for($i = 1; $i <= 600; $i++){
+                                        echo "<div name='cau' class="."btn"." value=".$i." id="."btn".$i." onclick='ChuyenCau(".$i.")'>".$i."</div>";
+                                    }
+                                ?>
+                            </div>
                         </div>
-                        <div class="dapan" id="dapan1" onclick="check(1)">Đáp án 1</div>
-                        <div class="dapan" id="dapan2" onclick="check(2)">Đáp án 2</div>
-                        <div class="dapan" id="dapan3" onclick="check(3)">Đáp án 3</div>
-                        <div class="dapan" id="dapan4" onclick="check(4)">Đáp án 4</div>
-                        <span id="message"></span>
+                    <div class="col l-7 item2">
+                            <div>
+                                <span>
+                                <p id="cauHoi"> Phú đẹp trai không ?</p>
+                                    <div class="image">
+                                    <img id ="img" src="img/logo (2).png" alt="Ảnh">
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="dapan" id="dapan1" onclick="check(1)">Đáp án 1</div>
+                            <div class="dapan" id="dapan2" onclick="check(2)">Đáp án 2</div>
+                            <div class="dapan" id="dapan3" onclick="check(3)">Đáp án 3</div>
+                            <div class="dapan" id="dapan4" onclick="check(4)">Đáp án 4</div>
+                            <span id="message"></span>
+                        </div>
                     </div>
                 </div>
-        </div>
-    </section>
-    <section class="app_share">
-    <div class="grid wide">
-            <div class="row"> 
-                <div class="col l-8 app_share_text">Chia sẻ</div>
-                    <div class="col l-1 app_share_item1"><a href="#"><i class="ri-facebook-circle-fill" style = "color: blue;"></i></a></div>
-                    <div class="col l-1 app_share_item1"><a href="#"><i class="ri-messenger-fill" style = "color: #00b2ff;"></i></a></div>
-                    <div class="col l-1 app_share_item1"><a href="#"><i class="ri-telegram-fill" style = "color: ##0088cc;"></i></a></div>
-                    <div class="col l-1 app_share_item1"><a href="#"><i class="ri-twitter-fill" style = "color: #dad9d9;"></i></a></div>
-            </div>
-
+        </section>
     </div>
-    </section>
+
     <?php include 'footer.php' ?>
 </div>      
 </body>
@@ -202,19 +411,19 @@ while($row = mysqli_fetch_array($res)){
                 img.style.display = "block";
                 img.setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
             }
-            document.dapan1.innerHTML = answers.dapan1;
-            document.dapan2.innerHTML = answers.dapan2;
+            dapan1.innerHTML = answers.dapan1;
+            dapan2.innerHTML = answers.dapan2;
             if(answers.dapan3 === "")
-                document.dapan3.style.display = "none";
+                dapan3.style.display = "none";
             else{
-                document.dapan3.innerHTML = answers.dapan3;
-                document.dapan3.style.display = "block";
+                dapan3.innerHTML = answers.dapan3;
+                dapan3.style.display = "block";
             }       
             if(answers.dapan4 === "")
-                document.dapan4.style.display = "none";
+                dapan4.style.display = "none";
             else{
-                document.dapan4.innerHTML = answers.dapan4;
-                document.dapan4.style.display = "block";
+                dapan4.innerHTML = answers.dapan4;
+                dapan4.style.display = "block";
             }
 
             for(i = 167; i <= 600; i++){
@@ -266,9 +475,9 @@ while($row = mysqli_fetch_array($res)){
             for(let i = 0; i < 600; i++){
                 if(Choice[i] != null && document.getElementById("btn"+i) != null){
                     if(Choice[i] == 1){
-                        document.getElementById("btn"+i).style.backgroundColor = "green";
+                        document.getElementById("btn"+i).style.backgroundColor = "#00CD66";
                     }else{
-                        document.getElementById("btn"+i).style.backgroundColor = "red";
+                        document.getElementById("btn"+i).style.backgroundColor = "#FF4040 ";
                     }
                 }
             }
@@ -282,9 +491,9 @@ while($row = mysqli_fetch_array($res)){
             for(let i = 0; i < 600; i++){
                 if(CauDL[i] != null && document.getElementById("btn"+i) != null){
                     if(CauDL[i] == 1){
-                        document.getElementById("btn"+i).style.backgroundColor = "green";
+                        document.getElementById("btn"+i).style.backgroundColor = "#00CD66";
                     }else{
-                        document.getElementById("btn"+i).style.backgroundColor = "red";
+                        document.getElementById("btn"+i).style.backgroundColor = "#FF4040";
                     }
                 }
             }
@@ -295,37 +504,37 @@ while($row = mysqli_fetch_array($res)){
             let currentQuestion = questions[currentIndex-1];
             let answers = currentQuestion.answers;
             // reset all answer
-            document.dapan1.style.border = "none";
-            document.dapan1.style.backgroundColor = "aqua";
-            document.dapan2.style.border = "none";
-            document.dapan2.style.backgroundColor = "aqua";
-            document.dapan3.style.border = "none";
-            document.dapan3.style.backgroundColor = "aqua";
-            document.dapan4.style.border = "none";
-            document.dapan4.style.backgroundColor = "aqua";
+           dapan1.style.border = "none";
+           dapan1.style.backgroundColor = "#EEEEEE";
+           dapan2.style.border = "none";
+           dapan2.style.backgroundColor = "#EEEEEE";
+           dapan3.style.border = "none";
+           dapan3.style.backgroundColor = "#EEEEEE";
+           dapan4.style.border = "none";
+           dapan4.style.backgroundColor = "#EEEEEE";
             // Hien thi cau hoi
             document.getElementById("cauHoi").innerHTML = currentIndex + ". " + currentQuestion.question;
             //check co hinh thi hien thi
             if(currentQuestion.img == '0'){
                 img.style.display = "none";
             }
-            else if(currentQuestion.img == '1'){
+            else{
                 img.style.display = "block";
                 img.setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
             }
-            document.dapan1.innerHTML = answers.dapan1;
-            document.dapan2.innerHTML = answers.dapan2;
+            dapan1.innerHTML = answers.dapan1;
+            dapan2.innerHTML = answers.dapan2;
             if(answers.dapan3 === "")
-                document.dapan3.style.display = "none";
+                dapan3.style.display = "none";
             else{
-                document.dapan3.innerHTML = answers.dapan3;
-                document.dapan3.style.display = "block";
+                dapan3.innerHTML = answers.dapan3;
+                dapan3.style.display = "block";
             }       
             if(answers.dapan4 === "")
-                document.dapan4.style.display = "none";
+                dapan4.style.display = "none";
             else{
-                document.dapan4.innerHTML = answers.dapan4;
-                document.dapan4.style.display = "block";
+                dapan4.innerHTML = answers.dapan4;
+                dapan4.style.display = "block";
             }
             document.getElementById("message").innerHTML = "";
             if(cdl == 1){
@@ -343,32 +552,39 @@ while($row = mysqli_fetch_array($res)){
             let correctAnswers = currentQuestion.correct;
             let trueAnswer;
             // reset all answer
-            document.dapan1.style.border = "none";
-            document.dapan1.style.backgroundColor = "aqua";
-            document.dapan2.style.border = "none";
-            document.dapan2.style.backgroundColor = "aqua";
-            document.dapan3.style.border = "none";
-            document.dapan3.style.backgroundColor = "aqua";
-            document.dapan4.style.border = "none";
-            document.dapan4.style.backgroundColor = "aqua";
+            dapan1.style.border = "none";
+            dapan1.style.backgroundColor = "#EEEEEE";
+            dapan2.style.border = "none";
+            dapan2.style.backgroundColor = "#EEEEEE";
+            dapan3.style.border = "none";
+            dapan3.style.backgroundColor = "#EEEEEE";
+            dapan4.style.border = "none";
+            dapan4.style.backgroundColor = "#EEEEEE";
             if(cau == correctAnswers){
-                //Change answers client choose
-                document.getElementById("btn"+currentIndex).style.backgroundColor = "green";
-                document.getElementById("dapan"+cau).style = "border: 5px solid green;"
-                document.getElementById("dapan"+cau).style.backgroundColor = "greenyellow";
+                //Change answers client choose - câu đúng
+                document.getElementById("btn"+currentIndex).style = "border: 2px solid #008B45;";
+                document.getElementById("btn"+currentIndex).style.backgroundColor = "#54FF9F";
+
+                //chọn đáp án đúng
+                document.getElementById("dapan"+cau).style = "border: 2px solid #008B45;"
+                document.getElementById("dapan"+cau).style.backgroundColor = "#54FF9F";
                 trueAnswer = 1;
-                document.getElementById("message").innerHTML = "<i class='fa-solid fa-check'></i> Đáp án đúng"
+                document.getElementById("message").innerHTML = "<i class=' green fa-solid fa-check'></i> Đáp án đúng"
             }else{
-                //Change answers client choose
-                document.getElementById("btn"+currentIndex).style.backgroundColor = "red";
-                document.getElementById("dapan"+cau).style = "border: 5px solid red;"
-                document.getElementById("dapan"+cau).style.backgroundColor = "orange";
+                //Change answers client choose - câu sai
+                document.getElementById("btn"+currentIndex).style = "border: 2px solid #FF0000;";
+                document.getElementById("btn"+currentIndex).style.backgroundColor = "#FA8072";
+
+                // đáp án sai
+                document.getElementById("dapan"+cau).style = "border: 2px solid #FF0000;"
+                document.getElementById("dapan"+cau).style.backgroundColor = "#FA8072";
                 //show right answer
-                document.getElementById("dapan"+correctAnswers).style = "border: 5px solid green;";
-                document.getElementById("dapan"+correctAnswers).style.backgroundColor = "greenyellow";
+                
+                document.getElementById("dapan"+correctAnswers).style = "border: 2px solid #008B45;";
+                document.getElementById("dapan"+correctAnswers).style.backgroundColor = "#54FF9F";
                 trueAnswer = 0;
 
-                document.getElementById("message").innerHTML = "<i class='fa-solid fa-xmark'></i> Đáp án sai"
+                document.getElementById("message").innerHTML = "<i class=' red fa-solid fa-xmark'></i> Đáp án sai"
                 
             }
             

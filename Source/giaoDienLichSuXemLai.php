@@ -33,6 +33,7 @@
     
 <?php
 $conn = mysqli_connect("localhost","root","","olblx");
+$_SESSION['username'] = 'abc';
 $user = $_SESSION['username'];
 $sql = "SELECT * FROM lich_su_lam_bai WHERE username = '$user'";
 mysqli_query($conn,"SET NAMES 'utf8'");

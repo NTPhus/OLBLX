@@ -14,10 +14,11 @@
         font-family: 'Times New Roman', Times, serif;
         }
         .footer{
+
         margin-top: auto;
         background: #162938;
         width: 100%;
-        height: 500px;
+        height: 550px;
 
         }
 
@@ -110,6 +111,9 @@
         padding: 15px;
         background: yellow;
         cursor: pointer;
+        width: 80px;
+        line-height: 0px;
+        margin-right: -2px;
         }
         .ri-arrow-right-s-line{
             color: yellow;

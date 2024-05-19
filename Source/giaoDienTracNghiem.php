@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+?>
+
 <?php
 $conn = mysqli_connect("localhost", "root", "", "olblx");
 $sql = "SELECT * FROM `600_cau_hoi`";
@@ -171,7 +175,6 @@ while($row = mysqli_fetch_array($res)){
         /* end */
         .app{
             /* background-color: #162938 ; */
-            margin-top: 80px;
             z-index: 99;
             background: url('./img/bg-video.jpg');
         }
@@ -596,6 +599,8 @@ while($row = mysqli_fetch_array($res)){
                 Choice[currentIndex] = trueAnswer;
                 preChoice[currentIndex] = cau;
             }
+
+            
         }
 
         start();

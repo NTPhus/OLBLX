@@ -8,19 +8,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lấy lại mật khẩu</title>
+    <link rel="stylesheet" href="../CSS/layMK.css">
 </head>
 <body>
-    <div>
+    <div class="app">
         <?php
         $username;
         if(!isset($_GET['OTP']))
             if(!isset($_GET['email']))
                 echo '
                 <form action="giaoDienLayLaiMK.php" method="GET">
-                    <div>
-                        <input type="email" placeholder="Nhập email" name="email"> <br>
-                        <input type="text" placeholder="Nhập tên tài khoản" name="user"><br>
-                        <input type="submit" name="submit" value="Xác nhận">
+                    <div class="app_LayLaiMK">
+                        <div class="app_layLaiMk_text"><h3 class="textPage">Lấy Lại Mật Khẩu</h3></div>
+                        <div class="app_LayLaiMK_item">
+                            <div class="email_text">Nhập email : <input type="email" name="email" id="email"></div>
+                            <div class="taiKhooan_text">Nhập tên tài khoản: <input type="text" name="user" id="taiKhoan"> </div>
+
+                            <div class="submit"><input type="submit" name="submit" value="Xác nhận" id="submit"></div>
+                            <div class="or">------------Hoặc----------</div>
+                            <a href="#"><div class="back"><input type="button" value="Quay Lại" id="back"></div></a>
+                        </div>
                     </div>
                 </form>
                 ';
@@ -68,7 +75,9 @@
             $str = "SELECT * FROM user WHERE username = '".$_SESSION['tentaikhoan']."'";
             $rs = mysqli_query($conn,$str);
             $row = mysqli_fetch_array($rs);
-            echo "Mật khẩu của bạn là: ".$row['password'];
+            echo "<p>Mật khẩu của bạn là: ".$row['password']."</p>";
+            echo "<br>";
+            echo "<a href='../trangchu.php'> Quay về trang chủ </a>";
         }
         ?>
     </div>

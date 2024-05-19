@@ -31,6 +31,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/5263b3717e.js" crossorigin="anonymous"></script>
     <title>ôn thi mô phỏng</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
     <style>
         *{
             padding: 0;
@@ -48,24 +52,53 @@
             width: 1000px;
             z-index: -1;
         }
-        .container{
+        #container{
             display: flex;
+            margin-top: 100px;
+            height: 700px;
+
         }
         .item1{
-            width: 70%;
+            margin-left: 100px;
             float: left;
         }
         .item2{
-            width: 30%;
-            float: right;
+            width: 300px;
+            height: 530px;
+            margin-left: 50px;
+            background: #fff;
+            /* float: right; */
+        }
+        .item2 h2{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0066CC;
+            color: yellow;
+            padding: 10px 0;
+        }
+
+        .item2 p{
+            font-size: 15px;
+            padding: 5px 10px;
+        }
+        .item2 p i{
+            font-weight: 900;
         }
 
         .btnDatCo{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 20px;
+            margin-left: -5px;
+            padding: 0 5px;
             height: 50px;
             width: 1000px;
-            border-radius: 10px;
-            font-size: 20px;
+            border-radius: 5px;
+            font-size: 25px;
+            background: #0066CC;
+            color: yellow;
+            font-weight: 800;
+            letter-spacing: 1px;
+            border: 1px solid #003366;
+            cursor: pointer;
         }
 
         button{
@@ -81,28 +114,38 @@
         }
 
         .btnDatCo:hover{
-            background-color: burlywood;
+            background: #3399CC;
         }
 
         table{
-            margin-top: 50px;
-            width: 300px;
-            height: 500px;
+
+            margin: auto;
+            border-collapse: collapse;
         }
 
         tr{
             text-align: center;
+            padding: 20px;
         }
 
+        td
+        {
+            border: 1px solid #222222; 
+            padding: 5px 30px;
+        }
+        .td_heading{
+            background: yellow;
+        }
         #myProgress {
             width: 1000px;
             background-color: grey;
+            height: 34px;
             margin-bottom: 20px;
         }
 
         #myBar {
             width: 1%;
-            height: 30px;
+            height: 34px;
             background-color: green;
         }
 
@@ -112,11 +155,12 @@
         }
 
         #time{
-            margin-top: -20px;
+            margin-top: -25px;
             z-index: 10;
             text-align: center;
             font-size: 20px;
-            font-weight: bold;
+            color: yellow;
+
         }
 
         #bar{
@@ -161,10 +205,7 @@
         }
 
         .result-bar{
-            padding-top: 20px;
-            height: 50px;
-            border: 1px solid;
-            margin-bottom: 20px;
+
         }
 
         #diem{
@@ -179,13 +220,49 @@
             height: 30px;
             width: 50px;
         }
+
+        .item2 {
+            border: 1px solid #ccc;
+        }
+        .item2 h2{
+            text-align: center;
+        }
+
+        .note{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 300px;
+            color: red;
+        }
+        .luu_y{}
+        .luu_y h4{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: red;
+        }
+
+        .footer{
+            display: block;
+            width: 100PX;
+            height: 500px;
+            background: red;
+        }
+
+        #rs{
+            display: block;
+        }
+
+
     </style>
+
 </head>
 <body>
-    <div class="containter" id="container">
+    <?php include 'header.php'?>
+    <div class="container_video">
+    <div id="container">
         <div class="item1">
             <div class="video">
-                <video id = "myVideo" width="800" height="740" autoplay muted onclick="move()">
+                <video id = "myVideo" width="800" height="740" controls muted onclick="move()">
                     <source src="video/MoPhong/1.mp4" type="video/mp4" id="source">
                 </video>
                 <div id="myProgress">
@@ -200,17 +277,27 @@
 
             </div>
             <div class="button">
-                <button class="btnDatCo" onclick="getPoint()">Đặt cờ <i class="fa-regular fa-flag"></i> </button>
+                <button class="btnDatCo" onclick="getPoint()">ĐẶT CỜ <i class="fa-regular fa-flag"></i> </button>
             </div>
-
-            <div class="result-bar">
-                <p><u>Tình huống <span id="cauSo">1</span></u>: <span id="rs">Nhấn phím cách hoặc ấn nút đặt cờ khi phát hiện tình huống</span></p>
+            <div class="note">
+                
+                <h4>Bấm phím SPACE (phím cách) hoặc bấm nút GẮN CỜ khi phát hiện tình huống nguy hiểm </h4>
             </div>
+            
 
         </div>
+        
+        <div class="item2">
+            <h2>KẾT QUẢ</h2>
+            <p><i class="ri-edit-box-line"></i> Đề thi: ....</p>
+            <div class="result-bar">
+                <p><i class="ri-question-mark"></i>Tình huống: <span id="cauSo">1/10</span> <span id="rs"></span></p>
+                <!-- Nhấn phím cách hoặc ấn nút đặt cờ khi phát hiện tình huống -->
+            </div> 
+            
         <?php
-            echo "<table border='1'>";
-            echo "<thead> <td>Câu</td> <td>Điểm</td></thead>";
+            echo "<table >";
+            echo "<thead> <td class = 'td_heading'>Câu</td> <td = class = 'td_heading'>Điểm</td></thead>";
             for($i = 1; $i <= 10; $i++){
                 echo "
                 <tr>
@@ -221,8 +308,16 @@
             }
             echo "</table>";
         ?>
-        <button id="checkrs" type="button" onclick="hienThiKetQua()" hidden>Xem kết quả</button>
+        <div class="luu_y">
+            <h4>Lưu ý:</h4>
+            <p>Điểm của từng câu và Kết quả đánh giá bài thi sẽ được hiển thị ngay sau khi bạn hoàn thành bài thi!</p>
+        </div>
+        <button id="checkrs" type="button" onclick="hienThiKetQua()" >Xem kết quả</button>
+
     </div>
+    </div>
+    <?php include 'footer.php' ?>
+
 
 <script>
 
@@ -310,8 +405,8 @@
             let vid = document.getElementById("myVideo");
             vid.src = "video/MoPhong/"+ (currentIndex) +".mp4";
             vid.load(); 
-            document.getElementById("cauSo").innerHTML = (currentIndex);
-            document.getElementById("rs").innerHTML = "Nhấn phím cách hoặc ấn nút đặt cờ khi phát hiện tình huống";
+            document.getElementById("cauSo").innerHTML = (currentIndex+"/10");
+            document.getElementById("rs").innerHTML = "";
         }
         
     }
@@ -362,12 +457,12 @@
             document.getElementById("flag"+currentIndex).style.marginTop = "-20px";
             document.getElementById("flag"+currentIndex).style.marginLeft = width + "%";
             let currentTime = parseInt(x.currentTime);
-            document.getElementById("flag"+currentIndex).innerHTML = "<i class='fa-solid fa-flag'> " ;
-            if(currentTime < 10) document.getElementById("rs").innerHTML = "<i class='fa-solid fa-flag'> Bạn đã cắm cờ lúc: 00:0" + currentTime;
-            else document.getElementById("rs").innerHTML = "<i class='fa-solid fa-flag'> Bạn đã cắm cờ lúc: 00:" + currentTime;
+            document.getElementById("flag"+currentIndex).innerHTML = "<i class='ri-flag-line'></i>" ;
+            if(currentTime < 10) document.getElementById("rs").innerHTML = " Bạn đã cắm cờ lúc: 00:0" + currentTime;
+            else document.getElementById("rs").innerHTML = "Bạn đã cắm cờ lúc: 00:" + currentTime;
             status = true;
         }else{
-            document.getElementById("rs").innerHTML = "<i class='fa-solid fa-flag'> Bạn chỉ được cắm cờ 1 lần trên 1 tình huống";
+            document.getElementById("rs").innerHTML = " Bạn chỉ được cắm cờ 1 lần trên 1 tình huống";
         }
     }
 
@@ -432,6 +527,5 @@
     start();
     move();
 </script>
-
 </body>
 </html>

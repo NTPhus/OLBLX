@@ -1,0 +1,197 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.ok{
+    background-image: url(../backGround/thinh2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+td{
+    font-size: 20px;
+}
+
+.app_content{
+    margin-top: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.input_Tinh:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    transform: scale(1.05);
+}
+#search{
+    width: 500px;
+}
+
+.Tinh_item{
+    margin-top: 15px;
+    margin-left: 20px;
+    font-size: 23px;
+    border-radius: 10px;
+    float: left;
+
+}
+.Tinh_item:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+
+.submit{
+    background-color: #162938;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    margin-left: 50px;
+}
+.submit:hover{
+    background: linear-gradient(45deg, #47d147, #3e8e41, #47d147);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+.suggestion{
+    padding-left: 20px;
+
+}
+.suggestion:hover{
+    background-color: #DCDCDC;
+    opacity: 0.8; /* Mờ dần */
+}
+
+#suggestion{
+    display: none;
+    width: 500px;
+    border: 1px solid;
+    position: relative;
+    height: 100px;
+    margin-top: 5px;
+    border-radius: 10px;
+    padding-bottom: 100px;
+    overflow: scroll;
+}
+
+.app_result{
+    position: relative;
+    background-size: contain;
+    min-height: 500px;
+}
+
+#a_item{
+    text-decoration: none;
+}
+#item1{
+    color: black;
+}
+i{
+    font-size: 35px;
+}
+
+#textPage{
+    font-size: 30px;
+}
+.app_Text{
+  padding-top: 50px;
+}
+
+i:hover, #textPage:hover {
+    color: #007bff;
+}
+.dong{
+    border-radius: 10px;
+    height: 40px;
+}
+td{
+    padding: 5px 5px;
+}
+td{
+    padding: 10px;
+}
+.table_ketqua {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border: 1px solid steelblue;
+    transition: transform 0.3 ease;
+}
+.table_ketqua:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+
+.table_ketqua th, .table_ketqua td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.table_ketqua th {
+    background-color: #f2f2f2;
+}
+
+.table_ketqua tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table_ketqua tr:hover {
+    background-color: gray;
+    color: #f9f9f9;
+}
+
+#xemdiachi {
+    color: blue;
+    text-decoration: none;
+}
+
+#xemdiachi:hover {
+    background-color: #007bff;
+    color: white;
+    text-decoration: underline; 
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+}
+
+.input_Tinh {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+
+.input_Tinh:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+button[type="submit"] {
+
+    background: none;
+    cursor: pointer;
+    background-color: #162938 	;
+}
+
+button[type="submit"] i {
+    color: white;
+    font-size:18px;
+}
+
+button[type="submit"]:hover i {
+    color: white;
+}

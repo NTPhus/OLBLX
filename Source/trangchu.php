@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="CSS/styletrangchu.css">
+    <link rel="stylesheet" href="CSS/trangchu.css">
     <link rel="stylesheet" href="CSS/grid.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
 
@@ -87,7 +87,7 @@
                                 </label>
                                 <div class="content_body">
                                     <p>ÔN TẬP TRONG 5 GIỜ</p>
-                                    <button onclick="ChuyenTrang('OnLyThuyet')">ÔN TẬP</button>
+                                    <button onclick="chuyenTrang('OnLyThuyet')">ÔN TẬP</button>
                               </div>
                             </div>
                         </div>
@@ -320,8 +320,23 @@
 </div>
 
 </div>
+<script>
+    function ChuyenTrang(trang){
+        if(trang == "OnTapMoPhong"){
+            window.location.href = "giaoDienMoPhong.php";
+        }else if(trang == "ThiMoPhong"){
+            window.location.href = "giaoDienThiMP.php";
+        }else if(trang == "OnLyThuyet"){
+            window.location.href = "giaoDienTracNghiem.php";
+        }else if(trang == "ThiLyThuyet"){
+            window.location.href = "chonDeLyThuyet.php";
+        }
+    }
+</script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="JS/trangchu.js"></script>
+
+
 <?php include 'footer.php' ?>
 </body>
 </html>

@@ -17,181 +17,259 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/5263b3717e.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
     <title>ôn thi mô phỏng</title>
+    <!-- <link rel="stylesheet" href="CSS/giaoDienMoPhong.css"> -->
+    <link rel="stylesheet" href="CSS/grid.css">
     <style>
         *{
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+    .red{
+        color: red !important;
+    }
 
-        .video{
-            position: relative;
-        }
 
-        #myVideo{
-            margin-top: 50px;
-            display: block;
-            height: 500px;
-            width: 1000px;
-            z-index: -1;
-        }
-        .container{
-            display: flex;
-        }
-        .item1{
-            width: 70%;
-            float: left;
-        }
-        .item2{
-            width: 30%;
-            float: right;
-        }
+#myVideo{
+    border-right: 1px solid;
+    display: block;
+    height: 450px;
+    z-index: -1;
+}
 
-        .btnDatCo{
-            margin: 20px;
-            height: 50px;
-            width: 100px;
-            border-radius: 10px;
-            font-size: 20px;
-        }
+#container{
+    display: inline-block;
+    margin-bottom: 20px;
+}
+.item1{
+    width: 800px;
+    float: left;
+    margin-left: 70px;
+}
+.item2{
+    height: 440px;
+    width: 500px;
+    float: right;
+    overflow: scroll;
+    border: 1px solid;
+    margin-right: 70px;
+}
 
-        button{
-            height: 30px;
-            width: 30px;
-            margin: 10px;
-        }
+.btnDatCo{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: -5px;
+    margin-top: 20px;
+    height: 50px;
+    width: 800px;
+    border-radius: 5px;
+    font-size: 20px;
+    background: #0066CC;
+    color: yellow;
+    font-weight: 800;
+    letter-spacing: 1px;
+    border: 1px solid #003366;
+    cursor: pointer;
+}
 
-        .button{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+.btnDatCo:hover{
+    background-color: #3399CC;
+}
 
-        .btnDatCo:hover{
-            background-color: burlywood;
-        }
+.btn{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    margin: 10px 10px;
+    border-radius: 10px;
+    border: 1px solid #888888;
+    cursor: pointer;
+}
 
-        table{
-            margin-top: 50px;
-            width: 300px;
-            height: 500px;
-        }
+.btn:hover{
+    background-color: 	#CCCCCC;
+}
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left:  5px;;
+}
 
-        tr{
-            text-align: center;
-        }
 
-        #myProgress {
-            width: 1000px;
-            background-color: grey;
-            margin-bottom: 20px;
-        }
 
-        #myBar {
-            width: 1%;
-            height: 30px;
-            background-color: green;
-        }
+table{
+    margin-top: 50px;
+    width: 300px;
+    height: 500px;
+}
 
-        .bar-block{
-            max-width: 1000px;
-        }
+tr{
+    text-align: center;
+}
 
-        #time{
-            margin-top: -20px;
-            z-index: 10;
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-        }
+#myProgress {
+    background-color: grey;
+    margin-bottom: 20px;
+    width: 800px;
+}
 
-        #bar{
-            background-color: gray;
-            height: 5px;
-            width: 1000px;
-            display: flex;
-        }
+#myBar {
+    width: 1%;
+    height: 34px;
+    background-color: green;
+}
 
-        #p1, #p2, #p3, #p4, #p5{
-            height: 5px;
-            z-index: 10;
-            opacity: 0;
-        }
+.bar-block{
+    width: 800px;
 
-        #p1{
-            background-color: lightgreen;
-        }
+}
 
-        #p2{
-            background-color: limegreen;
-        }
+#time{
+    margin-top: -22px;
+    z-index: 10;
+    text-align: center;
+    font-size: 20px;
+    color: yellow;
+}
 
-        #p3{
-            background-color: yellow;
-        }
+#bar{
+    background-color: gray;
+    height: 5px;
+    width: 800px;
+    display: flex;
+}
 
-        #p4{
-            background-color: orange;
-        }
+#p1, #p2, #p3, #p4, #p5{
+    height: 5px;
+    z-index: 10;
+    opacity: 0;
+}
 
-        #p5{
-            background-color: red;
-        }
+#p1{
+    background-color: lightgreen;
+}
 
-        .result-bar{
-            padding-top: 20px;
-            height: 50px;
-            border: 1px solid;
-            margin-bottom: 20px;
-        }
+#p2{
+    background-color: limegreen;
+}
 
-        #diem{
-            color: red;
-        }
+#p3{
+    background-color: yellow;
+}
+
+#p4{
+    background-color: orange;
+}
+
+#p5{
+    background-color: red;
+}
+
+.result-bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+    height: 70px;
+    border: 1px solid;
+    font-size: 20px;
+    width: 500px;
+    float: right;
+    margin-right: 70px;
+    background: 	#162938;
+    color: yellow;
+    border: 2px solid #003399;
+}
+
+#diem{
+    color: red;
+}
+
+.Text_page{
+    display: flex;
+    padding: 20px 0;
+    margin-left: 40px;
+}
+
+.Text_page_heading{
+    color: black;
+    margin-left: 70px;
+}
+
+#Text_page:hover{
+    color: red;
+}
+
+u{
+    text-decoration: none;
+}
+
+.result-bar_text {
+    animation: result-bar_text-opacity 1s infinite, result-bar_text-color 3s infinite;
+}
+
+.result-bar_text u, .result-bar_text span{
+    font-weight: 600;
+}
+
+.ri-flag-fill
+{
+    font-size: 20px;
+    color: red;
+
+}
     </style>
 </head>
 <body>
-    <div class="containter" id="container">
-        <div class="item1">
-            <div class="video">
-                <video id = "myVideo" width="800" height="740" controls muted onclick="move()">
-                    <source src="video/MoPhong/1.mp4" type="video/mp4" id="source">
-                </video>
-                <div id="myProgress">
-                    <div id="myBar"></div>
-                    <div id="time">Thời gian: 00:00/00:27</div>
-                </div>
+    <?php include 'header.php'?>
+        <div class="video_container">
+            <div class="Text_page">
+                <h3 class="Text_page_heading red"></h3>
+            </div>
+            <div id="container">
+                <div class="item1">
+                    <div class="video">
+                        <video id = "myVideo" width="800" height="740" controls muted onclick="move()">
+                            <source src="video/MoPhong/1.mp4" type="video/mp4" id="source">
+                        </video>
+                        <div id="myProgress">
+                            <div id="myBar"></div>
+                            <div id="time">Thời gian: 00:00/00:27</div>
+                        </div>
 
-                <div class="bar-block">
-                    <span id="flag"></i></span>
-                    <div id="bar">
-                        <div id="p1"></div>
-                        <div id="p2"></div>
-                        <div id="p3"></div>
-                        <div id="p4"></div>
-                        <div id="p5"></div>
+                        <div class="bar-block">
+                            <span id="flag"></i></span>
+                            <div id="bar">
+                                <div id="p1"></div>
+                                <div id="p2"></div>
+                                <div id="p3"></div>
+                                <div id="p4"></div>
+                                <div id="p5"></div>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                    <div class="button">
+                        <button class="btnDatCo" onclick="getPoint()">ĐẶT CỜ <i class="ri-flag-fill"></i> </button>
                     </div>
                 </div>
-                
-
-            </div>
-            <div class="button">
-                <button class="btnDatCo" onclick="getPoint()">Đặt cờ <i class="fa-regular fa-flag"></i> </button>
-            </div>
-
-            <div class="result-bar">
-                <p><u>Tình huống <span id="cauSo">1</span></u>: <span id="rs">Nhấn phím cách hoặc ấn nút đặt cờ khi phát hiện tình huống</span></p>
-            </div>
-        </div>
-        <div class="item2">
-            <?php 
-                for($i = 1; $i <= 120; $i++){
-                    echo "<button class='btn' id='btn$i' onclick='chuyenCau($i)'>$i</button>";
-                }
-            ?>
-        </div>
-    </div>
+                <div class="result-bar">
+                        <p class="result-bar_text"><u>Tình huống <span id="cauSo">1</span></u>: <span id="rs">Nhấn phím cách hoặc ấn nút đặt cờ khi phát hiện tình huống</span></p>
+                </div>
+                <div class="item2">
+                    <?php 
+                        for($i = 1; $i <= 120; $i++){
+                            echo "<button class='btn' id='btn$i' onclick='chuyenCau($i)'>$i</button>";
+                        }
+                    ?>
+                </div>
+            </div> 
+         </div>
+         <?php include 'footer.php' ?>
+        
 
 <script>
 
@@ -296,10 +374,9 @@
 
     function CamCo(){
         let size = ((videos[currentIndex].end -videos[currentIndex].start)/videos[currentIndex].length * 100)/5;
-        document.getElementById("flag").style.marginLeft = width + "%";
+        document.getElementById("flag").style.marginLeft = (x.currentTime/videos[currentIndex].length * 100) + "%";
         let currentTime = parseInt(x.currentTime);
-        document.getElementById("flag").innerHTML = "<i class='fa-solid fa-flag'> " + currentTime + "s";
-        
+        document.getElementById("flag").innerHTML = "<i class='ri-flag-fill'>" + currentTime + "s";
         //chỉnh sửa kích thước của từng check point
         document.getElementById("p1").style.marginLeft = (videos[currentIndex].start/videos[currentIndex].length*100) + "%";
         document.getElementById("p1").style.width = size + "%";
@@ -307,7 +384,7 @@
         document.getElementById("p3").style.width = size + "%";
         document.getElementById("p4").style.width = size + "%";
         document.getElementById("p5").style.width = size + "%";
-
+        console.log((x.currentTime/videos[currentIndex].length * 100));
         //hien thi dap an
         document.getElementById("p1").style.opacity = "1";
         document.getElementById("p2").style.opacity = "1";
@@ -317,14 +394,14 @@
     }
 
     function chuyenCau(cau){
-        document.getElementById("btn"+(currentIndex)).style.backgroundColor = "green";
+        document.getElementById("btn"+(currentIndex)).style.backgroundColor = "#FFFF00";
         currentIndex = cau;
         markCurrentIndex();
         chuyenVideo();
     }
 
     function markCurrentIndex(){
-        document.getElementById("btn"+(currentIndex)).style.backgroundColor = "red";
+        document.getElementById("btn"+(currentIndex)).style.backgroundColor = "aqua";
     }
     markCurrentIndex();
 </script>

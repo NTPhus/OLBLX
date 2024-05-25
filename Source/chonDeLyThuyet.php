@@ -216,7 +216,7 @@
                 </div>
 
                 <!-- THONG TIN BANG B1 -->
-                <!-- <h2 class ="cau_truc_heading">THÔNG TIN VÀ CÁCH THỨC THI THỬ LÝ THUYẾT LÁI XE HẠNG B1</h2> -->
+                <h2 class ="cau_truc_heading">THÔNG TIN VÀ CÁCH THỨC THI THỬ LÝ THUYẾT LÁI XE HẠNG B1</h2> -->
 
                 <!-- A -->
                 <!-- <div class="Cau_truc_de_thi">
@@ -352,7 +352,7 @@
                         , Màu vàng <span><i class=" yellow ri-square-fill"></i></span> là những câu đã làm.
                     </p>
                     <p>Nhất nút NỘP BÀI, chọn OK để kết thúc bài thi và chờ hệ thống chấm điểm.</p>
-                </div> -->
+                </div>
 
                 <!-- THONG TIN BANG B2 -->
                 <h2 class ="cau_truc_heading">THÔNG TIN VÀ CÁCH THỨC THI THỬ LÝ THUYẾT LÁI XE HẠNG B2</h2>

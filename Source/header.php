@@ -19,7 +19,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white; /* Nền bán trong suốt */
+    background-color: white; 
     width: 80%;
     max-width: 600px;
     height: 80%;
@@ -62,15 +62,11 @@ header {
     display: flex;
 }
 
-.logo a:hover{
-    text-decoration: none;
-}
-
-.navigation ul li {
+.navigation ul li, #xemlai {
     display: inline-block;
 }
 
-.navigation li a {
+.navigation li a, #xemlai {
     position: relative;
     font-size: 1.1rem;
     color: #fff;
@@ -79,7 +75,6 @@ header {
     margin: 0 30px;
 }
 
-/* Tạo hiệu ứng dấu gạch chân cho các thành phần */
 .navigation a::after {
     content: '';
     position: absolute;
@@ -90,7 +85,6 @@ header {
     background: #fff;
     border-radius: 5px;
     transform: scaleX(0);
-    /* tạo ra hiệu ứng xuất hiện từ trong ra ngoài với 0.5s */
     transition: transform 0.5s;
 }
 
@@ -121,13 +115,10 @@ ul.dropdown li:nth-child(1) {
     border-bottom: 1px solid #ccc;
 }
 
-ul.dropdown li:nth-child(2) {
+ul.dropdown li:nth-child(2), ul.dropdown li:nth-child(3) {
     padding: 20px 0;
     border-bottom: 1px solid #ccc;
 }
- ul.dropdown li:nth-child(3){
-    padding: 20px 0;
- }
 
 ul li:hover ul.dropdown {
     display: block;
@@ -208,7 +199,7 @@ a {
 a:hover, #xemlai:hover {
     text-decoration: underline;
 }
-#xemlai{
+#xemlai, #doiMK{
     margin-top: 20px;
     padding: 20px 0;
     border-bottom: 1px solid #ccc;
@@ -216,6 +207,117 @@ a:hover, #xemlai:hover {
     
 }
 
+/* =========================doimk================== */
+#app_doiMK{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 80%;
+    max-width: 600px;
+    height: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1000;
+    transition: transform 0.3 ease
+}
+#app_doiMK.show {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.app_doiMatKhau{
+    height: 700px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.app_doiPass{
+    background-image: url(img/bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width:400px;
+    height: 450px;
+    border: 1px solid;
+    border-radius: 15px;
+}
+
+#text_Page{
+    font-size: 30px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.app_doiPass_item{
+    margin: 0 10px;
+}
+.taiKhoan{
+font-size: 25px;
+border-bottom: 1px solid;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.matKhau{
+    margin-top: 20px;
+    font-size: 20px;
+    border-bottom: 1px solid;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+.matKhauMoi{
+    margin-top: 20px;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-bottom: 1px solid;
+}
+.or{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-bottom: 1px solid;
+}
+#pass, #newpass{
+    float: right;
+    height: 23px;
+    border-radius: 8px;
+    font-size: 16px;
+}
+.xacNhan{
+    margin-top: 20px;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-bottom: 1px solid;
+}
+
+#ok{
+    width: 50px;
+    height: 20px;
+}
+#submit, #back{
+    margin-top: 20px;
+    width: 300px;
+    height: 30px;
+    border-radius: 20px;
+}
+.submit, .back{
+    display: flex;
+    justify-content: center;
+}
+
+#submit:hover, #back:hover{
+    background-color: white;
+    color: black;
+}
+a{
+    text-decoration: none;
+}
 </style>
 </head>
 <body>
@@ -231,7 +333,7 @@ a:hover, #xemlai:hover {
              <ul class="list">
                 <li><a href="trangchu.php">TRANG CHỦ</a></li>
                 <li>
-                    <a href="#">ÔN TẬP</a>
+                    <a href="#">THI THỬ</a>
 
                     <ul class="dropdown">
                         <li><a href="giaoDienTracNghiem.php">LÝ THUYẾT</a></li>
@@ -243,7 +345,7 @@ a:hover, #xemlai:hover {
 
                     <ul class="dropdown">
                         <li><a href="chonDeLyThuyet.php">LÝ THUYẾT</a></li>
-                        <li><a href="chonDeMoPhong.php">MÔ PHỎNG</a></li>
+                        <li><a href="giaoDienThiMP.php">MÔ PHỎNG</a></li>
                     </ul>
                 </li>
                 <li><a href="giaoDienTimKiem.php">ĐỊA ĐIỂM</a></li>
@@ -256,35 +358,44 @@ a:hover, #xemlai:hover {
                         <li>
                         <a href='#'> TÀI KHOẢN </a>
                         <ul class='dropdown'>
-                            <li onclick='test()' id='xemlai'><a href=''>XEM LẠI LỊCH SỬ </a></li>
-                            <li><a href='GiaoDienDoiMK.php'>ĐỔI MẬT KHẨU</a></li>
+                            <li onclick='xemLaiLSThi()' id='xemlai'><a href='#'>XEM LẠI LỊCH SỬ THI</a></li>
+                            <li onclick='doiMatKhau()' id='doiMK'><a href='#'>ĐỔI MẬT KHẨU</a></li>
                             <li><a href='XuLyPHP/XuLy.php?action=logout' class='dangxuat'>ĐĂNG XUẤT</a></li>
                         </ul>
                         </li>
                         ";
                     }                 
                 ?>
-                    
-
             </ul> 
         </nav>  
 
     </header>
     <script>
-function test() {
+     function xemLaiLSThi() {
     var overlay = document.getElementById('overlay');
-    var ok2 = document.getElementById('giaoDienLichSuXemLai');
+    var lsModal = document.getElementById('giaoDienLichSuXemLai');
     overlay.style.display = 'block';
-    ok2.style.display = 'flex';
+    lsModal.style.display = 'flex';
     document.body.classList.add('no-scroll'); // Ngăn cuộn trang chính
 }
 
 function closeOverlay() {
     var overlay = document.getElementById('overlay');
-    var ok2 = document.getElementById('giaoDienLichSuXemLai');
+    var lsModal = document.getElementById('giaoDienLichSuXemLai');
+    var mkModal = document.getElementById('app_doiMK');
     overlay.style.display = 'none';
-    ok2.style.display = 'none';
+    lsModal.style.display = 'none';
+    mkModal.style.display = 'none';
     document.body.classList.remove('no-scroll'); // Cho phép cuộn trang chính
+}
+
+// ============doimk
+function doiMatKhau() {
+    var overlay = document.getElementById('overlay');
+    var mkModal = document.getElementById('app_doiMK');
+    overlay.style.display = 'block';
+    mkModal.style.display = 'flex';
+    document.body.classList.add('no-scroll'); // Ngăn cuộn trang chính
 }
 
 function dangnhap() {
@@ -319,5 +430,24 @@ function dangnhap() {
         ?>
     </div>
 </div>
+
+
+<!-- ============================DOIMK====================== -->
+<div class="app_doiMatKhau" id="app_doiMK">
+        <form action="XuLyPHP/XuLy.php">
+        <div class="app_doiPass">
+            <div class="doiMatKhau_text">
+                <h3 id="text_Page">Change Password</h3>
+            </div>
+            <div class="app_doiPass_item">
+                <div class="taiKhoan">Xin chào: <?php echo $_SESSION['username'] ?></div>
+                <div class="matKhau">Nhập mật khẩu cũ: <input type="text" name="pass" id="pass"></div>
+                <div class="matKhauMoi">Nhập mật khẩu mới: <input type="text" name="newpass" id="newpass"></div>
+                <div class="xacNhan">Xác Nhận Sự Thay Đổi này: <input type="checkbox" name="check" id="ok"></div>
+                <div class="submit"><input type="submit" value="Đổi Mật Khẩu" id="submit"></div>
+            </div>
+        </div>
+    </form>
+    </div>
 </body>
 </html>

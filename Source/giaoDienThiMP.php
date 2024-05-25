@@ -299,7 +299,7 @@
         
         <div class="item2">
             <h2>KẾT QUẢ</h2>
-            <p><i class="ri-edit-box-line"></i> Đề thi: ....</p>
+            <p><i class="ri-edit-box-line"></i> Đề thi: <?php echo $_GET['de'] ?></p>
             <div class="result-bar">
                 <p><i class="ri-question-mark"></i>Tình huống: <span id="cauSo">1/10</span> <span id="rs"></span></p>
                 <!-- Nhấn phím cách hoặc ấn nút đặt cờ khi phát hiện tình huống -->

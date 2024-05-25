@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $conn = mysqli_connect("localhost", "root", "", "olblx");
     $sql = "SELECT * FROM video_mo_phong";
     $res = mysqli_query($conn, $sql);
@@ -336,7 +337,6 @@ u{
     function chuyenVideo(){
         let vid = document.getElementById("myVideo");
         vid.src = "video/MoPhong/"+ (currentIndex) +".mp4";
-        vid.load(); 
         document.getElementById("p1").style.opacity = "0";
         document.getElementById("p2").style.opacity = "0";
         document.getElementById("p3").style.opacity = "0";
@@ -345,6 +345,7 @@ u{
         document.getElementById("flag").innerHTML = "";
         document.getElementById("cauSo").innerHTML = (currentIndex);
         document.getElementById("rs").innerHTML = "Nhấn phím cách hoặc ấn nút đặt cờ khi phát hiện tình huống";
+        x.play();
     }
 
     var width;
@@ -403,6 +404,7 @@ u{
     function markCurrentIndex(){
         document.getElementById("btn"+(currentIndex)).style.backgroundColor = "aqua";
     }
+    x.play();
     markCurrentIndex();
 </script>
 

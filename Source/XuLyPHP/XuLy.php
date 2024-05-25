@@ -38,6 +38,32 @@
                 mysqli_query($conn, $sqlinsert);
                 header("location:../start.php");
             }
+        }else if($_POST['action'] == "DoiMK"){
+            $u = $_SESSION['username'];
+            $mkc = $_POST['pass'];
+            $mkm = $_POST['newpass'];
+            $checkmkm = $_POST['newpasschk'];
+
+            $conn = mysqli_connect("localhost","root","","olblx");
+
+            $sql = "SELECT * FROM `user` WHERE username = '$u'";
+
+            $result = mysqli_query($conn,$sql);
+            if($row = mysqli_fetch_assoc($result)){
+                $p = $row['password'];
+                if($p == $mkc){
+                    if($mkm == $checkmkm){
+                        $update_sql = "UPDATE `user` SET `password` = '$mkm' WHERE username = '$u'";
+                        mysqli_query($conn,$update_sql);
+                        $_SESSION['msg'] = "Cập nhật thành công mật khẩu";
+                    }else{
+                        $_SESSION['msg'] = "Mật khẩu mới không giống nhau";
+                    }
+                }else{
+                    $_SESSION['msg'] = "Mật khẩu cũ không chính xác";
+                }
+            }
+            header("location:../GiaoDienDoiMK.php");
         }
     }   
 

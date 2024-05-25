@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -52,7 +56,7 @@
                 $dia_chi = $dong['Dia_Chi'];
                 $url_maps = "https://www.google.com/maps/search/?api=1&query=" . urlencode($dia_chi); // urlencode mã hóa địa chỉ
                 echo "<table border= '1' align='center' class='table_ketqua'>";
-                    echo "<tr class='dong'><td align = 'center'><b>Nơi thi</b></td><td align = 'center'><b>Địa chỉ</b></td><td align = 'center'><b>Số điện thoại</b></td><td align = 'center'><b>Xem địa chỉ trên GG Map</b></td></tr>";
+                    echo "<tr class='dong' style= 'background-color:#162938; color:#fff'><td align = 'center'><b>Nơi thi</b></td><td align = 'center'><b>Địa chỉ</b></td><td align = 'center'><b>Số điện thoại</b></td><td align = 'center'><b>Xem địa chỉ trên GG Map</b></td></tr>";
                     echo "<tr class='dong'><td>".$dong['Noi_Thi']."</td><td>".$dia_chi."</td><td>".$dong['SDT']."</td><td><a href='".$url_maps."' target='_blank' id='xemdiachi'>"."Xem địa chỉ"."</a></td></tr>";
                 echo "</table>";
             }else{
@@ -65,7 +69,6 @@
 ?>
     </section>
     </div>
-    
     <script>
     function showSuggestions() {
     var input = document.getElementById('search').value;

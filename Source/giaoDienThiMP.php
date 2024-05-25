@@ -1,18 +1,28 @@
 <?php
-
-    function TaoRandom($scau){
-        $arr = [];
-        for($i= 0; $i < 10; $i++){
-            array_push($arr, rand(1, 120));
-        }
-        return $arr;
-    }
+    session_start();
 
     $conn = mysqli_connect("localhost", "root", "", "olblx");
-    $arr = TaoRandom(10);
-    while(!array_unique($arr)) $arr = TaoRandom(10);
+
+    if(isset($_GET['de'])){
+        if($_GET['de'] == 'ngauNhien')
+            $DeSo = rand(1,5);
+        else{
+            $DeSo = $_GET['de'];
+        }    
+    }
+
+    $de = [];
+    $cauDiemLiet = [];
+    $sql = "SELECT * FROM `bodeonthiblx` where DeSo = $DeSo";
+    $res = mysqli_query($conn, $sql);
+    if($row = mysqli_fetch_array($res)){
+        for($i = 1; $i <= 10; $i++){
+            array_push($de, $row["cau$i"]);
+        }
+    }
+
     $data = [];
-    foreach($arr as $cau){
+    foreach($de as $cau){
         $sql = "SELECT * FROM video_mo_phong WHERE cau = $cau";
         $res = mysqli_query($conn, $sql);
         if($row = mysqli_fetch_array($res)){
@@ -262,7 +272,7 @@
     <div id="container">
         <div class="item1">
             <div class="video">
-                <video id = "myVideo" width="800" height="740" controls muted onclick="move()">
+                <video id = "myVideo" width="800" height="740" autoplay muted onclick="move()">
                     <source src="video/MoPhong/1.mp4" type="video/mp4" id="source">
                 </video>
                 <div id="myProgress">
@@ -312,7 +322,7 @@
             <h4>Lưu ý:</h4>
             <p>Điểm của từng câu và Kết quả đánh giá bài thi sẽ được hiển thị ngay sau khi bạn hoàn thành bài thi!</p>
         </div>
-        <button id="checkrs" type="button" onclick="hienThiKetQua()" >Xem kết quả</button>
+        <button id="checkrs" type="button" onclick="hienThiKetQua()" hidden>Xem kết quả</button>
 
     </div>
     </div>

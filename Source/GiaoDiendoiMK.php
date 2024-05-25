@@ -1,6 +1,10 @@
 <?php
-session_start();
+    session_start();
 ?>
+<?php
+    $user = $_SESSION['username'];
+?>
+
 <script>
     function xulycheckbox() {
         var checkbox = document.getElementById('ok');
@@ -9,6 +13,10 @@ session_start();
             return false;
         }
         return true;
+    }
+    if(<?php if(isset($_SESSION['msg'])) echo 'true'; else echo 'false'; ?>){
+        alert("<?php echo $_SESSION['msg'] ?>");
+        <?php unset($_SESSION['msg']) ?>
     }
 </script>
 <!DOCTYPE html>
@@ -21,13 +29,13 @@ session_start();
 </head>
 <body>
     <div class="app_doiMatKhau">
-        <form action="xulydoimk.php" method="POST" onsubmit="return xulycheckbox()">
+        <form action="XuLyPHP/XuLy.php" method="POST" onsubmit="return xulycheckbox()">
         <div class="app_doiPass">
             <div class="doiMatKhau_text">
                 <h3 id="text_Page">Change Password</h3>
             </div>
             <div class="app_doiPass_item">
-                <input type="text" name="action" id="" >
+                <input type="text" name="action" value="DoiMK" id="" hidden>
                 <div class="taiKhoan">Xin chào: <?php echo $user ?></div>
                 <div class="matKhau">Nhập mật khẩu cũ: <input type="password" name="pass" id="pass" placeholder=" "></div>
                 <div class="matKhauMoi">Nhập mật khẩu mới: <input type="password" name="newpass" id="newpass" placeholder=" "></div>
@@ -35,7 +43,7 @@ session_start();
                 <div class="xacNhan">Xác Nhận Sự Thay Đổi này: <input type="checkbox" name="check" id="ok"></div>
                 <div class="submit"><input type="submit" value="Đổi Mật Khẩu" id="submit"></div>
                 <div class="or">------------------Hoặc------------------</div>
-                <div class="back"><a href="GiaoDiendoiMK.php"> <input type="button" value="Back" id="back"></a></div>
+                <div class="back"><a href="trangchu.php"> <input type="button" value="Back" id="back"></a></div>
             </div>
         </div>
     </form>

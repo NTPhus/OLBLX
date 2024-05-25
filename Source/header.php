@@ -231,7 +231,7 @@ a:hover, #xemlai:hover {
              <ul class="list">
                 <li><a href="trangchu.php">TRANG CHỦ</a></li>
                 <li>
-                    <a href="#">THI THỬ</a>
+                    <a href="#">ÔN TẬP</a>
 
                     <ul class="dropdown">
                         <li><a href="giaoDienTracNghiem.php">LÝ THUYẾT</a></li>
@@ -243,7 +243,7 @@ a:hover, #xemlai:hover {
 
                     <ul class="dropdown">
                         <li><a href="chonDeLyThuyet.php">LÝ THUYẾT</a></li>
-                        <li><a href="giaoDienThiMP.php">MÔ PHỎNG</a></li>
+                        <li><a href="chonDeMoPhong.php">MÔ PHỎNG</a></li>
                     </ul>
                 </li>
                 <li><a href="giaoDienTimKiem.php">ĐỊA ĐIỂM</a></li>
@@ -257,7 +257,7 @@ a:hover, #xemlai:hover {
                         <a href='#'> TÀI KHOẢN </a>
                         <ul class='dropdown'>
                             <li onclick='test()' id='xemlai'><a href=''>XEM LẠI LỊCH SỬ </a></li>
-                            <li><a href='#'>ĐỔI MẬT KHẨU</a></li>
+                            <li><a href='GiaoDienDoiMK.php'>ĐỔI MẬT KHẨU</a></li>
                             <li><a href='XuLyPHP/XuLy.php?action=logout' class='dangxuat'>ĐĂNG XUẤT</a></li>
                         </ul>
                         </li>
@@ -271,7 +271,7 @@ a:hover, #xemlai:hover {
 
     </header>
     <script>
-     function test() {
+function test() {
     var overlay = document.getElementById('overlay');
     var ok2 = document.getElementById('giaoDienLichSuXemLai');
     overlay.style.display = 'block';

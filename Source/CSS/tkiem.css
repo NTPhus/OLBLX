@@ -5,7 +5,7 @@
 }
 
 .ok{
-    background-image: url(../backGround/thinh2.jpg);
+    background-image: url(../img/bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -85,6 +85,7 @@ td{
 .app_result{
     position: relative;
     background-size: contain;
+    padding-top: 50px;
     min-height: 500px;
 }
 

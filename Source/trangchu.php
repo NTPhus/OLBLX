@@ -87,7 +87,7 @@
                                 </label>
                                 <div class="content_body">
                                     <p>ÔN TẬP TRONG 5 GIỜ</p>
-                                    <button onclick="chuyenTrang('OnLyThuyet')">ÔN TẬP</button>
+                                    <button onclick="ChuyenTrang('OnLyThuyet')">ÔN TẬP</button>
                               </div>
                             </div>
                         </div>

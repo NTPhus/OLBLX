@@ -63,7 +63,7 @@
                     $_SESSION['msg'] = "Mật khẩu cũ không chính xác";
                 }
             }
-            header("location:../GiaoDienDoiMK.php");
+            header("location:../trangchu.php");
         }
     }   
 

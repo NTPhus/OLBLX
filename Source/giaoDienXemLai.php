@@ -38,7 +38,7 @@
         }
     }
 
-    $mlb = "m3";
+    $mlb = $_GET['code'];
     $sql = "SELECT * FROM `lich_su_lam_bai` WHERE MaLamBai = '$mlb'";
     $res = mysqli_query($conn, $sql);
     if($row = mysqli_fetch_array($res)){
@@ -117,6 +117,7 @@
         
         function ChayBaiLamCu(){
             let blc = "<?php echo $baiLamCu ?>";
+            console.log(blc);
             let arr = [];
             for(let i = 1; i <= 30; i++){
                 index = blc.indexOf('-');

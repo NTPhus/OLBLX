@@ -15,7 +15,7 @@
 
 </head>
 <body>
-<?php include 'header.php'?>
+<?php include 'header.php' ?>
 
 <div class="container">
        <!-- START - LUA CHON  -->
@@ -147,8 +147,8 @@
                             <div class="info">
                                 <img src="https://gamek.mediacdn.vn/133514250583805952/2022/5/18/photo-1-16528608926331302726659.jpg" alt="">
                                 <div class="text-box">
-                                    <h3 class = "name">Nguyễn Diệu Linh</h3>
-                                    <span class = "job">Sinh Viên</span>
+                                    <h3 class = "name">Nguyễn Thiên Phú</h3>
+                                    <span class = "job">Developer</span>
                                 </div>
                             </div>
                             <p>Điều khiến tôi băn khoăn nhất là vừa đi làm và vừa đến trung tâm học lý
@@ -168,8 +168,8 @@
                             <div class="info">
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1ipn79bbt2v9BqrSz2J2uGj7rjNckfki-Nbtn52G4og&s" alt="">
                                 <div class="text-box">
-                                    <h3 class = "name">Nguyễn Diệu Linh</h3>
-                                    <span class = "job">Sinh Viên</span>
+                                    <h3 class = "name">Nguyễn Mạnh Dũng</h3>
+                                    <span class = "job">Developer</span>
                                 </div>
                             </div>
                             <p>Gần đây nghe mấy anh chị đi thi lái xe về nói có rất nhiều người rớt phần thi
@@ -190,11 +190,10 @@
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBqlqgaPk4UNxBl3nvWC_o1blnoVkKp4_W1I4NgCnlEQ&s" alt="">
                                 <div class="text-box">
                                     <h3 class = "name">Nguyễn Diệu Linh</h3>
-                                    <span class = "job">Sinh Viên</span>
+                                    <span class = "job">Developer</span>
                                 </div>
                             </div>
-                            <p>Tôi đang dùng một chiếc máy tính có cấu hình thấp vì vậy không thể cài đặt
-                                được phần mềm 120 tình huống mô phỏng. Xem qua rất nhiều trang web có phần
+                            <p>Tôi đã xem qua rất nhiều trang web có phần
                                 mô phỏng này trên web nhưng rất khó sử dụng. Vô tình lướt facebook thì có
                                 bạn chia sẻ trang web này, phần mềm mô phỏng online này rất giống với
                                 offline, hình rảnh rõ nét, gợi ý điểm canh rất chuẩn. Cho 5 sao!</p>
@@ -211,8 +210,8 @@
                             <div class="info">
                                 <img src="https://thicc-af.mywaifulist.moe/waifus/325/3d0b1ed821450f828b4590fa290b90ed2d32ff508c8a1ce9cdd0ff730a9c9b39_thumb.jpeg" alt="">
                                 <div class="text-box">
-                                    <h3 class = "name">Nguyễn Diệu Linh</h3>
-                                    <span class = "job">Sinh Viên</span>
+                                    <h3 class = "name">Nguyễn Duy Thịnh</h3>
+                                    <span class = "job">Developer</span>
                                 </div>
                             </div>
                             <p>Đã thử tài vài phần mềm mô phỏng cho điện thoại nhưng xem hình ảnh khá nhỏ,

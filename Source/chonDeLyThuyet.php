@@ -212,155 +212,15 @@
             <div class="cau_truc_hang_b1">
                 <div class="Hang_btn">
                     <button class = "dark hang_b1">Hạng B1</button>
-                    <button class = "dark hang_b2">Hạng B2</button>
                 </div>
 
                 <!-- THONG TIN BANG B1 -->
-                <h2 class ="cau_truc_heading">THÔNG TIN VÀ CÁCH THỨC THI THỬ LÝ THUYẾT LÁI XE HẠNG B1</h2> -->
-
-                <!-- A -->
-                <!-- <div class="Cau_truc_de_thi">
-                    <h3 class="tieu_de">A. Cấu trúc đề thi</h3>
-                    <p>Đề thi gồm 30 câu hổi được phân bố như sau</p>
-                    <table class="bang_thong_tin"  >
-                        <tbody>
-                            <th><p>Chương</p></th>
-                            <th colspan="2"><p>Nội dung</p></th>
-                            <th><p>Thư viện(câu)</p></th>
-                            <th><p>ĐỀ THI(câu)</p></th> -->
-
-                            <!-- CHƯƠNG 1 -->
-                            <!-- <tr>
-                                <td rowspan="3"> 1 </td>
-                                <td rowspan="3"> Khái niệm và quy tắc giao thông đường bộ </td>
-                                <td>Khái niệm</td>
-                                <td rowspan="3"> 166 </td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>Quy tắc</td>
-                                <td>6</td>
-                            </tr>
-                            <tr>
-                                <td>Tốc độ, khoảng cách</td>
-                                <td>1</td>
-                            </tr> -->
-
-                            <!-- CHƯƠNG 2 -->
-                            <!-- <tr>
-                                <td>2</td>
-                                <td colspan="2">Nghệp vụ vận tải</td>
-                                <td>26</td>
-                                <td>0</td>
-                            </tr> -->
-
-                            <!-- CHƯƠNG 3 -->
-                            <!-- <tr>
-                                <td>3</td>
-                                <td colspan="2">Văn hóa giao thông và đạo đức người lái xe</td>
-                                <td>21</td>
-                                <td>1</td>
-                            </tr> -->
-
-                            <!-- CHƯƠNG 4 -->
-                            <!-- <tr>
-                                <td>4</td>
-                                <td colspan="2">Kỹ thuật lái xe</td>
-                                <td>56</td>
-                                <td>1</td>
-                            </tr> -->
-
-                            <!-- CHƯƠNG 5 -->
-                            <!-- <tr>
-                                <td>5</td>
-                                <td colspan="2">Cấu tạo và sửa chữa</td>
-                                <td>35</td>
-                                <td>1</td>
-                            </tr> -->
-
-                            <!-- CHƯƠNG 6 -->
-                            <!-- <tr>
-                                <td>6</td>
-                                <td colspan="2">Biến báo hiệu đường bộ</td>
-                                <td>182</td>
-                                <td>9</td>
-                            </tr> -->
-
-                            <!-- CHƯƠNG 7 -->
-                            <!-- <tr>
-                                <td>7</td>
-                                <td colspan="2">Giải các thế sa hình và kỹ năng xử lý tình huống giao thông</td>
-                                <td>114</td>
-                                <td>9</td>
-                            </tr> -->
-
-                            <!-- CHƯƠNG 8 -->
-                            <!-- <tr>
-                                <td>8</td>
-                                <td colspan="2">Câu hỏi về tình huống mất an toàn giao thông nghiêm trọng (điểm liệt)</td>
-                                <td></td>
-                                <td>1</td>
-                            </tr> -->
-                            
-                            <!-- TỔNG  -->
-                            <!-- <tr>
-                                <td>Tổng</td>
-                                <td colspan="2"></td>
-                                <td>600</td>
-                                <td>30</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div> -->
-
-                <!-- B -->
-                <!-- <div class="Phuong_phap_cham_diem">
-                    <h3 class="tieu_de">B. Phương pháp chấm điểm</h3>
-                    <p>- Mỗi người có 20 phút làm bài trắc nghiệm về những câu hỏi đã được học trong 
-                        <a class ="600_cau yellow"href="#"> 600 câu hỏi ôn tập lý thuyết</a>
-                    </p>
-                    <p>- Mỗi câu có duy nhất một đáp án đúng. Trả lời đúng 1 câu được 1 diểm.</p>
-
-                </div> -->
-
-                <!-- C -->
-                <!-- <div class="c_danh_gia">
-                    <h3 class="tieu_de">C. Đánh giá</h3>
-                    <table class="bang_thong_tin">
-                        <tr>
-                            <td>Tổng điểm</td>
-                            <td>30</td>
-                            <td>Đề thi 30 câu, mỗi câu đúng được 1 điểm</td>
-                        </tr>
-
-                        <tr>
-                            <td>Số điểm tối thiểu cần đạt</td>
-                            <td>27</td>
-                            <td>Tương đương 90%</td>
-                        </tr>
-                    </table>
-                </div> -->
-
-                <!-- D -->
-                <!-- <div class="huong_dan">
-                    <h3 class="tieu_de">D. Hướng dẫn</h3>
-                    <p>- Ấn chọn câu muốn làm ở thanh bên trái.</p>
-                    <p>- Màu xanh 
-                        <span><i class="blue ri-square-fill"></i></span>
-                        là những câu chưa làm 
-                        , Màu vàng <span><i class=" yellow ri-square-fill"></i></span> là những câu đã làm.
-                    </p>
-                    <p>Nhất nút NỘP BÀI, chọn OK để kết thúc bài thi và chờ hệ thống chấm điểm.</p>
-                </div>
-
-                <!-- THONG TIN BANG B2 -->
-                <h2 class ="cau_truc_heading">THÔNG TIN VÀ CÁCH THỨC THI THỬ LÝ THUYẾT LÁI XE HẠNG B2</h2>
+                <h2 class ="cau_truc_heading">THÔNG TIN VÀ CÁCH THỨC THI THỬ LÝ THUYẾT LÁI XE HẠNG B1</h2> 
 
                 <!-- A -->
                 <div class="Cau_truc_de_thi">
                     <h3 class="tieu_de">A. Cấu trúc đề thi</h3>
-                    <p>Đề thi gồm 35 câu hổi được phân bố như sau</p>
+                    <p>Đề thi gồm 30 câu hổi được phân bố như sau</p>
                     <table class="bang_thong_tin"  >
                         <tbody>
                             <th><p>Chương</p></th>
@@ -378,7 +238,7 @@
                             </tr>
                             <tr>
                                 <td>Quy tắc</td>
-                                <td>7</td>
+                                <td>6</td>
                             </tr>
                             <tr>
                                 <td>Tốc độ, khoảng cách</td>
@@ -390,7 +250,7 @@
                                 <td>2</td>
                                 <td colspan="2">Nghệp vụ vận tải</td>
                                 <td>26</td>
-                                <td>1</td>
+                                <td>0</td>
                             </tr>
 
                             <!-- CHƯƠNG 3 -->
@@ -406,7 +266,7 @@
                                 <td>4</td>
                                 <td colspan="2">Kỹ thuật lái xe</td>
                                 <td>56</td>
-                                <td>2</td>
+                                <td>1</td>
                             </tr>
 
                             <!-- CHƯƠNG 5 -->
@@ -422,7 +282,7 @@
                                 <td>6</td>
                                 <td colspan="2">Biến báo hiệu đường bộ</td>
                                 <td>182</td>
-                                <td>10</td>
+                                <td>9</td>
                             </tr>
 
                             <!-- CHƯƠNG 7 -->
@@ -430,7 +290,7 @@
                                 <td>7</td>
                                 <td colspan="2">Giải các thế sa hình và kỹ năng xử lý tình huống giao thông</td>
                                 <td>114</td>
-                                <td>10</td>
+                                <td>9</td>
                             </tr>
 
                             <!-- CHƯƠNG 8 -->
@@ -442,11 +302,11 @@
                             </tr>
                             
                             <!-- TỔNG  -->
-                            <tr>
+                             <tr>
                                 <td>Tổng</td>
                                 <td colspan="2"></td>
                                 <td>600</td>
-                                <td>35</td>
+                                <td>30</td>
                             </tr>
 
                         </tbody>
@@ -456,7 +316,7 @@
                 <!-- B -->
                 <div class="Phuong_phap_cham_diem">
                     <h3 class="tieu_de">B. Phương pháp chấm điểm</h3>
-                    <p>- Mỗi người có 22 phút làm bài trắc nghiệm về những câu hỏi đã được học trong 
+                    <p>- Mỗi người có 20 phút làm bài trắc nghiệm về những câu hỏi đã được học trong 
                         <a class ="600_cau yellow"href="#"> 600 câu hỏi ôn tập lý thuyết</a>
                     </p>
                     <p>- Mỗi câu có duy nhất một đáp án đúng. Trả lời đúng 1 câu được 1 diểm.</p>
@@ -469,18 +329,31 @@
                     <table class="bang_thong_tin">
                         <tr>
                             <td>Tổng điểm</td>
-                            <td>35</td>
-                            <td>Đề thi 35 câu, mỗi câu đúng được 1 điểm</td>
+                            <td>30</td>
+                            <td>Đề thi 30 câu, mỗi câu đúng được 1 điểm</td>
                         </tr>
 
                         <tr>
                             <td>Số điểm tối thiểu cần đạt</td>
-                            <td>32</td>
-                            <td>Tương đương 91.4%</td>
+                            <td>27</td>
+                            <td>Tương đương 90%</td>
                         </tr>
                     </table>
                 </div>
 
+                <!-- D -->
+                 <div class="huong_dan">
+                    <h3 class="tieu_de">D. Hướng dẫn</h3>
+                    <p>- Ấn chọn câu muốn làm ở thanh bên trái.</p>
+                    <p>- Màu xanh 
+                        <span><i class="blue ri-square-fill"></i></span>
+                        là những câu chưa làm 
+                        , Màu vàng <span><i class=" yellow ri-square-fill"></i></span> là những câu đã làm.
+                    </p>
+                    <p>Nhất nút NỘP BÀI, chọn OK để kết thúc bài thi và chờ hệ thống chấm điểm.</p>
+                </div>
+
+                
                 <!-- D -->
                 <div class="huong_dan">
                     <h3 class="tieu_de">D. Hướng dẫn</h3>

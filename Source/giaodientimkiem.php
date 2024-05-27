@@ -27,7 +27,7 @@
         <div class="app_content">
         <form action="giaoDienTimKiem.php" method="POST">
             <div class="search-container">
-            <div><input type="text" id="search" onkeyup="showSuggestions()" name="search" class="input_Tinh" placeholder="Vui lòng nhập tên tỉnh thành muốn tìm! ..."><button type="submit" class="submit">Tìm kiếm<i class="ri-search-line"></i></button></div>
+            <div><input type="text" id="search" onkeyup="showSuggestions()" name="search" class="input_Tinh" placeholder="Vui lòng nhập tên tỉnh thành muốn tìm! ..." <?php if(isset($_SESSION['tinh'])) echo "value='".$_SESSION['tinh']."'"; ?>><button type="submit" class="submit">Tìm kiếm<i class="ri-search-line"></i></button></div>
             </div>
             <div id="suggestion"></div>
         </form>             
@@ -36,6 +36,7 @@
     <?php
         if(isset($_POST['search']) || isset($_POST['tinh'])){
         $search_tinh = isset($_POST['search']) ? trim($_POST['search']) : '';
+        $_SESSION['tinh'] = $search_tinh;
         $select_tinh = isset($_POST['tinh']) ? trim($_POST['tinh']) : '';
         if (!empty($search_tinh) || !empty($select_tinh)) {
             $conn = mysqli_connect("localhost", "root", "", "olblx");
@@ -94,7 +95,7 @@
             }
         }
     };
-    xmlhttp.open('GET', 'xulytimkiem.php?q=' + input, true);
+    xmlhttp.open('GET', 'XuLyPHP/XuLy.php?action=timkiem&q=' + input, true);
     xmlhttp.send();
 }
 

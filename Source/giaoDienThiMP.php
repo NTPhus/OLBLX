@@ -13,7 +13,7 @@
 
     $de = [];
     $cauDiemLiet = [];
-    $sql = "SELECT * FROM `bodeonthiblx` where DeSo = $DeSo";
+    $sql = "SELECT * FROM `bo_de_thi_mo_phong` where DeSo = $DeSo";
     $res = mysqli_query($conn, $sql);
     if($row = mysqli_fetch_array($res)){
         for($i = 1; $i <= 10; $i++){
@@ -55,28 +55,35 @@
         .video{
             position: relative;
         }
+        .container_video
+        {
+        }
 
         #myVideo{
             display: block;
             height: 500px;
             width: 1000px;
-            z-index: -1;
+            z-index: 1;
+
         }
         #container{
+
             display: flex;
             margin-top: 100px;
-            height: 700px;
+            height: 650px;
 
         }
         .item1{
             margin-left: 100px;
             float: left;
+            margin-top: -60px;
         }
         .item2{
             width: 300px;
-            height: 530px;
+            height: 560px;
             margin-left: 50px;
             background: #fff;
+            margin-top: -60px;
             /* float: right; */
         }
         .item2 h2{
@@ -135,13 +142,12 @@
 
         tr{
             text-align: center;
-            padding: 20px;
+            padding: 15px;
         }
 
         td
         {
             border: 1px solid #222222; 
-            padding: 5px 30px;
         }
         .td_heading{
             background: yellow;
@@ -245,7 +251,9 @@
             margin-bottom: 300px;
             color: red;
         }
-        .luu_y{}
+        .luu_y{
+            margin-top: 40px;
+        }
         .luu_y h4{
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: red;

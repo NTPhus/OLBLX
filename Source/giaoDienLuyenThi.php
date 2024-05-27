@@ -161,7 +161,7 @@
     </div>
     </div>
     
-
+    <?php include 'footer.php'?>
     <!-- Đồng hồ đếm ngược -->
     <script src="JS/index.js"></script>
     <script type="text/javascript">
@@ -203,6 +203,7 @@
         let dapan2 = document.getElementById("dapan2");
         let dapan3 = document.getElementById("dapan3");
         let dapan4 = document.getElementById("dapan4");
+        document.getElementById("btn"+currentIndex).style.backgroundColor = "lightgreen";
         function start(){
             let currentQuestion = questions[0];
             let answers = currentQuestion.answers;
@@ -234,11 +235,12 @@
         }
 
         function ChuyenCau(cau){
-            console.log(cau_diem_liet);
+            document.getElementById("btn"+currentIndex).style.backgroundColor = "aqua";
+            console.log("btn"+currentIndex);
             currentIndex = cau;
             let currentQuestion = questions[currentIndex-1];
             let answers = currentQuestion.answers;
-            console.log(cau_diem_liet);
+            document.getElementById("btn"+currentIndex).style.backgroundColor = "lightgreen";
             document.getElementById("cauHoi").innerHTML = "Câu " +  currentIndex + ". " + currentQuestion.question;
             if(cau_diem_liet.indexOf(currentIndex) >= 0){
                 document.getElementById("cauHoi").innerHTML += "<span id='cdl'>(*)</span>";
@@ -296,6 +298,7 @@
                 status = false;
             }
         }
+        
         //Khong the quay ve trang truoc
         function preventBack() {
             window.history.forward();
@@ -307,9 +310,6 @@
 
         start();
 
-    </script>
-    <?php include 'footer.php'?>
-    <script>
         let diem = 0;
 
         const nopBai = document.querySelector(".submit_btn");
@@ -356,12 +356,12 @@
             }
             ketqua.classList.add('result_open');
             document.getElementById("rs").innerHTML = diem + "/35";
-            if(diem < 27 && status){
+            if(diem > 27 && status){
+                document.getElementById("comment").innerHTML = "Bạn đã hoàn thành xuất sắc bài thi, chúc mừng bạn nhé!";
+                document.getElementById("icon").innerHTML = "<i class='emoji ri-emotion-happy-fill'>";                
+            }else{
                 document.getElementById("comment").innerHTML = "rất tiếc, bạn chưa đạt, cố gắng luyện tập thêm nhé!";
                 document.getElementById("icon").innerHTML = "<i class='emoji ri-emotion-unhappy-fill'></i>";
-            }else{
-                document.getElementById("comment").innerHTML = "Bạn đã hoàn thành xuất sắc bài thi, chúc mừng bạn nhé!";
-                document.getElementById("icon").innerHTML = "<i class='emoji ri-emotion-happy-fill'>";
             }
         });
         exit2.addEventListener("click", () => {

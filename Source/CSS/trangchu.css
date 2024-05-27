@@ -65,37 +65,11 @@ ul li ul.dropdown{
   width: auto;
   text-align: left;
   position: absolute;
-  /* z-index: 999; */
   display: none;
   background: #162938;
   margin: auto;
 
 }
-
- ul.dropdown li a{ 
-    margin-top: 20px;
-
-}
-ul.dropdown li:nth-child(1)
-{
-  padding: 20px 0;
-  border-bottom: 1px solid #ccc;
-
-}
-ul.dropdown li:nth-child(2)
-{
-  padding-bottom: 20px;
-  border-bottom: 1px solid #ccc;
-}
- ul.dropdown li:nth-child(3)
- {
-  padding-bottom: 20px;
- }
-
-ul li:hover ul.dropdown{
-  display: block;
-}
-
 /* design các thành phần trong thanh điều hướng */
 .navigation li a{
   position: relative;
@@ -279,12 +253,61 @@ ul li:hover ul.dropdown{
 
 
   /* --------------START - SLIDER DANH GIA TU HOC VIEN------------------- */
+  .swiper {
+    width: 100%;
+    height: 550px;
+  }
+
+  .swiper-slide {
+    font-size: 18px;
+    display: flex;
+
+  } 
+
+  .swiper-slide img {
+    display: block;
+    object-fit: cover;
+  }
+
+  .autoplay-progress {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--swiper-theme-color);
+  }
+
+.autoplay-progress svg {
+    display: none;
+    --progress: 0;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    stroke-width: 4px;
+    stroke: var(--swiper-theme-color);
+    fill: none;
+    stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+    stroke-dasharray: 125.6;
+    transform: rotate(-90deg);
+  }
+
+  
   .testimonials{
-    margin-top: 50px;
-    padding: 100px 0;
-    background: url('../img/bg-review.png') no-repeat;
+    margin-top: -150px;
+    padding: 50px 0;
+    background: url('./../img/bg-review.png') no-repeat;
     background-color: #00a7cc;
-    height: 600px;
+    height: 530px;
+    transform: translateY(180px);
   }
 
   .content{
@@ -313,13 +336,10 @@ ul li:hover ul.dropdown{
     padding: 30px;
     border-radius: 30px;
     width: 240px;
-    max-height: 290px;
+    max-height: 260px;
     box-shadow:  30px 25px 15px 0px #1d313f;
   }
 
-  .topic_content_items::before{
-
-  }
   .testimonials-item img{
     width:50px;
     height: 50px;
@@ -344,6 +364,7 @@ ul li:hover ul.dropdown{
     
   }
 
+
   .testimonials-item p{
     margin: 20px 0px;
     color: #162938;
@@ -355,7 +376,7 @@ ul li:hover ul.dropdown{
     margin-top: 15px;
     font-size:  14px;
     color: yellow;
-    bottom: 30px;
+    /* bottom: 30px; */
   }
 
   .testimonials .swiper-pagination{
@@ -372,6 +393,59 @@ ul li:hover ul.dropdown{
   .swiper-wrapper{
     height: 350px;
   }
+
+  /* END - DANH GIA HOC VIEN */
+
+  /* ------------------------ */
+  .danh_gia{
+    /* position: absolute; */
+    margin-top: 160px;
+    padding: 100px 0;
+    background: url('./../img/pattern-blue.jpg') repeat;
+    width: 100%;
+    height: 265px;
+    transform: translateY(100px);
+    position: relative;
+  }
+
+  .list-items {
+    position: relative;
+    text-align: center;
+    height: 100px;
+    
+  }
+  
+  .list-items:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0; /* Positions the border on the right side */
+    width: 0; /* Ensures the border doesn't affect the element's width */
+    height: 100px; /* Matches the height of the .list-items element */
+    border-style: dashed;
+    border-width: 1px; /* Adjust border thickness as needed */
+    border-color: #ccc; /* Inherits the border color from the .list-items element (red in this case) */
+  }
+  .numbers__desc
+  {
+    position: relative;
+  }
+  .gach_chan {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 30px;
+    height: 2px;
+    margin-left: -15px;
+    content: "";
+    background-color: #ffea00;
+}
+
+.numbers_list-values{
+  font-size: 30px;
+  color: #ffea00;
+}
+
 
   /* ------------------------START - THONG TIN LUONG TRUY CAP----------- */
   .danh_gia{

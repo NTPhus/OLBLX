@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <style>
      * {
     margin: 0;
@@ -30,7 +32,7 @@
     z-index: 1000;
     justify-content: flex-start;
     overflow: scroll;
-    transition: transform 0.3 ease: 
+    transition: transform 0.3 ease;
 }
 
 #giaoDienLichSuXemLai.show {
@@ -61,12 +63,15 @@ header {
     justify-content: center;
     display: flex;
 }
-
+.logo a:hover{
+    text-decoration: none;
+    
+}
 .navigation ul li, #xemlai {
     display: inline-block;
 }
 
-.navigation li a, #xemlai {
+.navigation li a {
     position: relative;
     font-size: 1.1rem;
     color: #fff;
@@ -105,8 +110,8 @@ ul li ul.dropdown{
     margin: auto;
 }
 
-ul.dropdown li a, #xemlai{
-    margin-top: 20px;
+ul.dropdown li {
+
 }
 
 ul.dropdown li:nth-child(1) {
@@ -115,10 +120,13 @@ ul.dropdown li:nth-child(1) {
     border-bottom: 1px solid #ccc;
 }
 
-ul.dropdown li:nth-child(2), ul.dropdown li:nth-child(3) {
+ul.dropdown li:nth-child(2) {
     padding: 20px 0;
     border-bottom: 1px solid #ccc;
 }
+ ul.dropdown li:nth-child(3){
+    padding: 20px 0;
+ }
 
 ul li:hover ul.dropdown {
     display: block;
@@ -196,12 +204,10 @@ a {
     text-decoration: none;
 }
 
-a:hover, #xemlai:hover {
+a:hover {
     text-decoration: underline;
 }
-#xemlai, #doiMK{
-    margin-top: 20px;
-    padding: 20px 0;
+ #doiMK{
     border-bottom: 1px solid #ccc;
     cursor: pointer;
     
@@ -219,7 +225,6 @@ a:hover, #xemlai:hover {
     max-width: 600px;
     height: 80%;
     max-height: 80%;
-    overflow-y: auto;
     padding: 20px;
     border-radius: 10px;
     z-index: 1000;
@@ -240,8 +245,8 @@ a:hover, #xemlai:hover {
     background-image: url(img/bg.jpg);
     background-repeat: no-repeat;
     background-position: center;
-    width:400px;
-    height: 450px;
+    width:500px;
+    height: 500px;
     border: 1px solid;
     border-radius: 15px;
 }
@@ -252,28 +257,34 @@ a:hover, #xemlai:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding-top: 30px;
+
 }
 
 .app_doiPass_item{
     margin: 0 10px;
+    padding: 20px;
 }
 .taiKhoan{
 font-size: 25px;
+padding-bottom: 10px;
+
 border-bottom: 1px solid;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
 }
 .matKhau{
     margin-top: 20px;
+    padding-bottom: 10px;
+
     font-size: 20px;
     border-bottom: 1px solid;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }
 .matKhauMoi{
     margin-top: 20px;
+    padding-bottom: 10px;
+
     font-size: 20px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-bottom: 1px solid;
 }
 .or{
@@ -300,11 +311,19 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 50px;
     height: 20px;
 }
-#submit, #back{
-    margin-top: 20px;
+#submit_btn{
+    margin-top: 50px;
     width: 300px;
     height: 30px;
-    border-radius: 20px;
+    border-radius: 15px;
+    margin-left: 18%;
+    padding: 20px 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+
 }
 .submit, .back{
     display: flex;
@@ -318,6 +337,75 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 a{
     text-decoration: none;
 }
+
+/* Alert */
+.alert{
+            background: #00BFFF;
+            padding: 20px 40px;
+            min-width: 420px;
+            position: absolute;
+            right: 0;
+            top: 10px;
+            border-radius: 4px;
+            border-left: 8px solid #00A5F5;
+            overflow: hidden;
+            z-index: 100;
+        }
+        .alert.showAlert{
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .alert.show{
+            animation: show_slide 1s ease forwards;
+        }
+        @keyframes show_slide {
+        0%{
+            transform: translateX(100%);
+        }
+        40%{
+            transform: translateX(-10%);
+        }
+        80%{
+            transform: translateX(0%);
+        }
+        100%{
+            transform: translateX(-10px);
+        }
+        }
+        .alert.hide{
+            display: none;
+        }
+
+        .alert .fa-exclamation-circle{
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 30px;
+        }
+        .alert .msg{
+            padding: 0 20px;
+            font-size: 18px;
+            color: #fff;
+        }
+        .alert .close-btn {
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #00A5F5;
+            padding: 20px 18px;
+            cursor: pointer;
+        }
+        .alert .close-btn:hover{
+            background: #B0E0E6;
+        }
+        .alert .close-btn .fas{
+            color: #fff;
+            font-size: 22px;
+            line-height: 40px;
+        }
 </style>
 </head>
 <body>
@@ -325,7 +413,7 @@ a{
 <header>
         <!-- LOGO -->
         <div class="logo">
-        <a href="" ><img src="img/logo (2).png" alt="">THILAIXE.VN</a>
+        <a href="trangchu.php" ><img src="img/logo (2).png" alt="">THILAIXE.VN</a>
         </div>
         
         <nav class="navigation">
@@ -345,7 +433,7 @@ a{
 
                     <ul class="dropdown">
                         <li><a href="chonDeLyThuyet.php">LÝ THUYẾT</a></li>
-                        <li><a href="giaoDienThiMP.php">MÔ PHỎNG</a></li>
+                        <li><a href="chonDeMoPhong.php">MÔ PHỎNG</a></li>
                     </ul>
                 </li>
                 <li><a href="giaoDienTimKiem.php">ĐỊA ĐIỂM</a></li>
@@ -358,7 +446,7 @@ a{
                         <li>
                         <a href='#'> TÀI KHOẢN </a>
                         <ul class='dropdown'>
-                            <li onclick='xemLaiLSThi()' id='xemlai'><a href='#'>XEM LẠI LỊCH SỬ THI</a></li>
+                            <li onclick='xemLaiLSThi()' id='xemlai'><a href='#'>XEM LỊCH SỬ THI</a></li>
                             <li onclick='doiMatKhau()' id='doiMK'><a href='#'>ĐỔI MẬT KHẨU</a></li>
                             <li><a href='XuLyPHP/XuLy.php?action=logout' class='dangxuat'>ĐĂNG XUẤT</a></li>
                         </ul>
@@ -368,8 +456,14 @@ a{
                 ?>
             </ul> 
         </nav>  
-
     </header>
+    <div class="alert <?php if(isset($_SESSION["msg"])) echo 'showAlert'; else echo 'hide'?>">
+        <span class="fas fa-exclamation-circle"></span>
+        <span class="msg" id="msg"><?php if(isset($_SESSION["msg"])) echo $_SESSION["msg"]; unset($_SESSION['msg']);?></span>
+        <div class="close-btn">
+        <span class="fas fa-times"></span>
+        </div>
+    </div>
     <script>
      function xemLaiLSThi() {
     var overlay = document.getElementById('overlay');
@@ -401,6 +495,11 @@ function doiMatKhau() {
 function dangnhap() {
     window.location.href = "start.php";
 }
+
+$('.close-btn').click(function(){
+            $('.alert').removeClass("show");
+            $('.alert').addClass("hide");
+        });
     </script>
 <!-- ========================================================== -->
 
@@ -434,17 +533,18 @@ function dangnhap() {
 
 <!-- ============================DOIMK====================== -->
 <div class="app_doiMatKhau" id="app_doiMK">
-        <form action="XuLyPHP/XuLy.php">
+        <form action="XuLyPHP/XuLy.php" method="POST">
         <div class="app_doiPass">
             <div class="doiMatKhau_text">
-                <h3 id="text_Page">Change Password</h3>
+                <h3 id="text_Page">ĐỔI MẬT KHẨU</h3>
             </div>
             <div class="app_doiPass_item">
+                <input type="text" name="action" value="DoiMK" id="" hidden>
                 <div class="taiKhoan">Xin chào: <?php echo $_SESSION['username'] ?></div>
                 <div class="matKhau">Nhập mật khẩu cũ: <input type="text" name="pass" id="pass"></div>
                 <div class="matKhauMoi">Nhập mật khẩu mới: <input type="text" name="newpass" id="newpass"></div>
-                <div class="xacNhan">Xác Nhận Sự Thay Đổi này: <input type="checkbox" name="check" id="ok"></div>
-                <div class="submit"><input type="submit" value="Đổi Mật Khẩu" id="submit"></div>
+                <div class="matKhauMoi">Nhập lại mật khẩu mới: <input type="text" name="newpasschk" id="newpass"></div>
+                <button id="submit_btn">Đổi mật khẩu</button>
             </div>
         </div>
     </form>

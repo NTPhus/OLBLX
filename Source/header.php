@@ -337,75 +337,6 @@ border-bottom: 1px solid;
 a{
     text-decoration: none;
 }
-
-/* Alert */
-.alert{
-            background: #00BFFF;
-            padding: 20px 40px;
-            min-width: 420px;
-            position: absolute;
-            right: 0;
-            top: 10px;
-            border-radius: 4px;
-            border-left: 8px solid #00A5F5;
-            overflow: hidden;
-            z-index: 100;
-        }
-        .alert.showAlert{
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .alert.show{
-            animation: show_slide 1s ease forwards;
-        }
-        @keyframes show_slide {
-        0%{
-            transform: translateX(100%);
-        }
-        40%{
-            transform: translateX(-10%);
-        }
-        80%{
-            transform: translateX(0%);
-        }
-        100%{
-            transform: translateX(-10px);
-        }
-        }
-        .alert.hide{
-            display: none;
-        }
-
-        .alert .fa-exclamation-circle{
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #fff;
-            font-size: 30px;
-        }
-        .alert .msg{
-            padding: 0 20px;
-            font-size: 18px;
-            color: #fff;
-        }
-        .alert .close-btn {
-            position: absolute;
-            right: 0px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #00A5F5;
-            padding: 20px 18px;
-            cursor: pointer;
-        }
-        .alert .close-btn:hover{
-            background: #B0E0E6;
-        }
-        .alert .close-btn .fas{
-            color: #fff;
-            font-size: 22px;
-            line-height: 40px;
-        }
 </style>
 </head>
 <body>
@@ -457,13 +388,6 @@ a{
             </ul> 
         </nav>  
     </header>
-    <div class="alert <?php if(isset($_SESSION["msg"])) echo 'showAlert'; else echo 'hide'?>">
-        <span class="fas fa-exclamation-circle"></span>
-        <span class="msg" id="msg"><?php if(isset($_SESSION["msg"])) echo $_SESSION["msg"]; unset($_SESSION['msg']);?></span>
-        <div class="close-btn">
-        <span class="fas fa-times"></span>
-        </div>
-    </div>
     <script>
      function xemLaiLSThi() {
     var overlay = document.getElementById('overlay');
@@ -496,10 +420,6 @@ function dangnhap() {
     window.location.href = "start.php";
 }
 
-$('.close-btn').click(function(){
-            $('.alert').removeClass("show");
-            $('.alert').addClass("hide");
-        });
     </script>
 <!-- ========================================================== -->
 

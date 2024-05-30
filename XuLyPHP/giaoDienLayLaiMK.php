@@ -26,7 +26,7 @@
 
                             <div class="submit"><input type="submit" name="submit" value="Xác nhận" id="submit"></div>
                             <div class="or">------------Hoặc----------</div>
-                            <a href="#"><div class="back"><input type="button" value="Quay Lại" id="back"></div></a>
+                            <a href="../index.php"><div class="back"><input type="button" value="Quay Lại" id="back"></div></a>
                         </div>
                     </div>
                 </form>
@@ -77,7 +77,7 @@
             $row = mysqli_fetch_array($rs);
             echo "<p>Mật khẩu của bạn là: ".$row['password']."</p>";
             echo "<br>";
-            echo "<a href='../trangchu.php'> Quay về trang chủ </a>";
+            echo "<a href='./trangchu.php'> Quay về trang chủ </a>";
         }
         ?>
     </div>

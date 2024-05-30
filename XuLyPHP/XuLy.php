@@ -16,11 +16,11 @@
             if($data["username"] == $username && $data["password"] == $password){
                 unset($_SESSION['errorlg']);
                 $_SESSION["username"] = $username;
-                header("location:../start.php");
+                header("location:../index.php");
             }
             else{
                 $_SESSION["errorlg"] = "Mật khẩu hoặc tài khoản chưa chính xác!";
-                header("location:../start.php");
+                header("location:../index.php");
             }
         }else if($_POST['action'] == "register"){ // dang ki
             $username = $_POST["username"];
@@ -31,12 +31,12 @@
             $res = mysqli_query($conn, $sqlselect);
             $data = mysqli_fetch_assoc($res);
             if($data){
-                header("location:../start.php");
+                header("location:../index.php");
                 $_SESSION["errorlg"] = "Tài khoản đã tồn tại!";
             }else{
                 $sqlinsert = "insert user(username, password, email) values ('".$username."','".$password."','".$email."')";
                 mysqli_query($conn, $sqlinsert);
-                header("location:../start.php");
+                header("location:../index.php");
             }
         }else if($_POST['action'] == "DoiMK"){
             $u = $_SESSION['username'];
@@ -70,7 +70,7 @@
     if(isset($_GET['action'])){
         if($_GET['action'] == "logout"){
             session_destroy();
-            header("location:../start.php");
+            header("location:../index.php");
         }else if($_GET['action'] == "timkiem"){
             // Lấy dữ liệu từ yêu cầu AJAX
             $input = trim($_GET['q']);

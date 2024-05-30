@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    include("session.php");
     $conn = mysqli_connect("localhost", "root", "", "olblx");
     $sql = "SELECT * FROM video_mo_phong";
     $res = mysqli_query($conn, $sql);

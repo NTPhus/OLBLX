@@ -140,7 +140,7 @@
                              <!-- LƯU MẬT KHẨU + QUÊN MẬT KHẨU -->
                                 <div class="Mat_khau">
                                         <label><input type="checkbox" name="" id=""> Lưu mật khẩu</label>
-                                        <a href="XyLyPHP/giaoDienLayLaiMK.php">Quên mật khẩu</a>
+                                        <a href="XuLyPHP/giaoDienLayLaiMK.php">Quên mật khẩu</a>
                                 </div>
                                 <input type="text" name="action" value="login" hidden>
                              <!-- NÚT ĐĂNG NHẬP -->

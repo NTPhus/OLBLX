@@ -147,7 +147,7 @@
                         <!-- ĐÁNH GIÁ 1 -->
                         <div class="swiper-slide testimonials-item">
                             <div class="info">
-                                <img src="https://gamek.mediacdn.vn/133514250583805952/2022/5/18/photo-1-16528608926331302726659.jpg" alt="">
+                                <img src="img/thienphu.jpg" alt="">
                                 <div class="text-box">
                                     <h3 class = "name">Nguyễn Thiên Phú</h3>
                                     <span class = "job">Developer</span>
@@ -168,7 +168,7 @@
                          <!-- ĐÁNH GIÁ 2 -->
                         <div class="swiper-slide testimonials-item">
                             <div class="info">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1ipn79bbt2v9BqrSz2J2uGj7rjNckfki-Nbtn52G4og&s" alt="">
+                                <img src="img/manhdung.jpg" alt="">
                                 <div class="text-box">
                                     <h3 class = "name">Nguyễn Mạnh Dũng</h3>
                                     <span class = "job">Developer</span>
@@ -189,7 +189,7 @@
                          <!-- ĐÁNH GIÁ 3 -->
                         <div class="swiper-slide testimonials-item">
                             <div class="info">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBqlqgaPk4UNxBl3nvWC_o1blnoVkKp4_W1I4NgCnlEQ&s" alt="">
+                                <img src="img/dieulinh.jpg" alt="">
                                 <div class="text-box">
                                     <h3 class = "name">Nguyễn Diệu Linh</h3>
                                     <span class = "job">Developer</span>
@@ -210,7 +210,7 @@
                          <!-- ĐÁNH GIÁ 4 -->
                         <div class="swiper-slide testimonials-item">
                             <div class="info">
-                                <img src="https://thicc-af.mywaifulist.moe/waifus/325/3d0b1ed821450f828b4590fa290b90ed2d32ff508c8a1ce9cdd0ff730a9c9b39_thumb.jpeg" alt="">
+                                <img src="img/duythinh.jpg" alt="">
                                 <div class="text-box">
                                     <h3 class = "name">Nguyễn Duy Thịnh</h3>
                                     <span class = "job">Developer</span>

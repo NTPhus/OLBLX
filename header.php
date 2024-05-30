@@ -177,14 +177,11 @@ table, th, td {
 }
 
 th, td {
-    padding: 12px;
+    padding: 10px;
     text-align: center;
 }
 
-th {
-    background-color: #4CAF50;
-    color: white;
-}
+
 
 tr:nth-child(even) {
     background-color: #f2f2f2;
@@ -192,6 +189,7 @@ tr:nth-child(even) {
 
 tr:hover {
     background-color: #ddd;
+    cursor: pointer;
 }
 
 h1 {
@@ -246,9 +244,9 @@ a:hover {
     background-repeat: no-repeat;
     background-position: center;
     width:500px;
-    height: 500px;
-    border: 1px solid;
+    height: 520px;
     border-radius: 15px;
+    box-shadow: 0 0 10px #ccc;
 }
 
 #text_Page{
@@ -257,18 +255,21 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 30px;
-
+    margin-top: 20px;
+    margin-left: 16%;
+    font-family: math;
+    letter-spacing: 3px;
+    margin-left: 5%;
 }
 
 .app_doiPass_item{
     margin: 0 10px;
-    padding: 20px;
+    padding: 0 20px;
 }
 .taiKhoan{
 font-size: 25px;
 padding-bottom: 10px;
-
+font-weight: 700;
 border-bottom: 1px solid;
 
 }
@@ -280,12 +281,20 @@ border-bottom: 1px solid;
     border-bottom: 1px solid;
 
 }
+
+.matKhauMoi input, .matKhau input{
+    border: 1px solid #BBBBBB;
+    outline: none;
+}
 .matKhauMoi{
     margin-top: 20px;
     padding-bottom: 10px;
 
     font-size: 20px;
     border-bottom: 1px solid;
+}
+input[type="password"]{
+    width: 250px;
 }
 .or{
     text-align: center;
@@ -294,7 +303,7 @@ border-bottom: 1px solid;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-bottom: 1px solid;
 }
-#pass, #newpass{
+#pass , #newpass {
     float: right;
     height: 23px;
     border-radius: 8px;
@@ -302,17 +311,11 @@ border-bottom: 1px solid;
 }
 .xacNhan{
     margin-top: 20px;
-    font-size: 20px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    border-bottom: 1px solid;
 }
 
-#ok{
-    width: 50px;
-    height: 20px;
-}
+
 #submit_btn{
-    margin-top: 50px;
+    margin-top: 40px;
     width: 300px;
     height: 30px;
     border-radius: 15px;
@@ -323,9 +326,23 @@ border-bottom: 1px solid;
     justify-content: center;
     align-items: center;
     font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #999999;
 
 }
+
+#submit_btn:hover{
+    background: #33CCFF;
+    border: none;
+    box-shadow: 0 0 25px #03e9f4,
+                0 0 25px #03e9f4,
+                0 0 20px #03e9f4,
+                0 0 20px #03e9f4;
+}
 .submit, .back{
+    float: right;
     display: flex;
     justify-content: center;
 }
@@ -337,7 +354,34 @@ border-bottom: 1px solid;
 a{
     text-decoration: none;
 }
+i.ri-close-large-line.close {
+    position: fixed;
+    top: 28px;
+    right: 50px;
+    width: 45px;
+    height: 45px;
+    font-size: 2em;
+    color: #fff;
+    background: #162938;
+    /* * */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* * */
+    /* bo góc dưới bên trái của nút close */
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    /* nổi nút close lên trên form để bấm */
+    z-index: 1;
+    border-top-right-radius: 15px;
+}
 
+i.ri-close-large-line.close:hover{
+    background: #888888;
+}
+.error{
+    color: RED;
+}
 /* ALert */
 .alert{
             background: #00BFFF;
@@ -413,7 +457,7 @@ a{
 <header>
         <!-- LOGO -->
         <div class="logo">
-        <a href="trangchu.php" ><img src="img/logo (2).png" alt="">THILAIXE.VN</a>
+        <a href="" ><img src="img/logo (2).png" alt="">THILAIXE.VN</a>
         </div>
         
         <nav class="navigation">
@@ -456,7 +500,6 @@ a{
                 ?>
             </ul> 
         </nav>  
-    </header>
 
     <!-- BÁO LỖI-->
     <div class="alert <?php if(isset($_SESSION["msg"])) echo 'showAlert'; else echo 'hide'?>">
@@ -467,6 +510,7 @@ a{
         </div>
     </div>
 
+    </header>
     <script>
 
     $('.close-btn').click(function(){
@@ -492,7 +536,14 @@ function closeOverlay() {
     document.body.classList.remove('no-scroll'); // Cho phép cuộn trang chính
 }
 
-// ============doimk
+function closeDoiMK() {
+    var overlay = document.getElementById('overlay');
+    var mkModal = document.getElementById('app_doiMK');
+    overlay.style.display = 'none';
+    mkModal.style.display = 'none';
+    document.body.classList.remove('no-scroll'); // Cho phép cuộn trang chính
+}
+
 function doiMatKhau() {
     var overlay = document.getElementById('overlay');
     var mkModal = document.getElementById('app_doiMK');
@@ -504,12 +555,11 @@ function doiMatKhau() {
 function dangnhap() {
     window.location.href = "start.php";
 }
-
     </script>
 <!-- ========================================================== -->
 
 <div class="giaoDienLichSuXemLai" id="giaoDienLichSuXemLai">
-    <button id="closeButton" onclick="closeOverlay()"><i class="ri-close-large-line"></i></button>
+    <button id="closeButton" onclick="closeOverlay()"><i class="ri-close-line"></i></button>
     <div id='ls'><h1>Lịch sử xem lại</h1></div>
     <div class="table">
         <?php
@@ -537,18 +587,20 @@ function dangnhap() {
 
 
 <!-- ============================DOIMK====================== -->
-<div class="app_doiMatKhau" id="app_doiMK">
-        <form action="XuLyPHP/XuLy.php" method="POST">
+<div class="app_doiMatKhau" id="app_doiMK">   
         <div class="app_doiPass">
+        <button id="closeButtonMK" onclick="closeDoiMK()"><i class="ri-close-large-line close"></i></button>
             <div class="doiMatKhau_text">
                 <h3 id="text_Page">ĐỔI MẬT KHẨU</h3>
             </div>
+            <form action="XuLyPHP/XuLy.php" method="POST">
             <div class="app_doiPass_item">
                 <input type="text" name="action" value="DoiMK" id="" hidden>
                 <div class="taiKhoan">Xin chào: <?php echo $_SESSION['username'] ?></div>
-                <div class="matKhau">Nhập mật khẩu cũ: <input type="text" name="pass" id="pass"></div>
-                <div class="matKhauMoi">Nhập mật khẩu mới: <input type="text" name="newpass" id="newpass"></div>
-                <div class="matKhauMoi">Nhập lại mật khẩu mới: <input type="text" name="newpasschk" id="newpass"></div>
+                <div class="matKhau">Nhập mật khẩu cũ: <input type="password" name="pass" id="pass" require></div>
+                <div class="matKhauMoi">Nhập mật khẩu mới: <input type="password" name="newpass" id="newpass" require></div>
+                <div class="matKhauMoi">Nhập lại khẩu mới: <input type="password" name="newpasschk" id="newpass" require placeholder=" "></div>
+                <div class="xacNhan">Xác Nhận Sự Thay Đổi này: <input type="checkbox" name="check" id="ok"></div>
                 <button id="submit_btn">Đổi mật khẩu</button>
             </div>
         </div>

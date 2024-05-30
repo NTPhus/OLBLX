@@ -238,7 +238,10 @@
         }
 
         function ChuyenCau(cau){
-            document.getElementById("btn"+currentIndex).style.backgroundColor = "aqua";
+            if(Choice[currentIndex])
+                document.getElementById("btn"+currentIndex).style.backgroundColor = "yellow";
+            else
+                document.getElementById("btn"+currentIndex).style.backgroundColor = "aqua";
             console.log("btn"+currentIndex);
             currentIndex = cau;
             let currentQuestion = questions[currentIndex-1];
@@ -278,8 +281,6 @@
                 dapan4.innerHTML = answers.dapan4;
                 dapan4.style.display = "block";
             }
-            //Neu cau nay da lam truoc do
-            if(Choice[cau] != null) check(Choice[cau]);
         }
         //kiem tra cau dung sai va danh dau cau
         function check(cau){
@@ -292,7 +293,6 @@
             dapan4.style.backgroundColor = "#f4f4f4dd";
             //doi mau btn va dap an
             document.getElementById("dapan"+cau).style.backgroundColor = "#98F5FF";
-            document.getElementById("btn"+currentIndex).style.backgroundColor = "yellow";
             Choice[currentIndex] = cau; // danh dau cau
             //kiem tra ket qua dung sai
             Answer[currentIndex] = correctAnswers == cau ? 1 : -1;

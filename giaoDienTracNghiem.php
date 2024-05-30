@@ -280,6 +280,10 @@ while($row = mysqli_fetch_array($res)){
             margin: 20px 0;
         }
 
+        #img{
+            max-width: 700px;
+            max-height: 300px;
+        }
     </style>
     <script src="https://kit.fontawesome.com/5263b3717e.js" crossorigin="anonymous"></script>
 </head>

@@ -3,17 +3,24 @@
 ?>
 
 <?php
+    unset($_SESSION['msg']);
     $conn = mysqli_connect("localhost","root","","olblx");
     if(isset($_POST['action'])){
         if($_POST['action'] == "login"){ // dang nhap
             $username = $_POST["username"];
             $password = $_POST["password"];
 
-            $sql = "select username, password from user where username = '".$username."' and password = '".$password."'";
+            $sql = "select * from account where username = '".$username."' and password = '".$password."'";
             $res = mysqli_query($conn, $sql);
             $data = mysqli_fetch_assoc($res);
 
-            if($data["username"] == $username && $data["password"] == $password){
+            if($data["admin"] == 1 && $data["username"] == $username && $data["password"] == $password){
+                unset($_SESSION['errorlg']);
+                $_SESSION["username"] = "Admin";
+                $_SESSION["admin"] = 1;
+                header("location:../index.php");
+            }
+            else if($data["username"] == $username && $data["password"] == $password){
                 unset($_SESSION['errorlg']);
                 $_SESSION["username"] = $username;
                 header("location:../index.php");
@@ -46,14 +53,14 @@
 
             $conn = mysqli_connect("localhost","root","","olblx");
 
-            $sql = "SELECT * FROM `user` WHERE username = '$u'";
+            $sql = "SELECT * FROM `account` WHERE username = '$u'";
 
             $result = mysqli_query($conn,$sql);
             if($row = mysqli_fetch_assoc($result)){
                 $p = $row['password'];
                 if($p == $mkc){
                     if($mkm == $checkmkm){
-                        $update_sql = "UPDATE `user` SET `password` = '$mkm' WHERE username = '$u'";
+                        $update_sql = "UPDATE `account` SET `password` = '$mkm' WHERE username = '$u'";
                         mysqli_query($conn,$update_sql);
                         $_SESSION['msg'] = "Cập nhật thành công mật khẩu";
                     }else{
@@ -64,6 +71,81 @@
                 }
             }
             header("location:../trangchu.php");
+        }
+        else if($_POST['action'] == "themCauHoi"){
+            $chuong = $_POST["chuong"];
+            $cauDiemLiet = $_POST["cauDiemLiet"] == "on" ? "1" : "2";
+            $cauHoi = $_POST["cauhoi"];
+            $dapan1 = $_POST["dapan1"];
+            $dapan2 = $_POST["dapan2"];
+            $dapan3 = $_POST["dapan3"];
+            $dapan4 = $_POST["dapan4"];
+            $dapandung = $_POST["dapandung"];
+            
+            $tenmorong = explode(".", $_FILES['img']['name']);
+            $img = $tenmorong[0];
+
+            $target_path = "C:\xampp\htdocs\OLBLX\Anh/" . basename($_FILES['img']['name']);
+            if(move_uploaded_file($_FILES['img']['tmp_name'], $target_path)){
+                echo 'Success!';
+            }else{
+                echo 'Failed!';
+            }
+
+            $sql = "INSERT INTO `600_cau_hoi`(`chuong`, `cau_diem_liet`, `cauhoi`, `dapan1`, `dapan2`, `dapan3`, `dapan4`, `dapandung`, `img`) VALUES ('$chuong','$cauDiemLiet','$cauHoi','$dapan1','$dapan2','$dapan3','$dapan4','$dapandung','$img')";
+            //mysqli_query($conn, $sql);
+            $_SESSION['msg'] = "Thêm câu hỏi thành công";
+            echo $sql;
+            header("location:../suaLyThuyet.php");
+        }else if($_POST['action'] == "themVideo"){
+            $deso = $_POST['deso'];
+            $start = $_POST['start'];
+            $end = $_POST['end'];
+            $dodai = $_POST['dodai'];
+            $sql= "INSERT INTO `video_mo_phong`(`de`, `start`, `end`, `dodaivideo`) VALUES ('$deso','$start','$end','$dodai')";
+            mysqli_query($conn, $sql);
+            $target_path = "C:\xampp\htdocs\OLBLX\video\MoPhong/" . basename($_FILES['video']['name']);
+            if(move_uploaded_file($_FILES['video']['tmp_name'], $target_path)){
+                echo 'Success!';
+            }else{
+                echo 'Failed!';
+            }
+            $_SESSION['msg'] = "Thêm video thành công";
+            header("location:../suaLyThuyet.php");
+        }else if($_POST['action'] == "themDeLyThuyet"){
+            $sql = "INSERT INTO `bodeonthiblx`(`cau1`, `cau2`, `cau3`, `cau4`, `cau5`, `cau6`, `cau7`, `cau8`, `cau9`, `cau10`, `cau11`, `cau12`, `cau13`, `cau14`, `cau15`, `cau16`, `cau17`, `cau18`, `cau19`, `cau20`, `cau21`, `cau22`, `cau23`, `cau24`, `cau25`, `cau26`, `cau27`, `cau28`, `cau29`, `cau30`) VALUES (";
+            for($i = 1; $i <= 30; $i++){
+                $sql .= "'".$_POST["cau$i"]."',";
+            }
+            $sql = rtrim($sql, ',');
+            $sql .= ")";
+            mysqli_query($conn, $sql);
+            $_SESSION['msg'] = "Thêm đề lý thuyết thành công";
+            header("location:../themDeLyThuyet.php");
+        }else if($_POST['action'] == "themDeMoPhong"){
+            $sql = "INSERT INTO `bo_de_thi_mo_phong`( `cau1`, `cau2`, `cau3`, `cau4`, `cau5`, `cau6`, `cau7`, `cau8`, `cau9`, `cau10`) VALUES (";
+            for($i = 1; $i <= 10; $i++){
+                $sql .= "'".$_POST["cau$i"]."',";
+            }
+            $sql = rtrim($sql, ',');
+            $sql .= ")";
+            mysqli_query($conn, $sql);
+            $_SESSION['msg'] = "Thêm đề mô phỏng thành công";
+            header("location:../themDeLyThuyet.php");
+        }else if($_POST['action'] == "themTK"){
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $admin = $_POST['admin'] == "on" ? 1 : 0;
+            $sql = "INSERT INTO `account`(`username`, `password`, `admin`) VALUES ('$username','$password','$admin')";
+            mysqli_query($conn, $sql);
+            header("location:../quanLyTaiKhoan.php");
+        }else if($_POST['action'] == "adminDoiMK"){
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $admin = $_POST['admin'] == "on" ? 1 : 0;
+            $sql = "UPDATE `account` SET `password`='$password',`admin`='$admin' WHERE `username` = '$username'";
+            mysqli_query($conn, $sql);
+            header("location:../quanLyTaiKhoan.php");
         }
     }   
 
@@ -92,6 +174,10 @@
             $sql = "INSERT INTO `lich_su_lam_bai`(`ngaylambai`, `MaLamBai`, `username`, `de`, `ketqua`, `dapan`) VALUES ('".$_GET['NgayLamBai']."','".$_GET['MaLamBai']."','".$_SESSION['username']."','".$_GET['De']."','".$_GET['KetQua']."','".$_GET['DapAn']."')";
             mysqli_query($conn,$sql);
             header("location:../trangchu.php");
+        }else if($_GET['action'] == "XoaAccount"){
+            $sql = "DELETE FROM `account` WHERE username = '".$_GET['username']."'";
+            mysqli_query($conn,$sql);
+            header("location:../quanLyTaiKhoan.php");
         }
     }
     mysqli_close($conn);

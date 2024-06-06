@@ -280,7 +280,7 @@
     <div id="container">
         <div class="item1">
             <div class="video">
-                <video id = "myVideo" width="800" height="740" autoplay muted onclick="move()">
+                <video id = "myVideo" width="800" height="740" controls muted onclick="move()">
                     <source src="video/MoPhong/1.mp4" type="video/mp4" id="source">
                 </video>
                 <div id="myProgress">
@@ -410,8 +410,8 @@
     }
     //chuyen video
     function chuyenVideo(){
-        if(currentIndex == 11){
-            document.getElementById("checkrs").display = "block";
+        if(currentIndex == 10){
+            hienThiKetQua();
         }else{
             currentIndex++;
             const newDiv = document.createElement("div");
@@ -516,7 +516,6 @@
             const newDiv =document.createElement("div");
             newDiv.style.width =(videos[i].end - videos[i].start)/maxTime * 100 + "%";
             newDiv.style.marginLeft = (time + videos[i].start)/maxTime * 100 + "%";
-            console.log(time);
             newDiv.classList.add("bar");
 
             const newDiv1 = document.createElement("div");

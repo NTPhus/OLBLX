@@ -465,22 +465,12 @@ i.ri-close-large-line.close:hover{
              <ul class="list">
                 <li><a href="trangchu.php">TRANG CHỦ</a></li>
                 <li>
-                    <a href="#">THI THỬ</a>
-
-                    <ul class="dropdown">
-                        <li><a href="giaoDienTracNghiem.php">LÝ THUYẾT</a></li>
-                        <li><a href="giaoDienMoPhong.php">MÔ PHỎNG</a></li>
-                    </ul>
+                    <a href="suaLyThuyet.php">SỬA CÂU HỎI</a>
                 </li>
                 <li>
-                    <a href="#">LUYỆN THI</a>
-
-                    <ul class="dropdown">
-                        <li><a href="chonDeLyThuyet.php">LÝ THUYẾT</a></li>
-                        <li><a href="chonDeMoPhong.php">MÔ PHỎNG</a></li>
-                    </ul>
+                    <a href="themDeLyThuyet.php">THÊM ĐỀ</a>
                 </li>
-                <li><a href="giaoDienTimKiem.php">ĐỊA ĐIỂM</a></li>
+                <li><a href="giaoDienTimKiem.php">THÊM ĐỊA ĐIỂM</a></li>
                 <?php
                     if(!isset($_SESSION["username"])){
                         echo "<li><button class='btnLogin-popup' onclick='dangnhap()'>ĐĂNG NHẬP</button></li>";
@@ -490,6 +480,7 @@ i.ri-close-large-line.close:hover{
                         <li>
                         <a href='#'> TÀI KHOẢN </a>
                         <ul class='dropdown'>
+                            <li onclick='doiMatKhau()' id='doiMK'><a href='#'>QUẢN LÝ TÀI KHOẢN</a></li>
                             <li onclick='xemLaiLSThi()' id='xemlai'><a href='#'>XEM LỊCH SỬ THI</a></li>
                             <li onclick='doiMatKhau()' id='doiMK'><a href='#'>ĐỔI MẬT KHẨU</a></li>
                             <li><a href='XuLyPHP/XuLy.php?action=logout' class='dangxuat'>ĐĂNG XUẤT</a></li>
@@ -553,7 +544,7 @@ function doiMatKhau() {
 }
 
 function dangnhap() {
-    window.location.href = "index.php";
+    window.location.href = "start.php";
 }
     </script>
 <!-- ========================================================== -->
@@ -565,7 +556,7 @@ function dangnhap() {
         <?php
         $conn = mysqli_connect("localhost","root","","olblx");
         $user = $_SESSION['username'];
-        $sql = "SELECT * FROM lich_su_lam_bai WHERE username = '$user'";
+        $sql = "SELECT * FROM lich_su_lam_bai";
         mysqli_query($conn,"SET NAMES 'utf8'");
         $kq = mysqli_query($conn,$sql);
         if($dong = mysqli_fetch_array($kq)){

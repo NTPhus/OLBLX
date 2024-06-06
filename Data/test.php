@@ -187,4 +187,5 @@
 
     mysqli_close($conn);
 
+    // UPDATE `600_cau_hoi` SET `dapan2`='2 – Giảm tốc độ chờ xe đầu kéo rẽ phải, rồi tiếp tục đi.',`dapan3`='3 – Vượt về phía bên trái để đi tiếp.' WHERE cau = '600'
 ?>

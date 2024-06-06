@@ -17,7 +17,12 @@
 
 </head>
 <body>
-<?php include 'header.php' ?>
+<?php
+ if(isset($_SESSION["admin"]))
+    include 'headerAdmin.php';
+ else
+    include 'header.php';
+ ?>
 
 <div class="container">
        <!-- START - LUA CHON  -->

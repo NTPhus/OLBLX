@@ -406,6 +406,7 @@ u{
     }
     x.play();
     markCurrentIndex();
+    move();
 </script>
 
 </body>

@@ -1,0 +1,108 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.app_quanLyTK{
+    height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.app_quanLyTK_edit{
+    height: 500px;
+    overflow: scroll;
+}
+.app_quanLyTK_edit_table {
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+.app_quanLyTK_edit_table_col{
+    border: 1px solid;
+}
+
+.app_quanLyTK_edit_table th, .app_quanLyTK_edit_table td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.app_quanLyTK_edit_table th {
+    background-color: #f2f2f2;
+}
+
+.app_quanLyTK_edit_table tr:hover {
+    background-color: #f2f2f2;
+}
+
+.app_quanLyTK_edit_table td button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#btnDelete{
+    background-color: red;
+}
+.app_quanLyTK_edit_table td button:hover {
+    background-color: #45a049;
+}
+
+.app_quanLyTK_edit_table td input[type="checkbox"] {
+    transform: scale(1.5);
+    pointer-events: none;
+}
+.app_quanLyTK_themTK {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    height: 500px;
+    overflow-y: auto; /*Thêm thanh cuộn nếu nội dung dài hơn kích thước đã định*/
+}
+
+.app_quanLyTK_themTK_element_text {
+    text-align: center;
+    font-size: 30px;
+}
+
+.app_quanLyTK_themTK_element {
+    margin: 10px 0;
+}
+
+.app_quanLyTK_themTK_element p{
+    margin: 20px 0;
+}
+.app_quanLyTK_themTK_form input[type="text"],
+.app_quanLyTK_themTK_form input[type="password"] {
+    width: calc(100% - 18px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.app_quanLyTK_themTK_form input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.app_quanLyTK_themTK_form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.app_quanLyTK_themTK_form input[type="submit"]:hover {
+    background-color: #45a049;
+}

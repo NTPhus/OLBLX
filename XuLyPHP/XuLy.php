@@ -96,7 +96,7 @@
             //mysqli_query($conn, $sql);
             $_SESSION['msg'] = "Thêm câu hỏi thành công";
             echo $sql;
-            header("location:../suaLyThuyet.php");
+            //header("location:../suaLyThuyet.php");
         }else if($_POST['action'] == "themVideo"){
             $deso = $_POST['deso'];
             $start = $_POST['start'];
@@ -135,17 +135,36 @@
         }else if($_POST['action'] == "themTK"){
             $username = $_POST['username'];
             $password = $_POST['password'];
-            $admin = $_POST['admin'] == "on" ? 1 : 0;
-            $sql = "INSERT INTO `account`(`username`, `password`, `admin`) VALUES ('$username','$password','$admin')";
-            mysqli_query($conn, $sql);
-            header("location:../quanLyTaiKhoan.php");
+            $admin = isset($_POST['admin']) ? 1 : 0;
+            $sql = "SELECT * FROM `account` WHERE username = '$username'";
+            $res = mysqli_query($conn, $sql);
+            if(mysqli_fetch_array($res)){
+                $_SESSION['msg'] = "Đã có tài khoản có tên đăng nhập này";
+                header("location:../quanLyTaiKhoan.php");
+            }else{
+                $sql = "INSERT INTO `account`(`username`, `password`, `admin`) VALUES ('$username','$password','$admin')";
+                mysqli_query($conn, $sql);
+                $_SESSION['msg'] = "Thêm tài khoản thành công";
+                header("location:../quanLyTaiKhoan.php");
+            }
+            
         }else if($_POST['action'] == "adminDoiMK"){
             $username = $_POST['username'];
             $password = $_POST['password'];
-            $admin = $_POST['admin'] == "on" ? 1 : 0;
+            $admin = isset($_POST['admin']) ? 1 : 0;
             $sql = "UPDATE `account` SET `password`='$password',`admin`='$admin' WHERE `username` = '$username'";
             mysqli_query($conn, $sql);
+            $_SESSION['msg'] = "Đổi mật khẩu thành công thành công";
             header("location:../quanLyTaiKhoan.php");
+        }else if($_POST['action'] == "themDiaDiem"){
+            $tinh = $_POST['tinh'];
+            $noiThi = $_POST['noiThi'];
+            $diaChi = $_POST['diaChi'];
+            $sdt = $_POST['sdt'];
+            $sql = "INSERT INTO `dstinh`(`Tinh`, `Noi_Thi`, `Dia_Chi`, `SDT`) VALUES ('$tinh','$noiThi','$diaChi','$sdt')";
+            mysqli_query($conn, $sql);
+            $_SESSION['msg'] = "Thêm địa điểm thành công";
+            header("location:../themDiaDiem.php");
         }
     }   
 
@@ -177,6 +196,7 @@
         }else if($_GET['action'] == "XoaAccount"){
             $sql = "DELETE FROM `account` WHERE username = '".$_GET['username']."'";
             mysqli_query($conn,$sql);
+            $_SESSION['msg'] = "Xóa account thành công";
             header("location:../quanLyTaiKhoan.php");
         }
     }

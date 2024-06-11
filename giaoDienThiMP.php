@@ -60,10 +60,11 @@
         }
 
         #myVideo{
+            position: relative;
             display: block;
             height: 500px;
             width: 1000px;
-            z-index: 1;
+            z-index: -1000;
 
         }
         #container{
@@ -114,7 +115,7 @@
             color: yellow;
             font-weight: 800;
             letter-spacing: 1px;
-            border: 1px solid #003366;
+            border: 1px solid #3399cc;
             cursor: pointer;
         }
 
@@ -280,7 +281,7 @@
     <div id="container">
         <div class="item1">
             <div class="video">
-                <video id = "myVideo" width="800" height="740" controls muted onclick="move()">
+                <video id = "myVideo" width="800" height="740" autoplay muted onclick="move()">
                     <source src="video/MoPhong/1.mp4" type="video/mp4" id="source">
                 </video>
                 <div id="myProgress">
@@ -410,7 +411,7 @@
     }
     //chuyen video
     function chuyenVideo(){
-        if(currentIndex == 10){
+        if(currentIndex == 11){
             hienThiKetQua();
         }else{
             currentIndex++;
@@ -516,6 +517,7 @@
             const newDiv =document.createElement("div");
             newDiv.style.width =(videos[i].end - videos[i].start)/maxTime * 100 + "%";
             newDiv.style.marginLeft = (time + videos[i].start)/maxTime * 100 + "%";
+            console.log(time);
             newDiv.classList.add("bar");
 
             const newDiv1 = document.createElement("div");

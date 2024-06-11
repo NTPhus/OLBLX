@@ -18,9 +18,6 @@
 </head>
 <body>
 <?php
- if(isset($_SESSION["admin"]))
-    include 'headerAdmin.php';
- else
     include 'header.php';
  ?>
 

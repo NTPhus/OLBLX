@@ -181,7 +181,6 @@ while($row = mysqli_fetch_array($res)){
 
         a{
             text-decoration: none;
-            font-size: 30px;
         }
         .text{
             margin-left: 20px;

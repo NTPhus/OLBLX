@@ -40,6 +40,7 @@
 }
 
 header {
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -138,15 +139,20 @@ ul li:hover ul.dropdown {
     justify-content: center;
     align-items: center;
 }
+.ri-close-line:before {
+    content: "\eb99";
+    font-size: 20px;
+}
 #closeButton {
     align-self: flex-end;
     background-color: red;
     color: white;
     border: none;
-    padding: 7px 17px;
     cursor: pointer;
     border-radius: 5px;
-    font-size: 1em;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
 }
 
 #closeButton:hover {
@@ -356,7 +362,7 @@ a{
 }
 i.ri-close-large-line.close {
     position: fixed;
-    top: 28px;
+    top: 18px;
     right: 50px;
     width: 45px;
     height: 45px;
@@ -453,11 +459,16 @@ i.ri-close-large-line.close:hover{
 </style>
 </head>
 <body>
+    <?php
+        if(isset($_SESSION['admin'])){
+            include 'sidebar.php';
+        }
+    ?>
     <div id="overlay" onclick="closeOverlay()"></div> <!-- Lớp phủ mờ -->
 <header>
         <!-- LOGO -->
         <div class="logo">
-        <a href="" ><img src="img/logo (2).png" alt="">THILAIXE.VN</a>
+        <a href="trangchu.php" ><img src="img/logo (2).png" alt="">THILAIXE.VN</a>
         </div>
         
         <nav class="navigation">
@@ -468,16 +479,17 @@ i.ri-close-large-line.close:hover{
                     <a href="#">THI THỬ</a>
 
                     <ul class="dropdown">
-                        <li><a href="giaoDienTracNghiem.php">LÝ THUYẾT</a></li>
-                        <li><a href="giaoDienMoPhong.php">MÔ PHỎNG</a></li>
+                    
+                        <li><a href="chonDeLyThuyet.php">LÝ THUYẾT</a></li>
+                        <li><a href="chonDeMoPhong.php">MÔ PHỎNG</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#">LUYỆN THI</a>
 
                     <ul class="dropdown">
-                        <li><a href="chonDeLyThuyet.php">LÝ THUYẾT</a></li>
-                        <li><a href="chonDeMoPhong.php">MÔ PHỎNG</a></li>
+                        <li><a href="giaoDienTracNghiem.php">LÝ THUYẾT</a></li>
+                        <li><a href="giaoDienMoPhong.php">MÔ PHỎNG</a></li>
                     </ul>
                 </li>
                 <li><a href="giaoDienTimKiem.php">ĐỊA ĐIỂM</a></li>
@@ -553,7 +565,7 @@ function doiMatKhau() {
 }
 
 function dangnhap() {
-    window.location.href = "index.php";
+    window.location.href = "start.php";
 }
     </script>
 <!-- ========================================================== -->

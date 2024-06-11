@@ -33,7 +33,7 @@
             padding: 20px 8%;
             background: url('img/bg-video.jpg');
         }
-        .hang_b1, .hang_b2{
+        .hang_b1{
             border-radius: 20px;
             padding: 10px 20px;
             font-size: 15px;
@@ -44,7 +44,7 @@
             margin-right: 10px;
         }
 
-        .hang_b1:hover, .hang_b2:hover
+        .hang_b1:hover
         {
             background: #ffea00;
         }
@@ -159,11 +159,12 @@
             
         }
         .list_choice_item i{
+            display: block;
+            height: 47px;
             color: #363636;
             font-size: 20px;
             background: #EEE9E9;
-            padding: 15px 10px;
-            padding-top: 12px;
+            padding:  10px;
 
         }
         .list_choice_item select{
@@ -176,6 +177,21 @@
 
         }
 
+        label{
+            display: flex;
+        }
+        label p{
+            color: black;
+            font-weight: 100;
+            font-size: 20px;
+            /* letter-spacing: 2px; */
+            margin-left: 20px;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 8px;
+
+        }
         select{
            margin-top: 4px;
         }
@@ -213,7 +229,7 @@
 
             <div class="cau_truc_hang_b1">
                 <div class="Hang_btn">
-                    <button class = "dark hang_b1">Hạng B1</button>
+                    <button class = "dark hang_b1">Hạng B2</button>
                 </div>
 
                 <!-- THONG TIN BANG B1 -->
@@ -392,10 +408,10 @@
                         <div class="list_choice_item">
                             <label for="">
                                 <i class="ri-car-fill"></i>
-                                <select name="" id="">
-                                    <option value="">Hạng B1</option>
+                                <p>Hạng B2</p>
+                                <!-- <select name="" id="">
                                     <option value="">Hạng B2</option>
-                                </select>
+                                </select> -->
                             </label>
                         </div>
                 </div>

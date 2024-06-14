@@ -1,3 +1,7 @@
+<?php 
+    include("session.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +10,25 @@
     <title>Document</title>
     <link rel="stylesheet" href="CSS/quanLyTaiKhoan.css">
     <link rel="stylesheet" href="CSS/grid.css">
+    <style>
+        .suaTK{
+            display: flex
+        }
+
+       .app_quanLyTK_edit{
+            width: 1000px;
+       }
+
+        .app_quanLyTK_edit_table td{
+            padding: 20px 40px;
+        }
+    </style>
 </head>
 <body>
     <?php include 'header.php' ?>
-    <?php include 'sidebar.php'?>
-    
-    <div class="grid wide">
+    <div class="suaTK">
+        <?php include 'sidebar.php'?>
+        <div class="grid wide">
         <div class="row app_quanLyTK">
     <div class="col l-7 app_quanLyTK_edit">
     <?php 
@@ -58,7 +75,11 @@
 
             </div>
         </div>
+    
+    </div>
+    
     <?php include 'footer.php'; ?>
+
     <script>
         function edit(username){
             window.location.href = "editAccount.php?username="+username;

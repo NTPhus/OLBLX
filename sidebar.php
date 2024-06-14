@@ -9,19 +9,10 @@
         .adminmenuback{
             left: 0px;
             width: 70px;
-            height: 100%;
-            position: fixed;
+            height: 650px;
             background: #162938;
             transition: width 0.6;
-            z-index: 999999;
         }
-        
-        /* .admin_text i{
-            font-size: 30px;
-            padding-right: 20px;
-             margin-left: -55px;
-
-        } */
 
         .admin_text h1{
             margin-bottom: 0;
@@ -35,7 +26,6 @@
             display: flex;
             padding: 20px 0;
            cursor: pointer;
-            /* line-height: 65px; */
             margin-left: 5px;
             color: #fff;
 
@@ -44,19 +34,16 @@
 
         .adminmenuback ul  {
             display: block;
-            /* height: 100%; */
            cursor: pointer;
-            /* line-height: 65px; */
             margin-left: 5px;
             color: #fff;
-
             box-sizing: border-box;
 
 
         }
        .adminmenuback ul li{
             list-style: none;
-            padding: 15px 0;
+            padding: 12px 0;
         }
         .adminmenuback ul li{
             margin: 5px 0;
@@ -92,21 +79,98 @@
             opacity: 1;
             pointer-events: auto;
         }
-        /*ul li:hover{
-            padding-left: 30px;
-        }
 
-        .adminmenuback ul a i{
-            margin-right: 16px;
-        }
-
-
- 
         .form_admin{
-            
+            position: relative;
+            display: flex;
+            background: #ddd;
+            height: 750px;
         }
 
-        form{ */
+        .admin_container{
+            padding-left: 25px;
+            font-size: 20px;
+            width: 500px;
+        }
+        
+        #Add_question{
+        font-size: 25px;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin: 20px 0;
+        font-family: math;
+        letter-spacing: 1.5px;
+        }
+
+        #chuong, #cau_diem_liet ,#question, #answer{
+            display: flex;
+            padding: 15px 0;
+            justify-content: space-between;
+        }
+       
+        .admin_container input[type=text],
+        .admin_container select
+        {
+            margin-left: 40px;
+            width: 300px;
+            height: 30px;
+            outline: none;
+        }
+
+        .upload_img{
+            display: flex;
+            position: absolute;
+            right: 10%;
+            top: 30%;
+        }
+
+        #drop_area{
+            width: 500px;
+            height: 300px;
+            padding: 30px;
+            background: #fff;
+            text-align: center;
+            border-radius: 20px;
+        }
+
+        #img_view{
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            border: 2px dashed #bbb5ff;
+            background: #f7f8ff;
+            background-position: center;
+            background-size: cover;
+        }
+
+        #img_view i{
+            width: 100px;
+            margin-top: 25px;
+        }
+
+        #img_view span{
+            display: block;
+            font-size: 15px;
+            color: #777;
+            margin-top: 15px;
+        }
+
+        .btn_addquestion{
+            margin-left: 36%;
+            margin-top: 40px;
+            padding: 15px 58px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn_addquestion:hover{
+            color:#fff;
+            font-weight: 600;
+            background: #0099FF;
+            border: 1px solid #999999;
+            box-shadow: 0px 0px 10px #03e9f4;
+        }
+
 
         
 
@@ -123,32 +187,27 @@
                 <ul>
                     <li class ="navActive">
                          <i class="ri-account-circle-fill"></i>
-                        <a href="#">Quản Lý Tài Khoản</a>
+                        <a href="quanLyTaiKhoan.php">Quản Lý Tài Khoản</a>
                     </li>
 
                     <li class ="navActive">
                         <i class="ri-question-fill"></i>
-                        <a href="#">Thêm Câu Hỏi</a>
+                        <a href="suaLyThuyet.php">Thêm Câu Hỏi</a>
                     </li>
 
                     <li class ="navActive">
                         <i class="ri-file-upload-fill"></i>
-                        <a href="#">Thêm Đề Lý Thuyết</a>
+                        <a href="themDeLyThuyet.php">Thêm Đề LT, MT</a>
                     </li>
 
                     <li class ="navActive">
                         <i class="ri-video-add-line"></i>
-                        <a href="#">Thêm Video Mô Phỏng</a>
-                    </li>
-
-                    <li class ="navActive">
-                        <i class="ri-video-upload-fill"></i>
-                        <a href="#">Thêm Đề Mô Phỏng</a>
+                        <a href="themVideo.php">Thêm Video MP</a>
                     </li>
                     
                     <li class ="navActive">
                         <i class="ri-map-pin-add-line"></i>
-                        <a href="#">Thêm Địa Điểm</a>
+                        <a href="themDiaDiem.php">Thêm Địa Điểm</a>
                     </li>
 
                 </ul>

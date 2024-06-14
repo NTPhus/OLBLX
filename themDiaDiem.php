@@ -1,3 +1,7 @@
+<?php 
+    include("session.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,14 +13,18 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
 </head>
 <body>
+    <?php 
+        include("header.php");
+    ?>
+    <?php include 'sidebar.php'?>
     <form action="XuLyPHP/XuLy.php" method="POST">
-        <input type="text" name="action" value="themDiaDiem" id="">
+        <input type="text" name="action" value="themDiaDiem" id="" hidden>
         <p>Thêm địa điểm thi bằng lái</p>
         <p>Tỉnh <input type="text" id="tinh" onkeyup="showSuggestions()" name="tinh" ></p>
         <div id="suggestion"></div>
         <p>Tên nơi thi <input type="text" name="noiThi" id=""></p>
         <p>Địa chỉ <input type="text" name="diaChi" id=""></p>
-        <p>SĐT <input type="number" name="sdt" id=""></p>
+        <p>SĐT <input type="tel" name="sdt" id=""></p>
         <input type="submit" name="" id="" value="Thêm địa điểm">
     </form>
 

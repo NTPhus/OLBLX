@@ -1,3 +1,7 @@
+<?php 
+    include("session.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -180,67 +184,30 @@
         }
 
         
-
+        .block{
+            display: flex;
+        }
 
     </style>
 </head>
 <body>
     <?php include 'header.php'; ?>
-
     
     <div class = "form_admin">
-            <div class="adminmenuback">
-                <div class="admin_text">
-                    <i class="ri-user-settings-fill"></i>
-                    <h1>ADMIN</h1>
-                </div>
-            
-                <ul>
-                    <li class ="navActive">
-                         <i class="ri-account-circle-fill"></i>
-                        <a href="#">Quản Lý Tài Khoản</a>
-                    </li>
-
-                    <li class ="navActive">
-                        <i class="ri-question-fill"></i>
-                        <a href="#">Thêm Câu Hỏi</a>
-                    </li>
-
-                    <li class ="navActive">
-                        <i class="ri-file-upload-fill"></i>
-                        <a href="#">Thêm Đề Lý Thuyết</a>
-                    </li>
-
-                    <li class ="navActive">
-                        <i class="ri-video-add-line"></i>
-                        <a href="#">Thêm Video Mô Phỏng</a>
-                    </li>
-
-                    <li class ="navActive">
-                        <i class="ri-video-upload-fill"></i>
-                        <a href="#">Thêm Đề Mô Phỏng</a>
-                    </li>
-                    
-                    <li class ="navActive">
-                        <i class="ri-map-pin-add-line"></i>
-                        <a href="#">Thêm Địa Điểm</a>
-                    </li>
-
-                </ul>
-            </div>
-        <form class="admin_container" action="XuLyPHP/XuLy.php" method="POST" enctype="multipart/form-data" onsubmit="return reg(this);">
+        <?php include 'sidebar.php'; ?>
+        <form class="admin_container" action="XuLyPHP/XuLy.php" method="POST" enctype="multipart/form-data">
             <input type="text" name="action" value="themCauHoi" id="" hidden>
             <p id="Add_question">Thêm câu hỏi</p>
             <div id="chuong">
                 <p>Chương</p>
-                <select id="" name="">
-                    <option value="Chuong 1">Chương 1</option>
-                    <option value="Chuong 2">Chương 2</option>
-                    <option value="Chuong 3">Chương 3</option>
-                    <option value="Chuong 4">Chương 4</option>
-                    <option value="Chuong 5">Chương 5</option>
-                    <option value="Chuong 6">Chương 6</option>
-                    <option value="Chuong 7">Chương 7</option>
+                <select id="" name="chuong">
+                    <option value="1">Chương 1</option>
+                    <option value="2">Chương 2</option>
+                    <option value="3">Chương 3</option>
+                    <option value="4">Chương 4</option>
+                    <option value="5">Chương 5</option>
+                    <option value="6">Chương 6</option>
+                    <option value="7">Chương 7</option>
 
                 </select>   
                 
@@ -278,22 +245,18 @@
 
                 <div id="answer">
                     <p>Đáp án đúng</p>
-                    <select id="" name="">
-                    <option value="Dapan1">1</option>
-                    <option value="Dapan2">2</option>
-                    <option value="Dapan3">3</option>
-                    <option value="Dapan4">4</option>
-         
-
-                </select>   
-                    
+                    <select id="" name="dapandung">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>   
                 </div>
                 
             </div>
             <input class ="btn_addquestion" onclick="reg()" type="submit" value="Thêm câu hỏi">
-        </form>    
-        
-    </div>
+
+            </div>
           <div class="upload_img">
                 <label for="input_file" id="drop_area">
                     <input type="file" accept="image/*" name="img" id="input_file" hidden>
@@ -304,17 +267,10 @@
                     </div>
                     </label>
         </div>
-
+        </form>    
+        
    <script>
 
-    const navLinks = document.querySelectorAll('.navActive');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-            e.preventDefault();
-            navLinks.forEach(link => link.classList.remove('active'));
-            link.classList.add('active');
-    });
-  });
   const dropArea = document.getElementById("drop_area");
 const inputFile = document.getElementById("input_file" );
 const imgView = document.getElementById("img_view");
@@ -338,29 +294,6 @@ inputFile.addEventListener("change", uploadImage);
         inputFile.files = e.dataTransfer.files;
         uploadImage();
     });
-
-  function reg(){
-    Swal.fire({
-    title: "Thông báo xác nhận",
-    text: "Bạn có muốn thêm câu hỏi không này?",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes!"
-    }).then((result) => {
-    if (result.isConfirmed) {
-        Swal.fire({
-        title: "Thành công!",
-        text: "Bạn đã thêm câu hỏi thành công.",
-        icon: "success"
-        });
-    }
-    });
-    return false;
-}
-
- 
 </script>
 
 

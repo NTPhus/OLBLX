@@ -34,14 +34,14 @@
             $password = $_POST["password"];
             $email = $_POST["email"];
 
-            $sqlselect = "select username from user where username = '".$username."'";
+            $sqlselect = "select username from account where username = '".$username."'";
             $res = mysqli_query($conn, $sqlselect);
             $data = mysqli_fetch_assoc($res);
             if($data){
                 header("location:../index.php");
                 $_SESSION["errorlg"] = "Tài khoản đã tồn tại!";
             }else{
-                $sqlinsert = "insert user(username, password, email) values ('".$username."','".$password."','".$email."')";
+                $sqlinsert = "insert account(username, password, email) values ('".$username."','".$password."','".$email."')";
                 mysqli_query($conn, $sqlinsert);
                 header("location:../index.php");
             }
@@ -85,7 +85,7 @@
             $tenmorong = explode(".", $_FILES['img']['name']);
             $img = $tenmorong[0];
 
-            $target_path = "C:\xampp\htdocs\OLBLX\Anh/" . basename($_FILES['img']['name']);
+            $target_path = "C:/xampp\htdocs\OLBLX\Anh/" . basename($_FILES['img']['name']);
             if(move_uploaded_file($_FILES['img']['tmp_name'], $target_path)){
                 echo 'Success!';
             }else{
@@ -96,7 +96,7 @@
             //mysqli_query($conn, $sql);
             $_SESSION['msg'] = "Thêm câu hỏi thành công";
             echo $sql;
-            //header("location:../suaLyThuyet.php");
+            header("location:../suaLyThuyet.php");
         }else if($_POST['action'] == "themVideo"){
             $deso = $_POST['deso'];
             $start = $_POST['start'];
@@ -151,8 +151,12 @@
         }else if($_POST['action'] == "adminDoiMK"){
             $username = $_POST['username'];
             $password = $_POST['password'];
+            $email = $_POST['email'];
             $admin = isset($_POST['admin']) ? 1 : 0;
-            $sql = "UPDATE `account` SET `password`='$password',`admin`='$admin' WHERE `username` = '$username'";
+            if(isset($_POST['email']))
+                $sql = "UPDATE `account` SET `password`='$password',`admin`='$admin',`email`='$email' WHERE `username` = '$username'";
+            else
+                $sql = "UPDATE `account` SET `password`='$password',`admin`='$admin' WHERE `username` = '$username'";
             mysqli_query($conn, $sql);
             $_SESSION['msg'] = "Đổi mật khẩu thành công thành công";
             header("location:../quanLyTaiKhoan.php");

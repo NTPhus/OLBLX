@@ -1,7 +1,3 @@
-<?php 
-    include("session.php");
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -229,7 +225,7 @@
 
             <div class="cau_truc_hang_b1">
                 <div class="Hang_btn">
-                    <button class = "dark hang_b1">Hạng B2</button>
+                    <button class = "dark hang_b1">Hạng B1</button>
                 </div>
 
                 <!-- THONG TIN BANG B1 -->
@@ -408,7 +404,7 @@
                         <div class="list_choice_item">
                             <label for="">
                                 <i class="ri-car-fill"></i>
-                                <p>Hạng B2</p>
+                                <p>Hạng B1</p>
                                 <!-- <select name="" id="">
                                     <option value="">Hạng B2</option>
                                 </select> -->

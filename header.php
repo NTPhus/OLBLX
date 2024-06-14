@@ -459,11 +459,6 @@ i.ri-close-large-line.close:hover{
 </style>
 </head>
 <body>
-    <?php
-        if(isset($_SESSION['admin'])){
-            include 'sidebar.php';
-        }
-    ?>
     <div id="overlay" onclick="closeOverlay()"></div> <!-- Lớp phủ mờ -->
 <header>
         <!-- LOGO -->
@@ -475,6 +470,16 @@ i.ri-close-large-line.close:hover{
              <!-- THANH ĐIỀU HƯỚNG -->
              <ul class="list">
                 <li><a href="trangchu.php">TRANG CHỦ</a></li>
+                
+                <li>
+                    <a href="#">ÔN LUYỆN</a>
+
+                    <ul class="dropdown">
+                        <li><a href="giaoDienTracNghiem.php">LÝ THUYẾT</a></li>
+                        <li><a href="giaoDienMoPhong.php">MÔ PHỎNG</a></li>
+                    </ul>
+                </li>
+
                 <li>
                     <a href="#">THI THỬ</a>
 
@@ -484,30 +489,35 @@ i.ri-close-large-line.close:hover{
                         <li><a href="chonDeMoPhong.php">MÔ PHỎNG</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#">LUYỆN THI</a>
-
-                    <ul class="dropdown">
-                        <li><a href="giaoDienTracNghiem.php">LÝ THUYẾT</a></li>
-                        <li><a href="giaoDienMoPhong.php">MÔ PHỎNG</a></li>
-                    </ul>
-                </li>
+                
                 <li><a href="giaoDienTimKiem.php">ĐỊA ĐIỂM</a></li>
                 <?php
                     if(!isset($_SESSION["username"])){
                         echo "<li><button class='btnLogin-popup' onclick='dangnhap()'>ĐĂNG NHẬP</button></li>";
                     } else{
                         // NÚT ĐĂNG XUẤT
-                        echo "
-                        <li>
-                        <a href='#'> TÀI KHOẢN </a>
-                        <ul class='dropdown'>
-                            <li onclick='xemLaiLSThi()' id='xemlai'><a href='#'>XEM LỊCH SỬ THI</a></li>
-                            <li onclick='doiMatKhau()' id='doiMK'><a href='#'>ĐỔI MẬT KHẨU</a></li>
-                            <li><a href='XuLyPHP/XuLy.php?action=logout' class='dangxuat'>ĐĂNG XUẤT</a></li>
-                        </ul>
-                        </li>
-                        ";
+                        if(isset($_SESSION['admin']))
+                            echo "
+                            <li>
+                            <a href='#'> TÀI KHOẢN </a>
+                            <ul class='dropdown'>
+                                <li onclick='quyenAdmin()' id='quyenAdmin'><a href='#'>QUYỀN ADMIN</a></li>
+                                <li onclick='xemLaiLSThi()' id='xemlai'><a href='#'>XEM LỊCH SỬ THI</a></li>
+                                <li><a href='XuLyPHP/XuLy.php?action=logout' class='dangxuat'>ĐĂNG XUẤT</a></li>
+                            </ul>
+                            </li>
+                            ";
+                        else
+                            echo "
+                            <li>
+                            <a href='#'> TÀI KHOẢN </a>
+                            <ul class='dropdown'>
+                                <li onclick='xemLaiLSThi()' id='xemlai'><a href='#'>XEM LỊCH SỬ THI</a></li>
+                                <li onclick='doiMatKhau()' id='doiMK'><a href='#'>ĐỔI MẬT KHẨU</a></li>
+                                <li><a href='XuLyPHP/XuLy.php?action=logout' class='dangxuat'>ĐĂNG XUẤT</a></li>
+                            </ul>
+                            </li>
+                            ";
                     }                 
                 ?>
             </ul> 
@@ -537,6 +547,10 @@ i.ri-close-large-line.close:hover{
     lsModal.style.display = 'flex';
     document.body.classList.add('no-scroll'); // Ngăn cuộn trang chính
 }
+
+    function quyenAdmin(){
+        window.location.href = "quanLyTaiKhoan.php";
+    }
 
 function closeOverlay() {
     var overlay = document.getElementById('overlay');
@@ -584,10 +598,10 @@ function dangnhap() {
             echo "<table border='1' align='center'>";
             echo "<tr><td align='center'><b>Ngày làm bài</b></td><td align='center'><b>Tên người dùng</b></td><td align='center'><b>Đề</b></td><td align='center'><b>Kết quả</b></td><td align='center'><b>Xem thêm</b></td></tr>";
             $mlb = $dong['MaLamBai'];
-            echo "<tr><td>".$dong['ngaylambai']."</td><td>".$dong['username']."</td><td>".$dong['de']."</td><td>".$dong['ketqua']."</td><td><a href = 'giaoDienXemLai.php?code=$mlb'>Xem thêm chi tiết</a></td></tr>";
+            echo "<tr><td>".$dong['ngaylambai']."</td><td>".$dong['username']."</td><td>".$dong['de']."</td><td>".$dong['ketqua']."/30</td><td><a href = 'giaoDienXemLai.php?code=$mlb'>Xem thêm chi tiết</a></td></tr>";
             while($dong = mysqli_fetch_array($kq)){
                 $mlb = $dong['MaLamBai'];
-                echo "<tr><td>".$dong['ngaylambai']."</td><td>".$dong['username']."</td><td>".$dong['de']."</td><td>".$dong['ketqua']."</td><td><a href = 'giaoDienXemLai.php?code=$mlb'>Xem thêm chi tiết</a></td></tr>";
+                echo "<tr><td>".$dong['ngaylambai']."</td><td>".$dong['username']."</td><td>".$dong['de']."</td><td>".$dong['ketqua']."/30</td><td><a href = 'giaoDienXemLai.php?code=$mlb'>Xem thêm chi tiết</a></td></tr>";
             }
             echo "</table>";
         }

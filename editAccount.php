@@ -30,7 +30,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* background-image: url(./backGround/thinh2.jpg);
+            /* background-image: url(./img/thinh2.jpg);
             background-repeat: no-repeat;
             background-position: center; */
         }
@@ -74,14 +74,14 @@
             background-color: #0056b3;
         }
 
-        .userName, .newPass {
+        .userName, .newPass ,.email{
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
         }
 
-        .userName input, .newPass input {
+        .userName input, .newPass input ,.email input{
             width: calc(100% - 120px);
             padding: 8px;
             border: 1px solid #ccc;
@@ -103,6 +103,7 @@
                 <input type="text" name="username" id="taiKhoan" value="<?php if(isset($_GET['username'])) echo $_GET['username'] ?>" hidden>
                 <p class="userName">Username: <input type="text" name="username" id="taiKhoan" value="<?php if(isset($_GET['username'])) echo $_GET['username'] ?>" disabled></p>
                 <p class="newPass">New Password: <input type="text" name="password" id="matKhauMoi" required></p>
+                <p class="email">Email: <input type="text" name="email" id="email"></p>
                 <p class="QuyenAdmin">Quyền Admin: <input type="checkbox" name="admin" id="Accept"></p>
                 <p><input type="submit" name="" id="Change" value="Thay đổi"></p>
             </form>

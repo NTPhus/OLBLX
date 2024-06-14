@@ -87,7 +87,7 @@
 
                                 <label for="">
                                     <p>Hạng</p>
-                                    <p>B, C, D, E</p>
+                                    <p>B1</p>
                                 </label>
                                 <div class="content_body">
                                     <p>ÔN TẬP TRONG 5 GIỜ</p>
@@ -122,7 +122,7 @@
                         <div class="col l-4  topic_content_item">
                             <div class="topic_content_heading">
                                 <span><i class="ri-file-add-line"></i></span>
-                                <p>NHIỀU BỘ ĐỀ KHÁC SẮP RA MẮT</p>
+                                <p>NHIỀU CHỨC NĂNG KHÁC SẮP RA MẮT</p>
                             </div>
                             <div class="topic_content_items">
                                 <label for="">  </label>

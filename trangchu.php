@@ -99,7 +99,7 @@
                         <div class="col l-4  topic_content_item">
                             <div class="topic_content_heading">
                                 <span><i class="ri-route-line"></i></span>
-                                <p>THI THỬ LÝ THUYẾT LÁI XE B1, B2</p>
+                                <p>THI THỬ LÝ THUYẾT LÁI XE B1</p>
                             </div>
                             <div class="topic_content_items">
                                 <label for="">

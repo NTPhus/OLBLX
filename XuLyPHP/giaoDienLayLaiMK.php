@@ -62,7 +62,7 @@
                 } catch (Exception $e) {
                 echo 'Mail không gửi được. Lỗi: ', $mail->ErrorInfo;
                 }
-                echo $_SESSION['OTP'];
+                //echo $_SESSION['OTP'];
                 echo '
                 <form action="giaoDienLayLaiMK.php" method="GET">
                     OTP <input type="text" name="OTP" id="">
@@ -72,12 +72,12 @@
             }
         else if($_GET['OTP'] == $_SESSION['OTP']){
             $conn = mysqli_connect("localhost","root","","olblx");
-            $str = "SELECT * FROM user WHERE username = '".$_SESSION['tentaikhoan']."'";
+            $str = "SELECT * FROM account WHERE username = '".$_SESSION['tentaikhoan']."'";
             $rs = mysqli_query($conn,$str);
             $row = mysqli_fetch_array($rs);
             echo "<p>Mật khẩu của bạn là: ".$row['password']."</p>";
             echo "<br>";
-            echo "<a href='./trangchu.php'> Quay về trang chủ </a>";
+            echo "<a href='/OLBLX/index.php'> Quay về trang chủ </a>";
         }
         ?>
     </div>

@@ -1,7 +1,3 @@
-<?php 
-    include("session.php");
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,23 +6,106 @@
     <title>Thêm địa điểm thi</title>
     <link rel="stylesheet" href="CSS/tkiem.css">
     <link rel="stylesheet" href="CSS/grid.css">
+    <style>
+        .them_dia_diem
+        {
+            display: flex;
+        }
+
+        .form_add_diadiem{
+            padding: 0p 200px;
+            margin-left: 25%;
+            font-size: 20px;
+            /* width: 500px; */
+        }
+        .them_heading{
+             font-size: 40px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin: 20px 0;
+            font-family: math;
+            letter-spacing: 1.5px;
+            padding: 10px 0;
+        }
+
+        .form_add_diadiem  .add_items{
+            
+            display: flex;
+            padding: 15px 0;
+            justify-content: space-between;
+        }
+        input[type=text]{
+            margin-left: -40px;
+            width: 400px;
+            height: 30px;
+            outline: none;
+            font-size: 18px;
+            
+        }
+
+        #suggestion{
+            width: 400px;
+            margin-top: -5px;
+            margin-left: 190px;
+            font-size: 18px;
+        }
+
+        #btn_add_điaiem{
+            margin-left: 40%;
+            padding: 15px 45px;
+            font-size: 20px;
+            margin-top: 30px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        #btn_add_điaiem:hover{
+            color:#fff;
+            font-weight: 600;
+            background: #0099FF;
+            border: 1px solid #999999;
+            box-shadow: 0px 0px 10px #03e9f4;
+        }
+    </style>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
 </head>
 <body>
-    <?php 
-        include("header.php");
-    ?>
-    <?php include 'sidebar.php'?>
-    <form action="XuLyPHP/XuLy.php" method="POST">
-        <input type="text" name="action" value="themDiaDiem" id="" hidden>
-        <p>Thêm địa điểm thi bằng lái</p>
-        <p>Tỉnh <input type="text" id="tinh" onkeyup="showSuggestions()" name="tinh" ></p>
-        <div id="suggestion"></div>
-        <p>Tên nơi thi <input type="text" name="noiThi" id=""></p>
-        <p>Địa chỉ <input type="text" name="diaChi" id=""></p>
-        <p>SĐT <input type="tel" name="sdt" id=""></p>
-        <input type="submit" name="" id="" value="Thêm địa điểm">
-    </form>
+<?php
+    include 'header.php';
+ ?>
+
+ <div class="them_dia_diem">
+        <?php
+            include 'sidebar.php';
+        ?>
+        <form class="form_add_diadiem" action="XuLyPHP/XuLy.php" method="POST">
+                <input type="text" name="action" value="themDiaDiem" id="" hidden>
+                <p class="them_heading">Thêm địa điểm thi bằng lái</p>
+                <div class="add_items">
+                    <p>Tỉnh</p>
+                    <input type="text" id="tinh" onkeyup="showSuggestions()" name="tinh" >   
+                </div>
+
+                     <label id="suggestion"></label>
+                <div class="add_items">
+                     <p>Tên nơi thi</p>
+                     <input type="text" name="noiThi" id="">
+                </div>
+
+                <div class="add_items">
+                     <p>Địa chỉ</p>
+                     <input type="text" name="diaChi" id="">
+                </div>
+
+                <div class="add_items">
+                    <p>SĐT</p>
+                    <input type="text" name="sdt" id="">
+                </div>
+
+                <input id="btn_add_điaiem" type="submit" name="" id="" value="Thêm địa điểm">
+            </form>
+    </div>
+
 
 
     <script>

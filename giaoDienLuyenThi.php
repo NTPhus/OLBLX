@@ -1,3 +1,7 @@
+<?php 
+    include("session.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +18,7 @@
     $cdl = [];
     $sql = "SELECT * FROM `600_cau_hoi` WHERE cau_diem_liet = '1'";
     $res = mysqli_query($conn, $sql);
-    while($row = mysqli_fetch_array($res)){
+    if($row = mysqli_fetch_array($res)){
         array_push($cdl,$row['cau']);
     }
 
@@ -32,12 +36,7 @@
     $sql = "SELECT * FROM `bodeonthiblx` where DeSo = $DeSo";
     $res = mysqli_query($conn, $sql);
     if($row = mysqli_fetch_array($res)){
-        for($i = 1; $i <= 30; $i++){
-            array_push($de, $row["cau$i"]);
-            if(array_search($row["cau$i"], $cdl)){
-                array_push($cauDiemLiet, $i);
-            }
-        }
+        $de = explode('-', $row['cau']);
     }
 
     $data = [];

@@ -16,9 +16,7 @@
     $sql = "SELECT * FROM `bo_de_thi_mo_phong` where DeSo = $DeSo";
     $res = mysqli_query($conn, $sql);
     if($row = mysqli_fetch_array($res)){
-        for($i = 1; $i <= 10; $i++){
-            array_push($de, $row["cau$i"]);
-        }
+        $de = explode('-', $row['cau']);
     }
 
     $data = [];

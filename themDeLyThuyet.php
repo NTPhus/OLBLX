@@ -101,7 +101,7 @@
             <?php 
                 for($i = 1; $i <= 30; $i++){
                     echo "<p>Câu $i</p>";
-                    echo "<input type='number' name='cau$i'>";
+                    echo "<input type='number' name='cau$i' required>";
                 }
             ?>
             <input type="submit" name="" id="themDeLyThuyetBtn" value="Thêm đề">
@@ -115,7 +115,7 @@
             <?php 
                 for($i = 1; $i <= 10; $i++){
                     echo "<p>Câu $i</p>";
-                    echo "<input type='number' name='cau$i'>";
+                    echo "<input type='number' name='cau$i' required>";
                 }
             ?>
             <input type="submit" name="" id="themDeMoPhongBtn" value="Thêm đề">

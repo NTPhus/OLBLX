@@ -96,7 +96,7 @@
             position: relative;
             display: flex;
             background: #ddd;
-            height: 750px;
+            height: 650px;
         }
 
         .admin_container{
@@ -106,12 +106,12 @@
         }
         
         #Add_question{
-        font-size: 25px;
-        text-transform: uppercase;
-        font-weight: 600;
-        margin: 20px 0;
-        font-family: math;
-        letter-spacing: 1.5px;
+            font-size: 25px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin: 20px 0;
+            font-family: math;
+            letter-spacing: 1.5px;
         }
 
         #chuong, #cau_diem_liet ,#question, #answer{
@@ -268,7 +268,7 @@
                     </label>
         </div>
         </form>    
-        
+        <?php include 'footer.php'?>
    <script>
 
   const dropArea = document.getElementById("drop_area");

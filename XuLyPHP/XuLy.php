@@ -90,6 +90,7 @@
                 echo 'Success!';
             }else{
                 echo 'Failed!';
+                $img = 0;
             }
 
             $sql = "INSERT INTO `600_cau_hoi`(`chuong`, `cau_diem_liet`, `cauhoi`, `dapan1`, `dapan2`, `dapan3`, `dapan4`, `dapandung`, `img`) VALUES ('$chuong','$cauDiemLiet','$cauHoi','$dapan1','$dapan2','$dapan3','$dapan4','$dapandung','$img')";
@@ -113,22 +114,23 @@
             $_SESSION['msg'] = "Thêm video thành công";
             header("location:../suaLyThuyet.php");
         }else if($_POST['action'] == "themDeLyThuyet"){
-            $sql = "INSERT INTO `bodeonthiblx`(`cau1`, `cau2`, `cau3`, `cau4`, `cau5`, `cau6`, `cau7`, `cau8`, `cau9`, `cau10`, `cau11`, `cau12`, `cau13`, `cau14`, `cau15`, `cau16`, `cau17`, `cau18`, `cau19`, `cau20`, `cau21`, `cau22`, `cau23`, `cau24`, `cau25`, `cau26`, `cau27`, `cau28`, `cau29`, `cau30`) VALUES (";
+            $cau = "";  
             for($i = 1; $i <= 30; $i++){
-                $sql .= "'".$_POST["cau$i"]."',";
+                $cau .= $_POST["cau$i"]."-";
             }
-            $sql = rtrim($sql, ',');
-            $sql .= ")";
+            $cau = rtrim($cau, '-');
+            $sql = "INSERT INTO `bodeonthiblx`(`cau`) VALUES ('$cau')";
             mysqli_query($conn, $sql);
             $_SESSION['msg'] = "Thêm đề lý thuyết thành công";
             header("location:../themDeLyThuyet.php");
         }else if($_POST['action'] == "themDeMoPhong"){
-            $sql = "INSERT INTO `bo_de_thi_mo_phong`( `cau1`, `cau2`, `cau3`, `cau4`, `cau5`, `cau6`, `cau7`, `cau8`, `cau9`, `cau10`) VALUES (";
+            $cau = "";
             for($i = 1; $i <= 10; $i++){
-                $sql .= "'".$_POST["cau$i"]."',";
+                $cau .= $_POST["cau$i"]."-";
             }
-            $sql = rtrim($sql, ',');
-            $sql .= ")";
+            $cau = rtrim($cau, '-');
+            $sql = "INSERT INTO `bo_de_thi_mo_phong`(`cau`) VALUES ('$cau')";
+            echo $sql;
             mysqli_query($conn, $sql);
             $_SESSION['msg'] = "Thêm đề mô phỏng thành công";
             header("location:../themDeLyThuyet.php");

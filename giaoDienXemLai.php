@@ -18,9 +18,7 @@
     $sql = "SELECT * FROM `bodeonthiblx` where DeSo = 1";
     $res = mysqli_query($conn, $sql);
     if($row = mysqli_fetch_array($res)){
-        for($i = 1; $i <= 30; $i++){
-            array_push($de, $row["cau$i"]);
-        }
+        $de = explode("-", $row['cau']);
     }
     
     $conn = mysqli_connect("localhost", "root", "", "olblx");

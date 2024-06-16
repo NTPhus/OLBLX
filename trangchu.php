@@ -64,7 +64,7 @@
 
                                 <label for="">
                                     <p>Điểm cần đạt</p>
-                                    <p>35 đ</p>
+                                    <p>35/50 đ</p>
                                 </label>
 
                                 <div class="content_body">
@@ -109,7 +109,7 @@
 
                                 <label for="">
                                     <p>Số điểm cần đạt</p>
-                                    <p>27/30, 32/35 đ</p>
+                                    <p>27/30 đ</p>
                                 </label>
                                 <div class="content_body">
                                     <p>THI THỬ TRONG 22 - 24 PHÚT</p>
@@ -328,7 +328,7 @@
         if(trang == "OnTapMoPhong"){
             window.location.href = "giaoDienMoPhong.php";
         }else if(trang == "ThiMoPhong"){
-            window.location.href = "giaoDienMoPhong.php";
+            window.location.href = "chonDeMoPhong.php";
         }else if(trang == "OnLyThuyet"){
             window.location.href = "giaoDienTracNghiem.php";
         }else if(trang == "ThiLyThuyet"){

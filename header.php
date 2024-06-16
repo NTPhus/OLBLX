@@ -625,7 +625,7 @@ function dangnhap() {
                 <div class="taiKhoan">Xin chào: <?php echo $_SESSION['username'] ?></div>
                 <div class="matKhau">Nhập mật khẩu cũ: <input type="password" name="pass" id="pass" require></div>
                 <div class="matKhauMoi">Nhập mật khẩu mới: <input type="password" name="newpass" id="newpass" require></div>
-                <div class="matKhauMoi">Nhập lại khẩu mới: <input type="password" name="newpasschk" id="newpass" require placeholder=" "></div>
+                <div class="matKhauMoi">Nhập lại khẩu mới: <input type="password" name="newpasschk" id="renewpass" require placeholder=" "></div>
                 <div class="xacNhan">Xác Nhận Sự Thay Đổi này: <input type="checkbox" name="check" id="ok"></div>
                 <button id="submit_btn">Đổi mật khẩu</button>
             </div>

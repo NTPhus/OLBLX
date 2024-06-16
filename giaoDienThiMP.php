@@ -62,7 +62,7 @@
             display: block;
             height: 500px;
             width: 1000px;
-            z-index: -1000;
+            z-index: 1000;
 
         }
         #container{
@@ -380,7 +380,12 @@
     let bar = document.getElementById("bar");
 
     video.onended = function(e) {
-        chuyenVideo();
+        if(currentIndex == 10)
+            hienThiKetQua();
+        if(currentIndex < 10){
+            getPoint();
+            chuyenVideo();
+        }
     };
     //Nhan phim cach de dat co
     document.addEventListener('keydown', (event)=> {    
@@ -404,14 +409,13 @@
         }else{
             diem = 0;
         }
-        arrDiem.push(diem);
+        if(!status)
+            arrDiem[currentIndex] = diem;
         CamCo();
     }
     //chuyen video
     function chuyenVideo(){
-        if(currentIndex == 11){
-            hienThiKetQua();
-        }else{
+
             currentIndex++;
             const newDiv = document.createElement("div");
             flag_bar.append(newDiv);
@@ -420,14 +424,12 @@
             status = false;
             
             let vid = document.getElementById("myVideo");
-            vid.src = "video/MoPhong/"+ (currentIndex) +".mp4";
+            vid.src = "video/MoPhong/"+ (videos[currentIndex].cau) +".mp4";
             vid.load(); 
             document.getElementById("cauSo").innerHTML = (currentIndex+"/10");
             document.getElementById("rs").innerHTML = "";
         }
         
-    }
-
     var width;
     var i = 0;
     var second = 0;
@@ -453,7 +455,7 @@
                         }
                     }
                     if(seconds < 10) second = '0' + seconds;
-                    else if(seconds > 60){
+                    else if(seconds >= 60){
                         seconds = 0;
                         second = '00';
                         minutes++;
@@ -485,10 +487,12 @@
 
     function start(){
         let vid = document.getElementById("myVideo");
-        vid.src = "video/MoPhong/"+ (currentIndex) +".mp4";
+        vid.src = "video/MoPhong/"+ (videos[currentIndex].cau) +".mp4";
         for(let i = 1; i < videos.length; i++){
+            console.log(videos[i].cau);
             maxTime += videos[i].length;
         }
+        console.log(maxTime);
         minutes = parseInt(maxTime/60);
         seconds = maxTime - (minutes * 60);
         if(seconds < 10){
@@ -507,15 +511,15 @@
 
     function hienThiKetQua(){
         let time = 0;
-        for(let i = 1; i < arrDiem.length; i++){
+        for(let i = 1; i <= 10; i++){
             
-            if(arrDiem[i] != null)
-                document.getElementById("td"+i).innerHTML = arrDiem[i];
+            if(arrDiem[i] == null) arrDiem[i] = 0;
+            
+            document.getElementById("td"+i).innerHTML = arrDiem[i];
 
             const newDiv =document.createElement("div");
             newDiv.style.width =(videos[i].end - videos[i].start)/maxTime * 100 + "%";
             newDiv.style.marginLeft = (time + videos[i].start)/maxTime * 100 + "%";
-            console.log(time);
             newDiv.classList.add("bar");
 
             const newDiv1 = document.createElement("div");

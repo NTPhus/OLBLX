@@ -94,7 +94,7 @@
             }
 
             $sql = "INSERT INTO `600_cau_hoi`(`chuong`, `cau_diem_liet`, `cauhoi`, `dapan1`, `dapan2`, `dapan3`, `dapan4`, `dapandung`, `img`) VALUES ('$chuong','$cauDiemLiet','$cauHoi','$dapan1','$dapan2','$dapan3','$dapan4','$dapandung','$img')";
-            //mysqli_query($conn, $sql);
+            mysqli_query($conn, $sql);
             $_SESSION['msg'] = "Thêm câu hỏi thành công";
             echo $sql;
             header("location:../suaLyThuyet.php");

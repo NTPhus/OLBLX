@@ -479,7 +479,7 @@
     <div class="form_luachon">
         <div class="luachon">
             <div class="luachon_heading">
-                <h3>THI THỬ LÝ THUYẾT</h3>
+                <h3>THI THỬ MÔ PHỎNG</h3>
                 <span><i class="ri-close-large-line"></i></span>
             </div>
 
@@ -491,7 +491,6 @@
                                 <i class="ri-car-fill"></i>
                                 <select name="" id="">
                                     <option value="">Hạng B1</option>
-                                    <option value="">Hạng B2</option>
                                 </select>
                             </label>
                         </div>

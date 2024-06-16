@@ -367,18 +367,6 @@
                     <p>Nhất nút NỘP BÀI, chọn OK để kết thúc bài thi và chờ hệ thống chấm điểm.</p>
                 </div>
 
-                
-                <!-- D -->
-                <div class="huong_dan">
-                    <h3 class="tieu_de">D. Hướng dẫn</h3>
-                    <p>- Ấn chọn câu muốn làm ở thanh bên trái.</p>
-                    <p>- Màu xanh 
-                        <span><i class="blue ri-square-fill"></i></span>
-                        là những câu chưa làm 
-                        , Màu vàng <span><i class=" yellow ri-square-fill"></i></span> là những câu đã làm.
-                    </p>
-                    <p>Nhất nút NỘP BÀI, chọn OK để kết thúc bài thi và chờ hệ thống chấm điểm.</p>
-                </div>
             </div> 
  
             <div class="Bat_dau">

@@ -12,10 +12,19 @@
 </head>
 <body>
     <?php
+    $mlb = $_GET['code'];
     $data = [];
     $de = [];
     $conn = mysqli_connect("localhost", "root", "", "olblx");
-    $sql = "SELECT * FROM `bodeonthiblx` where DeSo = 1";
+
+    $sql = "SELECT * FROM `lich_su_lam_bai` WHERE MaLamBai = '$mlb'";
+    $res = mysqli_query($conn, $sql);
+    if($row = mysqli_fetch_array($res)){
+        $baiLamCu = $row['dapan'];
+        $DeSo = $row['de'];
+    }
+
+    $sql = "SELECT * FROM `bodeonthiblx` where DeSo = $DeSo";
     $res = mysqli_query($conn, $sql);
     if($row = mysqli_fetch_array($res)){
         $de = explode("-", $row['cau']);
@@ -36,12 +45,8 @@
         }
     }
 
-    $mlb = $_GET['code'];
-    $sql = "SELECT * FROM `lich_su_lam_bai` WHERE MaLamBai = '$mlb'";
-    $res = mysqli_query($conn, $sql);
-    if($row = mysqli_fetch_array($res)){
-        $baiLamCu = $row['dapan'];
-    }
+    
+
 
     ?>
     <?php include 'header.php'?>
@@ -115,15 +120,18 @@
         
         function ChayBaiLamCu(){
             let blc = "<?php echo $baiLamCu ?>";
-            console.log(blc);
-            let arr = [];
-            for(let i = 1; i <= 30; i++){
+            var c;
+            while(blc.length != 0){  
+
+                c = blc.substr(0,blc.indexOf(':'));
+                console.log(c);
                 index = blc.indexOf('-');
-                Choice[i] = blc[index-1];
-                check(Choice[i]);
-                currentIndex++;
+                Choice[c] = blc[index-1];
                 blc = blc.substr(index+1);
+                currentIndex = c;
+                check(Choice[c]);
             }
+
             currentIndex = 1;
             check(Choice[1]);
         }

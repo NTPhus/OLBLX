@@ -336,9 +336,9 @@ while($row = mysqli_fetch_array($res)){
                             <div class='lower' id='lower'>
                                 
                                 <?php
-                                    for($i = 1; $i <= 600; $i++){
-                                        echo "<div name='cau' class="."btn"." value=".$i." id="."btn".$i." onclick='ChuyenCau(".$i.")'>".$i."</div>";
-                                    }
+                                    // for($i = 1; $i <= 600; $i++){
+                                    //     echo "<div name='cau' class="."btn"." value=".$i." id="."btn".$i." onclick='ChuyenCau(".$i.")'>".$i."</div>";
+                                    // }
                                 ?>
                             </div>
                         </div>
@@ -405,36 +405,8 @@ while($row = mysqli_fetch_array($res)){
         let dapan2 = document.getElementById("dapan2");
         let dapan3 = document.getElementById("dapan3");
         let dapan4 = document.getElementById("dapan4");
-        function start(){
-            let currentQuestion = questions[0];
-            let answers = currentQuestion.answers;
-            document.getElementById("cauHoi").innerHTML = currentIndex + ". " + currentQuestion.question;
-            //check co hinh thi hien thi
-            if(currentQuestion.img == '0'){
-                img.style.display = "none";
-            }
-            else {
-                img.style.display = "block";
-                img.setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
-            }
-            dapan1.innerHTML = answers.dapan1;
-            dapan2.innerHTML = answers.dapan2;
-            if(answers.dapan3 === "")
-                dapan3.style.display = "none";
-            else{
-                dapan3.innerHTML = answers.dapan3;
-                dapan3.style.display = "block";
-            }       
-            if(answers.dapan4 === "")
-                dapan4.style.display = "none";
-            else{
-                dapan4.innerHTML = answers.dapan4;
-                dapan4.style.display = "block";
-            }
-
-            for(i = 167; i <= 600; i++){
-                document.getElementById("btn"+i).style.display = "none";
-            }
+        function start(){ 
+            ChuyenChuong(1);
         }
 
         function ChuyenChuong(soChuong){
@@ -506,7 +478,9 @@ while($row = mysqli_fetch_array($res)){
         }
 
         function ChuyenCau(cau){
+            if(Choice[currentIndex] == undefined && document.getElementById("btn"+currentIndex) != null) document.getElementById("btn"+currentIndex).style.backgroundColor = "#EEEEEE";
             currentIndex = cau;
+            document.getElementById("btn"+cau).style.backgroundColor = "#99FFFF";
             let currentQuestion = questions[currentIndex-1];
             let answers = currentQuestion.answers;
             // reset all answer

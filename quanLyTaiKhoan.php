@@ -63,7 +63,7 @@
         <h3 class="app_quanLyTK_themTK_element_text">Thêm Tài Khoản</h3>
         <form action="XuLyPHP/XuLy.php" method="post" class="app_quanLyTK_themTK_form">
         <div class="app_quanLyTK_themTK_element">
-            <input type="text" name="action" id="" value="themTK" hidden>
+            <input type="text" name="action" value="themTK" hidden>
             <p class="pUsername">Username: <input type="text" name="username" id="username" required></p>
             <p class="pPassword">Password: <input type="password" name="password" id="password" required></p>
             <p class="pCheckAdmin">Quyền Admin: <input type="checkbox" name="admin" id="checkAdmin"></p>
@@ -87,6 +87,7 @@
         function deleteAccount(username){
             window.location.href = "XuLyPHP/XuLy.php?action=XoaAccount&username="+username;
         }
+        document.getElementById("qltk").style.backgroundColor = "#0099FF";
     </script>
 </body>
 </html>

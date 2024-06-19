@@ -1,3 +1,7 @@
+<?php 
+    include("session.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,5 +81,8 @@ form input[type="file"]:focus {
         </form>
     </div>
     <?php include 'footer.php'?>
+    <script>
+        document.getElementById("thmvideo").style.backgroundColor = "#0099FF";
+    </script>
 </body>
 </html>

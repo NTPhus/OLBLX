@@ -123,7 +123,9 @@
     </div>
     </div>
     </div>
-    
+    <script>
+        document.getElementById("thmde").style.backgroundColor = "#0099FF";
+    </script>
     <?php include 'footer.php'; ?>
 </body>
 </html>

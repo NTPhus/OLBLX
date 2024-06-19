@@ -283,6 +283,9 @@ while($row = mysqli_fetch_array($res)){
             max-width: 700px;
             max-height: 300px;
         }
+        .ri-arrow-left-line{
+            font-size: x-large;
+        }
     </style>
     <script src="https://kit.fontawesome.com/5263b3717e.js" crossorigin="anonymous"></script>
 </head>
@@ -292,19 +295,19 @@ while($row = mysqli_fetch_array($res)){
         <section class="text_page">
             <div class="grid wide">
                     <div class="row"> 
-                        <a href="#"><i class="ri-arrow-left-line"></i></a>
+                        <a href="trangchu.php"><i class="ri-arrow-left-line"></i></a>
                         <h2 class="text">Ôn luyện trắc nghiệm</h2>
                     </div>
             </div>
                         <div class='upper'>
-                                <div class="chuong" onclick="ChuyenChuong(1)">Chương 1</div>
-                                <div class="chuong" onclick="ChuyenChuong(2)">Chương 2</div>
-                                <div class="chuong" onclick="ChuyenChuong(3)">Chương 3</div>
-                                <div class="chuong" onclick="ChuyenChuong(4)">Chương 4</div>
-                                <div class="chuong" onclick="ChuyenChuong(5)">Chương 5</div>
-                                <div class="chuong" onclick="ChuyenChuong(6)">Chương 6</div>
-                                <div class="chuong" onclick="ChuyenChuong(7)">Chương 7</div>
-                                <div class="chuong" onclick="ChuyenChuong(8)">60 câu điểm liệt</div>
+                                <div class="chuong" onclick="ChuyenChuong(1)" id="chuong1">Chương 1</div>
+                                <div class="chuong" onclick="ChuyenChuong(2)" id="chuong2">Chương 2</div>
+                                <div class="chuong" onclick="ChuyenChuong(3)" id="chuong3">Chương 3</div>
+                                <div class="chuong" onclick="ChuyenChuong(4)" id="chuong4">Chương 4</div>
+                                <div class="chuong" onclick="ChuyenChuong(5)" id="chuong5">Chương 5</div>
+                                <div class="chuong" onclick="ChuyenChuong(6)" id="chuong6">Chương 6</div>
+                                <div class="chuong" onclick="ChuyenChuong(7)" id="chuong7">Chương 7</div>
+                                <div class="chuong" onclick="ChuyenChuong(8)" id="chuong8">60 câu điểm liệt</div>
                             </div>
             <div class="app_heading">
                 <p>Lưu ý: Phương án 
@@ -410,6 +413,10 @@ while($row = mysqli_fetch_array($res)){
         }
 
         function ChuyenChuong(soChuong){
+            for(let i = 1; i <= 8; i++){
+                document.getElementById('chuong'+i).style.backgroundColor = "white";
+            }
+            document.getElementById('chuong'+soChuong).style.backgroundColor = "yellow";
             let chuong;
             cdl = 0;
             if(soChuong == 1){

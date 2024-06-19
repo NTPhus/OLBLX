@@ -108,11 +108,14 @@
 
                 <input id="btn_add_điaiem" type="submit" name="" id="" value="Thêm địa điểm">
             </form>
+           
     </div>
-
+    <?php include 'footer.php'?>
+    
 
 
     <script>
+    
     function showSuggestions() {
     var input = document.getElementById('tinh').value;
     if (input === '') {
@@ -139,8 +142,9 @@
     };
     xmlhttp.open('GET', 'XuLyPHP/XuLy.php?action=timkiem&q=' + input, true);
     xmlhttp.send();
+    
 }
-
+document.getElementById("tdd").style.backgroundColor = "#0099FF";
 </script>
 </body>
 </html>

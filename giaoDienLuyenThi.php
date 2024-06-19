@@ -139,13 +139,13 @@
             <div class="ketqua">
                 <div class="cauhoii">
                     <h4>Số câu hỏi: </h4>
-                    <p>35</p>
+                    <p>30</p>
                 </div>
 
                 <div class="sodiem">
                     <h4>Tổng điểm: </h4>
 
-                    <p id="rs">0/35</p>
+                    <p id="rs">0/30</p>
                 </div>
 
                 <div class="danhgia">
@@ -353,7 +353,7 @@
                 if(Answer[i] == 1) diem++;
             }
             ketqua.classList.add('result_open');
-            document.getElementById("rs").innerHTML = diem + "/35";
+            document.getElementById("rs").innerHTML = diem + "/30";
             if(diem > 27 && status){
                 document.getElementById("comment").innerHTML = "Bạn đã hoàn thành xuất sắc bài thi, chúc mừng bạn nhé!";
                 document.getElementById("icon").innerHTML = "<i class='emoji ri-emotion-happy-fill'>";                

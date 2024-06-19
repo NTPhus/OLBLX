@@ -294,6 +294,8 @@ inputFile.addEventListener("change", uploadImage);
         inputFile.files = e.dataTransfer.files;
         uploadImage();
     });
+
+    document.getElementById("slt").style.backgroundColor = "#0099FF";
 </script>
 
 

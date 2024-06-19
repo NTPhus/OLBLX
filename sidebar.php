@@ -9,7 +9,7 @@
         .adminmenuback{
             left: 0px;
             width: 70px;
-            height: 650px;
+            height: 750px;
             background: #162938;
             transition: width 0.6;
         }
@@ -185,32 +185,33 @@
                 </div>
             
                 <ul>
-                    <li class ="navActive">
+                    <li class ="navActive" id="qltk">
                          <i class="ri-account-circle-fill"></i>
                         <a href="quanLyTaiKhoan.php">Quản Lý Tài Khoản</a>
                     </li>
 
-                    <li class ="navActive">
+                    <li class ="navActive" id="slt">
                         <i class="ri-question-fill"></i>
                         <a href="suaLyThuyet.php">Thêm Câu Hỏi</a>
                     </li>
 
-                    <li class ="navActive">
+                    <li class ="navActive" id="thmde">
                         <i class="ri-file-upload-fill"></i>
                         <a href="themDeLyThuyet.php">Thêm Đề LT, MT</a>
                     </li>
 
-                    <li class ="navActive">
+                    <li class ="navActive" id="thmvideo">
                         <i class="ri-video-add-line"></i>
                         <a href="themVideo.php">Thêm Video MP</a>
                     </li>
                     
-                    <li class ="navActive">
+                    <li class ="navActive" id="tdd">
                         <i class="ri-map-pin-add-line"></i>
                         <a href="themDiaDiem.php">Thêm Địa Điểm</a>
                     </li>
 
                 </ul>
             </div>
+
 </body>
 </html>

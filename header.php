@@ -362,7 +362,7 @@ a{
 }
 i.ri-close-large-line.close {
     position: fixed;
-    top: 18px;
+    top: 32px;
     right: 50px;
     width: 45px;
     height: 45px;

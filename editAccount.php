@@ -94,8 +94,6 @@
     </style>
 </head>
 <body>
-    <?php// include 'header.php'?>
-    <?php// include 'sidebar.php'?>
     <div class="app_EditAccount">
         <div class="app_EditAccount_element">
             <form action="XuLyPHP/XuLy.php" method="post">
@@ -109,6 +107,5 @@
             </form>
         </div>
     </div>
-    <?php //include 'footer.php'?>
 </body>
 </html>

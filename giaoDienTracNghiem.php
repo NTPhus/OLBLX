@@ -506,7 +506,10 @@ while($row = mysqli_fetch_array($res)){
             }
             else{
                 img.style.display = "block";
-                img.setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
+                if(currentIndex > 600)
+                    img.setAttribute("src", "Anh/"+questions[currentIndex-1].img+".png");
+                else
+                    img.setAttribute("src", "Anh/Câu "+questions[currentIndex-1].img+".png");
             }
             dapan1.innerHTML = answers.dapan1;
             dapan2.innerHTML = answers.dapan2;

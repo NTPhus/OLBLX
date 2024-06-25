@@ -6,7 +6,7 @@
 $conn = mysqli_connect("localhost", "root", "", "olblx");
 $sql = "SELECT * FROM `600_cau_hoi`";
 $res = mysqli_query($conn, $sql);
-
+$numQuestion  = 0;
 $data = [];
 
 while($row = mysqli_fetch_array($res)){
@@ -17,6 +17,7 @@ while($row = mysqli_fetch_array($res)){
     array_push($data,$row['dapan3']);
     array_push($data,$row['dapan4']);
     array_push($data,$row['dapandung']);
+    $numQuestion++;
 }
 
 $sql = "SELECT cau FROM `600_cau_hoi` WHERE cau_diem_liet = '1'";
@@ -84,7 +85,6 @@ while($row = mysqli_fetch_array($res)){
     <link rel="stylesheet" href="img/back.png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
     <link rel="stylesheet" href="CSS/grid.css">
-    <link rel="stylesheet" href="font/remixicon.css">
 
     <style>
         *{
@@ -408,17 +408,22 @@ while($row = mysqli_fetch_array($res)){
         let dapan2 = document.getElementById("dapan2");
         let dapan3 = document.getElementById("dapan3");
         let dapan4 = document.getElementById("dapan4");
+        let numQuestion = <?php echo json_encode($numQuestion)?>;
         function start(){ 
             ChuyenChuong(1);
         }
 
         function ChuyenChuong(soChuong){
+            // Turn bg to original color
             for(let i = 1; i <= 8; i++){
                 document.getElementById('chuong'+i).style.backgroundColor = "white";
             }
+            //Turn bg to selected color
             document.getElementById('chuong'+soChuong).style.backgroundColor = "yellow";
             let chuong;
             cdl = 0;
+
+            // bien chuong de luu cac cau hoi cua chuong do
             if(soChuong == 1){
                 chuong = <?php echo json_encode($chuong1)?>;
             }else if(soChuong == 2){
@@ -438,7 +443,7 @@ while($row = mysqli_fetch_array($res)){
                 cdl = 1;
             }
             //remove all btn
-            for(let i = 1; i <= 600; i++){
+            for(let i = 1; i <= numQuestion; i++){
                 if(document.getElementById("btn"+i) != null)
                     document.getElementById("btn"+i).remove();
             }
@@ -451,13 +456,9 @@ while($row = mysqli_fetch_array($res)){
             ChuyenCau(chuong[0]);
         }
 
+        //Danh dau nhung cau hoi ma ma user da chon
         function markChoice(){
-            for(let i = 0; i < 600; i++){
-                if(CauDL[i] != null && document.getElementById("btn"+i) != null)
-                    document.getElementById("btn"+i).style.backgroundColor = "white";
-            }
-
-            for(let i = 0; i < 600; i++){
+            for(let i = 0; i < numQuestion; i++){
                 if(Choice[i] != null && document.getElementById("btn"+i) != null){
                     if(Choice[i] == 1){
                         document.getElementById("btn"+i).style.backgroundColor = "#00CD66";
@@ -468,12 +469,9 @@ while($row = mysqli_fetch_array($res)){
             }
         }
 
+        //Danh dau nhung cau diem liet ma user da chon
         function markCauDL(){
-            for(let i = 0; i < 600; i++){
-                if(Choice[i] != null && document.getElementById("btn"+i) != null)
-                    document.getElementById("btn"+i).style.backgroundColor = "white";
-            }
-            for(let i = 0; i < 600; i++){
+            for(let i = 0; i < numQuestion; i++){
                 if(CauDL[i] != null && document.getElementById("btn"+i) != null){
                     if(CauDL[i] == 1){
                         document.getElementById("btn"+i).style.backgroundColor = "#00CD66";
@@ -499,6 +497,7 @@ while($row = mysqli_fetch_array($res)){
            dapan3.style.backgroundColor = "#EEEEEE";
            dapan4.style.border = "none";
            dapan4.style.backgroundColor = "#EEEEEE";
+           document.getElementById("message").innerHTML = "";
             // Hien thi cau hoi
             document.getElementById("cauHoi").innerHTML = currentIndex + ". " + currentQuestion.question;
             //check co hinh thi hien thi
@@ -523,7 +522,7 @@ while($row = mysqli_fetch_array($res)){
                 dapan4.innerHTML = answers.dapan4;
                 dapan4.style.display = "block";
             }
-            document.getElementById("message").innerHTML = "";
+            // Danh dau lua chon cua user
             if(cdl == 1){
                 markCauDL();
                 if(preCauDL[cau] != null) check(preCauDL[cau]);
@@ -574,7 +573,8 @@ while($row = mysqli_fetch_array($res)){
                 document.getElementById("message").innerHTML = "<i class=' red fa-solid fa-xmark'></i> Đáp án sai"
                 
             }
-            
+
+            //Danh dau lua chon cua user
             if(cdl == 1){
                 CauDL[currentIndex] = trueAnswer;
                 preCauDL[currentIndex] = cau;
@@ -582,11 +582,8 @@ while($row = mysqli_fetch_array($res)){
             else{
                 Choice[currentIndex] = trueAnswer;
                 preChoice[currentIndex] = cau;
-            }
-
-            
+            }       
         }
-
         start();
     </script>
 

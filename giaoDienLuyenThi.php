@@ -87,7 +87,7 @@
                 </div>
             </div>
             <div class="bottom-bar">
-                <div class="time"><p>Thời gian còn lại</p><p id="countdown"> 30:00</p></div>
+                <div class="time"><p>Thời gian còn lại</p><p id="countdown"> 20:00</p></div>
                <?php 
                     for($i = 1; $i <= 30; $i++){
                         echo "<div class='btn' id='btn".$i."' onclick='ChuyenCau(".$i.")'>".$i."</div>";
@@ -160,8 +160,7 @@
     </div>
     
     <?php include 'footer.php'?>
-    <!-- Đồng hồ đếm ngược -->
-    <script src="JS/index.js"></script>
+
     <script type="text/javascript">
         // Gán biến data = array từ php
         let data = <?php echo json_encode($data)?>;
@@ -203,33 +202,7 @@
         let dapan4 = document.getElementById("dapan4");
         document.getElementById("btn"+currentIndex).style.backgroundColor = "lightgreen";
         function start(){
-            let currentQuestion = questions[0];
-            let answers = currentQuestion.answers;
-            document.getElementById("cauHoi").innerHTML = "Câu " + currentIndex + ". " + currentQuestion.question;
-            //check co hinh thi hien thi
-            if(currentQuestion.img == '0'){
-                img_cauHoi.style.display = "none";
-            }
-            else{
-                img_cauHoi.style.display = "block";
-                img_cauHoi.setAttribute("src", "Anh/Câu "+(currentIndex)+".png");
-            }
-            dapan1.innerHTML = answers.dapan1;
-            dapan2.innerHTML = answers.dapan2;
-            //kiem tra cau hoi nay co dapan3 khong
-            if(answers.dapan3 === "")
-                dapan3.style.display = "none";
-            else{
-                dapan3.innerHTML = answers.dapan3;
-                dapan3.style.display = "block";
-            }     
-            //kiem tra cau hoi nay co dapan4 khong  
-            if(answers.dapan4 === "")
-                dapan4.style.display = "none";
-            else{
-                dapan4.innerHTML = answers.dapan4;
-                dapan4.style.display = "block";
-            }
+            ChuyenCau(1);
         }
 
         function ChuyenCau(cau){
@@ -362,9 +335,11 @@
                 document.getElementById("icon").innerHTML = "<i class='emoji ri-emotion-unhappy-fill'></i>";
             }
         });
+
         exit2.addEventListener("click", () => {
-            xacThuc.classList.add('xacthuc_close');
-            ketqua.classList.remove("result_open");
+            // xacThuc.classList.add('xacthuc_close');
+            // ketqua.classList.remove("result_open");
+            thoat.click();
          });
 
         thoat.addEventListener("click", () => {
@@ -399,9 +374,27 @@
             event.stopPropagation();
         })
 
+        // thanh thời gian 
+        const startingMinutes = 20; // phút bắt đầu
+        let time = startingMinutes * 60;
+        time--;
+        const countdownEl = document.getElementById("countdown");
 
+        const myInterval = setInterval(updateCountdown, 1000);
 
+        function updateCountdown(){
+            const minutes = Math.floor(time / 60);
+            let seconds = time % 60;
+            let minute = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            countdownEl.innerHTML = `${minute}:${seconds}`;
+            time--;
+            if(time < 0){
+                clearInterval(myInterval);
+                OK.click();
+            } 
+        }
     </script>
-    
 </body>
 </html>

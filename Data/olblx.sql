@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2024 at 03:50 PM
+-- Generation Time: Jun 23, 2024 at 10:17 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -647,7 +647,30 @@ INSERT INTO `600_cau_hoi` (`chuong`, `cau`, `cau_diem_liet`, `cauhoi`, `dapan1`,
 (7, 597, 0, ' Trong tình huống dưới đây xe con màu đỏ nhập làn đường cao tốc theo hướng mũi tên là đúng hay sai?', '1 – Đúng.', '2 – Sai.', '', '', 2, 597),
 (7, 598, 0, ' Trong tình huống dưới đây, xe con màu đỏ có được phép vượt khi xe con màu xanh đang vượt xe tải hay không?', '1 – Được vượt.', '2 – Không được vượt.', '', '', 2, 598),
 (7, 599, 0, ' Trong tình huống dưới đay, xe con màu vàng vượt xe con màu đỏ là đúng quy tắc giao thông hay không?', '1 – Đúng.', '2 – Không Đúng.', '', '', 1, 599),
-(7, 600, 0, ' Trong tình huống dưới đây, xe đầu kéo rơ móoc (xe container) đang rẽ phải, xe con màu xanh đi như thế nào để đảm bảo an toàn?', '1 – Vượt về phía bên phải để đi tiếp.', '', 'âu 600/ Trong tình huống dưới đây, xe đầu kéo rơ móoc (xe container) đang rẽ phải, xe con màu xanh đi như thế nào để đảm bảo an toàn?1 – Vượt về phía bên phải để đi tiếp.', '', 2, 600);
+(7, 600, 0, ' Trong tình huống dưới đây, xe đầu kéo rơ móoc (xe container) đang rẽ phải, xe con màu xanh đi như thế nào để đảm bảo an toàn?', '1 – Vượt về phía bên phải để đi tiếp.', '2 – Giảm tốc độ chờ xe đầu kéo rẽ phải, rồi tiếp tục đi.', '3 – Vượt về phía bên trái để đi tiếp.', '', 2, 600);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `account`
+--
+
+CREATE TABLE `account` (
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `admin` tinyint(1) NOT NULL,
+  `email` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `account`
+--
+
+INSERT INTO `account` (`username`, `password`, `admin`, `email`) VALUES
+('admin', 'admin', 1, ''),
+('phu', '123', 0, ''),
+('phu1', '123', 0, ''),
+('phu2', '123', 0, '');
 
 -- --------------------------------------------------------
 
@@ -657,48 +680,19 @@ INSERT INTO `600_cau_hoi` (`chuong`, `cau`, `cau_diem_liet`, `cauhoi`, `dapan1`,
 
 CREATE TABLE `bodeonthiblx` (
   `DeSo` int(11) NOT NULL,
-  `cau1` int(11) NOT NULL,
-  `cau2` int(11) NOT NULL,
-  `cau3` int(11) NOT NULL,
-  `cau4` int(11) NOT NULL,
-  `cau5` int(11) NOT NULL,
-  `cau6` int(11) NOT NULL,
-  `cau7` int(11) NOT NULL,
-  `cau8` int(11) NOT NULL,
-  `cau9` int(11) NOT NULL,
-  `cau10` int(11) NOT NULL,
-  `cau11` int(11) NOT NULL,
-  `cau12` int(11) NOT NULL,
-  `cau13` int(11) NOT NULL,
-  `cau14` int(11) NOT NULL,
-  `cau15` int(11) NOT NULL,
-  `cau16` int(11) NOT NULL,
-  `cau17` int(11) NOT NULL,
-  `cau18` int(11) NOT NULL,
-  `cau19` int(11) NOT NULL,
-  `cau20` int(11) NOT NULL,
-  `cau21` int(11) NOT NULL,
-  `cau22` int(11) NOT NULL,
-  `cau23` int(11) NOT NULL,
-  `cau24` int(11) NOT NULL,
-  `cau25` int(11) NOT NULL,
-  `cau26` int(11) NOT NULL,
-  `cau27` int(11) NOT NULL,
-  `cau28` int(11) NOT NULL,
-  `cau29` int(11) NOT NULL,
-  `cau30` int(11) NOT NULL
+  `cau` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
 -- Dumping data for table `bodeonthiblx`
 --
 
-INSERT INTO `bodeonthiblx` (`DeSo`, `cau1`, `cau2`, `cau3`, `cau4`, `cau5`, `cau6`, `cau7`, `cau8`, `cau9`, `cau10`, `cau11`, `cau12`, `cau13`, `cau14`, `cau15`, `cau16`, `cau17`, `cau18`, `cau19`, `cau20`, `cau21`, `cau22`, `cau23`, `cau24`, `cau25`, `cau26`, `cau27`, `cau28`, `cau29`, `cau30`) VALUES
-(1, 1, 7, 48, 53, 72, 79, 124, 129, 202, 254, 276, 317, 367, 371, 376, 378, 408, 429, 465, 481, 494, 506, 515, 533, 548, 580, 586, 587, 597, 258),
-(2, 12, 25, 32, 33, 39, 40, 147, 151, 194, 235, 282, 307, 358, 380, 389, 410, 420, 439, 440, 478, 488, 517, 530, 557, 575, 581, 584, 586, 591, 40),
-(3, 2, 4, 9, 57, 61, 99, 150, 156, 210, 265, 285, 344, 368, 372, 383, 397, 398, 416, 471, 481, 490, 493, 518, 519, 521, 529, 550, 572, 589, 18),
-(4, 4, 7, 32, 47, 52, 119, 143, 157, 203, 268, 278, 309, 313, 318, 329, 354, 420, 426, 442, 483, 488, 504, 519, 546, 563, 567, 583, 595, 598, 101),
-(5, 14, 56, 77, 95, 96, 112, 117, 129, 211, 256, 286, 319, 321, 329, 345, 356, 387, 398, 422, 484, 498, 504, 507, 513, 532, 572, 573, 575, 585, 143);
+INSERT INTO `bodeonthiblx` (`DeSo`, `cau`) VALUES
+(1, '1-7-48-53-72-79-124-129-202-254-276-317-367-371-376-378-408-429-465-481-494-506-515-533-548-580-586-587-597-258'),
+(2, '12-25-32-33-39-40-147-151-194-235-282-307-358-380-389-410-420-439-440-478-488-517-530-557-575-581-584-586-591-40'),
+(3, '2-4-9-57-61-99-150-156-210-265-285-344-368-372-383-397-398-416-471-481-490-493-518-519-521-529-550-572-589-18'),
+(4, '4-7-32-47-52-119-143-157-203-268-278-309-313-318-329-354-420-426-442-483-488-504-519-546-563-567-583-595-598-101'),
+(5, '14-56-77-95-96-112-117-129-211-256-286-319-321-329-345-356-387-398-422-484-498-504-507-513-532-572-573-575-585-143');
 
 -- --------------------------------------------------------
 
@@ -708,28 +702,19 @@ INSERT INTO `bodeonthiblx` (`DeSo`, `cau1`, `cau2`, `cau3`, `cau4`, `cau5`, `cau
 
 CREATE TABLE `bo_de_thi_mo_phong` (
   `DeSo` int(11) NOT NULL,
-  `cau1` int(11) NOT NULL,
-  `cau2` int(11) NOT NULL,
-  `cau3` int(11) NOT NULL,
-  `cau4` int(11) NOT NULL,
-  `cau5` int(11) NOT NULL,
-  `cau6` int(11) NOT NULL,
-  `cau7` int(11) NOT NULL,
-  `cau8` int(11) NOT NULL,
-  `cau9` int(11) NOT NULL,
-  `cau10` int(11) NOT NULL
+  `cau` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
 -- Dumping data for table `bo_de_thi_mo_phong`
 --
 
-INSERT INTO `bo_de_thi_mo_phong` (`DeSo`, `cau1`, `cau2`, `cau3`, `cau4`, `cau5`, `cau6`, `cau7`, `cau8`, `cau9`, `cau10`) VALUES
-(1, 13, 29, 43, 57, 63, 73, 74, 76, 97, 119),
-(2, 28, 29, 35, 46, 62, 68, 76, 90, 93, 110),
-(3, 17, 23, 37, 47, 53, 66, 77, 84, 100, 107),
-(4, 14, 25, 34, 51, 56, 65, 77, 90, 95, 103),
-(5, 7, 22, 36, 46, 47, 71, 81, 88, 92, 94);
+INSERT INTO `bo_de_thi_mo_phong` (`DeSo`, `cau`) VALUES
+(1, '13-29-43-57-63-73-74-76-97-119'),
+(2, '28-29-35-46-62-68-76-90-93-110'),
+(3, '17-23-37-47-53-66-77-84-101-107'),
+(4, '14-25-34-51-56-65-77-90-95-103'),
+(5, '7-22-36-46-47-71-81-88-92-94');
 
 -- --------------------------------------------------------
 
@@ -741,7 +726,7 @@ CREATE TABLE `dstinh` (
   `Tinh` text NOT NULL,
   `Noi_Thi` text NOT NULL,
   `Dia_Chi` text NOT NULL,
-  `SDT` text NOT NULL,
+  `SDT` varchar(255) NOT NULL,
   `img` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
@@ -750,69 +735,69 @@ CREATE TABLE `dstinh` (
 --
 
 INSERT INTO `dstinh` (`Tinh`, `Noi_Thi`, `Dia_Chi`, `SDT`, `img`) VALUES
-('An Giang', 'Trung Tâm Đào Tạo Và Sát Hạch Lái Xe Châu Đốc', '246 Đường Tránh, QL91, Khóm Châu Long 8, Châu Đốc, An Giang', '02963568866', ''),
-('Bà Rịa - Vũng Tàu', 'TRUNG TÂM DẠY NGHỀ VÀ SÁT HẠCH LÁI XE TỈNH BÀ RỊA – VŨNG TÀU', '1772V đường 30-4 – Phường 12 – TP. Vũng Tàu Vũng Tàu', '02543626278', ''),
-('Bạc Liêu', 'Trung tâm Giáo dục nghề nghiệp - Giáo dục thường xuyên huyện Hồng Dân', 'Đường Tôn Đức Thắng, khóm 10, phường 1, TP Bạc Liêu', 'Chưa cập nhật', ''),
-('Bắc Giang', 'Trường Trung cấp nghề GTVT Bắc Giang', 'xã Song Mai, TP Bắc Giang, tỉnh Bắc Giang', '0241 3856 613', ''),
-('Bắc Kạn', 'Trung tâm đào tại và sát hạch lái xe Bắc Kạn', 'Số 5 đường Trường Chinh, thị xã Bắc Kạn', '0209 3856 614', ''),
-('Bắc Ninh', 'Trung tâm đào tạo xe cơ giới đường bộ Bắc Ninh', 'Khu 7 Phường Thị Cầu,TP Bắc Ninh,Tỉnh Bắc Ninh', '0248 3856 615', ''),
-('Bến Tre', 'Trung tâm hành chính công tỉnh Bến Tre', 'Số 126A, đường Nguyễn Thị Định, phường Phú Tân, thành phố Bến Tre, tỉnh Bến Tre', '0284 3856 616', ''),
-('Bình Định', 'Sở giao thông vận tải Bình Định', 'Số 8 Lê Thánh Tôn, thành phố Qui Nhơn, tỉnh Bình Định', '0256 3856 617', ''),
-('Bình Dương', 'Sở Giao Thông Vận Tải Tỉnh Bình Dương', 'Tầng 12A - tháp A, Tòa nhà Trung tâm hành chính tập trung tỉnh Bình Dương Đường Lê Lợi, Phường Hòa Phú, Thành phố Thủ Dầu Một, Tỉnh Bình Dương', '02743824330', ''),
-('Bình Phước', 'Trung tâm đào tạo và sát hạch lái xe thuộc Trường CĐ Công Nghiệp Cao Su', 'Số 1428, P. Tân Đồng, TP. Đồng xoài, Bình Phước', '+84 271 3856 618', ''),
-('Bình Thuận', 'Trung tâm sát hạch lái xe Bình Thuận - Cát Tường Minh', 'Thôn Tiến Bình, Xã Tiến Thành, TP. Phan Thiết, Bình Thuận', '02523745678', ''),
-('Cà Mau', 'Ban An Toàn Giao Thông Tỉnh Cà Mau', 'Địa chỉ: 269 - Trần Hưng Đạo - phường 5 - thành phố Cà Mau', '02903818129', ''),
-('Cần Thơ', 'Sở GTVT Cần Thơ', 'Số 109, đường Nguyễn Trãi, phường Tân An, quận Ninh Kiều, TP Cần Thơ', '+84 292 3525 678', ''),
-('Cao Bằng', 'Sở Giao thông vận tải Cao Bằng', 'Số 123, đường Kim Đồng, phường Hợp Giang, TP Cao Bằng', '+84 209 3856 620', ''),
-('Đà Nẵng', 'Sở Giao Thông Vận Tải Đà Nẵng', 'Tầng 14, tòa nhà Trung tâm Hành chính, số 24 Trần Phú, thành phố Đà Nẵng ', '02363822008', ''),
-('Đắk Lắk', 'Trung tâm GDNN Vinasme Tây Nguyên', '03 Phạm Hùng – BMT', '0983570421', ''),
-('Đắk Nông', 'Trung tâm dạy nghề tư thục Đại Lợi', 'ĐC1: + Số 280 QL 14 - Xã Tâm Thắng - Cư JútĐC2: + Thôn Tân Tiến - Xã Quảng Thành - TX Gia Nghĩa.', '02613.548.878', ''),
-('Điện Biên', 'Trung tâm đào tạo &amp; sát hạch lái xe CGĐB', 'Bản Phiêng Ban, xã Thanh Nưa, huyện Điện Biên, tỉnh Điện Biên', '0215.3962.114', ''),
-('Đồng Nai', 'Trung tâm Đào tạo và Sát hạch lái xe loại I Đồng Nai', 'Trụ sở chính (Cơ sở 1): đặt tại khu phố 5, đường Huỳnh Văn Nghệ, phường Bửu Long, Thành phố Biên Hòa, tỉnh Đồng Nai', '0251.3951042', ''),
-('Đồng Tháp', 'TRUNG TÂM GIÁO DỤC NGHỀ NGHIỆP KỸ THUẬT GIAO THÔNG ĐỒNG THÁP', 'số 314, Lê Đại Hành, Phường Mỹ Phú, thành phố Cao Lãnh, tỉnh Đồng Tháp', '02773.851.531', ''),
+('Hà Nội', 'Trung tâm sát hạch để cấp giấy phép lái xe Thành phố Hà Nội', 'Đồng Chầm, Tiên Dược, Sóc Sơn, Hà Nội', ' 02435932055', ''),
 ('Gia Lai', 'Trường Cao đẳng nghề Gia Lai', 'Đường Trần Nhật Duật, thôn 6, xã Diên Phú, Tp. Pleiku, tỉnh Gia Lai', ' 02693 825 001', ''),
 ('Hà Giang', 'Trung tâm giáo dục nghề nghiệp và sát hạch lái xe Bình Vàng', 'KCN Bình Vàng, Xã Đạo Đức, Huyện Vị Xuyên, Tỉnh Hà Giang', ' 0886 815 899', ''),
-('Hà Nam', 'Trung tâm sát hạch lái xe cơ giới đường bộ', 'Hà Nam. đường Đinh Tiên Hoàng – Tp. Phủ Lý – Hà Nam', '089.8910.333', ''),
-('Hà Nội', 'Trung tâm sát hạch để cấp giấy phép lái xe Thành phố Hà Nội', 'Đồng Chầm, Tiên Dược, Sóc Sơn, Hà Nội', ' 02435932055', ''),
-('Hà Tĩnh', 'Trung tâm sát hạch lái xe CGĐB Hà Tĩnh', '290 đường Trần Phú, TP. Hà Tĩnh, Hà Tĩnh', '+84 239 3856 613', ''),
+('Phú Thọ', 'Trung tâm Đào tạo và Sát hạch lái xe Phú Thọ', '2030 Đường Hùng Vương, Thi Đua, Thành phố Việt Trì, Phú Thọ', '(0210) 3857155', ''),
+('Hồ Chí Minh', 'Trường Cao đẳng nghề GTVT TP.HCM', '08 Nguyễn Ảnh Thủ, P. Trung Mỹ Tây, Q. 12, TP.HCM', '(028) 3717 4875', ''),
+('Tuyên Quang', 'Trung tâm sát hạch lái xe tỉnh Tuyên Quang', 'Số 12, đường Nguyễn Văn Linh, Phường Minh Khai, Thành phố Tuyên Quang, Tỉnh Tuyên Quang', '+84 207 3852 244', ''),
+('Thái Nguyên', 'Trung tâm sát hạch lái xe tỉnh Thái Nguyên', 'Phân hiệu Đào tạo Việt Bắc, Trường Cao đẳng Than - Khoáng sản Việt Nam, xã Sơn Cẩm, Thành phố Thái Nguyên, Tỉnh Thái Nguyên', '+84 208 3818 333', ''),
+('Cao Bằng', 'Sở Giao thông vận tải Cao Bằng', 'Số 123, đường Kim Đồng, phường Hợp Giang, TP Cao Bằng', '+84 209 3856 620', ''),
+('Vĩnh Phúc', 'Trung tâm sát hạch lái xe tỉnh Vĩnh Phúc', 'Số 123, đường Trần Hưng Đạo, Phường Phúc Yên, Thành phố Phúc Yên, Tỉnh Vĩnh Phúc', '+84 211 3842 244', ''),
+('Sơn La', 'Trung tâm Sát hạch Lái xe Cơ giới Đường bộ Trực thuộc Sở Giao thông Vận tải Sơn La', '7XM+7F2, QL6, P. Chiềng Cọ, Thành phố Sơn La, Sơn La', '+84 212 3874 350', ''),
+('Hòa Bình', 'Trung tâm Đào tạo và Sát hạch lái xe cơ giới đường bộ Hòa Bình', 'Km 10, Quốc lộ 6, phường Đồng Minh, TP. Hòa Bình, tỉnh Hòa Bình', '+84 218 3862 622', ''),
 ('Hải Dương', 'Trung tâm đào tạo và sát hạch lái xe Hải Dương', '822 đại lộ Lê Thanh Nghị, TP. Hải Dương', '+84 220 3841 222', ''),
 ('Hải Phòng', 'Trung tâm sát hạch lái xe số 1 Hải Phòng', '45 Lạch Tray, Phường Lạch Tray, Quận Ngô Quyền, Tp Hải Phòng (trong Cung Văn hóa Thể thao Thanh niên)', '+84 225 3822 222', ''),
+('Thái Bình', 'Trung tâm sát hạch tỉnh Thái Bình', 'ở Giao Thông Vận Tải Tỉnh Thái Bình, 414, Trần Hưng Đạo, Thành Phố Thái Bình, Tỉnh Thái Bình, Trần Hưng, Thái Bình, Việt Nam', '+84 227 3642 664', ''),
+('Ninh Bình', 'Trung tâm sát hạch lái xe Thành Nam', '62X2+755, Triệu Việt Vương, TP. Ninh Bình, Ninh Bình', '+84 229 3873 243', ''),
+('Thừa Thiên Huế', 'Trung tâm sát hạch lái xe tỉnh Thừa Thiên Huế', 'Số 18, đường Nguyễn Tất Thành, Phường Xuân Phú, Thành phố Huế, Tỉnh Thừa Thiên Huế.', '+84 235 3810 244', ''),
+('Thanh Hóa', 'Trung tâm sát hạch lái xe tỉnh Thanh Hóa', 'Số 244, đường Bà Triệu, Phường Điện Biên, Thành phố Thanh Hóa, Tỉnh Thanh Hóa.', '+84 237 3856 244', ''),
+('Hà Tĩnh', 'Trung tâm sát hạch lái xe CGĐB Hà Tĩnh', '290 đường Trần Phú, TP. Hà Tĩnh, Hà Tĩnh', '+84 239 3856 613', ''),
+('Quảng Ngãi', 'TRUNG TÂM ĐÀO TẠO VÀ SÁT HẠCH LÁI XE', '5QWQ+WQ4, Tịnh Phong, Sơn Tịnh, Quảng Ngãi', '+84 255 3868 836', ''),
+('Ninh Thuận', 'Trung tâm Đào Tạo và Sát Hạch Lái Xe Trường Cao Đẳng Nghề Ninh Thuận', 'ĐT704, Phước Mỹ, Phan Thiết, Ninh Thuận', '+84 259 3847 247', ''),
+('Bình Phước', 'Trung tâm đào tạo và sát hạch lái xe thuộc Trường CĐ Công Nghiệp Cao Su', 'Số 1428, P. Tân Đồng, TP. Đồng xoài, Bình Phước', '+84 271 3856 618', ''),
+('Tiền Giang', 'Trung tâm sát hạch lái xe tỉnh Tiền Giang', 'Số 1A, đường Hùng Vương, Phường 1, Thành phố Mỹ Tho, Tỉnh Tiền Giang', '+84 273 3872 244', ''),
+('Yên Bái', 'Trung tâm sát hạch lái xe tỉnh Yên Bái', 'Số 18, đường Nguyễn Du, Phường Cốc Bài, Thành phố Yên Bái, Tỉnh Yên Bái', '+84 274 3852 244', ''),
+('Tây Ninh', 'Trung tâm Đào Tạo &amp; Sát Hạch Lái Xe Ô Tô Tây Ninh', 'QL22B, Thanh Điền, Châu Thành, Tây Ninh, Việt Nam', '+84 276 3829 881', ''),
+('Vĩnh Long', 'Trung tâm sát hạch lái xe tỉnh Vĩnh Long', 'Số 331A, Ấp Tân Vĩnh Thuận, Xã Tân Ngãi, Thành phố Vĩnh Long, Tỉnh Vĩnh Long', '+84 277 3847 244', ''),
+('Trà Vinh', 'Trung tâm sát hạch lái xe tỉnh Trà Vinh', 'Số 105, đường Trần Hưng Đạo, Phường 6, Thành phố Trà Vinh, Tỉnh Trà Vinh', '+84 287 3852 244', ''),
+('Cần Thơ', 'Sở GTVT Cần Thơ', 'Số 109, đường Nguyễn Trãi, phường Tân An, quận Ninh Kiều, TP Cần Thơ', '+84 292 3525 678', ''),
 ('Hậu Giang', 'Trung tâm sát hạch lái xe cơ giới đường bộ số 10 Hậu Giang', 'Duyệt Trung, Long Phú, Hậu Giang', '+84 293 3873 444', ''),
-('Hòa Bình', 'Trung tâm Đào tạo và Sát hạch lái xe cơ giới đường bộ Hòa Bình', 'Km 10, Quốc lộ 6, phường Đồng Minh, TP. Hòa Bình, tỉnh Hòa Bình', '+84 218 3862 622', ''),
-('Hồ Chí Minh', 'Trường Cao đẳng nghề GTVT TP.HCM', '08 Nguyễn Ảnh Thủ, P. Trung Mỹ Tây, Q. 12, TP.HCM', '(028) 3717 4875', ''),
-('Hưng Yên', 'Trung tâm đào tạo lái xe Hưng Yên - Trường Cao đẳng Kỹ thuật Giao thông vận tải', '37 Nguyễn Văn Linh, P. Minh Khai, TP. Hưng Yên', '0221 3550 097', ''),
-('Khánh Hòa', 'Trung tâm Đào tạo và Sát hạch Lái xe Hồng Bàng', 'Trung Tâm Đào Tạo &amp; Sát Hạch Lái Xe Hồng Bàng, Suối Cát, Cam Lâm, Khánh Hòa', '0258.2211902', ''),
-('Kiên Giang', 'Trung tâm Đào tạo và Sát hạch Lái xe - Trường Cao đẳng Kiên Giang', 'Số 48, đường Trần Hưng Đạo, phường Vĩnh Lạc, TP. Rạch Giá, tỉnh Kiên Giang', '0297 3856 620', ''),
-('Kon Tum', 'Trung tâm Đào tạo và Sát hạch Lái xe Koruco', 'KM Số 7, Phường Ngô Mây, Thành phố Kon Tum, Tỉnh Kon Tum (cách trung tâm thành phố Kon Tum khoảng 7km)', '0260.3899.999', ''),
-('Lai Châu', 'Trung tâm Sát hạch Lái xe Lai Châu', 'Số 74, đường Phan Đình Phùng, Phường Phong Hải, Thành phố Lai Châu, tỉnh Lai Châu', '0219 3873 444', ''),
-('Lâm Đồng', 'Trung tâm Giáo dục nghề nghiệp tư thục Thiện Phúc Đức', 'Khu đất mới, tổ 2 - phường 7 - TP. Đà Lạt - Lâm Đồng', '0263.3565056', ''),
+('Nam Định', 'Học lái xe Nam Định - Trường trung cấp gtvt Nam Định', 'Trần Huy Liệu, Vị Dương, TP. Nam Định, Nam Định', '+84 967 786 884', ''),
 ('Lạng Sơn', 'Trung tâm thi bằng lái xe Lạng Sơn - Trung tâm Đức Lâm ĐT&amp;SHLX', '3 Đường Khòn Cuổng, Đông Kinh, Thành phố Lạng Sơn, Lạng Sơn', '+84 967 810 228', ''),
 ('Lào Cai', 'Trung tâm Đào tạo và Sát hạch Lái xe Cơ Giới Đường Bộ Trực Thuộc Trường Cao Đẳng Lào Cai', 'Tầng 4, trụ sở hợp khối VII, phường Nam Cường, TP Lào Cai, tỉnh Lào Cai', '020 3856 6660', ''),
-('Long An', 'Trung tâm đào tạo lái xe - Trường Cao đẳng Long An', '740 Đỗ Trình Thoại', '0393 121 280', ''),
-('Nam Định', 'Học lái xe Nam Định - Trường trung cấp gtvt Nam Định', 'Trần Huy Liệu, Vị Dương, TP. Nam Định, Nam Định', '+84 967 786 884', ''),
+('Quảng Ninh', 'Trung tâm Sát hạch Lái xe Cơ giới Đường bộ Quảng Ninh', 'Km 10+500, Quốc lộ 18A, xã Đại Đồng, huyện Đại Lộc, tỉnh Quảng Ninh', '0203 3857 777', ''),
+('Bắc Kạn', 'Trung tâm đào tại và sát hạch lái xe Bắc Kạn', 'Số 5 đường Trường Chinh, thị xã Bắc Kạn', '0209 3856 614', ''),
+('Điện Biên', 'Trung tâm đào tạo &amp; sát hạch lái xe CGĐB', 'Bản Phiêng Ban, xã Thanh Nưa, huyện Điện Biên, tỉnh Điện Biên', '0215.3962.114', ''),
+('Lai Châu', 'Trung tâm Sát hạch Lái xe Lai Châu', 'Số 74, đường Phan Đình Phùng, Phường Phong Hải, Thành phố Lai Châu, tỉnh Lai Châu', '0219 3873 444', ''),
+('Hưng Yên', 'Trung tâm đào tạo lái xe Hưng Yên - Trường Cao đẳng Kỹ thuật Giao thông vận tải', '37 Nguyễn Văn Linh, P. Minh Khai, TP. Hưng Yên', '0221 3550 097', ''),
+('Đà Nẵng', 'Sở Giao Thông Vận Tải Đà Nẵng', 'Tầng 14, tòa nhà Trung tâm Hành chính, số 24 Trần Phú, thành phố Đà Nẵng ', '02363822008', ''),
 ('Nghệ An', 'Trung tâm sát hạch lái xe cơ giới đường bộ Nghệ An', 'Khối Hồ Sơn, thị trấn Nam Đàn, huyện Nam Đàn, tỉnh Nghệ An', '0238.886.222', ''),
-('Ninh Bình', 'Trung tâm sát hạch lái xe Thành Nam', '62X2+755, Triệu Việt Vương, TP. Ninh Bình, Ninh Bình', '+84 229 3873 243', ''),
-('Ninh Thuận', 'Trung tâm Đào Tạo và Sát Hạch Lái Xe Trường Cao Đẳng Nghề Ninh Thuận', 'ĐT704, Phước Mỹ, Phan Thiết, Ninh Thuận', '+84 259 3847 247', ''),
-('Phú Thọ', 'Trung tâm Đào tạo và Sát hạch lái xe Phú Thọ', '2030 Đường Hùng Vương, Thi Đua, Thành phố Việt Trì, Phú Thọ', '(0210) 3857155', ''),
+('Bắc Giang', 'Trường Trung cấp nghề GTVT Bắc Giang', 'xã Song Mai, TP Bắc Giang, tỉnh Bắc Giang', '0241 3856 613', ''),
+('Bắc Ninh', 'Trung tâm đào tạo xe cơ giới đường bộ Bắc Ninh', 'Khu 7 Phường Thị Cầu,TP Bắc Ninh,Tỉnh Bắc Ninh', '0248 3856 615', ''),
+('Đồng Nai', 'Trung tâm Đào tạo và Sát hạch lái xe loại I Đồng Nai', 'Trụ sở chính (Cơ sở 1): đặt tại khu phố 5, đường Huỳnh Văn Nghệ, phường Bửu Long, Thành phố Biên Hòa, tỉnh Đồng Nai', '0251.3951042', ''),
+('Bình Thuận', 'Trung tâm sát hạch lái xe Bình Thuận - Cát Tường Minh', 'Thôn Tiến Bình, Xã Tiến Thành, TP. Phan Thiết, Bình Thuận', '02523745678', ''),
+('Bà Rịa - Vũng Tàu', 'TRUNG TÂM DẠY NGHỀ VÀ SÁT HẠCH LÁI XE TỈNH BÀ RỊA – VŨNG TÀU', '1772V đường 30-4 – Phường 12 – TP. Vũng Tàu Vũng Tàu', '02543626278', ''),
+('Bình Định', 'Sở giao thông vận tải Bình Định', 'Số 8 Lê Thánh Tôn, thành phố Qui Nhơn, tỉnh Bình Định', '0256 3856 617', ''),
+('Khánh Hòa', 'Trung tâm Đào tạo và Sát hạch Lái xe Hồng Bàng', 'Trung Tâm Đào Tạo &amp; Sát Hạch Lái Xe Hồng Bàng, Suối Cát, Cam Lâm, Khánh Hòa', '0258.2211902', ''),
+('Kon Tum', 'Trung tâm Đào tạo và Sát hạch Lái xe Koruco', 'KM Số 7, Phường Ngô Mây, Thành phố Kon Tum, Tỉnh Kon Tum (cách trung tâm thành phố Kon Tum khoảng 7km)', '0260.3899.999', ''),
+('Đắk Nông', 'Trung tâm dạy nghề tư thục Đại Lợi', 'ĐC1: + Số 280 QL 14 - Xã Tâm Thắng - Cư JútĐC2: + Thôn Tân Tiến - Xã Quảng Thành - TX Gia Nghĩa.', '02613.548.878', ''),
+('Lâm Đồng', 'Trung tâm Giáo dục nghề nghiệp tư thục Thiện Phúc Đức', 'Khu đất mới, tổ 2 - phường 7 - TP. Đà Lạt - Lâm Đồng', '0263.3565056', ''),
+('Bình Dương', 'Sở Giao Thông Vận Tải Tỉnh Bình Dương', 'Tầng 12A - tháp A, Tòa nhà Trung tâm hành chính tập trung tỉnh Bình Dương Đường Lê Lợi, Phường Hòa Phú, Thành phố Thủ Dầu Một, Tỉnh Bình Dương', '02743824330', ''),
+('Đồng Tháp', 'TRUNG TÂM GIÁO DỤC NGHỀ NGHIỆP KỸ THUẬT GIAO THÔNG ĐỒNG THÁP', 'số 314, Lê Đại Hành, Phường Mỹ Phú, thành phố Cao Lãnh, tỉnh Đồng Tháp', '02773.851.531', ''),
+('Bến Tre', 'Trung tâm hành chính công tỉnh Bến Tre', 'Số 126A, đường Nguyễn Thị Định, phường Phú Tân, thành phố Bến Tre, tỉnh Bến Tre', '0284 3856 616', ''),
+('Cà Mau', 'Ban An Toàn Giao Thông Tỉnh Cà Mau', 'Địa chỉ: 269 - Trần Hưng Đạo - phường 5 - thành phố Cà Mau', '02903818129', ''),
+('An Giang', 'Trung Tâm Đào Tạo Và Sát Hạch Lái Xe Châu Đốc', '246 Đường Tránh, QL91, Khóm Châu Long 8, Châu Đốc, An Giang', '02963568866', ''),
+('Kiên Giang', 'Trung tâm Đào tạo và Sát hạch Lái xe - Trường Cao đẳng Kiên Giang', 'Số 48, đường Trần Hưng Đạo, phường Vĩnh Lạc, TP. Rạch Giá, tỉnh Kiên Giang', '0297 3856 620', ''),
+('Quảng Nam', 'Trung tâm Sát hạch Lái xe Quảng Nam', 'Thôn Thanh Ly 1, Thăng Bình, Quảng Nam', '0365 530 415', ''),
+('Long An', 'Trung tâm đào tạo lái xe - Trường Cao đẳng Long An', '740 Đỗ Trình Thoại', '0393 121 280', ''),
+('Quảng Trị', 'Trung tâm Đào tạo và Sát hạch Lái xe Quảng Trị', '148 Lê Lợi, TP. Đông Hà, Quảng Trị', '0515 3812 222', ''),
+('Hà Nam', 'Trung tâm sát hạch lái xe cơ giới đường bộ', 'Hà Nam. đường Đinh Tiên Hoàng – Tp. Phủ Lý – Hà Nam', '089.8910.333', ''),
+('Sóc Trăng', 'Trung tâm đào tạo lái xe ô tô B2 và C ở Sóc Trăng', '48 Hùng Vương, Phường 6, Tp Sóc Trăng (cách Coopmart tầm 100m)', '0918 007 999', ''),
 ('Phú Yên', 'Trung tâm sát hạch lái xe cơ giới đường bộ tỉnh Phú Yên', 'Km 1319+300, Quốc lộ 1A, xã An Chấn, huyện Tuy An, tỉnh Phú Yên.', '093 568 8279', ''),
 ('Quảng Bình', 'Trung tâm sát hạch lái xe B2 Quảng Bình', 'Xã Đức Ninh, TP Đồng Hới, Quảng Bình', '0963 358 333', ''),
-('Quảng Nam', 'Trung tâm Sát hạch Lái xe Quảng Nam', 'Thôn Thanh Ly 1, Thăng Bình, Quảng Nam', '0365 530 415', ''),
-('Quảng Ngãi', 'TRUNG TÂM ĐÀO TẠO VÀ SÁT HẠCH LÁI XE', '5QWQ+WQ4, Tịnh Phong, Sơn Tịnh, Quảng Ngãi', '+84 255 3868 836', ''),
-('Quảng Ninh', 'Trung tâm Sát hạch Lái xe Cơ giới Đường bộ Quảng Ninh', 'Km 10+500, Quốc lộ 18A, xã Đại Đồng, huyện Đại Lộc, tỉnh Quảng Ninh', '0203 3857 777', ''),
-('Quảng Trị', 'Trung tâm Đào tạo và Sát hạch Lái xe Quảng Trị', '148 Lê Lợi, TP. Đông Hà, Quảng Trị', '0515 3812 222', ''),
-('Sóc Trăng', 'Trung tâm đào tạo lái xe ô tô B2 và C ở Sóc Trăng', '48 Hùng Vương, Phường 6, Tp Sóc Trăng (cách Coopmart tầm 100m)', '0918 007 999', ''),
-('Sơn La', 'Trung tâm Sát hạch Lái xe Cơ giới Đường bộ Trực thuộc Sở Giao thông Vận tải Sơn La', '7XM+7F2, QL6, P. Chiềng Cọ, Thành phố Sơn La, Sơn La', '+84 212 3874 350', ''),
-('Tây Ninh', 'Trung tâm Đào Tạo &amp; Sát Hạch Lái Xe Ô Tô Tây Ninh', 'QL22B, Thanh Điền, Châu Thành, Tây Ninh, Việt Nam', '+84 276 3829 881', ''),
-('Thái Bình', 'Trung tâm sát hạch tỉnh Thái Bình', 'ở Giao Thông Vận Tải Tỉnh Thái Bình, 414, Trần Hưng Đạo, Thành Phố Thái Bình, Tỉnh Thái Bình, Trần Hưng, Thái Bình, Việt Nam', '+84 227 3642 664', ''),
-('Thái Nguyên', 'Trung tâm sát hạch lái xe tỉnh Thái Nguyên', 'Phân hiệu Đào tạo Việt Bắc, Trường Cao đẳng Than - Khoáng sản Việt Nam, xã Sơn Cẩm, Thành phố Thái Nguyên, Tỉnh Thái Nguyên', '+84 208 3818 333', ''),
-('Thanh Hóa', 'Trung tâm sát hạch lái xe tỉnh Thanh Hóa', 'Số 244, đường Bà Triệu, Phường Điện Biên, Thành phố Thanh Hóa, Tỉnh Thanh Hóa.', '+84 237 3856 244', ''),
-('Thừa Thiên Huế', 'Trung tâm sát hạch lái xe tỉnh Thừa Thiên Huế', 'Số 18, đường Nguyễn Tất Thành, Phường Xuân Phú, Thành phố Huế, Tỉnh Thừa Thiên Huế.', '+84 235 3810 244', ''),
-('Tiền Giang', 'Trung tâm sát hạch lái xe tỉnh Tiền Giang', 'Số 1A, đường Hùng Vương, Phường 1, Thành phố Mỹ Tho, Tỉnh Tiền Giang', '+84 273 3872 244', ''),
-('Trà Vinh', 'Trung tâm sát hạch lái xe tỉnh Trà Vinh', 'Số 105, đường Trần Hưng Đạo, Phường 6, Thành phố Trà Vinh, Tỉnh Trà Vinh', '+84 287 3852 244', ''),
-('Tuyên Quang', 'Trung tâm sát hạch lái xe tỉnh Tuyên Quang', 'Số 12, đường Nguyễn Văn Linh, Phường Minh Khai, Thành phố Tuyên Quang, Tỉnh Tuyên Quang', '+84 207 3852 244', ''),
-('Vĩnh Long', 'Trung tâm sát hạch lái xe tỉnh Vĩnh Long', 'Số 331A, Ấp Tân Vĩnh Thuận, Xã Tân Ngãi, Thành phố Vĩnh Long, Tỉnh Vĩnh Long', '+84 277 3847 244', ''),
-('Vĩnh Phúc', 'Trung tâm sát hạch lái xe tỉnh Vĩnh Phúc', 'Số 123, đường Trần Hưng Đạo, Phường Phúc Yên, Thành phố Phúc Yên, Tỉnh Vĩnh Phúc', '+84 211 3842 244', ''),
-('Yên Bái', 'Trung tâm sát hạch lái xe tỉnh Yên Bái', 'Số 18, đường Nguyễn Du, Phường Cốc Bài, Thành phố Yên Bái, Tỉnh Yên Bái', '+84 274 3852 244', '');
+('Đắk Lắk', 'Trung tâm GDNN Vinasme Tây Nguyên', '03 Phạm Hùng – BMT', '0983570421', ''),
+('Bạc Liêu', 'Trung tâm Giáo dục nghề nghiệp - Giáo dục thường xuyên huyện Hồng Dân', 'Đường Tôn Đức Thắng, khóm 10, phường 1, TP Bạc Liêu', 'Chưa cập nhật', '');
 
 -- --------------------------------------------------------
 
@@ -822,7 +807,7 @@ INSERT INTO `dstinh` (`Tinh`, `Noi_Thi`, `Dia_Chi`, `SDT`, `img`) VALUES
 
 CREATE TABLE `lich_su_lam_bai` (
   `ngaylambai` text NOT NULL,
-  `MaLamBai` text NOT NULL,
+  `MaLamBai` int(11) NOT NULL,
   `username` text NOT NULL,
   `de` int(11) NOT NULL,
   `ketqua` text NOT NULL,
@@ -834,39 +819,11 @@ CREATE TABLE `lich_su_lam_bai` (
 --
 
 INSERT INTO `lich_su_lam_bai` (`ngaylambai`, `MaLamBai`, `username`, `de`, `ketqua`, `dapan`) VALUES
-('10/10/2022', 'm3', 'admin', 1, '13/30', '1:1-2:2-3:3-4:3-5:2-6:3-7:2-8:2-9:2-10:2-11:2-12:3-13:3-14:3-15:3-16:3-17:3-18:2-19:2-20:2-21:2-22:2-23:2-24:2-25:3-26:2-27:2-28:2-29:2-30:2-'),
-('1/1/2022', 'm1', 'admin', 1, '6/30', '1:2-2:3-3:3-4:3-5:2-6:3-7:3-8:2-9:2-10:2-11:2-12:2-13:1-14:2-15:2-16:1-17:1-18:1-19:2-20:2-21:1-22:1-23:1-24:2-25:1-26:1-27:1-28:1-29:2-30:2-'),
-('1/1/2022', 'm1', 'admin', 1, '6/30', '1:2-2:1-3:1-4:2-5:2-6:3-7:3-8:1-9:3-10:2-11:2-12:2-13:1-14:1-15:1-16:1-17:1-18:2-19:2-20:2-21:1-22:1-23:1-24:1-25:1-26:1-27:1-28:1-29:1-30:2-'),
-('10/10/2022', 'm3', 'admin', 1, '5/30', '1:1-2:4-3:4-4:3-5:3-6:3-7:3-8:3-9:3-10:3-11:3-12:1-13:1-14:1-15:1-16:1-17:1-18:1-19:1-20:1-21:1-22:1-23:1-24:1-25:1-26:1-27:1-28:1-29:1-30:2-'),
-('', '', 'admin', 1, '/30', ''),
-('', '', 'admin', 1, '/30', ''),
-('15/5/2024', '2511', '', 1, '', '1:2-2:2-3:3-4:2-5:2-'),
-('15/5/2024', '3180', 'phu', 1, '', '1:2-2:2-3:3-4:2-5:2-6:2-'),
-('26/5/2024', '9523', 'phu', 2, '2', '1:2-2:2-3:2-4:2-5:2-6:2-'),
-('27/5/2024', '8287', 'phu', 1, '3', '1:2-2:2-3:2-4:2-5:2-');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`username`, `password`, `email`) VALUES
-('phu', '123', 'phu@gmail.com'),
-('phu1', '123', '123@123'),
-('1234', '123', '123@123'),
-('1123', '123', '123@123'),
-('phu9', '123', 'ntipi0810@gmail.com');
+('15/6/2024', 2863, 'phu', 1, '4', '1:2-3:2-4:2-5:1-6:2-7:2-9:2-10:2-'),
+('15/6/2024', 3055, 'phu', 1, '3', '1:2-2:2-3:2-4:2-5:2-'),
+('14/6/2024', 3734, 'phu', 1, '13', '1:2-2:1-3:2-4:2-5:2-6:2-7:2-8:2-9:2-10:1-11:2-12:1-13:2-14:2-15:2-16:1-17:2-18:2-19:1-20:2-21:2-22:1-23:2-24:1-25:2-26:2-27:1-28:2-29:2-30:2-'),
+('18/6/2024', 5611, 'phu', 1, '30', '1:2-2:4-3:2-4:1-5:2-6:3-7:2-8:2-9:2-10:1-11:1-12:2-13:2-14:1-15:3-16:3-17:3-18:2-19:1-20:1-21:2-22:2-23:2-24:3-25:3-26:1-27:2-28:3-29:2-30:1-'),
+('18/6/2024', 9660, 'phu', 1, '15', '1:2-2:2-3:2-4:2-5:2-6:2-7:2-8:2-9:2-10:2-11:2-12:1-13:2-14:2-15:2-16:2-17:2-18:2-19:1-20:1-21:2-22:2-23:1-24:2-25:3-26:2-27:2-28:2-29:2-30:2-');
 
 -- --------------------------------------------------------
 
@@ -1006,367 +963,81 @@ INSERT INTO `video_mo_phong` (`de`, `cau`, `start`, `end`, `dodaivideo`) VALUES
 (5, 117, 17, 21, 25),
 (5, 118, 17, 23, 29),
 (5, 119, 18, 22, 36),
-(5, 120, 20, 24, 40),
-(0, 1, 17, 20, 27),
-(0, 2, 24, 28, 39),
-(0, 3, 21, 25, 34),
-(0, 4, 17, 22, 34),
-(0, 5, 18, 24, 33),
-(0, 6, 19, 24, 30),
-(0, 7, 17, 22, 33),
-(0, 8, 17, 21, 34),
-(0, 9, 14, 18, 23),
-(0, 10, 18, 23, 31),
-(0, 11, 17, 25, 32),
-(0, 12, 20, 23, 36),
-(0, 13, 17, 21, 30),
-(0, 14, 20, 25, 34),
-(0, 15, 19, 23, 33),
-(0, 16, 17, 21, 30),
-(0, 17, 14, 18, 29),
-(0, 18, 17, 22, 31),
-(0, 19, 19, 22, 28),
-(0, 20, 25, 29, 37),
-(0, 21, 20, 24, 39),
-(0, 22, 19, 23, 32),
-(0, 23, 21, 25, 32),
-(0, 24, 20, 24, 34),
-(0, 25, 17, 25, 45),
-(0, 26, 19, 24, 43),
-(0, 27, 20, 24, 34),
-(0, 28, 18, 22, 35),
-(0, 29, 18, 23, 33),
-(0, 30, 17, 22, 37),
-(0, 31, 16, 22, 37),
-(0, 32, 17, 23, 29),
-(0, 33, 19, 23, 33),
-(0, 34, 15, 20, 27),
-(0, 35, 13, 17, 27),
-(0, 36, 23, 27, 34),
-(0, 37, 24, 28, 35),
-(0, 38, 18, 21, 32),
-(0, 39, 21, 25, 31),
-(0, 40, 16, 21, 34),
-(0, 41, 19, 22, 33),
-(0, 42, 17, 20, 31),
-(0, 43, 16, 21, 35),
-(0, 44, 14, 19, 27),
-(0, 45, 19, 23, 29),
-(0, 46, 26, 31, 37),
-(0, 47, 24, 29, 36),
-(0, 48, 14, 18, 33),
-(0, 49, 16, 22, 33),
-(0, 50, 18, 23, 35),
-(0, 51, 18, 25, 36),
-(0, 52, 22, 27, 34),
-(0, 53, 22, 27, 35),
-(0, 54, 19, 24, 31),
-(0, 55, 17, 22, 36),
-(0, 56, 17, 20, 27),
-(0, 57, 30, 38, 59),
-(0, 58, 24, 29, 46),
-(0, 59, 27, 31, 38),
-(0, 60, 17, 21, 33),
-(0, 61, 26, 31, 37),
-(0, 62, 25, 30, 36),
-(0, 63, 14, 19, 30),
-(0, 64, 20, 25, 33),
-(0, 65, 27, 32, 42),
-(0, 66, 19, 23, 28),
-(0, 67, 22, 27, 38),
-(0, 68, 21, 24, 32),
-(0, 69, 24, 28, 37),
-(0, 70, 38, 43, 58),
-(0, 71, 21, 27, 36),
-(0, 72, 25, 30, 36),
-(0, 73, 25, 28, 37),
-(0, 74, 21, 26, 38),
-(0, 75, 15, 19, 29),
-(0, 76, 16, 20, 32),
-(0, 77, 16, 20, 32),
-(0, 78, 21, 25, 30),
-(0, 79, 19, 23, 34),
-(0, 80, 16, 20, 26),
-(0, 81, 25, 29, 34),
-(0, 82, 16, 22, 35),
-(0, 83, 17, 21, 30),
-(0, 84, 19, 24, 31),
-(0, 85, 26, 29, 39),
-(0, 86, 14, 19, 30),
-(0, 87, 13, 18, 34),
-(0, 88, 21, 24, 31),
-(0, 89, 18, 22, 30),
-(0, 90, 16, 21, 29),
-(0, 91, 15, 20, 31),
-(0, 92, 15, 19, 25),
-(0, 93, 23, 27, 36),
-(0, 94, 27, 32, 40),
-(0, 95, 15, 21, 28),
-(0, 96, 27, 31, 33),
-(0, 97, 29, 32, 46),
-(0, 98, 23, 28, 39),
-(0, 99, 26, 30, 38),
-(0, 100, 17, 21, 30),
-(0, 101, 21, 25, 36),
-(0, 102, 21, 26, 31),
-(0, 103, 26, 30, 36),
-(0, 104, 29, 32, 40),
-(0, 105, 20, 23, 30),
-(0, 106, 26, 30, 40),
-(0, 107, 21, 25, 41),
-(0, 108, 29, 32, 36),
-(0, 109, 19, 23, 31),
-(0, 110, 18, 22, 32),
-(0, 111, 18, 22, 24),
-(0, 112, 13, 18, 27),
-(0, 113, 23, 27, 32),
-(0, 114, 18, 24, 37),
-(0, 115, 19, 23, 30),
-(0, 116, 17, 22, 30),
-(0, 117, 17, 21, 25),
-(0, 118, 17, 23, 29),
-(0, 119, 18, 22, 36),
-(0, 120, 20, 24, 40),
-(0, 1, 17, 20, 27),
-(0, 2, 24, 28, 39),
-(0, 3, 21, 25, 34),
-(0, 4, 17, 22, 34),
-(0, 5, 18, 24, 33),
-(0, 6, 19, 24, 30),
-(0, 7, 17, 22, 33),
-(0, 8, 17, 21, 34),
-(0, 9, 14, 18, 23),
-(0, 10, 18, 23, 31),
-(0, 11, 17, 25, 32),
-(0, 12, 20, 23, 36),
-(0, 13, 17, 21, 30),
-(0, 14, 20, 25, 34),
-(0, 15, 19, 23, 33),
-(0, 16, 17, 21, 30),
-(0, 17, 14, 18, 29),
-(0, 18, 17, 22, 31),
-(0, 19, 19, 22, 28),
-(0, 20, 25, 29, 37),
-(0, 21, 20, 24, 39),
-(0, 22, 19, 23, 32),
-(0, 23, 21, 25, 32),
-(0, 24, 20, 24, 34),
-(0, 25, 17, 25, 45),
-(0, 26, 19, 24, 43),
-(0, 27, 20, 24, 34),
-(0, 28, 18, 22, 35),
-(0, 29, 18, 23, 33),
-(0, 30, 17, 22, 37),
-(0, 31, 16, 22, 37),
-(0, 32, 17, 23, 29),
-(0, 33, 19, 23, 33),
-(0, 34, 15, 20, 27),
-(0, 35, 13, 17, 27),
-(0, 36, 23, 27, 34),
-(0, 37, 24, 28, 35),
-(0, 38, 18, 21, 32),
-(0, 39, 21, 25, 31),
-(0, 40, 16, 21, 34),
-(0, 41, 19, 22, 33),
-(0, 42, 17, 20, 31),
-(0, 43, 16, 21, 35),
-(0, 44, 14, 19, 27),
-(0, 45, 19, 23, 29),
-(0, 46, 26, 31, 37),
-(0, 47, 24, 29, 36),
-(0, 48, 14, 18, 33),
-(0, 49, 16, 22, 33),
-(0, 50, 18, 23, 35),
-(0, 51, 18, 25, 36),
-(0, 52, 22, 27, 34),
-(0, 53, 22, 27, 35),
-(0, 54, 19, 24, 31),
-(0, 55, 17, 22, 36),
-(0, 56, 17, 20, 27),
-(0, 57, 30, 38, 59),
-(0, 58, 24, 29, 46),
-(0, 59, 27, 31, 38),
-(0, 60, 17, 21, 33),
-(0, 61, 26, 31, 37),
-(0, 62, 25, 30, 36),
-(0, 63, 14, 19, 30),
-(0, 64, 20, 25, 33),
-(0, 65, 27, 32, 42),
-(0, 66, 19, 23, 28),
-(0, 67, 22, 27, 38),
-(0, 68, 21, 24, 32),
-(0, 69, 24, 28, 37),
-(0, 70, 38, 43, 58),
-(0, 71, 21, 27, 36),
-(0, 72, 25, 30, 36),
-(0, 73, 25, 28, 37),
-(0, 74, 21, 26, 38),
-(0, 75, 15, 19, 29),
-(0, 76, 16, 20, 32),
-(0, 77, 16, 20, 32),
-(0, 78, 21, 25, 30),
-(0, 79, 19, 23, 34),
-(0, 80, 16, 20, 26),
-(0, 81, 25, 29, 34),
-(0, 82, 16, 22, 35),
-(0, 83, 17, 21, 30),
-(0, 84, 19, 24, 31),
-(0, 85, 26, 29, 39),
-(0, 86, 14, 19, 30),
-(0, 87, 13, 18, 34),
-(0, 88, 21, 24, 31),
-(0, 89, 18, 22, 30),
-(0, 90, 16, 21, 29),
-(0, 91, 15, 20, 31),
-(0, 92, 15, 19, 25),
-(0, 93, 23, 27, 36),
-(0, 94, 27, 32, 40),
-(0, 95, 15, 21, 28),
-(0, 96, 27, 31, 33),
-(0, 97, 29, 32, 46),
-(0, 98, 23, 28, 39),
-(0, 99, 26, 30, 38),
-(0, 100, 17, 21, 30),
-(0, 101, 21, 25, 36),
-(0, 102, 21, 26, 31),
-(0, 103, 26, 30, 36),
-(0, 104, 29, 32, 40),
-(0, 105, 20, 23, 30),
-(0, 106, 26, 30, 40),
-(0, 107, 21, 25, 41),
-(0, 108, 29, 32, 36),
-(0, 109, 19, 23, 31),
-(0, 110, 18, 22, 32),
-(0, 111, 18, 22, 24),
-(0, 112, 13, 18, 27),
-(0, 113, 23, 27, 32),
-(0, 114, 18, 24, 37),
-(0, 115, 19, 23, 30),
-(0, 116, 17, 22, 30),
-(0, 117, 17, 21, 25),
-(0, 118, 17, 23, 29),
-(0, 119, 18, 22, 36),
-(0, 120, 20, 24, 40),
-(0, 1, 17, 20, 27),
-(0, 2, 24, 28, 39),
-(0, 3, 21, 25, 34),
-(0, 4, 17, 22, 34),
-(0, 5, 18, 24, 33),
-(0, 6, 19, 24, 30),
-(0, 7, 17, 22, 33),
-(0, 8, 17, 21, 34),
-(0, 9, 14, 18, 23),
-(0, 10, 18, 23, 31),
-(0, 11, 17, 25, 32),
-(0, 12, 20, 23, 36),
-(0, 13, 17, 21, 30),
-(0, 14, 20, 25, 34),
-(0, 15, 19, 23, 33),
-(0, 16, 17, 21, 30),
-(0, 17, 14, 18, 29),
-(0, 18, 17, 22, 31),
-(0, 19, 19, 22, 28),
-(0, 20, 25, 29, 37),
-(0, 21, 20, 24, 39),
-(0, 22, 19, 23, 32),
-(0, 23, 21, 25, 32),
-(0, 24, 20, 24, 34),
-(0, 25, 17, 25, 45),
-(0, 26, 19, 24, 43),
-(0, 27, 20, 24, 34),
-(0, 28, 18, 22, 35),
-(0, 29, 18, 23, 33),
-(0, 30, 17, 22, 37),
-(0, 31, 16, 22, 37),
-(0, 32, 17, 23, 29),
-(0, 33, 19, 23, 33),
-(0, 34, 15, 20, 27),
-(0, 35, 13, 17, 27),
-(0, 36, 23, 27, 34),
-(0, 37, 24, 28, 35),
-(0, 38, 18, 21, 32),
-(0, 39, 21, 25, 31),
-(0, 40, 16, 21, 34),
-(0, 41, 19, 22, 33),
-(0, 42, 17, 20, 31),
-(0, 43, 16, 21, 35),
-(0, 44, 14, 19, 27),
-(0, 45, 19, 23, 29),
-(0, 46, 26, 31, 37),
-(0, 47, 24, 29, 36),
-(0, 48, 14, 18, 33),
-(0, 49, 16, 22, 33),
-(0, 50, 18, 23, 35),
-(0, 51, 18, 25, 36),
-(0, 52, 22, 27, 34),
-(0, 53, 22, 27, 35),
-(0, 54, 19, 24, 31),
-(0, 55, 17, 22, 36),
-(0, 56, 17, 20, 27),
-(0, 57, 30, 38, 59),
-(0, 58, 24, 29, 46),
-(0, 59, 27, 31, 38),
-(0, 60, 17, 21, 33),
-(0, 61, 26, 31, 37),
-(0, 62, 25, 30, 36),
-(0, 63, 14, 19, 30),
-(0, 64, 20, 25, 33),
-(0, 65, 27, 32, 42),
-(0, 66, 19, 23, 28),
-(0, 67, 22, 27, 38),
-(0, 68, 21, 24, 32),
-(0, 69, 24, 28, 37),
-(0, 70, 38, 43, 58),
-(0, 71, 21, 27, 36),
-(0, 72, 25, 30, 36),
-(0, 73, 25, 28, 37),
-(0, 74, 21, 26, 38),
-(0, 75, 15, 19, 29),
-(0, 76, 16, 20, 32),
-(0, 77, 16, 20, 32),
-(0, 78, 21, 25, 30),
-(0, 79, 19, 23, 34),
-(0, 80, 16, 20, 26),
-(0, 81, 25, 29, 34),
-(0, 82, 16, 22, 35),
-(0, 83, 17, 21, 30),
-(0, 84, 19, 24, 31),
-(0, 85, 26, 29, 39),
-(0, 86, 14, 19, 30),
-(0, 87, 13, 18, 34),
-(0, 88, 21, 24, 31),
-(0, 89, 18, 22, 30),
-(0, 90, 16, 21, 29),
-(0, 91, 15, 20, 31),
-(0, 92, 15, 19, 25),
-(0, 93, 23, 27, 36),
-(0, 94, 27, 32, 40),
-(0, 95, 15, 21, 28),
-(0, 96, 27, 31, 33),
-(0, 97, 29, 32, 46),
-(0, 98, 23, 28, 39),
-(0, 99, 26, 30, 38),
-(0, 100, 17, 21, 30),
-(0, 101, 21, 25, 36),
-(0, 102, 21, 26, 31),
-(0, 103, 26, 30, 36),
-(0, 104, 29, 32, 40),
-(0, 105, 20, 23, 30),
-(0, 106, 26, 30, 40),
-(0, 107, 21, 25, 41),
-(0, 108, 29, 32, 36),
-(0, 109, 19, 23, 31),
-(0, 110, 18, 22, 32),
-(0, 111, 18, 22, 24),
-(0, 112, 13, 18, 27),
-(0, 113, 23, 27, 32),
-(0, 114, 18, 24, 37),
-(0, 115, 19, 23, 30),
-(0, 116, 17, 22, 30),
-(0, 117, 17, 21, 25),
-(0, 118, 17, 23, 29),
-(0, 119, 18, 22, 36),
-(0, 120, 20, 24, 40);
+(5, 120, 20, 24, 40);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `600_cau_hoi`
+--
+ALTER TABLE `600_cau_hoi`
+  ADD PRIMARY KEY (`cau`);
+
+--
+-- Indexes for table `account`
+--
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `bodeonthiblx`
+--
+ALTER TABLE `bodeonthiblx`
+  ADD PRIMARY KEY (`DeSo`);
+
+--
+-- Indexes for table `bo_de_thi_mo_phong`
+--
+ALTER TABLE `bo_de_thi_mo_phong`
+  ADD PRIMARY KEY (`DeSo`);
+
+--
+-- Indexes for table `dstinh`
+--
+ALTER TABLE `dstinh`
+  ADD PRIMARY KEY (`SDT`);
+
+--
+-- Indexes for table `lich_su_lam_bai`
+--
+ALTER TABLE `lich_su_lam_bai`
+  ADD PRIMARY KEY (`MaLamBai`);
+
+--
+-- Indexes for table `video_mo_phong`
+--
+ALTER TABLE `video_mo_phong`
+  ADD PRIMARY KEY (`cau`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `600_cau_hoi`
+--
+ALTER TABLE `600_cau_hoi`
+  MODIFY `cau` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=602;
+
+--
+-- AUTO_INCREMENT for table `bodeonthiblx`
+--
+ALTER TABLE `bodeonthiblx`
+  MODIFY `DeSo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `bo_de_thi_mo_phong`
+--
+ALTER TABLE `bo_de_thi_mo_phong`
+  MODIFY `DeSo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `video_mo_phong`
+--
+ALTER TABLE `video_mo_phong`
+  MODIFY `cau` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -136,7 +136,7 @@
                    Các bài học được thiết kế chuẩn theo giáo trình của Bộ GTVT.
                    Với giao diện thân thiện, dễ sử dụng sẽ giúp các học viên học tập tốt hơn. 
                </p>
-               <br><a class="Brand"href="#">THILAIXE.VN</a>
+               <br><a class="Brand"href="trangchu.php">THILAIXE.VN</a>
            </div>
 
            <!-- ND 2 -->
@@ -151,7 +151,7 @@
                    Tập tài liệu gồm 600 câu hỏi lý thuyết, hơn 18 đề thi chuẩn để ôn luyện và nhiều mẹo thi lý thuyết sát hạch GPLX ô tô 100% đậu...
                </p>
 
-               <a class ="transfer" href="">Xem tất cả bài ôn thi </a> <i class="ri-arrow-right-s-line"></i>
+               <a class ="transfer" href="trangchu.php">Xem tất cả bài ôn thi </a> <i class="ri-arrow-right-s-line"></i>
            </div>
 
            <!-- ND 3 -->

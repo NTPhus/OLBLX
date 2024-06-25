@@ -4,11 +4,13 @@
     $sql = "SELECT * FROM video_mo_phong";
     $res = mysqli_query($conn, $sql);
     $data = [];
+    $numVideo = 0;
     while($row = mysqli_fetch_array($res)){
         array_push($data, $row["cau"]);
         array_push($data, $row["start"]);
         array_push($data, $row["end"]);
         array_push($data, $row["dodaivideo"]);
+        $numVideo++;
     }
 ?>
 
@@ -273,9 +275,9 @@ u{
         
 
 <script>
-
+    //Lay du lieu tu php
     let data = <?php echo json_encode($data) ?>;
-
+    //Format du lieu
     let videos = [{
         cau: parseInt(data[0]),
         start: parseInt(data[1]),
@@ -299,9 +301,15 @@ u{
 
     var trangThai = false;
 
+    var numVideo = <?php echo json_encode($numVideo) ?>;
+
+    //Xu ly khi video ket thuc
     video.onended = function(e) {
-        chuyenCau(currentIndex+1);
-        chuyenVideo();
+        if(currentIndex == numVideo) x.pause();
+        else{
+            chuyenCau(currentIndex+1);
+            chuyenVideo();
+        } 
     };
     //Nhan phim cach de dat co
     document.addEventListener('keydown', (event)=> {    
@@ -385,7 +393,6 @@ u{
         document.getElementById("p3").style.width = size + "%";
         document.getElementById("p4").style.width = size + "%";
         document.getElementById("p5").style.width = size + "%";
-        console.log((x.currentTime/videos[currentIndex].length * 100));
         //hien thi dap an
         document.getElementById("p1").style.opacity = "1";
         document.getElementById("p2").style.opacity = "1";
@@ -404,9 +411,15 @@ u{
     function markCurrentIndex(){
         document.getElementById("btn"+(currentIndex)).style.backgroundColor = "aqua";
     }
+
     x.play();
     markCurrentIndex();
     move(); 
+
+    //Khi press space khong bi truot
+    window.onkeydown = function(e) {
+        return e.keyCode !== 32 && e.key !== " ";
+    }
 </script>
 
 </body>

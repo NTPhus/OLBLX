@@ -13,6 +13,10 @@
 <body>
     <div class="app">
         <?php
+        $conn = mysqli_connect("localhost","root","","olblx");
+        $str = "SELECT * FROM account WHERE username = '".$_SESSION['tentaikhoan']."'";
+        $rs = mysqli_query($conn,$str);
+        $row = mysqli_fetch_array($rs);
         $username;
         if(!isset($_GET['OTP']))
             if(!isset($_GET['email']))
@@ -34,6 +38,11 @@
             else{
                 $_SESSION['OTP'] = rand(1000, 9999);
                 $_SESSION['tentaikhoan'] = $_GET['user'];
+
+                if($row['email'] != $_GET['email']){
+                    $_GET['email'] = "12@123";
+                }
+
                 require "PHPMailer-master/src/PHPMailer.php"; 
                 require "PHPMailer-master/src/SMTP.php"; 
                 require 'PHPMailer-master/src/Exception.php'; 
@@ -48,7 +57,7 @@
                     $mail->Password = 'ziev bogo qxuo trdk'; // mật khẩu ứng dụng
                     $mail->SMTPSecure = 'ssl';   
                     $mail->Port = 465;              
-                    $mail->setFrom('phu444080@gmail.com'); 
+                    $mail->setFrom('phu444080@gmail.com');
                     $mail->addAddress($_GET['email']); //mail người nhận  
                     $mail->isHTML(true);  
                     $mail->Subject = 'OTP xác nhận lấy lại mật khẩu';      
@@ -59,22 +68,18 @@
                         "allow_self_signed" => true
                     )));
                     $mail->send();
+                    echo '
+                        <form action="giaoDienLayLaiMK.php" method="GET">
+                            OTP <input type="text" name="OTP" id="">
+                            <input type="submit">
+                        </form>
+                        ';
                 } catch (Exception $e) {
-                echo 'Mail không gửi được. Lỗi: ', $mail->ErrorInfo;
+                    echo 'Mail không gửi được.';
                 }
                 //echo $_SESSION['OTP'];
-                echo '
-                <form action="giaoDienLayLaiMK.php" method="GET">
-                    OTP <input type="text" name="OTP" id="">
-                    <input type="submit">
-                </form>
-                ';
             }
         else if($_GET['OTP'] == $_SESSION['OTP']){
-            $conn = mysqli_connect("localhost","root","","olblx");
-            $str = "SELECT * FROM account WHERE username = '".$_SESSION['tentaikhoan']."'";
-            $rs = mysqli_query($conn,$str);
-            $row = mysqli_fetch_array($rs);
             echo "<p>Mật khẩu của bạn là: ".$row['password']."</p>";
             echo "<br>";
             echo "<a href='/OLBLX/index.php'> Quay về trang chủ </a>";

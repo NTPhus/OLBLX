@@ -175,6 +175,7 @@
 
         select{
            margin-top: 4px;
+           outline: none;
         }
         option{
             color: #001a33;

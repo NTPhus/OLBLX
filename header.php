@@ -623,9 +623,9 @@ function dangnhap() {
             <div class="app_doiPass_item">
                 <input type="text" name="action" value="DoiMK" id="" hidden>
                 <div class="taiKhoan">Xin chào: <?php echo $_SESSION['username'] ?></div>
-                <div class="matKhau">Nhập mật khẩu cũ: <input type="password" name="pass" id="pass" require></div>
-                <div class="matKhauMoi">Nhập mật khẩu mới: <input type="password" name="newpass" id="newpass" require></div>
-                <div class="matKhauMoi">Nhập lại khẩu mới: <input type="password" name="newpasschk" id="renewpass" require placeholder=" "></div>
+                <div class="matKhau">Nhập mật khẩu cũ: <input type="password" name="pass" id="pass" required autocomplete="off"></div>
+                <div class="matKhauMoi">Nhập mật khẩu mới: <input type="password" name="newpass" id="newpass" required autocomplete="off"></div>
+                <div class="matKhauMoi">Nhập lại khẩu mới: <input type="password" name="newpasschk" id="renewpass" required autocomplete="off"></div>
                 <div class="xacNhan">Xác Nhận Sự Thay Đổi này: <input type="checkbox" name="check" id="ok"></div>
                 <button id="submit_btn">Đổi mật khẩu</button>
             </div>

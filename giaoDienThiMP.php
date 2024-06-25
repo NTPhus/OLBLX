@@ -547,6 +547,10 @@
 
     start();
     move();
+
+    window.onkeydown = function(e) {
+        return e.keyCode !== 32 && e.key !== " ";
+    }
 </script>
 </body>
 </html>

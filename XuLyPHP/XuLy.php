@@ -18,12 +18,12 @@
                 unset($_SESSION['errorlg']);
                 $_SESSION["username"] = "Admin";
                 $_SESSION["admin"] = 1;
-                header("location:../index.php");
+                header("location:../trangchu.php");
             }
             else if($data["username"] == $username && $data["password"] == $password){
                 unset($_SESSION['errorlg']);
                 $_SESSION["username"] = $username;
-                header("location:../index.php");
+                header("location:../trangchu.php");
             }
             else{
                 $_SESSION["errorlg"] = "Mật khẩu hoặc tài khoản chưa chính xác!";
@@ -33,7 +33,10 @@
             $username = $_POST["username"];
             $password = $_POST["password"];
             $email = $_POST["email"];
-
+            if(sizeof($password) < 6){
+                header("location:../index.php");
+                $_SESSION["errorlg"] = "Mật khẩu ít nhất 6 kí tự!";
+            }
             $sqlselect = "select username from account where username = '".$username."'";
             $res = mysqli_query($conn, $sqlselect);
             $data = mysqli_fetch_assoc($res);
@@ -195,9 +198,10 @@
                 echo "Không tìm thấy kết quả.";
             }
         }else if($_GET['action'] == "luuXemLai"){
-            echo "Bực vl";
-            $sql = "INSERT INTO `lich_su_lam_bai`(`ngaylambai`, `MaLamBai`, `username`, `de`, `ketqua`, `dapan`) VALUES ('".$_GET['NgayLamBai']."','".$_GET['MaLamBai']."','".$_SESSION['username']."','".$_GET['De']."','".$_GET['KetQua']."','".$_GET['DapAn']."')";
-            mysqli_query($conn,$sql);
+            if($_SESSION['username']){
+                $sql = "INSERT INTO `lich_su_lam_bai`(`ngaylambai`, `MaLamBai`, `username`, `de`, `ketqua`, `dapan`) VALUES ('".$_GET['NgayLamBai']."','".$_GET['MaLamBai']."','".$_SESSION['username']."','".$_GET['De']."','".$_GET['KetQua']."','".$_GET['DapAn']."')";
+                mysqli_query($conn,$sql);
+            }
             header("location:../trangchu.php");
         }else if($_GET['action'] == "XoaAccount"){
             $sql = "DELETE FROM `account` WHERE username = '".$_GET['username']."'";

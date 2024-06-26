@@ -1,6 +1,4 @@
 <?php
-    include("session.php");
-
     $conn = mysqli_connect("localhost", "root", "", "olblx");
 
     if(isset($_GET['de'])){

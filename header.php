@@ -456,6 +456,24 @@ i.ri-close-large-line.close:hover{
             font-size: 22px;
             line-height: 40px;
         }
+
+        /* design cho nút đăng nhập */
+        .navigation .btnLogin-popup{
+            width: 120px;
+            height: 50px;
+            /* làm cho button tệp vào trong */
+            background: transparent; 
+            border: 2px solid #fff;
+            outline: none;
+            /* bo góc button */
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: #fff;
+            font-weight: 500;
+            margin-left: 40px;
+            transition: .5s;
+        }
 </style>
 </head>
 <body>
@@ -579,7 +597,7 @@ function doiMatKhau() {
 }
 
 function dangnhap() {
-    window.location.href = "start.php";
+    window.location.href = "index.php";
 }
     </script>
 <!-- ========================================================== -->

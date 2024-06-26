@@ -1,7 +1,3 @@
-<?php 
-    include("session.php");
-?>
-
 <?php
 $conn = mysqli_connect("localhost", "root", "", "olblx");
 $sql = "SELECT * FROM `600_cau_hoi`";

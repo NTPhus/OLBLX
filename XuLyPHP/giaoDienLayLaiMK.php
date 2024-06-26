@@ -13,11 +13,6 @@
 <body>
     <div class="app">
         <?php
-        $conn = mysqli_connect("localhost","root","","olblx");
-        $str = "SELECT * FROM account WHERE username = '".$_SESSION['tentaikhoan']."'";
-        $rs = mysqli_query($conn,$str);
-        $row = mysqli_fetch_array($rs);
-        $username;
         if(!isset($_GET['OTP']))
             if(!isset($_GET['email']))
                 echo '
@@ -38,7 +33,12 @@
             else{
                 $_SESSION['OTP'] = rand(1000, 9999);
                 $_SESSION['tentaikhoan'] = $_GET['user'];
+                $conn = mysqli_connect("localhost","root","","olblx");
+                $str = "SELECT * FROM account WHERE username='".$_GET['user']."'";
+                $rs = mysqli_query($conn,$str);
+                $row = mysqli_fetch_array($rs);
 
+                $_SESSION['pass'] = $row['password'];
                 if($row['email'] != $_GET['email']){
                     $_GET['email'] = "12@123";
                 }
@@ -80,9 +80,10 @@
                 //echo $_SESSION['OTP'];
             }
         else if($_GET['OTP'] == $_SESSION['OTP']){
-            echo "<p>Mật khẩu của bạn là: ".$row['password']."</p>";
+            echo "<p>Mật khẩu của bạn là: ".$_SESSION['pass']."</p>";
             echo "<br>";
             echo "<a href='/OLBLX/index.php'> Quay về trang chủ </a>";
+            session_destroy();
         }
         ?>
     </div>

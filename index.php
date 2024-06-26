@@ -82,6 +82,24 @@
             font-size: 22px;
             line-height: 40px;
         }
+
+        /* design cho nút đăng nhập */
+        .navigation .btnLogin-popup{
+            width: 120px;
+            height: 50px;
+            /* làm cho button tệp vào trong */
+            background: transparent; 
+            border: 2px solid #fff;
+            outline: none;
+            /* bo góc button */
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: #fff;
+            font-weight: 500;
+            margin-left: 40px;
+            transition: .5s;
+        }
     </style>
 </head>
 <body>
@@ -233,7 +251,7 @@
      <!-- BÁO LỖI-->
     <div class="alert <?php if(isset($_SESSION["errorlg"])) echo 'showAlert'; else echo 'hide'?>">
         <span class="fas fa-exclamation-circle"></span>
-        <span class="msg" id="msg"><?php if(isset($_SESSION["errorlg"])) echo $_SESSION["errorlg"]?></span>
+        <span class="msg" id="msg"><?php if(isset($_SESSION["errorlg"])) echo $_SESSION["errorlg"]; session_destroy()?></span>
         <div class="close-btn">
         <span class="fas fa-times"></span>
         </div>
@@ -250,14 +268,14 @@
                 echo "let login = false;";
         ?>
         
-        if(login){
-            document.getElementById("start").setAttribute("href", "trangchu.php");
-        }else{
-            document.getElementById("msg").innerHTML = "Bạn phải đăng nhập trước khi bắt đầu!";
-            $('.alert').addClass("show");
-            $('.alert').removeClass("hide");
-            $('.alert').addClass("showAlert");
-        }
+        // if(login){
+             document.getElementById("start").setAttribute("href", "trangchu.php");
+        // }else{
+        //     document.getElementById("msg").innerHTML = "Bạn phải đăng nhập trước khi bắt đầu!";
+        //     $('.alert').addClass("show");
+        //     $('.alert').removeClass("hide");
+        //     $('.alert').addClass("showAlert");
+        // }
     }
 
         $('.close-btn').click(function(){

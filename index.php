@@ -268,14 +268,14 @@
                 echo "let login = false;";
         ?>
         
-        // if(login){
+        if(login){
              document.getElementById("start").setAttribute("href", "trangchu.php");
-        // }else{
-        //     document.getElementById("msg").innerHTML = "Bạn phải đăng nhập trước khi bắt đầu!";
-        //     $('.alert').addClass("show");
-        //     $('.alert').removeClass("hide");
-        //     $('.alert').addClass("showAlert");
-        // }
+        }else{
+            document.getElementById("msg").innerHTML = "Bạn phải đăng nhập trước khi bắt đầu!";
+            $('.alert').addClass("show");
+            $('.alert').removeClass("hide");
+            $('.alert').addClass("showAlert");
+        }
     }
 
         $('.close-btn').click(function(){

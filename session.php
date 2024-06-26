@@ -2,7 +2,7 @@
     session_start();
 
 	if (!isset($_SESSION['username'])) {
-		header("location:trangchu.php");
+		header("location:index.php");
 		die();
 	}
 ?>

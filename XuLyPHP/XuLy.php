@@ -18,12 +18,12 @@
                 unset($_SESSION['errorlg']);
                 $_SESSION["username"] = "Admin";
                 $_SESSION["admin"] = 1;
-                header("location:../trangchu.php");
+                header("location:../index.php");
             }
             else if($data["username"] == $username && $data["password"] == $password){
                 unset($_SESSION['errorlg']);
                 $_SESSION["username"] = $username;
-                header("location:../trangchu.php");
+                header("location:../index.php");
             }
             else{
                 $_SESSION["errorlg"] = "Mật khẩu hoặc tài khoản chưa chính xác!";

@@ -505,6 +505,7 @@ while($row = mysqli_fetch_array($res)){
                 img.style.display = "none";
             }
             else{
+                console.log("Anh/"+questions[currentIndex-1].img+".png");
                 img.style.display = "block";
                 if(currentIndex > 600)
                     img.setAttribute("src", "Anh/"+questions[currentIndex-1].img+".png");

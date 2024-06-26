@@ -237,7 +237,7 @@ u{
             <div id="container">
                 <div class="item1">
                     <div class="video">
-                        <video id = "myVideo" width="800" height="740" controls muted onclick="move()">
+                        <video id = "myVideo" width="800" height="740" controls muted>
                             <source src="video/MoPhong/1.mp4" type="video/mp4" id="source">
                         </video>
                         <div id="myProgress">

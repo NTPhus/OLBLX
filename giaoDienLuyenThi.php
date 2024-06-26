@@ -322,7 +322,7 @@
 
         OK.addEventListener("click", () => {
             
-            for(let i = 1; i <= 35; i++){
+            for(let i = 1; i <= 30; i++){
                 if(Answer[i] == 1) diem++;
             }
             ketqua.classList.add('result_open');

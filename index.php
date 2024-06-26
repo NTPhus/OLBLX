@@ -251,7 +251,7 @@
      <!-- BÁO LỖI-->
     <div class="alert <?php if(isset($_SESSION["errorlg"])) echo 'showAlert'; else echo 'hide'?>">
         <span class="fas fa-exclamation-circle"></span>
-        <span class="msg" id="msg"><?php if(isset($_SESSION["errorlg"])) echo $_SESSION["errorlg"]; session_destroy()?></span>
+        <span class="msg" id="msg"><?php if(isset($_SESSION["errorlg"])){echo $_SESSION["errorlg"]; session_destroy();} ?></span>
         <div class="close-btn">
         <span class="fas fa-times"></span>
         </div>
@@ -269,13 +269,13 @@
         ?>
         
         if(login){
-             document.getElementById("start").setAttribute("href", "trangchu.php");
-        }else{
-            document.getElementById("msg").innerHTML = "Bạn phải đăng nhập trước khi bắt đầu!";
+            document.getElementById("start").setAttribute("href", "trangchu.php");
+         }else{
+             document.getElementById("msg").innerHTML = "Bạn phải đăng nhập trước khi bắt đầu!";
             $('.alert').addClass("show");
-            $('.alert').removeClass("hide");
-            $('.alert').addClass("showAlert");
-        }
+             $('.alert').removeClass("hide");
+             $('.alert').addClass("showAlert");
+         }
     }
 
         $('.close-btn').click(function(){

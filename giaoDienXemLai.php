@@ -124,7 +124,6 @@
             while(blc.length != 0){  
 
                 c = blc.substr(0,blc.indexOf(':'));
-                console.log(c);
                 index = blc.indexOf('-');
                 Choice[c] = blc[index-1];
                 blc = blc.substr(index+1);
@@ -173,9 +172,13 @@
             let answers = currentQuestion.answers;
             document.getElementById("cauHoi").innerHTML = currentIndex + ". " + currentQuestion.question;
             //reset cac lua chon truoc
+            document.getElementById("dapan1").style = "border: none;"
             document.getElementById("dapan1").style.backgroundColor = "#f4f4f4dd";
+            document.getElementById("dapan2").style = "border: none;"
             document.getElementById("dapan2").style.backgroundColor = "#f4f4f4dd";
+            document.getElementById("dapan3").style = "border: none;"
             document.getElementById("dapan3").style.backgroundColor = "#f4f4f4dd";
+            document.getElementById("dapan4").style = "border: none;"
             document.getElementById("dapan4").style.backgroundColor = "#f4f4f4dd";
             //check co hinh thi hien thi
             if(currentQuestion.img == '0'){
@@ -210,26 +213,25 @@
             let currentQuestion = questions[currentIndex-1];
             let correctAnswers = currentQuestion.correct;
             //reset cac lua chon truoc do
-            
-            document.getElementById("dapan1").style.border = "none";
+            document.getElementById("dapan1").style = "border: none;"
             document.getElementById("dapan1").style.backgroundColor = "#f4f4f4dd";
-            document.getElementById("dapan2").style.border = "none";
+            document.getElementById("dapan2").style = "border: none;"
             document.getElementById("dapan2").style.backgroundColor = "#f4f4f4dd";
-            document.getElementById("dapan3").style.border = "none";
+            document.getElementById("dapan3").style = "border: none;"
             document.getElementById("dapan3").style.backgroundColor = "#f4f4f4dd";
-            document.getElementById("dapan4").style.border = "none";
+            document.getElementById("dapan4").style = "border: none;"
             document.getElementById("dapan4").style.backgroundColor = "#f4f4f4dd";
             //doi mau btn va dap an
             if(cau == correctAnswers){
                 //Change answers client choose
                 document.getElementById("btn"+currentIndex).style.backgroundColor = "green";
-                document.getElementById("dapan"+cau).style = "border: 5px solid green;"
+                document.getElementById("dapan"+cau).style = "border: 1px solid green;"
                 document.getElementById("dapan"+cau).style.backgroundColor = "greenyellow";
                 document.getElementById("trueAnswer").innerHTML = "";
             }else{
                 //Change answers client choose
                 document.getElementById("btn"+currentIndex).style.backgroundColor = "red";
-                document.getElementById("dapan"+cau).style = "border: 5px solid red;"
+                document.getElementById("dapan"+cau).style = "border: 1px solid red;"
                 document.getElementById("dapan"+cau).style.backgroundColor = "orange";
                 document.getElementById("trueAnswer").innerHTML = "Đáp án đúng là câu "+ correctAnswers;
                 document.getElementById("dapan"+correctAnswers).style.backgroundColor = "greenyellow";

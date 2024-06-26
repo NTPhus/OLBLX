@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Quản lý tài khoản</title>
     <link rel="stylesheet" href="CSS/quanLyTaiKhoan.css">
     <link rel="stylesheet" href="CSS/grid.css">
     <style>

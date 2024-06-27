@@ -381,10 +381,13 @@
 
     let bar = document.getElementById("bar");
 
+
+    // khi video ket thuc
     video.onended = function(e) {
         if(currentIndex == 10)
             hienThiKetQua();
         if(currentIndex < 10){
+            // cam co cuoi vi deo
             getPoint();
             chuyenVideo();
         }
@@ -413,6 +416,7 @@
         }
         if(!status)
             arrDiem[currentIndex] = diem;
+        //cam co
         CamCo();
     }
     //chuyen video
@@ -490,11 +494,11 @@
     function start(){
         let vid = document.getElementById("myVideo");
         vid.src = "video/MoPhong/"+ (videos[currentIndex].cau) +".mp4";
+        //Tong thoi gian 10 video
         for(let i = 1; i < videos.length; i++){
-            console.log(videos[i].cau);
             maxTime += videos[i].length;
         }
-        console.log(maxTime);
+
         minutes = parseInt(maxTime/60);
         seconds = maxTime - (minutes * 60);
         if(seconds < 10){
@@ -511,11 +515,12 @@
         seconds = 0;
     }
 
+    // hien thi ket qua
     function hienThiKetQua(){
         let time = 0;
         for(let i = 1; i <= 10; i++){
             
-            if(arrDiem[i] == null) arrDiem[i] = 0;
+            // if(arrDiem[i] == null) arrDiem[i] = 0;
             
             document.getElementById("td"+i).innerHTML = arrDiem[i];
 
@@ -550,6 +555,7 @@
     start();
     move();
 
+    //khi cach khong cho trang truotz
     window.onkeydown = function(e) {
         return e.keyCode !== 32 && e.key !== " ";
     }

@@ -500,7 +500,7 @@ while($row = mysqli_fetch_array($res)){
            document.getElementById("message").innerHTML = "";
             // Hien thi cau hoi
             document.getElementById("cauHoi").innerHTML = currentIndex + ". " + currentQuestion.question;
-            //check co hinh thi hien thi
+            //neu co hinh thi hien thi
             if(currentQuestion.img == '0'){
                 img.style.display = "none";
             }

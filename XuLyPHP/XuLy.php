@@ -14,17 +14,20 @@
             $res = mysqli_query($conn, $sql);
             $data = mysqli_fetch_assoc($res);
 
+            // check dieu kien neu la admin
             if($data["admin"] == 1 && $data["username"] == $username && $data["password"] == $password){
                 unset($_SESSION['errorlg']);
                 $_SESSION["username"] = "Admin";
                 $_SESSION["admin"] = 1;
                 header("location:../index.php");
             }
+            //check dk neu user
             else if($data["username"] == $username && $data["password"] == $password){
                 unset($_SESSION['errorlg']);
                 $_SESSION["username"] = $username;
                 header("location:../index.php");
             }
+            //tra loi
             else{
                 $_SESSION["errorlg"] = "Mật khẩu hoặc tài khoản chưa chính xác!";
                 header("location:../index.php");
@@ -33,7 +36,7 @@
             $username = $_POST["username"];
             $password = $_POST["password"];
             $email = $_POST["email"];
-            if(sizeof($password) < 6){
+            if(strlen($password) < 6){
                 header("location:../index.php");
                 $_SESSION["errorlg"] = "Mật khẩu ít nhất 6 kí tự!";
             }
@@ -47,7 +50,9 @@
                 $sqlinsert = "insert account(username, password, email) values ('".$username."','".$password."','".$email."')";
                 mysqli_query($conn, $sqlinsert);
                 header("location:../index.php");
+                $_SESSION["errorlg"] = "Đăng kí thành công!";
             }
+            // doi mat khau
         }else if($_POST['action'] == "DoiMK"){
             $u = $_SESSION['username'];
             $mkc = $_POST['pass'];
@@ -75,9 +80,10 @@
             }
             header("location:../trangchu.php");
         }
+        //them cau hoi
         else if($_POST['action'] == "themCauHoi"){
             $chuong = $_POST["chuong"];
-            $cauDiemLiet = $_POST["cauDiemLiet"] == "on" ? "1" : "2";
+            $cauDiemLiet = $_POST["cauDiemLiet"] == "on" ? "1" : "0";
             $cauHoi = $_POST["cauhoi"];
             $dapan1 = $_POST["dapan1"];
             $dapan2 = $_POST["dapan2"];
@@ -101,7 +107,8 @@
             $_SESSION['msg'] = "Thêm câu hỏi thành công";
             echo $sql;
             header("location:../suaLyThuyet.php");
-        }else if($_POST['action'] == "themVideo"){
+            
+        }else if($_POST['action'] == "themVideo"){ // them video
             $deso = $_POST['deso'];
             $start = $_POST['start'];
             $end = $_POST['end'];
@@ -116,7 +123,7 @@
             }
             $_SESSION['msg'] = "Thêm video thành công";
             header("location:../suaLyThuyet.php");
-        }else if($_POST['action'] == "themDeLyThuyet"){
+        }else if($_POST['action'] == "themDeLyThuyet"){ // them de ly thuyet
             $cau = "";  
             for($i = 1; $i <= 30; $i++){
                 $cau .= $_POST["cau$i"]."-";
@@ -125,8 +132,8 @@
             $sql = "INSERT INTO `bodeonthiblx`(`cau`) VALUES ('$cau')";
             mysqli_query($conn, $sql);
             $_SESSION['msg'] = "Thêm đề lý thuyết thành công";
-            header("location:../themDeLyThuyet.php");
-        }else if($_POST['action'] == "themDeMoPhong"){
+            header("location:../themDeLyThuyet.php"); 
+        }else if($_POST['action'] == "themDeMoPhong"){ //them de mo phong
             $cau = "";
             for($i = 1; $i <= 10; $i++){
                 $cau .= $_POST["cau$i"]."-";
@@ -137,7 +144,7 @@
             mysqli_query($conn, $sql);
             $_SESSION['msg'] = "Thêm đề mô phỏng thành công";
             header("location:../themDeLyThuyet.php");
-        }else if($_POST['action'] == "themTK"){
+        }else if($_POST['action'] == "themTK"){ // them tai khoan
             $username = $_POST['username'];
             $password = $_POST['password'];
             $admin = isset($_POST['admin']) ? 1 : 0;
@@ -153,7 +160,7 @@
                 header("location:../quanLyTaiKhoan.php");
             }
             
-        }else if($_POST['action'] == "adminDoiMK"){
+        }else if($_POST['action'] == "adminDoiMK"){ // admin doi mat khau
             $username = $_POST['username'];
             $password = $_POST['password'];
             $email = $_POST['email'];
@@ -165,7 +172,7 @@
             mysqli_query($conn, $sql);
             $_SESSION['msg'] = "Đổi mật khẩu thành công thành công";
             header("location:../quanLyTaiKhoan.php");
-        }else if($_POST['action'] == "themDiaDiem"){
+        }else if($_POST['action'] == "themDiaDiem"){ // them dia diem
             $tinh = $_POST['tinh'];
             $noiThi = $_POST['noiThi'];
             $diaChi = $_POST['diaChi'];
@@ -178,10 +185,10 @@
     }   
 
     if(isset($_GET['action'])){
-        if($_GET['action'] == "logout"){
+        if($_GET['action'] == "logout"){ // dang xuat
             session_destroy();
             header("location:../index.php");
-        }else if($_GET['action'] == "timkiem"){
+        }else if($_GET['action'] == "timkiem"){ // tim kiem dia diem
             // Lấy dữ liệu từ yêu cầu AJAX
             $input = trim($_GET['q']);
 
@@ -197,7 +204,7 @@
             } else {
                 echo "Không tìm thấy kết quả.";
             }
-        }else if($_GET['action'] == "luuXemLai"){
+        }else if($_GET['action'] == "luuXemLai"){ // luu lich su xem lai
             if($_SESSION['username']){
                 $sql = "INSERT INTO `lich_su_lam_bai`(`ngaylambai`, `MaLamBai`, `username`, `de`, `ketqua`, `dapan`) VALUES ('".$_GET['NgayLamBai']."','".$_GET['MaLamBai']."','".$_SESSION['username']."','".$_GET['De']."','".$_GET['KetQua']."','".$_GET['DapAn']."')";
                 mysqli_query($conn,$sql);

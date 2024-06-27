@@ -299,8 +299,11 @@ border-bottom: 1px solid;
     font-size: 20px;
     border-bottom: 1px solid;
 }
-input[type="password"]{
+.matKhauMoi input[type="password"]{
     width: 250px;
+    height: 24px;
+    float: right;
+    border-radius: 8px;
 }
 .or{
     text-align: center;

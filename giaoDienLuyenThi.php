@@ -30,6 +30,7 @@
             $DeSo = $_GET['de'];
         }    
     }
+    
 
     $de = [];
     $cauDiemLiet = [];
@@ -210,7 +211,6 @@
                 document.getElementById("btn"+currentIndex).style.backgroundColor = "yellow";
             else
                 document.getElementById("btn"+currentIndex).style.backgroundColor = "aqua";
-            console.log("btn"+currentIndex);
             currentIndex = cau;
             let currentQuestion = questions[currentIndex-1];
             let answers = currentQuestion.answers;
@@ -249,6 +249,7 @@
                 dapan4.innerHTML = answers.dapan4;
                 dapan4.style.display = "block";
             }
+            if(Choice[currentIndex] != undefined) check(Choice[currentIndex]);
         }
         //kiem tra cau dung sai va danh dau cau
         function check(cau){
@@ -265,19 +266,20 @@
             //kiem tra ket qua dung sai
             Answer[currentIndex] = correctAnswers == cau ? 1 : -1;
             //Kiểm tra có sai câu điểm liệt
-            if(correctAnswers != cau && cau_diem_liet.indexOf(cau) >= 0){
+            if(correctAnswers != cau && cau_diem_liet.indexOf(cau) > 0){
                 status = false;
             }
+
         }
         
         //Khong the quay ve trang truoc
-        function preventBack() {
-            window.history.forward();
-        }
-        setTimeout("preventBack()", 0);
-        window.onunload = function () {
-            null
-        };
+        // function preventBack() {
+        //     window.history.forward();
+        // }
+        // setTimeout("preventBack()", 0);
+        // window.onunload = function () {
+        //     null
+        // };
 
         start();
 

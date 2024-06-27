@@ -248,7 +248,7 @@
 
    
 
-     <!-- BÁO LỖI-->
+     <!-- Thông báo-->
     <div class="alert <?php if(isset($_SESSION["errorlg"])) echo 'showAlert'; else echo 'hide'?>">
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg" id="msg"><?php if(isset($_SESSION["errorlg"])){echo $_SESSION["errorlg"]; session_destroy();} ?></span>

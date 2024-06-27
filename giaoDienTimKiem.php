@@ -83,7 +83,6 @@
             document.getElementById('suggestion').innerHTML = this.responseText;
             document.getElementById('suggestion').style.display = 'block';
           
-
             // Add click event listener to suggestions
             var suggestions = document.getElementsByClassName('suggestion');
             for (var i = 0; i < suggestions.length; i++) {

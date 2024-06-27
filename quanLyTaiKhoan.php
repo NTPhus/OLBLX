@@ -22,6 +22,7 @@
         .app_quanLyTK_edit_table td{
             padding: 20px 40px;
         }
+
     </style>
 </head>
 <body>
